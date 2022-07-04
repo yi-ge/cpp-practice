@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/yige/Project/cpp-practice/build",
+  "command": "/usr/bin/clang++  -I/Users/yige/Project/cpp-practice/include -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.0.sdk -o CMakeFiles/cpp-practice.dir/src/main.cpp.o -c /Users/yige/Project/cpp-practice/src/main.cpp",
+  "file": "/Users/yige/Project/cpp-practice/src/main.cpp"
+}
+]
