@@ -15,5 +15,5 @@ parse(path.join(__dirname, '../coverage.info'), function(err, data) {
       data
     }
     // fs.writeFileSync(path.join(__dirname, '../outputs.json'), JSON.stringify(res, null, 2), 'utf-8')
-    console.log(`::set-output name=outputs.json::${JSON.stringify(res)}`)
+    console.log(`::set-output name=json::${JSON.stringify(res)}`)
 });
