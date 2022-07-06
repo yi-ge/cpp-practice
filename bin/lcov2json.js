@@ -3,8 +3,6 @@ const path = require('path')
 const fs = require('fs')
 
 parse(path.join(__dirname, '../coverage/lcov.info'), function(err, data) {
-    console.log(err)
-    console.log(data)
     const res = {
       conclusion: err ? 'failure' : (data?.[0]?.functions?.hit === data?.[0]?.functions?.found ? 'success' : 'neutral'),
       stats: {
