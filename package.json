@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "test": "cmake -S . -B build && cmake --build build && ./build/cpp-practice",
-    "coverage:ci": "node --no-warnings --experimental-vm-modules --experimental-specifier-resolution=node node_modules/jest/bin/jest.js --coverage --ci --reporters=default --reporters=jest-junit",
+    "coverage:ci": "./coverage.sh",
     "start": "node --no-warnings --experimental-vm-modules --experimental-specifier-resolution=node --loader ts-node/esm ./bin/createPractice.ts"
   },
   "dependencies": {

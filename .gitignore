@@ -41,6 +41,5 @@ node_modules
 .DS_Store
 
 # coverage
-coverage.info
-coverage.info_tmp
+/coverage
 /coverage_report

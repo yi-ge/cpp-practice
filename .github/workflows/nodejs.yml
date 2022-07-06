@@ -39,10 +39,8 @@ jobs:
 
       - name: Publish Test Results
         id: test-results
-        uses: EnricoMi/publish-unit-test-result-action@master
+        run: ./bin/lcov2json.js
         if: always()
-        with:
-          files: 'junit.xml'
 
       - name: Set badge color
         shell: bash
@@ -76,7 +74,7 @@ jobs:
         uses: andymckay/append-gist-action@1fbfbbce708a39bd45846f0955ed5521f2099c6d
         with:
           token: ${{ secrets.GIST_TOKEN }}
-          gistURL: https://gist.githubusercontent.com/yi-ge/d68fa5b85788ef50447630fff106866c
+          gistURL: https://gist.githubusercontent.com/yi-ge/cfafaf2ba23090ed9f8aa8fc875c9ce5
           file: badge.svg
 
       - name: Coveralls

@@ -72,28 +72,8 @@ include(CPack)
 
 gtest_discover_tests(cpp-practice)
 
-# if判断语句是为了确保编译器是GNUCXX（即g++）以支持gcov功能
-if(CMAKE_COMPILER_IS_GNUCXX)
-
-	  # 引入CodeCoverage功能
-    include(CodeCoverage)
-    set(ENABLE_COVERAGE TRUE)
-    # 我的理解是：
-    # NAME后指定加入gcov功能的可执行文件名
-    # EXECUTABLE后指定原始可执行文件（也就是要进行分析的那个可执行文件）名字
-    # DEPENDENCIES也是原始可执行文件名字
-    # setup_target_for_coverage_lcov(NAME ${PROJECT_NAME}_coverage EXECUTABLE ${PROJECT_NAME} DEPENDENCIES ${PROJECT_NAME})
-endif()
-
-
-if(ENABLE_COVERAGE)
-    message(STATUS "Use gcov for code coverage test")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
-    set(LDFLAGS "${LDFLAGS} -lgcov -fprofile-arcs")
-else()
-    message(STATUS "Use gcov for code coverage test (clang++)")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -coverage -Wall -fprofile-arcs -ftest-coverage")
-endif()
+message(STATUS "Use gcov for code coverage test.")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -coverage -Wall -fprofile-arcs -ftest-coverage")
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
