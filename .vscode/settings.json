@@ -34,6 +34,7 @@
     "coverallsapp",
     "emibcn",
     "esac",
+    "Gtest",
     "killall",
     "lcov",
     "networkidle",
