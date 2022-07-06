@@ -1,0 +1,30 @@
+{
+  "name": "cpp-practice",
+  "version": "0.1.0",
+  "description": "C++ Practice.",
+  "main": "bin/createPractices.ts",
+  "repository": "git@github.com:yi-ge/cpp-practice.git",
+  "author": "yi-ge <a@wyr.me>",
+  "license": "MIT",
+  "private": false,
+  "keywords": [
+    "practice",
+    "arithmetic",
+    "c++"
+  ],
+  "scripts": {
+    "test": "cmake -S . -B build && cmake --build build && ./build/cpp-practice",
+    "coverage:ci": "node --no-warnings --experimental-vm-modules --experimental-specifier-resolution=node node_modules/jest/bin/jest.js --coverage --ci --reporters=default --reporters=jest-junit",
+    "start": "node --no-warnings --experimental-vm-modules --experimental-specifier-resolution=node --loader ts-node/esm ./bin/createPractice.ts"
+  },
+  "dependencies": {
+    "lcov-parse": "^1.0.0",
+    "puppeteer": "^15.3.0",
+    "puppeteer-extra": "^3.3.1",
+    "puppeteer-extra-plugin-stealth": "^2.10.2",
+    "ts-node": "^10.8.2"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
+}

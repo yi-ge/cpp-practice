@@ -20,5 +20,21 @@
         }
       }
     ]
-  }
+  },
+  "files.associations": {
+    "*.vue": "vue",
+    "atomic": "cpp",
+    "bitset": "cpp"
+  },
+  "cSpell.words": [
+    "backgrounding",
+    "breakpad",
+    "cmake",
+    "esac",
+    "killall",
+    "lcov",
+    "networkidle",
+    "osascript",
+    "repost"
+  ]
 }

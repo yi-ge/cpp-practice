@@ -33,3 +33,14 @@
 
 # Build
 /Build
+
+# js/ts
+node_modules
+
+# Mac OS
+.DS_Store
+
+# coverage
+coverage.info
+coverage.info_tmp
+/coverage_report

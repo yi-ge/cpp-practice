@@ -4,6 +4,7 @@ project(cpp-practice VERSION 0.1.0)
 # GoogleTest requires at least C++14
 set(CMAKE_CXX_STANDARD 14)
 
+# 加载gtest
 include(FetchContent)
 FetchContent_Declare(
   googletest
@@ -15,18 +16,84 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 enable_testing()
-
 include(GoogleTest)
 include(CTest)
 
-# add_executable(cpp-practice src/main.cpp test/main_test.cpp)
-add_executable(cpp-practice test/main_test.cpp)
+include_directories(include)
+aux_source_directory(./src DIR_SRC)
+aux_source_directory("./src/string" DIR_SRC_STRING)
+aux_source_directory(./src/array DIR_SRC_ARRAY)
+aux_source_directory(./src/stack DIR_SRC_STACK)
+aux_source_directory(./src/math DIR_SRC_MATH)
+aux_source_directory(./src/heap DIR_SRC_HEAP)
+aux_source_directory(./src/tree DIR_SRC_TREE)
+aux_source_directory(./src/list DIR_SRC_LIST)
+aux_source_directory(./src/graphs DIR_SRC_GRAPHS)
+aux_source_directory(./src/sort DIR_SRC_SORT)
+aux_source_directory(./src/other DIR_SRC_OTHER)
+aux_source_directory(./test DIR_TEST)
+aux_source_directory("./test/string" DIR_TEST_STRING)
+aux_source_directory(./test/array DIR_TEST_ARRAY)
+aux_source_directory(./test/stack DIR_TEST_STACK)
+aux_source_directory(./test/math DIR_TEST_MATH)
+aux_source_directory(./test/heap DIR_TEST_HEAP)
+aux_source_directory(./test/tree DIR_TEST_TREE)
+aux_source_directory(./test/list DIR_TEST_LIST)
+aux_source_directory(./test/graphs DIR_TEST_GRAPHS)
+aux_source_directory(./test/sort DIR_TEST_SORT)
+aux_source_directory(./test/other DIR_TEST_OTHER)
+add_executable(
+  cpp-practice
+  ${DIR_SRC}
+  ${DIR_SRC_STRING}
+  ${DIR_SRC_ARRAY}
+  ${DIR_SRC_STACK}
+  ${DIR_SRC_MATH}
+  ${DIR_SRC_HEAP}
+  ${DIR_SRC_TREE}
+  ${DIR_SRC_LIST}
+  ${DIR_SRC_GRAPHS}
+  ${DIR_SRC_SORT}
+  ${DIR_SRC_OTHER}
+  ${DIR_TEST}
+  ${DIR_TEST_STRING}
+  ${DIR_TEST_ARRAY}
+  ${DIR_TEST_STACK}
+  ${DIR_TEST_MATH}
+  ${DIR_TEST_HEAP}
+  ${DIR_TEST_TREE}
+  ${DIR_TEST_LIST}
+  ${DIR_TEST_GRAPHS}
+  ${DIR_TEST_SORT}
+  ${DIR_TEST_OTHER}
+)
 target_link_libraries(cpp-practice gtest_main)
+include(CPack)
 
 gtest_discover_tests(cpp-practice)
 
+# if判断语句是为了确保编译器是GNUCXX（即g++）以支持gcov功能
+if(CMAKE_COMPILER_IS_GNUCXX)
+
+	  # 引入CodeCoverage功能
+    include(CodeCoverage)
+    set(ENABLE_COVERAGE TRUE)
+    # 我的理解是：
+    # NAME后指定加入gcov功能的可执行文件名
+    # EXECUTABLE后指定原始可执行文件（也就是要进行分析的那个可执行文件）名字
+    # DEPENDENCIES也是原始可执行文件名字
+    # setup_target_for_coverage_lcov(NAME ${PROJECT_NAME}_coverage EXECUTABLE ${PROJECT_NAME} DEPENDENCIES ${PROJECT_NAME})
+endif()
+
+
+if(ENABLE_COVERAGE)
+    message(STATUS "Use gcov for code coverage test")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
+    set(LDFLAGS "${LDFLAGS} -lgcov -fprofile-arcs")
+else()
+    message(STATUS "Use gcov for code coverage test (clang++)")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -coverage -Wall -fprofile-arcs -ftest-coverage")
+endif()
+
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)
-
-include_directories(include)
