@@ -1,6 +1,5 @@
 const parse = require('lcov-parse')
 const path = require('path')
-const fs = require('fs')
 
 parse(path.join(__dirname, '../coverage/lcov.info'), function(err, data) {
     const res = {
