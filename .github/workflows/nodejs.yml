@@ -41,8 +41,10 @@ jobs:
 
       - name: Publish Test Results
         id: test-results
-        uses: actions/setup-node@v3
-        run: node ./bin/lcov2json.js
+        # run: node bin/lcov2json.js
+        runs:
+          using: 'node18'
+          main: 'bin/lcov2json.js'
         if: always()
 
       - name: Set badge color
