@@ -335,14 +335,12 @@ const className = keyClassStr?.match(/(class)([ \t])([^(\(|\{)]+)/i)?.[3]?.trim(
 const keyFuncStr = code.match(/.*(\(([^)]*)\))\s?.*?\{/ig)?.shift()
 const functionName = keyFuncStr?.match(/((\w+)?([\s\*]+)(\w+|\w+::\w+))\(/i)?.[4]
 let declaration = ''
-let testFunc = ''
 if (functionName) { // 如果包含 function 推测函数声明
   const argument = keyFuncStr.match(/\(([^)]*)\)/i)?.[1]
   const declarationArgument = argument?.split(',')?.map(item => {
     return item.trim()?.split(' ')?.[1]?.replace('&', '')?.trim()
   })?.join(', ')
   declaration = argument && declarationArgument ? functionName + ' (' + declarationArgument + ')' : ''
-  testFunc = className + '::' + declaration
 }
 
 // * 不要删除下面存在的空行
@@ -350,6 +348,7 @@ if (!code.includes(`// ${url}`)) {
   code = `// ${title}
 // ${url}
 // INLINE  ../images/${classificationStr}/${fileName}.jpeg
+#include "headers.h"
 
 ` + code
 } else {
@@ -398,14 +397,13 @@ if (fs.existsSync(testFilePath)) {
     fs.writeFileSync(includePath, includeCode, 'utf-8')
 
     // * 不要删除下面存在的空行
-    const testCode = `#include <gtest/gtest.h>
-
-#include "${hppFileName}"
+    const testCode = `#include "${hppFileName}"
 
 TEST(${title}, ${functionName})
 {
 ${examples}
-  EXPECT_EQ(${testFunc}, 1);
+  ${className} ${className?.toLocaleLowerCase()};
+  EXPECT_EQ(${className?.toLocaleLowerCase()}.${declaration}, 1);
 }
 `
 

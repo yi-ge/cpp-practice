@@ -49,6 +49,10 @@ sudo update-alternatives --config c++
 
 ### 树
 
+- [单词替换](src/tree/replace_words.cpp)  [字典树, 数组, 哈希表, 字符串]
+
+  - LeetCode 648. 单词替换 <https://leetcode.cn/problems/replace-words>
+
 ### 链表
 
 ### 图

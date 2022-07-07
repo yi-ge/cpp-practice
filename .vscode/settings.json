@@ -27,9 +27,13 @@
     "bitset": "cpp"
   },
   "cSpell.words": [
+    "aadsfasf",
+    "absbs",
     "andymckay",
     "backgrounding",
+    "bbab",
     "breakpad",
+    "cadsfafs",
     "cmake",
     "coverallsapp",
     "DCMAKE",
@@ -40,6 +44,7 @@
     "lcov",
     "networkidle",
     "osascript",
-    "repost"
+    "repost",
+    "STREQ"
   ]
 }

@@ -2,7 +2,14 @@ cmake_minimum_required(VERSION 3.14.0)
 project(cpp-practice VERSION 0.1.0)
 
 # GoogleTest requires at least C++14
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
+# set(CMAKE_C_COMPILER clang)
+# set(CMAKE_CXX_COMPILER /usr/bin/clang++)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -stdlib=libc++")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -std=c++17 -stdlib=libc++")
+# set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libc++ -lc++abi")
+# set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libc++ -lc++abi")
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -v -stdlib=libc++")
 
 # 加载gtest
 include(FetchContent)
@@ -70,10 +77,13 @@ add_executable(
   ${DIR_TEST_SORT}
   ${DIR_TEST_OTHER}
 )
-target_link_libraries(cpp-practice gtest_main)
+
+target_link_libraries(${PROJECT_NAME} gtest_main)
+# target_link_options(${PROJECT_NAME} PUBLIC -stdlib=libc++)
+# target_link_libraries(${PROJECT_NAME}  -static-libstdc++)
 include(CPack)
 
-gtest_discover_tests(cpp-practice)
+gtest_discover_tests(${PROJECT_NAME})
 
 message(STATUS "Use gcov for code coverage test.")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -coverage -Wall -fprofile-arcs -ftest-coverage")
