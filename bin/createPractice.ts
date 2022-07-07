@@ -412,11 +412,8 @@ ${examples}
     fs.writeFileSync(filePath, code, 'utf-8')
     fs.writeFileSync(testFilePath, testCode, 'utf-8')
 
-    // 触发Cmake保存，VSCode自动编译
-    const cmakePath = join(__dirname, '../CMakeLists.txt')
-    const cmakeContent = fs.readFileSync(cmakePath, 'utf8')
-    fs.writeFileSync(cmakePath, cmakeContent + '\n', 'utf-8')
-    fs.writeFileSync(cmakePath, cmakeContent, 'utf-8')
+    // 触发Cmake
+    console.log(execSync(`cmake --no-warn-unused-cli -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_BUILD_TYPE:STRING=Debug -S${join(__dirname, '../')} -B${join(__dirname, '../')}/build -G Ninja`)?.toString())
   } else {
     console.log('该题目暂不支持自动生成测试代码模板，请手工编写测试用例。')
     fs.writeFileSync(testFilePath, `#include <gtest/gtest.h>`, 'utf-8')
