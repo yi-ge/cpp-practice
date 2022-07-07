@@ -6,10 +6,9 @@ set(CMAKE_CXX_STANDARD 17)
 # set(CMAKE_C_COMPILER clang)
 # set(CMAKE_CXX_COMPILER /usr/bin/clang++)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -stdlib=libc++")
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -v -stdlib=libc++")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -std=c++17 -stdlib=libc++")
 # set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libc++ -lc++abi")
-# set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libc++ -lc++abi")
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -v -stdlib=libc++")
 
 # 加载gtest
 include(FetchContent)
@@ -27,19 +26,21 @@ include(GoogleTest)
 include(CTest)
 
 include_directories(include)
-aux_source_directory(./src DIR_SRC)
-aux_source_directory("./src/string" DIR_SRC_STRING)
-aux_source_directory(./src/array DIR_SRC_ARRAY)
-aux_source_directory(./src/stack DIR_SRC_STACK)
-aux_source_directory(./src/math DIR_SRC_MATH)
-aux_source_directory(./src/heap DIR_SRC_HEAP)
+include_directories(src)
+include_directories(src/tree)
+# aux_source_directory(./src DIR_SRC)
+# aux_source_directory("./src/string" DIR_SRC_STRING)
+# aux_source_directory(./src/array DIR_SRC_ARRAY)
+# aux_source_directory(./src/stack DIR_SRC_STACK)
+# aux_source_directory(./src/math DIR_SRC_MATH)
+# aux_source_directory(./src/heap DIR_SRC_HEAP)
 aux_source_directory(./src/tree DIR_SRC_TREE)
-aux_source_directory(./src/list DIR_SRC_LIST)
-aux_source_directory(./src/graphs DIR_SRC_GRAPHS)
-aux_source_directory(./src/sort DIR_SRC_SORT)
-aux_source_directory(./src/other DIR_SRC_OTHER)
-aux_source_directory(./src/lib DIR_SRC_OTHER)
-aux_source_directory(./test DIR_TEST)
+# aux_source_directory(./src/list DIR_SRC_LIST)
+# aux_source_directory(./src/graphs DIR_SRC_GRAPHS)
+# aux_source_directory(./src/sort DIR_SRC_SORT)
+# aux_source_directory(./src/other DIR_SRC_OTHER)
+# aux_source_directory(./src/lib DIR_SRC_LIB)
+# aux_source_directory(./test DIR_TEST)
 aux_source_directory("./test/string" DIR_TEST_STRING)
 aux_source_directory(./test/array DIR_TEST_ARRAY)
 aux_source_directory(./test/stack DIR_TEST_STACK)
@@ -50,22 +51,23 @@ aux_source_directory(./test/list DIR_TEST_LIST)
 aux_source_directory(./test/graphs DIR_TEST_GRAPHS)
 aux_source_directory(./test/sort DIR_TEST_SORT)
 aux_source_directory(./test/other DIR_TEST_OTHER)
-aux_source_directory(./test/lib DIR_TEST_OTHER)
+aux_source_directory(./test/lib DIR_TEST_LIB)
 
 add_executable(
-  cpp-practice
-  ${DIR_SRC}
-  ${DIR_SRC_STRING}
-  ${DIR_SRC_ARRAY}
-  ${DIR_SRC_STACK}
-  ${DIR_SRC_MATH}
-  ${DIR_SRC_HEAP}
+  ${PROJECT_NAME}
+  # ${DIR_SRC}
+  # ${DIR_SRC_STRING}
+  # ${DIR_SRC_ARRAY}
+  # ${DIR_SRC_STACK}
+  # ${DIR_SRC_MATH}
+  # ${DIR_SRC_HEAP}
   ${DIR_SRC_TREE}
-  ${DIR_SRC_LIST}
-  ${DIR_SRC_GRAPHS}
-  ${DIR_SRC_SORT}
-  ${DIR_SRC_OTHER}
-  ${DIR_TEST}
+  # ${DIR_SRC_LIST}
+  # ${DIR_SRC_GRAPHS}
+  # ${DIR_SRC_SORT}
+  # ${DIR_SRC_OTHER}
+  # ${DIR_SRC_LIB}
+  # ${DIR_TEST}
   ${DIR_TEST_STRING}
   ${DIR_TEST_ARRAY}
   ${DIR_TEST_STACK}
@@ -76,11 +78,11 @@ add_executable(
   ${DIR_TEST_GRAPHS}
   ${DIR_TEST_SORT}
   ${DIR_TEST_OTHER}
+  ${DIR_TEST_LIB}
 )
 
+
 target_link_libraries(${PROJECT_NAME} gtest_main)
-# target_link_options(${PROJECT_NAME} PUBLIC -stdlib=libc++)
-# target_link_libraries(${PROJECT_NAME}  -static-libstdc++)
 include(CPack)
 
 gtest_discover_tests(${PROJECT_NAME})

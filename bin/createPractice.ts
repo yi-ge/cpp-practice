@@ -380,24 +380,13 @@ examples = examples.split('\n').map(item => {
   return item ? '  // ' + item : ''
 }).join('\n')
 
-const includeCode = `#ifndef _${functionName?.replace(/\-|\_/ig, '')?.toLocaleUpperCase()}_H
-#define _${functionName?.replace(/\-|\_/ig, '')?.toLocaleUpperCase()}_H
-
-class Solution;
-
-#endif
-`
 
 if (fs.existsSync(testFilePath)) {
   console.log('已存在测试代码，将不会再生成测试用例。')
 } else {
   if (functionName) {
-    let hppFileName = functionName.replace(/([A-Z])/g, "_$1").toLowerCase() + '.hpp'
-    const includePath = join(__dirname, '../include/', hppFileName)
-    fs.writeFileSync(includePath, includeCode, 'utf-8')
-
     // * 不要删除下面存在的空行
-    const testCode = `#include "${hppFileName}"
+    const testCode = `#include <${classificationStr}/${fileName + '.cpp'}>
 
 TEST(${title}, ${functionName})
 {

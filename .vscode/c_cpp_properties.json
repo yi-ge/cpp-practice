@@ -5,16 +5,19 @@
       "includePath": [
         "${workspaceFolder}/**",
         "${workspaceFolder}/include",
+        "${workspaceFolder}/src",
+        "${workspaceFolder}/src/tree",
         "${workspaceFolder}/build/_deps/googletest-src/googletest/include"
       ],
       "defines": [],
       "macFrameworkPath": [
         "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
       ],
-      "compilerPath": "/usr/bin/g++",
+      "compilerPath": "/usr/bin/clang++",
       "cStandard": "c17",
       "cppStandard": "c++17",
       "intelliSenseMode": "macos-clang-arm64",
+      "compilerArgs": ["-std=c++17", "-stdlib=libc++"],
       "configurationProvider": "ms-vscode.cmake-tools"
     }
   ],

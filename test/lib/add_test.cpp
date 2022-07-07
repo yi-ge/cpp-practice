@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "functions.hpp"
+#include "lib/add.cpp"
 
 TEST(默认测试, add)
 {
