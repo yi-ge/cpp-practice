@@ -3,4 +3,6 @@
 
 int add(int, int);
 
+class Solution;
+
 #endif

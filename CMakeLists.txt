@@ -31,6 +31,7 @@ aux_source_directory(./src/list DIR_SRC_LIST)
 aux_source_directory(./src/graphs DIR_SRC_GRAPHS)
 aux_source_directory(./src/sort DIR_SRC_SORT)
 aux_source_directory(./src/other DIR_SRC_OTHER)
+aux_source_directory(./src/lib DIR_SRC_OTHER)
 aux_source_directory(./test DIR_TEST)
 aux_source_directory("./test/string" DIR_TEST_STRING)
 aux_source_directory(./test/array DIR_TEST_ARRAY)
@@ -42,6 +43,8 @@ aux_source_directory(./test/list DIR_TEST_LIST)
 aux_source_directory(./test/graphs DIR_TEST_GRAPHS)
 aux_source_directory(./test/sort DIR_TEST_SORT)
 aux_source_directory(./test/other DIR_TEST_OTHER)
+aux_source_directory(./test/lib DIR_TEST_OTHER)
+
 add_executable(
   cpp-practice
   ${DIR_SRC}

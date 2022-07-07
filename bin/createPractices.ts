@@ -107,7 +107,7 @@ await page.setViewport({ width: 0, height: 0 })
 const setDefaultLocalStorage = async (page: Page) => {
   await page.evaluate(() => {
     // @ts-ignore
-    localStorage.setItem('global_lang_key', '"typescript"')
+    localStorage.setItem('global_lang_key', '"c++"')
     // @ts-ignore
     localStorage.setItem('daily-question:guide-modal-shown', '"true"')
     // @ts-ignore
@@ -276,9 +276,9 @@ const classificationToReadmeTitleMap = new Map(Object.entries(classificationToRe
 const readmeTitle = classificationToReadmeTitleMap.get(classificationStr) || '其它'
 const reg = /[^/\\]+[/\\]*$/
 const fileName = reg.exec(url)?.shift()?.replace(/[\/$]+/g, '')
-const filePath = join(__dirname, '../', classificationStr, fileName + '.ts')
-const imageFilePath = join(__dirname, `../../images/${classificationStr}`, fileName + '.jpeg')
-const testFilePath = join(__dirname, '../../test/', classificationStr, fileName + '.test.ts')
+const filePath = join(__dirname, '../src/', classificationStr, fileName + '.cpp')
+const imageFilePath = join(__dirname, `../images/${classificationStr}`, fileName + '.jpeg')
+const testFilePath = join(__dirname, '../test/', classificationStr, fileName + '_test.cpp')
 
 if (!fs.existsSync(dirname(filePath))) fs.mkdirSync(dirname(filePath))
 if (!fs.existsSync(dirname(testFilePath))) fs.mkdirSync(dirname(testFilePath))
@@ -295,7 +295,7 @@ if (readmeFileContent.includes(url)) {
   const index = readmeFileContent.indexOf('### ' + readmeTitle)
   // * 不要删除下面存在的空行
   const instructions = `
-- [${title}](src/${classificationStr}/${fileName + '.ts'})  [${tags.join(', ')}]
+- [${title}](src/${classificationStr}/${fileName + '.cpp'})  [${tags.join(', ')}]
 
   - LeetCode ${LeetCodeTitle} <${url}>`
   readmeFileContent = readmeFileContent.slice(0, index) + readmeFileContent.slice(index).replace(/\n/i, '\n' + instructions + '\n')
@@ -330,9 +330,20 @@ if (!fileName) {
   exit(1)
 }
 
-const keyStr = code.match(/(function|class)((\s.*?\(([^)]*)\))|(\s.*?\{))/ig)?.shift()
-const functionName = keyStr?.match(/(function|class)([ \t])([^(\(|\{)]+)/i)?.[3]?.trim()
-code = keyStr && !code.includes('export ') ? code.replace(keyStr, `export ${keyStr}`) : code
+const keyClassStr = code.match(/class(\s.*?\{)/ig)?.shift()
+const className = keyClassStr?.match(/(class)([ \t])([^(\(|\{)]+)/i)?.[3]?.trim()
+const keyFuncStr = code.match(/.*(\(([^)]*)\))\s?.*?\{/ig)?.shift()
+const functionName = keyFuncStr?.match(/((\w+)?([\s\*]+)(\w+|\w+::\w+))\(/i)?.[4]
+let declaration = ''
+let testFunc = ''
+if (functionName) { // 如果包含 function 推测函数声明
+  const argument = keyFuncStr.match(/\(([^)]*)\)/i)?.[1]
+  const declarationArgument = argument?.split(',')?.map(item=>{
+    return item.trim()?.split(' ')?.[1]?.replace('&', '')?.trim()
+  })?.join(', ')
+  declaration = argument && declarationArgument ? functionName + ' (' + declarationArgument + ')' : ''
+  testFunc = className + '::' + declaration
+}
 
 // * 不要删除下面存在的空行
 if (!code.includes(`// ${url}`)) {
@@ -370,18 +381,38 @@ examples = examples.split('\n').map(item => {
   return item ? '  // ' + item : ''
 }).join('\n')
 
-// * 不要删除下面存在的空行
-const testCode = `import { ${functionName} } from '../../src/${classificationStr}/${fileName}'
+const includeCode = `#ifndef _${functionName?.toLocaleUpperCase()}_H
+#define _${functionName?.toLocaleUpperCase()}_H
 
-test('${title}', () => {
+class Solution;
+
+#endif
+`
+
+if (functionName) {
+  const includePath = join(__dirname, '../include/', functionName + '.hpp')
+  fs.writeFileSync(includePath, includeCode, 'utf-8')
+}
+
+// * 不要删除下面存在的空行
+const testCode = `#include <gtest/gtest.h>
+
+#include "${functionName}.hpp"
+
+TEST(${title}, ${functionName})
+{
 ${examples}
-  expect(${functionName}()).toBeFalsy()
-})`
+  EXPECT_EQ(${testFunc}, 1);
+}
+`
 
 fs.writeFileSync(filePath, code, 'utf-8')
 
 if (fs.existsSync(testFilePath)) {
   console.log('已存在测试代码，将不会再生成测试用例。')
+} else if (!functionName) {
+  console.log('该题目暂不支持自动生成测试代码模板，请手工编写测试用例。')
+  fs.writeFileSync(testFilePath, `#include <gtest/gtest.h>`, 'utf-8')
 } else {
   fs.writeFileSync(testFilePath, testCode, 'utf-8')
 }
@@ -403,7 +434,6 @@ console.log('可以开始写代码了。')
 // 代码更新（回写到LeetCode编辑框）
 const updateCode = async (filePath: string, title: string) => {
   let fileContent = fs.readFileSync(filePath, 'utf-8')
-  if (fileContent.includes('export ')) fileContent = fileContent.replace(/export\s/ig, '')
   await page.evaluate(`monaco.editor.getModels()[0].setValue(\`${fileContent}\`)`)
   console.log(`${title} 代码已同步。`)
 }
