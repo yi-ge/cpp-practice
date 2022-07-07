@@ -7,6 +7,7 @@
   "author": "yi-ge <a@wyr.me>",
   "license": "MIT",
   "private": false,
+  "type": "module",
   "keywords": [
     "practice",
     "arithmetic",
