@@ -275,7 +275,7 @@ while (tagIndex < tags.length && classificationStr === 'other') {
 const classificationToReadmeTitleMap = new Map(Object.entries(classificationToReadmeTitle))
 const readmeTitle = classificationToReadmeTitleMap.get(classificationStr) || '其它'
 const reg = /[^/\\]+[/\\]*$/
-const fileName = reg.exec(url)?.shift()?.replace(/[\/$]+/g, '')
+const fileName = reg.exec(url)?.shift()?.replace(/-/ig, '_')?.replace(/[\/$]+/g, '')
 const filePath = join(__dirname, '../src/', classificationStr, fileName + '.cpp')
 const imageFilePath = join(__dirname, `../images/${classificationStr}`, fileName + '.jpeg')
 const testFilePath = join(__dirname, '../test/', classificationStr, fileName + '_test.cpp')
