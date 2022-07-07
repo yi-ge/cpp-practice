@@ -288,7 +288,7 @@ console.log('标签：', tags)
 console.log('分类：', classification)
 
 // 添加README.md说明
-let readmeFileContent = fs.readFileSync(join(__dirname, '../../README.md'), 'utf-8')
+let readmeFileContent = fs.readFileSync(join(__dirname, '../README.md'), 'utf-8')
 if (readmeFileContent.includes(url)) {
   console.log('已在README.md中添加过此题目。')
 } else {
@@ -299,7 +299,7 @@ if (readmeFileContent.includes(url)) {
 
   - LeetCode ${LeetCodeTitle} <${url}>`
   readmeFileContent = readmeFileContent.slice(0, index) + readmeFileContent.slice(index).replace(/\n/i, '\n' + instructions + '\n')
-  fs.writeFileSync(join(__dirname, '../../README.md'), readmeFileContent, 'utf-8')
+  fs.writeFileSync(join(__dirname, '../README.md'), readmeFileContent, 'utf-8')
 }
 
 // 保存说明截图, 方便快速查阅
@@ -349,7 +349,7 @@ if (functionName) { // 如果包含 function 推测函数声明
 if (!code.includes(`// ${url}`)) {
   code = `// ${title}
 // ${url}
-// INLINE  ../../images/${classificationStr}/${fileName}.jpeg
+// INLINE  ../images/${classificationStr}/${fileName}.jpeg
 
 ` + code
 } else {
