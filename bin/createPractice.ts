@@ -338,7 +338,7 @@ let declaration = ''
 let testFunc = ''
 if (functionName) { // 如果包含 function 推测函数声明
   const argument = keyFuncStr.match(/\(([^)]*)\)/i)?.[1]
-  const declarationArgument = argument?.split(',')?.map(item=>{
+  const declarationArgument = argument?.split(',')?.map(item => {
     return item.trim()?.split(' ')?.[1]?.replace('&', '')?.trim()
   })?.join(', ')
   declaration = argument && declarationArgument ? functionName + ' (' + declarationArgument + ')' : ''
@@ -368,9 +368,9 @@ let examples = await page.evaluate(() => {
     } else {
       examples += '\n'
     }
-     // @ts-ignore
+    // @ts-ignore
     examples += iterateNext?.innerText + '\n'
-     // @ts-ignore
+    // @ts-ignore
     examples += iterateNext?.parentNode?.nextSibling?.nextSibling.innerText
     iterateNext = headings.iterateNext()
   }
@@ -381,23 +381,26 @@ examples = examples.split('\n').map(item => {
   return item ? '  // ' + item : ''
 }).join('\n')
 
-const includeCode = `#ifndef _${functionName?.toLocaleUpperCase()}_H
-#define _${functionName?.toLocaleUpperCase()}_H
+const includeCode = `#ifndef _${functionName?.replace(/\-|\_/ig, '')?.toLocaleUpperCase()}_H
+#define _${functionName?.replace(/\-|\_/ig, '')?.toLocaleUpperCase()}_H
 
 class Solution;
 
 #endif
 `
 
-if (functionName) {
-  const includePath = join(__dirname, '../include/', functionName + '.hpp')
-  fs.writeFileSync(includePath, includeCode, 'utf-8')
-}
+if (fs.existsSync(testFilePath)) {
+  console.log('已存在测试代码，将不会再生成测试用例。')
+} else {
+  if (functionName) {
+    let hppFileName = functionName.replace(/([A-Z])/g, "_$1").toLowerCase() + '.hpp'
+    const includePath = join(__dirname, '../include/', hppFileName)
+    fs.writeFileSync(includePath, includeCode, 'utf-8')
 
-// * 不要删除下面存在的空行
-const testCode = `#include <gtest/gtest.h>
+    // * 不要删除下面存在的空行
+    const testCode = `#include <gtest/gtest.h>
 
-#include "${functionName}.hpp"
+#include "${hppFileName}"
 
 TEST(${title}, ${functionName})
 {
@@ -406,22 +409,20 @@ ${examples}
 }
 `
 
-fs.writeFileSync(filePath, code, 'utf-8')
-
-if (fs.existsSync(testFilePath)) {
-  console.log('已存在测试代码，将不会再生成测试用例。')
-} else if (!functionName) {
-  console.log('该题目暂不支持自动生成测试代码模板，请手工编写测试用例。')
-  fs.writeFileSync(testFilePath, `#include <gtest/gtest.h>`, 'utf-8')
-} else {
-  fs.writeFileSync(testFilePath, testCode, 'utf-8')
+    fs.writeFileSync(filePath, code, 'utf-8')
+    fs.writeFileSync(testFilePath, testCode, 'utf-8')
+  } else {
+    console.log('该题目暂不支持自动生成测试代码模板，请手工编写测试用例。')
+    fs.writeFileSync(testFilePath, `#include <gtest/gtest.h>`, 'utf-8')
+  }
 }
+
 execSync('code ' + testFilePath)
 sleep(100)
 execSync('code ' + filePath)
 
 try {
-   // @ts-ignore
+  // @ts-ignore
   const isLogin = !((await page.$eval(`div[class*='AuthLinks']`, el => el.innerText))?.includes('登录'))
 
   if (!isLogin) {
