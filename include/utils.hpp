@@ -38,14 +38,11 @@ public:
     string chStr;
     chStr = ch;
     string ans;
-    cout << words.size() << endl;
     for (long int i = 0; i + 1 < words.size(); i++)
     {
-      cout << words[i] << endl;
       ans.append(words[i]);
       ans.append(chStr);
     }
-    cout << words.back() << endl;
     ans.append(words.back());
     return ans;
   }

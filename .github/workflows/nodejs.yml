@@ -28,18 +28,20 @@ jobs:
         run: yarn --frozen-lockfile
       - name: Install lcov
         run: sudo apt-get install -y lcov
-      # - name: Install GCC G++
-      #   run: |
-      #     sudo apt update
-      #     sudo apt install gcc-10 g++-10
-      #   shell: bash
+      - name: Install LLVM 14
+        run: |
+          wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | sudo apt-key add -
+          sudo add-apt-repository 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-14 main' -y
+          sudo apt-get update -q
+          sudo apt-get install -y clang-14 lld-14 libc++-14-dev libc++abi-14-dev clang-tools-14
+        shell: bash
       - name: Gtest C++ Test
         run: yarn test
         env:
           CI: true
           NODE_ENV: test
-          CC: gcc-10
-          CXX: g++-10
+          CC: clang-14
+          CXX: clang++-14
       - name: Generate coverage
         run: yarn coverage:ci
         env:
