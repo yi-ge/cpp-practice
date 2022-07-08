@@ -30,6 +30,7 @@ jobs:
         run: sudo apt-get install -y lcov
       - name: Install LLVM 14
         run: |
+          rm -rf build
           wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | sudo apt-key add -
           sudo add-apt-repository 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-14 main' -y
           sudo apt-get update -q
@@ -47,6 +48,9 @@ jobs:
         env:
           CI: true
           NODE_ENV: test
+          env:
+          CC: clang-14
+          CXX: clang++-14
 
       - name: Publish Test Results
         id: test-results
