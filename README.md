@@ -45,6 +45,10 @@ sudo update-alternatives --config c++
 
 ### 数组/队列/集合/映射
 
+- [玩筹码](src/array/minimum_cost_to_move_chips_to_the_same_position.cpp)  [贪心, 数组, 数学]
+
+  - LeetCode 1217. 玩筹码 <https://leetcode.cn/problems/minimum-cost-to-move-chips-to-the-same-position>
+
 ### 栈
 
 ### 树

@@ -348,7 +348,7 @@ if (!code.includes(`// ${url}`)) {
   code = `// ${title}
 // ${url}
 // INLINE  ../images/${classificationStr}/${fileName}.jpeg
-#include "headers.h"
+#include <headers.hpp>
 
 ` + code
 } else {
@@ -425,6 +425,7 @@ console.log('可以开始写代码了。')
 // 代码更新（回写到LeetCode编辑框）
 const updateCode = async (filePath: string, title: string) => {
   let fileContent = fs.readFileSync(filePath, 'utf-8')
+  fileContent = fileContent.replace('#include <headers.hpp>', '')
   await page.evaluate(`monaco.editor.getModels()[0].setValue(\`${fileContent}\`)`)
   console.log(`${title} 代码已同步。`)
 }
