@@ -90,5 +90,10 @@ gtest_discover_tests(${PROJECT_NAME})
 message(STATUS "Use gcov for code coverage test.")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -coverage -Wall -fprofile-arcs -ftest-coverage")
 
+# 下面两个二者选其一，一个是可执行文件，一个是链接库
+# set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} --coverage")
+# set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}  --coverage")
+
+
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
