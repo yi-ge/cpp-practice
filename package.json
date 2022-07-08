@@ -14,7 +14,9 @@
     "c++"
   ],
   "scripts": {
-    "test": "cmake -S . -B build && cmake --build build && ./build/cpp-practice",
+    "prebuild": "cmake -S . -B build",
+    "build": "cmake --build build",
+    "test": "npm run build && node ./bin/test.cjs",
     "coverage:ci": "./coverage.sh",
     "start": "node --no-warnings --experimental-vm-modules --experimental-specifier-resolution=node --loader ts-node/esm ./bin/createPractice.ts"
   },

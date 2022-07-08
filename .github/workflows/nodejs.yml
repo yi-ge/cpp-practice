@@ -53,7 +53,7 @@ jobs:
 
       - name: Publish Test Results
         id: test-results
-        run: node bin/lcov2json.cjs
+        run: node bin/test-results.cjs
         if: always()
 
       - name: Set badge color
