@@ -26,15 +26,16 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies
         run: yarn --frozen-lockfile
-      - name: Install lcov
-        run: sudo apt-get install -y lcov
-      - name: Install LLVM 14
+      - name: Install LLVM 14 and lcov
         run: |
           rm -rf build
           wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | sudo apt-key add -
           sudo add-apt-repository 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-14 main' -y
           sudo apt-get update -q
-          sudo apt-get install -y clang-14 lld-14 libc++-14-dev libc++abi-14-dev clang-tools-14
+          sudo apt-get install -y clang-14 lld-14 libc++-14-dev libc++abi-14-dev clang-tools-14 lcov
+          echo '#!/bin/bash' >> /usr/bin/llvm-gcov.sh
+          echo 'exec llvm-cov gcov "$@"' >> /usr/bin/llvm-gcov.sh
+          chmod +x /usr/bin/llvm-gcov.sh
         shell: bash
       - name: Gtest C++ Test
         run: yarn test
