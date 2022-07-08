@@ -14,5 +14,6 @@ TEST(Utils, split)
 TEST(Utils, join)
 {
   vector<string_view> ans = Utils::split("a,b,cc,d", ',');
-  EXPECT_STREQ(Utils::join(ans, ',').c_str(), "a,b,cc,d");
+  string out = Utils::join(ans, ',');
+  EXPECT_STREQ(out.c_str(), "a,b,cc,d");
 }
