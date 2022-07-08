@@ -34,7 +34,7 @@ include_directories(src/tree)
 # aux_source_directory(./src/stack DIR_SRC_STACK)
 # aux_source_directory(./src/math DIR_SRC_MATH)
 # aux_source_directory(./src/heap DIR_SRC_HEAP)
-aux_source_directory(./src/tree DIR_SRC_TREE)
+# aux_source_directory(./src/tree DIR_SRC_TREE)
 # aux_source_directory(./src/list DIR_SRC_LIST)
 # aux_source_directory(./src/graphs DIR_SRC_GRAPHS)
 # aux_source_directory(./src/sort DIR_SRC_SORT)
@@ -61,7 +61,7 @@ add_executable(
   # ${DIR_SRC_STACK}
   # ${DIR_SRC_MATH}
   # ${DIR_SRC_HEAP}
-  ${DIR_SRC_TREE}
+  # ${DIR_SRC_TREE}
   # ${DIR_SRC_LIST}
   # ${DIR_SRC_GRAPHS}
   # ${DIR_SRC_SORT}

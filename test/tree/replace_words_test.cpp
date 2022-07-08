@@ -1,5 +1,5 @@
 // #include "replace_words.hpp"
-#include <replace_words.cpp>
+#include <tree/replace_words.cpp>
 
 TEST(单词替换, replaceWords)
 {

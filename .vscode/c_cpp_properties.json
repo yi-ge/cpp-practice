@@ -6,7 +6,6 @@
         "${workspaceFolder}/**",
         "${workspaceFolder}/include",
         "${workspaceFolder}/src",
-        "${workspaceFolder}/src/tree",
         "${workspaceFolder}/build/_deps/googletest-src/googletest/include"
       ],
       "defines": [],
