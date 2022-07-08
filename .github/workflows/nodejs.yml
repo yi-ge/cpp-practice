@@ -33,9 +33,9 @@ jobs:
           sudo add-apt-repository 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-14 main' -y
           sudo apt-get update -q
           sudo apt-get install -y clang-14 lld-14 libc++-14-dev libc++abi-14-dev clang-tools-14 lcov
-          echo '#!/bin/bash' >> /usr/bin/llvm-gcov.sh
-          echo 'exec llvm-cov gcov "$@"' >> /usr/bin/llvm-gcov.sh
-          chmod +x /usr/bin/llvm-gcov.sh
+          sudo echo '#!/bin/bash' >> /usr/bin/llvm-gcov.sh
+          sudo echo 'exec llvm-cov gcov "$@"' >> /usr/bin/llvm-gcov.sh
+          sudo chmod +x /usr/bin/llvm-gcov.sh
         shell: bash
       - name: Gtest C++ Test
         run: yarn test
