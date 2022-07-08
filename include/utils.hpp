@@ -33,7 +33,7 @@ public:
     }
     return ret;
   }
-  static string join(vector<string_view> words, char ch)
+  static string join(vector<string_view> &words, char ch)
   {
     string chStr;
     chStr = ch;

@@ -14,7 +14,7 @@ TEST(Utils, split)
 TEST(Utils, join)
 {
   vector<string_view> ans = Utils::split("a,b,cc,d", ',');
-  for (int i = 0; i < ans.size(); ++i)
+  for (int i = 0; i < ans.size(); i++)
   {
     cout << ans[i] << endl;
   }
