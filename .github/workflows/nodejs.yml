@@ -28,6 +28,11 @@ jobs:
         run: yarn --frozen-lockfile
       - name: Install lcov
         run: sudo apt-get install -y lcov
+      - name: Install GCC G++
+        run: |
+          sudo apt update
+          sudo apt install gcc-14 g++-14
+        shell: bash
       - name: Gtest C++ Test
         run: yarn test
         env:
