@@ -13,8 +13,8 @@ TEST(Utils, split)
 
 TEST(Utils, join)
 {
-  vector<string_view> ans = Utils::split("a,b,cc,d", ',');
-  string out = Utils::join(ans, ',');
+  vector<string_view> inVector = Utils::split("a,b,cc,d", ',');
+  string out = Utils::join(inVector, ',');
   cout << out << endl;
   EXPECT_STREQ(out.c_str(), "a,b,cc,d");
 }

@@ -39,7 +39,7 @@ public:
     chStr = ch;
     string ans;
     cout << words.size() << endl;
-    for (long i = 0; i + 1 < words.size(); i++)
+    for (long int i = 0; i + 1 < words.size(); i++)
     {
       cout << words[i] << endl;
       ans.append(words[i]);
