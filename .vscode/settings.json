@@ -24,7 +24,17 @@
   "files.associations": {
     "*.vue": "vue",
     "atomic": "cpp",
-    "bitset": "cpp"
+    "bitset": "cpp",
+    "string_view": "cpp",
+    "deque": "cpp",
+    "functional": "cpp",
+    "list": "cpp",
+    "map": "cpp",
+    "set": "cpp",
+    "string": "cpp",
+    "unordered_map": "cpp",
+    "unordered_set": "cpp",
+    "vector": "cpp"
   },
   "cSpell.words": [
     "aadsfasf",
