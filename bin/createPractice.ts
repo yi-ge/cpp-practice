@@ -370,7 +370,12 @@ let examples = await page.evaluate(() => {
     // @ts-ignore
     examples += iterateNext?.innerText + '\n'
     // @ts-ignore
-    examples += iterateNext?.parentNode?.nextSibling?.nextSibling.innerText
+    let desNode = iterateNext?.parentNode?.nextSibling?.nextSibling
+    while (desNode.tagName === 'IMG') {
+      desNode = desNode?.nextSibling?.nextSibling
+    }
+    // @ts-ignore
+    examples += desNode?.innerText
     iterateNext = headings.iterateNext()
   }
   return examples
