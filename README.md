@@ -76,6 +76,10 @@ sudo update-alternatives --config c++
 
 ### 链表
 
+- [移除链表元素](src/list/remove_linked_list_elements.cpp)  [递归, 链表]
+
+  - LeetCode 203. 移除链表元素 <https://leetcode.cn/problems/remove-linked-list-elements/>
+
 ### 图
 
 ### 排序
