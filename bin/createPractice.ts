@@ -309,7 +309,7 @@ const screenshot = async () => {
     waitUntil: 'networkidle2'
   })
   await screenshotPage.waitForTimeout(1000)
-  await screenshotPage.setViewport({ width: 1920, height: 1080, deviceScaleFactor: 2.5 })
+  await screenshotPage.setViewport({ width: 1920, height: 3000, deviceScaleFactor: 2.5 })
   const desContent = await screenshotPage.$('[class^="content_"')
   await desContent?.screenshot({
     path: imageFilePath,

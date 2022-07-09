@@ -55,6 +55,7 @@
     "networkidle",
     "osascript",
     "repost",
-    "STREQ"
+    "STREQ",
+    "Subseq"
   ]
 }

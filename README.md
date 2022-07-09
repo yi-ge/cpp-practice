@@ -13,21 +13,34 @@ C++ 基础算法、数据结构练习，包含 LeetCode 或其它算法练习记
 
 每一道题都对应写有测试用例，但可能不够完整。如果您发现错误，欢迎给我留言，谢谢！
 
-运行`yarn start`可以自动从LeetCode获取代码函数和用例说明。保存文件后将自动同步到浏览器。
+安装以下测试环境后，运行`yarn start`可以自动从LeetCode获取代码函数和用例说明。保存文件后将自动同步到浏览器。
 
 ## 测试环境
 
 ### MAC
 
 ```bash
-brew install cmake
+brew install cmake node yarn
+
 ```
 
 ### Linux
 
+以Ubuntu 20.04为例，安装LLVM 14：
+
 ```bash
+wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | sudo apt-key add -
+sudo add-apt-repository 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-14 main' -y
+sudo apt-get update -q
+sudo apt-get install -y clang-14 lld-14 libc++-14-dev libc++abi-14-dev clang-tools-14 lcov
+sudo node bin/ci.cjs
+sudo chmod +x /usr/bin/llvm-gcov.sh
 sudo update-alternatives --config c++
 ```
+
+根据<https://nodejs.org/en/download/package-manager/>安装Node.js环境。根据安装时的提示安装`yarn`。
+
+安装完成后执行`yarn`安装依赖。
 
 ## 基础排序算法
 
@@ -44,6 +57,10 @@ sudo update-alternatives --config c++
 ### 字符串
 
 ### 数组/队列/集合/映射
+
+- [最长的斐波那契子序列的长度](src/array/length_of_longest_fibonacci_subsequence.cpp)  [数组, 哈希表, 动态规划]
+
+  - LeetCode 873. 最长的斐波那契子序列的长度 <https://leetcode.cn/problems/length-of-longest-fibonacci-subsequence>
 
 - [玩筹码](src/array/minimum_cost_to_move_chips_to_the_same_position.cpp)  [贪心, 数组, 数学]
 
