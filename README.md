@@ -58,6 +58,10 @@ sudo update-alternatives --config c++
 
 ### 数组/队列/集合/映射
 
+- [摘樱桃](src/array/cherry_pickup.cpp)  [数组, 动态规划, 矩阵]
+
+  - LeetCode 741. 摘樱桃 <https://leetcode.cn/problems/cherry-pickup>
+
 - [最长的斐波那契子序列的长度](src/array/length_of_longest_fibonacci_subsequence.cpp)  [数组, 哈希表, 动态规划]
 
   - LeetCode 873. 最长的斐波那契子序列的长度 <https://leetcode.cn/problems/length-of-longest-fibonacci-subsequence>
