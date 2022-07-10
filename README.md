@@ -92,12 +92,12 @@ sudo update-alternatives --config c++
 
   - LeetCode 203. 移除链表元素 <https://leetcode.cn/problems/remove-linked-list-elements/>
 
-### 图
-
-### 排序
-
 - [两两交换链表中的节点](src/sort/swap_nodes_in_pairs.cpp)  [递归, 链表]
 
   - LeetCode 24. 两两交换链表中的节点 <https://leetcode.cn/problems/swap-nodes-in-pairs/>
+
+### 图
+
+### 排序
 
 ### 其它

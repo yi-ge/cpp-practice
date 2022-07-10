@@ -1,6 +1,6 @@
 // 移除链表元素
 // https://leetcode.cn/problems/remove-linked-list-elements/
-// INLINE  ../images/sort/remove_linked_list_elements.jpeg
+// INLINE  ../images/list/remove_linked_list_elements.jpeg
 #include <headers.hpp>
 #include <list_node.hpp>
 
