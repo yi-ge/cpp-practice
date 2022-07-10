@@ -41,23 +41,16 @@ public:
       }
     }
 
-    // // 边界情况处理
-    // if (cur->val == deletedVal)
-    // {
-    //   ListNode *deleteNode = cur;
-    //   delete deleteNode;
-    // }
-
-    if (dummyHead->next != nullptr)
+    if (cur != nullptr && cur->val == deletedVal)
     {
-      ListNode *retNode = dummyHead->next;
-      delete dummyHead;
+      ListNode *deleteNode = cur;
+      pre->next = nullptr;
+      delete deleteNode;
+    }
 
-      return retNode;
-    }
-    else
-    {
-      return new ListNode();
-    }
+    ListNode *retNode = dummyHead->next;
+    delete dummyHead;
+
+    return retNode;
   }
 };
