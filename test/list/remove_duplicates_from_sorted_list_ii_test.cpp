@@ -30,4 +30,15 @@ TEST(删除排序链表中的重复元素2, deleteDuplicates2)
   EXPECT_STREQ(listNodeToString(outHead2).c_str(), listNodeToString(head4).c_str());
   deleteLinkedList(outHead2);
   deleteLinkedList(head4);
+
+  int arr5[] = {1, 1};
+  int n5 = sizeof(arr5) / sizeof(int);
+  ListNode *head5 = createLinkedList(arr5, n5);
+  int arr6[] = {};
+  int n6 = sizeof(arr6) / sizeof(int);
+  ListNode *head6 = createLinkedList(arr6, n6);
+  ListNode *outHead3 = solution.deleteDuplicates2(head5);
+  EXPECT_STREQ(listNodeToString(outHead3).c_str(), listNodeToString(head6).c_str());
+  deleteLinkedList(outHead3);
+  deleteLinkedList(head6);
 }

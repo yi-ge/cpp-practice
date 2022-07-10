@@ -19,14 +19,16 @@ class Solution
 public:
   ListNode *deleteDuplicates2(ListNode *head)
   {
-    ListNode *dummyHead = new ListNode(0);
+    ListNode *dummyHead = new ListNode();
     dummyHead->next = head;
     ListNode *pre = dummyHead;
     ListNode *cur = head;
-    while (cur->next != nullptr)
+    int deletedVal;
+    while (cur != nullptr && cur->next != nullptr)
     {
-      if (pre->val == cur->val)
+      if (cur->val == cur->next->val || cur->val == deletedVal)
       {
+        deletedVal = cur->val;
         ListNode *deleteNode = cur;
         pre->next = cur->next;
         delete deleteNode;
@@ -39,9 +41,23 @@ public:
       }
     }
 
-    ListNode *retNode = dummyHead->next;
-    delete dummyHead;
+    // // 边界情况处理
+    // if (cur->val == deletedVal)
+    // {
+    //   ListNode *deleteNode = cur;
+    //   delete deleteNode;
+    // }
 
-    return retNode;
+    if (dummyHead->next != nullptr)
+    {
+      ListNode *retNode = dummyHead->next;
+      delete dummyHead;
+
+      return retNode;
+    }
+    else
+    {
+      return new ListNode();
+    }
   }
 };
