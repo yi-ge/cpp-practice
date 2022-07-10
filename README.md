@@ -76,6 +76,14 @@ sudo update-alternatives --config c++
 
 ### 链表
 
+- [删除排序链表中的重复元素](src/list/remove_duplicates_from_sorted_list.cpp)  [链表]
+
+  - LeetCode 83. 删除排序链表中的重复元素 <https://leetcode.cn/problems/remove-duplicates-from-sorted-list/>
+
+- [删除排序链表中的重复元素 II](src/list/remove_duplicates_from_sorted_list_ii.cpp)  [链表, 双指针]
+
+  - LeetCode 82. 删除排序链表中的重复元素 II <https://leetcode.cn/problems/remove-duplicates-from-sorted-list-ii/>
+
 - [移除链表元素](src/list/remove_linked_list_elements.cpp)  [递归, 链表]
 
   - LeetCode 203. 移除链表元素 <https://leetcode.cn/problems/remove-linked-list-elements/>

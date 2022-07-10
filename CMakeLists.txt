@@ -39,7 +39,7 @@ include_directories(src/tree)
 # aux_source_directory(./src/graphs DIR_SRC_GRAPHS)
 # aux_source_directory(./src/sort DIR_SRC_SORT)
 # aux_source_directory(./src/other DIR_SRC_OTHER)
-# aux_source_directory(./src/lib DIR_SRC_LIB)
+aux_source_directory(./src/lib DIR_SRC_LIB)
 # aux_source_directory(./test DIR_TEST)
 aux_source_directory("./test/string" DIR_TEST_STRING)
 aux_source_directory(./test/array DIR_TEST_ARRAY)
@@ -66,7 +66,7 @@ add_executable(
   # ${DIR_SRC_GRAPHS}
   # ${DIR_SRC_SORT}
   # ${DIR_SRC_OTHER}
-  # ${DIR_SRC_LIB}
+  ${DIR_SRC_LIB}
   # ${DIR_TEST}
   ${DIR_TEST_STRING}
   ${DIR_TEST_ARRAY}
