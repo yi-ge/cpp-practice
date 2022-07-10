@@ -80,6 +80,10 @@ sudo update-alternatives --config c++
 
 ### 链表
 
+- [删除链表中的节点](src/list/delete_node_in_a_linked_list.cpp)  [链表]
+
+  - LeetCode 237. 删除链表中的节点 <https://leetcode.cn/problems/delete-node-in-a-linked-list/>
+
 - [删除排序链表中的重复元素](src/list/remove_duplicates_from_sorted_list.cpp)  [链表]
 
   - LeetCode 83. 删除排序链表中的重复元素 <https://leetcode.cn/problems/remove-duplicates-from-sorted-list/>
