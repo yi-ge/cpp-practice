@@ -39,5 +39,4 @@ TEST(链表lib, deleteLinkedList)
   int n = sizeof(arr) / sizeof(int);
   ListNode *head = createLinkedList(arr, n);
   deleteLinkedList(head);
-  EXPECT_EQ(head->val, 0);
 }
