@@ -8,6 +8,7 @@
 // TODO: 重做该题
 
 #include <headers.hpp>
+#include <limits.h>
 
 class Solution
 {

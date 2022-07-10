@@ -15,7 +15,7 @@ TEST(摘樱桃, cherryPickup)
   // 在旅程中，总共摘到了5颗樱桃，这是可以摘到的最大值了。
 
   Solution solution;
-  vector<vector<int>> *grid = {
+  vector<vector<int>> grid = {
       {0, 1, -1},
       {1, 0, -1},
       {1, 1, 1}};

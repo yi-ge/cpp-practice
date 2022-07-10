@@ -96,4 +96,8 @@ sudo update-alternatives --config c++
 
 ### 排序
 
+- [两两交换链表中的节点](src/sort/swap_nodes_in_pairs.cpp)  [递归, 链表]
+
+  - LeetCode 24. 两两交换链表中的节点 <https://leetcode.cn/problems/swap-nodes-in-pairs/>
+
 ### 其它
