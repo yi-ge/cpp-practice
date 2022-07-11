@@ -74,6 +74,10 @@ sudo update-alternatives --config c++
 
 ### 树
 
+- [实现一个魔法字典](src/tree/implement_magic_dictionary.cpp)  [设计, 字典树, 哈希表, 字符串]
+
+  - LeetCode 676. 实现一个魔法字典 <https://leetcode.cn/problems/implement-magic-dictionary>
+
 - [单词替换](src/tree/replace_words.cpp)  [字典树, 数组, 哈希表, 字符串]
 
   - LeetCode 648. 单词替换 <https://leetcode.cn/problems/replace-words>
