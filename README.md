@@ -74,6 +74,11 @@ sudo update-alternatives --config c++
 
 ### 数组/队列/集合/映射
 
+- [数据流中的移动平均值](src/array/moving_average_from_data_stream.cpp)  [设计, 队列, 数组, 数据流]
+
+  - LeetCode 346. 数据流中的移动平均值 <https://leetcode.cn/problems/moving-average-from-data-stream/>
+  - LeetCode 剑指 Offer II 041. 滑动窗口的平均值 <https://leetcode.cn/problems/qIsx9U/>
+
 - [摘樱桃](src/array/cherry_pickup.cpp)  [数组, 动态规划, 矩阵]
 
   - LeetCode 741. 摘樱桃 <https://leetcode.cn/problems/cherry-pickup>

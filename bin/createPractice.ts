@@ -146,7 +146,9 @@ if (url === '' || url === '1') {
     waitUntil: 'networkidle2'
   })
 } else {
-  await page.goto(url)
+  await page.goto(url, {
+    waitUntil: 'networkidle2'
+  })
   await setDefaultLocalStorage(page)
   await page.goto(url, {
     waitUntil: 'networkidle2'

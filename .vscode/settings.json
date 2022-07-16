@@ -47,6 +47,7 @@
     "cmake",
     "coverallsapp",
     "DCMAKE",
+    "dearmour",
     "emibcn",
     "esac",
     "gcov",
