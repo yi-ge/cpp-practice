@@ -33,6 +33,7 @@
 
 # Build
 /Build
+/build
 
 # js/ts
 node_modules

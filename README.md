@@ -26,12 +26,28 @@ brew install cmake node yarn
 
 ### Linux
 
+参考<https://apt.llvm.org/>安装LLVM 14(clang-14)。
+
 以Ubuntu 20.04为例，安装LLVM 14：
 
 ```bash
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | sudo apt-key add -
 sudo add-apt-repository 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-14 main' -y
 sudo apt-get update -q
+sudo apt-get install -y clang-14 lld-14 libc++-14-dev libc++abi-14-dev clang-tools-14 lcov
+sudo node bin/ci.cjs
+sudo chmod +x /usr/bin/llvm-gcov.sh
+sudo update-alternatives --config c++
+```
+
+以Kali Rolling(Debian)为例，安装LLVM 14：
+
+```bash
+# 如果是2022版本，不需要加载源，默认可以安装LLVM 14
+# wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | sudo apt-key add -
+# sudo apt-key export AF4F7421|sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/llvm.gpg
+# sudo bash -c "echo  'deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/llvm.gpg] http://apt.llvm.org/unstable/ llvm-toolchain-14 main' >> /etc/apt/sources.list"
+sudo apt-get update -y
 sudo apt-get install -y clang-14 lld-14 libc++-14-dev libc++abi-14-dev clang-tools-14 lcov
 sudo node bin/ci.cjs
 sudo chmod +x /usr/bin/llvm-gcov.sh
