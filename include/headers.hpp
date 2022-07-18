@@ -8,16 +8,14 @@
 #include <set>
 #include <unordered_set>
 #include <unordered_map>
-#include <math.h>
 // #include <stack>
 // #include <queue>
-// c libraries
+
+// C libraries
+#include <cmath>
 // #include <cctype>
 // #include <climits>
-// #include <cmath>
 // #include <cstring>
-
-// #include "listnode.h"
 
 #include <gtest/gtest.h>
 
