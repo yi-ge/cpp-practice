@@ -1,38 +1,68 @@
-cmake_minimum_required(VERSION 3.23.2)
-project(cpp-practice VERSION 0.1.0)
+# Require CMake 3.23.0+ to allow C++23.
+cmake_minimum_required(VERSION 3.23.0 FATAL_ERROR)
+project(cpp-practice VERSION 0.1.0 LANGUAGES CXX)
+
+message(${CMAKE_CXX_COMPILER})
+
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 # GoogleTest requires at C++ 14+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_EXTENSIONS ON)
 set(CMAKE_BUILD_TYPE Debug)
-# set(CMAKE_C_COMPILER clang)
-# set(CMAKE_CXX_COMPILER clang++)
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 
-set(PREBUILT_MODULE_PATH ${CMAKE_BINARY_DIR}/modules)
-
-message(STATUS "${CMAKE_CXX_COMPILER_ID}")
-
-if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
+if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
+  set(PREBUILT_MODULE_PATH ${CMAKE_BINARY_DIR}/src/modules)
+  # set(module_compile_options
+  #   -fmodules
+  #   -fbuiltin-module-map
+  #   -fimplicit-module-maps
+  #   -fprebuilt-module-path=${PREBUILT_MODULE_PATH}
+  # )
+  add_compile_options(-fmodules)
+  add_compile_options(-stdlib=libc++)
+  add_compile_options(-fbuiltin-module-map)
+  add_compile_options(-fimplicit-module-maps)
   add_compile_options(-fprebuilt-module-path=${PREBUILT_MODULE_PATH})
-  # target_compile_options(clang_test PRIVATE -stdlib=libc++)
 
-  # 加载gtest
-  include(FetchContent)
-  FetchContent_Declare(
-    googletest
-    URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
+  set(
+    -Werror
+    -Weverything
+    -Wno-exit-time-destructors # Don't care about exit time destructors.
+    -Wno-padded                # Don't care about the padding.
+    -Wno-missing-prototypes    # False postives with export.
+    -Wno-switch-enum           # False positives with default.
+    # GoogleTest generated errors. TODO make GoogleTest a system header
+    -Wno-global-constructors
+    # Needs more investigation; anchoring them gives issues with a modular build.
+    -Wno-weak-vtables
+    # Ignore all compatibility with older C++ standards.
+    -Wno-pre-c++20-compat
+    -Wno-c++98-compat
+    -Wno-c++98-compat-pedantic
+    -Wno-c++11-compat
+    -Wno-c++14-compat
+    -Wno-c++17-compat
+    -Wno-c++20-compat
   )
 
-  # For Windows: Prevent overriding the parent project's compiler/linker settings
-  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-  FetchContent_MakeAvailable(googletest)
+  set(CLANG_TIDY "" CACHE FILEPATH "The clang-tidy executable to use")
+  set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+  # FetchContent_MakeAvailable(googletest)
 
   enable_testing()
+  include(CheckCXXCompilerFlag)
+  include(ClangModule)
+  # include(CodeCoverage)
+  include(ExternalProjects)
   include(GoogleTest)
   include(CTest)
+  include(CPack)
+  # add_code_coverage()
 
   include_directories(include)
   include_directories(src)
@@ -62,6 +92,20 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "Ap
   aux_source_directory(./test/other DIR_TEST_OTHER)
   aux_source_directory(./test/lib DIR_TEST_LIB)
 
+  file(GLOB MODULES src/modules/*.cpp)
+  file(MAKE_DIRECTORY ${PREBUILT_MODULE_PATH})
+
+  # target_compile_options(${PROJECT_NAME}
+  #   PRIVATE
+  #     ${module_compile_options}
+  #     ${diagnostic_compile_options}
+  # )
+
+  # set_target_properties(${PROJECT_NAME}
+  #   PROPERTIES
+  #     CXX_CLANG_TIDY "${CLANG_TIDY}"
+  # )
+
   add_executable(
     ${PROJECT_NAME}
     # ${DIR_SRC}
@@ -88,23 +132,23 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "Ap
     ${DIR_TEST_SORT}
     ${DIR_TEST_OTHER}
     ${DIR_TEST_LIB}
+    ${MODULES}
   )
 
+  target_link_libraries(${PROJECT_NAME} GTest::gtest_main)
 
-  target_link_libraries(${PROJECT_NAME} gtest_main)
-  include(CPack)
+  foreach(modfile ${MODULES})
+    get_filename_component(barename ${modfile} NAME)
+    get_filename_component(barename_we ${barename} NAME_WE)
+    add_module(${barename_we} src/modules/${barename})
+  endforeach(modfile ${MODULES})
 
   gtest_discover_tests(${PROJECT_NAME})
 
   message(STATUS "Use gcov for code coverage test.")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -coverage -Wall -fprofile-arcs -ftest-coverage")
-
-  # 下面两个二者选其一，一个是可执行文件，一个是链接库
-  # set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} --coverage")
-  # set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}  --coverage")
-
 else()
 
-  message(STATUS "Only supports clang++.")
+  message(STATUS "Only supports LLVM clang++.")
 
 endif()

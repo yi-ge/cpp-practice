@@ -1,5 +1,7 @@
 #include <array/minimum_cost_to_move_chips_to_the_same_position.cpp>
 
+#include <gtest/gtest.h>
+
 TEST(玩筹码, minCostToMoveChips)
 {
   // 示例 1：
