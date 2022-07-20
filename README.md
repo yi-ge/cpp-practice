@@ -20,7 +20,11 @@ C++ 基础算法、数据结构练习，包含 LeetCode 或其它算法练习记
 ### MAC
 
 ```bash
-brew install cmake node yarn
+brew install cmake node yarn llvm
+
+echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc
+echo 'export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"' >> ~/.zshrc
+echo 'export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"' >> ~/.zshrc
 
 ```
 

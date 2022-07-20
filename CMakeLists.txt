@@ -135,7 +135,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
     ${MODULES}
   )
 
-  target_link_libraries(${PROJECT_NAME} GTest::gtest_main)
+  target_link_libraries(${PROJECT_NAME} gtest_main)
 
   foreach(modfile ${MODULES})
     get_filename_component(barename ${modfile} NAME)
