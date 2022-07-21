@@ -9,38 +9,36 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 # GoogleTest requires at C++ 14+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_BUILD_TYPE Debug)
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+set(USE_CUSTOM_LIBC OFF)
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   set(PREBUILT_MODULE_PATH ${CMAKE_BINARY_DIR}/src/modules)
-  # set(module_compile_options
-  #   -fmodules
-  #   -fbuiltin-module-map
-  #   -fimplicit-module-maps
-  #   -fprebuilt-module-path=${PREBUILT_MODULE_PATH}
-  # )
+
   if (CMAKE_SYSTEM_NAME MATCHES "Linux")
     add_link_options("-fuse-ld=lld-14")
   endif()
 
   add_compile_options(-std=c++20)
-  add_compile_options(-nostdinc++)
-  add_compile_options(-nostdlib++)
-  if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
-    add_compile_options(-isystem /opt/homebrew/opt/llvm/include/c++/v1)
-    add_compile_options(-L /opt/homebrew/opt/llvm/lib)
-    add_compile_options(-Wl,-rpath,/opt/homebrew/opt/llvm/lib)
-  elseif(CMAKE_SYSTEM_NAME MATCHES "Linux")
-    add_compile_options(-isystem /usr/lib/llvm-14/include/c++/v1)
-    add_compile_options(-L /usr/lib/llvm-14/lib)
-    add_compile_options(-Wl,-rpath,/usr/lib/llvm-14/lib)
+  if (USE_CUSTOM_LIBC)
+    add_compile_options(-nostdinc++)
+    add_compile_options(-nostdlib++)
+    if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
+      set(LLVM_DIR /opt/homebrew/opt/llvm)
+    elseif(CMAKE_SYSTEM_NAME MATCHES "Linux")
+      set(LLVM_DIR /usr/lib/llvm-14)
+    endif()
+    add_compile_options(-isystem ${LLVM_DIR}/include/c++/v1)
+    add_compile_options(-L ${LLVM_DIR}/lib)
+    add_compile_options(-Wl,-rpath,${LLVM_DIR}/lib)
+    add_compile_options(-lc++)
+  else()
+   add_compile_options(-stdlib=libc++)
   endif()
-  add_compile_options(-lc++)
   add_compile_options(-fmodules)
-  # add_compile_options(-stdlib=libc++)
   add_compile_options(-fbuiltin-module-map)
   add_compile_options(-fimplicit-module-maps)
   add_compile_options(-fprebuilt-module-path=${PREBUILT_MODULE_PATH})
@@ -91,17 +89,6 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   file(GLOB MODULES src/modules/*.cpp)
   file(MAKE_DIRECTORY ${PREBUILT_MODULE_PATH})
 
-  # target_compile_options(${PROJECT_NAME}
-  #   PRIVATE
-  #     ${module_compile_options}
-  #     ${diagnostic_compile_options}
-  # )
-
-  # set_target_properties(${PROJECT_NAME}
-  #   PROPERTIES
-  #     CXX_CLANG_TIDY "${CLANG_TIDY}"
-  # )
-
   add_executable(
     ${PROJECT_NAME}
     # ${DIR_SRC}
@@ -141,8 +128,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
 
   gtest_discover_tests(${PROJECT_NAME})
 
-  message(STATUS "Use gcov for code coverage test.")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -coverage -Wall -fprofile-arcs -ftest-coverage")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -coverage -Wall -fprofile-arcs -ftest-coverage")
 else()
 
   message(STATUS "Only supports LLVM clang++.")

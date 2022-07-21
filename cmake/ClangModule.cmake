@@ -11,8 +11,6 @@ function(add_module name)
                 ${CMAKE_CXX_COMPILER}
                 -std=c++20
                 -stdlib=libc++
-                # -L /opt/homebrew/opt/llvm/lib
-                # -Wl,-rpath,/opt/homebrew/opt/llvm/lib
                 -fmodules
                 -c
                 ${CMAKE_CURRENT_SOURCE_DIR}/${ARGN}
