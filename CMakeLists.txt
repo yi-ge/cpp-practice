@@ -28,26 +28,26 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   add_compile_options(-fimplicit-module-maps)
   add_compile_options(-fprebuilt-module-path=${PREBUILT_MODULE_PATH})
 
-  set(
-    -Werror
-    -Weverything
-    -Wno-exit-time-destructors # Don't care about exit time destructors.
-    -Wno-padded                # Don't care about the padding.
-    -Wno-missing-prototypes    # False postives with export.
-    -Wno-switch-enum           # False positives with default.
-    # GoogleTest generated errors. TODO make GoogleTest a system header
-    -Wno-global-constructors
-    # Needs more investigation; anchoring them gives issues with a modular build.
-    -Wno-weak-vtables
-    # Ignore all compatibility with older C++ standards.
-    -Wno-pre-c++20-compat
-    -Wno-c++98-compat
-    -Wno-c++98-compat-pedantic
-    -Wno-c++11-compat
-    -Wno-c++14-compat
-    -Wno-c++17-compat
-    -Wno-c++20-compat
-  )
+  # set(
+  #   -Werror
+  #   -Weverything
+  #   -Wno-exit-time-destructors # Don't care about exit time destructors.
+  #   -Wno-padded                # Don't care about the padding.
+  #   -Wno-missing-prototypes    # False postives with export.
+  #   -Wno-switch-enum           # False positives with default.
+  #   # GoogleTest generated errors. TODO make GoogleTest a system header
+  #   -Wno-global-constructors
+  #   # Needs more investigation; anchoring them gives issues with a modular build.
+  #   -Wno-weak-vtables
+  #   # Ignore all compatibility with older C++ standards.
+  #   -Wno-pre-c++20-compat
+  #   -Wno-c++98-compat
+  #   -Wno-c++98-compat-pedantic
+  #   -Wno-c++11-compat
+  #   -Wno-c++14-compat
+  #   -Wno-c++17-compat
+  #   -Wno-c++20-compat
+  # )
 
   set(CLANG_TIDY "" CACHE FILEPATH "The clang-tidy executable to use")
   set(CMAKE_INCLUDE_CURRENT_DIR ON)
