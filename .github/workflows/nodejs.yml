@@ -35,6 +35,9 @@ jobs:
           sudo apt-get install -y clang-14 lld-14 libc++-14-dev libc++abi-14-dev clang-tools-14 lcov
           sudo node bin/ci.cjs
           sudo chmod +x /usr/bin/llvm-gcov.sh
+          wget https://github.com/Kitware/CMake/releases/download/v3.23.2/cmake-3.23.2-linux-x86_64.sh
+          sudo chmod +x cmake-3.23.2-linux-x86_64.sh
+          sudo ./cmake-3.23.2-linux-x86_64.sh --prefix=/usr --skip-license
         shell: bash
       - name: Gtest C++ Test
         run: yarn test
