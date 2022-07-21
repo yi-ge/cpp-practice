@@ -22,6 +22,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   #   -fimplicit-module-maps
   #   -fprebuilt-module-path=${PREBUILT_MODULE_PATH}
   # )
+  add_compile_options(-std=c++20)
   add_compile_options(-fmodules)
   add_compile_options(-stdlib=libc++)
   add_compile_options(-fbuiltin-module-map)
