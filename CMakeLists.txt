@@ -46,6 +46,9 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
 
   set(CLANG_TIDY "" CACHE FILEPATH "The clang-tidy executable to use")
   set(CMAKE_INCLUDE_CURRENT_DIR ON)
+  set(THREADS_PREFER_PTHREAD_FLAG ON)
+
+  find_package(Threads REQUIRED)
 
   # FetchContent_MakeAvailable(googletest)
 
@@ -122,6 +125,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
     # ${MODULES}
   )
 
+  target_link_libraries(${PROJECT_NAME} Threads::Threads)
   target_link_libraries(${PROJECT_NAME} GTest::gtest_main)
 
   # foreach(modfile ${MODULES})
