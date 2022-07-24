@@ -14,7 +14,12 @@ set(CMAKE_BUILD_TYPE Debug)
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 set(USE_CUSTOM_LIBC OFF)
-set(STDLIB libc++) # libstdc++ or libc++
+# set STDLIB use libstdc++ or libc++
+if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
+  set(STDLIB libc++)
+elseif(CMAKE_SYSTEM_NAME MATCHES "Linux")
+  set(STDLIB libstdc++)
+endif()
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   set(PREBUILT_MODULE_PATH ${CMAKE_BINARY_DIR}/src/modules)
@@ -41,23 +46,21 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
       add_compile_options(-stdlib=libstdc++)
     else()
       add_compile_options(-stdlib=libc++)
-      add_compile_options(-lc++)
-      add_compile_options(-lc++abi)
+      # add_compile_options(-lc++)
+      # add_compile_options(-lc++abi)
     endif()
   endif()
+  # 开启module支持
   add_compile_options(-fmodules)
   add_compile_options(-fbuiltin-module-map)
   add_compile_options(-fimplicit-module-maps)
-  # TODO: 开启module模式
-  # add_compile_options(-fprebuilt-module-path=${PREBUILT_MODULE_PATH})
+  add_compile_options(-fprebuilt-module-path=${PREBUILT_MODULE_PATH})
 
   set(CLANG_TIDY "" CACHE FILEPATH "The clang-tidy executable to use")
   set(CMAKE_INCLUDE_CURRENT_DIR ON)
   set(THREADS_PREFER_PTHREAD_FLAG ON)
 
   find_package(Threads REQUIRED)
-
-  # FetchContent_MakeAvailable(googletest)
 
   enable_testing()
   include(CheckCXXCompilerFlag)
@@ -127,19 +130,20 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
     ${DIR_TEST_SORT}
     ${DIR_TEST_OTHER}
     ${DIR_TEST_LIB}
-    # TODO: 开启module模式
-    # ${DIR_TEST_MODULES}
-    # ${MODULES}
+    # 开启module支持
+    ${DIR_TEST_MODULES}
+    ${MODULES}
   )
 
   target_link_libraries(${PROJECT_NAME} Threads::Threads)
   target_link_libraries(${PROJECT_NAME} GTest::gtest_main)
 
-  # foreach(modfile ${MODULES})
-  #   get_filename_component(barename ${modfile} NAME)
-  #   get_filename_component(barename_we ${barename} NAME_WE)
-  #   add_module(${barename_we} src/modules/${barename})
-  # endforeach(modfile ${MODULES})
+  # 开启module支持
+  foreach(modfile ${MODULES})
+    get_filename_component(barename ${modfile} NAME)
+    get_filename_component(barename_we ${barename} NAME_WE)
+    add_module(${barename_we} src/modules/${barename})
+  endforeach(modfile ${MODULES})
 
   gtest_discover_tests(${PROJECT_NAME})
 
