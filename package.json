@@ -14,7 +14,7 @@
     "c++"
   ],
   "scripts": {
-    "prebuild": "cmake -S . -B build",
+    "prebuild": "cmake -S . -B build -G Ninja",
     "build": "cmake --build build",
     "test": "npm run build && node ./bin/test.cjs",
     "coverage:ci": "./coverage.sh",
