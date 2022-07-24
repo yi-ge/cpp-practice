@@ -1,4 +1,8 @@
+#if USE_MODULES
 import <iostream>;
+#else
+#include <iostream>
+#endif
 
 #include <gtest/gtest.h>
 
