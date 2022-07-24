@@ -41,7 +41,8 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   add_compile_options(-fmodules)
   add_compile_options(-fbuiltin-module-map)
   add_compile_options(-fimplicit-module-maps)
-  add_compile_options(-fprebuilt-module-path=${PREBUILT_MODULE_PATH})
+  # TODO: 开启module模式
+  # add_compile_options(-fprebuilt-module-path=${PREBUILT_MODULE_PATH})
 
   set(CLANG_TIDY "" CACHE FILEPATH "The clang-tidy executable to use")
   set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -85,6 +86,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   aux_source_directory(./test/sort DIR_TEST_SORT)
   aux_source_directory(./test/other DIR_TEST_OTHER)
   aux_source_directory(./test/lib DIR_TEST_LIB)
+  aux_source_directory(./test/modules DIR_TEST_MODULES)
 
   file(GLOB MODULES src/modules/*.cpp)
   file(MAKE_DIRECTORY ${PREBUILT_MODULE_PATH})
@@ -115,16 +117,18 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
     ${DIR_TEST_SORT}
     ${DIR_TEST_OTHER}
     ${DIR_TEST_LIB}
-    ${MODULES}
+    # TODO: 开启module模式
+    # ${DIR_TEST_MODULES}
+    # ${MODULES}
   )
 
   target_link_libraries(${PROJECT_NAME} GTest::gtest_main)
 
-  foreach(modfile ${MODULES})
-    get_filename_component(barename ${modfile} NAME)
-    get_filename_component(barename_we ${barename} NAME_WE)
-    add_module(${barename_we} src/modules/${barename})
-  endforeach(modfile ${MODULES})
+  # foreach(modfile ${MODULES})
+  #   get_filename_component(barename ${modfile} NAME)
+  #   get_filename_component(barename_we ${barename} NAME_WE)
+  #   add_module(${barename_we} src/modules/${barename})
+  # endforeach(modfile ${MODULES})
 
   gtest_discover_tests(${PROJECT_NAME})
 

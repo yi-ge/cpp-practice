@@ -1,6 +1,7 @@
 // 摘樱桃
 // https://leetcode.cn/problems/cherry-pickup
 // INLINE  ../images/array/cherry_pickup.jpeg
+//
 // 解题思路
 // 核心在于：把一个人来回走等价成两个人从起点走到终点。
 // 即，本题求两个人从起点走到终点摘到的樱桃个数之和的最大值。
