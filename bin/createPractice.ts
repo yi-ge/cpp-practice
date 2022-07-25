@@ -2,6 +2,7 @@
 // @ts-ignore
 import * as readline from 'node:readline/promises'
 import { argv, exit, stdin as input, stdout as output } from 'node:process'
+// @ts-ignore
 import puppeteer from 'puppeteer-extra'
 import { execSync } from 'node:child_process'
 import StealthPlugin from 'puppeteer-extra-plugin-stealth'
@@ -17,7 +18,8 @@ const __dirname = dirname(__filename)
 const sleep = (n: number) => new Promise(r => { setTimeout(r, n) })
 
 // 环境检测
-if (os.type() !== 'Darwin' && os.type() !== 'Linux') {
+if (os.type() !== 'Darwin' && os.type() !== 'Linux' && os.type() !== 'Windows_NT') {
+  console.log('当前操作系统：', os.type())
   console.log('暂仅支持MacOS和Linux使用此脚本')
   exit(0)
 }
@@ -61,10 +63,18 @@ puppeteer.use(StealthPlugin())
 
 const homeDir = os.homedir()
 
-const userDataDir =
-  os.type() === 'Linux' ?
-    join(homeDir, '/.config/google-chromium') :
-    join(homeDir, '/Library/Application Support/Google/Chromium')
+const userDataDir = (() => {
+  switch(os.type()) {
+    case 'Linux':
+      return join(homeDir, '/.config/google-chromium')
+    case 'Darwin':
+      return join(homeDir, '/Library/Application Support/Google/Chromium')
+    case 'Windows_NT':
+      return join(homeDir, '/.google-chromium')
+    default:
+      return ''
+  }
+})()
 
 if (!fs.existsSync(userDataDir)) fs.mkdirSync(userDataDir)
 
@@ -170,7 +180,7 @@ const title = (await page.title())?.split('-')?.shift()?.trim().split('.')?.pop(
 console.log(`名称：${title}`)
 
 // 标签/分类处理
-const tags = await page.$$eval(`a[class^='topic-tag']`, (items) => {
+const tags = await page.$$eval(`a[class^='topic-tag']`, (items: any[]) => {
   return items.map((item) => {
     return item.textContent
   })
