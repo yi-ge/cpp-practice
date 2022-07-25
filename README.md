@@ -99,6 +99,10 @@ sudo update-alternatives --config c++
 
 ### 树
 
+- [完全二叉树插入器](src/tree/complete_binary_tree_inserter.cpp)  [树, 广度优先搜索, 设计, 二叉树]
+
+  - LeetCode 919. 完全二叉树插入器 <https://leetcode.cn/problems/complete-binary-tree-inserter>
+
 - [实现一个魔法字典](src/tree/implement_magic_dictionary.cpp)  [设计, 字典树, 哈希表, 字符串]
 
   - LeetCode 676. 实现一个魔法字典 <https://leetcode.cn/problems/implement-magic-dictionary>
