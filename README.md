@@ -78,6 +78,10 @@ sudo update-alternatives --config c++
 
 ### 数组/队列/集合/映射
 
+- [数组序号转换](src/array/rank_transform_of_an_array.cpp)  [数组, 哈希表, 排序]
+
+  - LeetCode 1331. 数组序号转换 <https://leetcode.cn/problems/rank-transform-of-an-array>
+
 - [数据流中的移动平均值](src/array/moving_average_from_data_stream.cpp)  [设计, 队列, 数组, 数据流]
 
   - LeetCode 346. 数据流中的移动平均值 <https://leetcode.cn/problems/moving-average-from-data-stream/>
