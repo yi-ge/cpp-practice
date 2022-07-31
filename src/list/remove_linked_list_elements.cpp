@@ -2,7 +2,6 @@
 // https://leetcode.cn/problems/remove-linked-list-elements/
 // INLINE  ../images/list/remove_linked_list_elements.jpeg
 #include <headers.hpp>
-#include <list_node.hpp>
 
 class Solution
 {

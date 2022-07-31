@@ -2,7 +2,6 @@
 // https://leetcode.cn/problems/swap-nodes-in-pairs/
 // INLINE  ../images/list/swap_nodes_in_pairs.jpeg
 #include <headers.hpp>
-#include <list_node.hpp>
 
 /**
  * Definition for singly-linked list.

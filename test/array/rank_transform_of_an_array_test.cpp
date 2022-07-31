@@ -1,5 +1,4 @@
 #include <array/rank_transform_of_an_array.cpp>
-#include <gmock/gmock.h>
 
 TEST(数组序号转换, arrayRankTransform)
 {

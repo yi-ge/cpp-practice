@@ -64,7 +64,7 @@ puppeteer.use(StealthPlugin())
 const homeDir = os.homedir()
 
 const userDataDir = (() => {
-  switch(os.type()) {
+  switch (os.type()) {
     case 'Linux':
       return join(homeDir, '/.config/google-chromium')
     case 'Darwin':
@@ -424,9 +424,25 @@ ${examples}
   }
 }
 
-execSync('code ' + testFilePath)
+function cmdExists (cmd: string) {
+  try {
+    execSync(
+      os.platform() === 'win32'
+        ? `cmd /c "(help ${cmd} > nul || exit 0) && where ${cmd} > nul 2> nul"`
+        : `command -v ${cmd}`,
+    )
+    return true
+  }
+  catch {
+    return false
+  }
+}
+
+const command = cmdExists('code-insiders') ? 'code-insiders' : 'code'
+
+execSync(command + ' ' + testFilePath)
 sleep(100)
-execSync('code ' + filePath)
+execSync(command + ' ' + filePath)
 
 try {
   // @ts-ignore

@@ -103,6 +103,10 @@ sudo update-alternatives --config c++
 
 ### 树
 
+- [最大层内元素和](src/tree/maximum_level_sum_of_a_binary_tree.cpp)  [树, 深度优先搜索, 广度优先搜索, 二叉树]
+
+  - LeetCode 1161. 最大层内元素和 <https://leetcode.cn/problems/maximum-level-sum-of-a-binary-tree>
+
 - [完全二叉树插入器](src/tree/complete_binary_tree_inserter.cpp)  [树, 广度优先搜索, 设计, 二叉树]
 
   - LeetCode 919. 完全二叉树插入器 <https://leetcode.cn/problems/complete-binary-tree-inserter>

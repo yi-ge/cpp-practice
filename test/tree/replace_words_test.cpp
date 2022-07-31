@@ -1,4 +1,3 @@
-// #include "replace_words.hpp"
 #include <tree/replace_words.cpp>
 
 TEST(单词替换, replaceWords)

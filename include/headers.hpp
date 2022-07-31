@@ -17,6 +17,12 @@
 // #include <climits>
 // #include <cstring>
 
+// Test libraries
 #include <gtest/gtest.h>
+#include <gmock/gmock.h>
+
+// Custom libraries
+#include <list_node.hpp>
+#include <tree_node.hpp>
 
 using namespace std;
