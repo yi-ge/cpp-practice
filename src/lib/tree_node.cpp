@@ -12,9 +12,9 @@ TreeNode *createTree(vector<int> &nodes, const int index)
 {
   TreeNode *root = nullptr;
 
-  if (index < nodes.size() && !nodes[index])
+  if (index < nodes.size() && nodes[index] != NULL)
   {
-    root = createTree(nodes, index);
+    root = new TreeNode(nodes[index]);
     root->left = createTree(nodes, index * 2 + 1);
     root->right = createTree(nodes, index * 2 + 2);
   }
@@ -57,72 +57,52 @@ vector<int> treeToVec(TreeNode *root)
   queue<TreeNode *> que;
   if (root != NULL)
     que.push(root);
-  vector<vector<int>> result;
   while (!que.empty())
   {
-    int size = que.size();
-    vector<int> vec;
-    for (int i = 0; i < size; i++)
-    {
-      TreeNode *node = que.front();
-      que.pop();
-      if (node != NULL)
-      {
-        vec.push_back(node->val);
-        que.push(node->left);
-        que.push(node->right);
-      }
-      // 这里的处理逻辑是为了把null节点打印出来，用-1 表示null
-      else
-        vec.push_back(-1);
-    }
-    result.push_back(vec);
+    TreeNode *node = que.front();
+    if (node != NULL)
+      res.push_back(node->val);
+    else
+      res.push_back(NULL);
+
+    if (node->left != NULL)
+      que.push(node->left);
+
+    if (node->right != NULL)
+      que.push(node->right);
+
+    que.pop();
   }
-  for (int i = 0; i < result.size(); i++)
-  {
-    for (int j = 0; j < result[i].size(); j++)
-    {
-      res.push_back(result[i][j]);
-    }
-  }
+
   return res;
 }
 
 string treeToString(TreeNode *root)
 {
-  string res = "[ ";
+  string res = "[";
   queue<TreeNode *> que;
   if (root != NULL)
     que.push(root);
-  vector<vector<int>> result;
   while (!que.empty())
   {
-    int size = que.size();
-    vector<int> vec;
-    for (int i = 0; i < size; i++)
+    TreeNode *node = que.front();
+    if (node != NULL)
     {
-      TreeNode *node = que.front();
-      que.pop();
-      if (node != NULL)
-      {
-        vec.push_back(node->val);
-        que.push(node->left);
-        que.push(node->right);
-      }
-      // 这里的处理逻辑是为了把null节点打印出来，用-1 表示null
-      else
-        vec.push_back(-1);
+      res.append(to_string(node->val));
+      res.append(",");
     }
-    result.push_back(vec);
+    else
+      res.append("null");
+
+    if (node->left != NULL)
+      que.push(node->left);
+
+    if (node->right != NULL)
+      que.push(node->right);
+
+    que.pop();
   }
-  for (int i = 0; i < result.size(); i++)
-  {
-    for (int j = 0; j < result[i].size(); j++)
-    {
-      res.append(" ");
-      res.append(to_string(result[i][j]));
-    }
-  }
+  res.replace(res.rfind(","), 1, "");
   res.append("]");
   return res;
 }
@@ -131,16 +111,16 @@ TreeNode *stringToTree(string treeStr)
 {
   vector<int> nodes;
   string delim = ",";
-  string strs = treeStr + delim; //*****扩展字符串以方便检索最后一个分隔出的字符串
+  string strs = treeStr + delim; // 扩展字符串以方便检索最后一个分隔出的字符串
   size_t pos;
   size_t size = strs.size();
 
-  for (int i = 0; i < size; ++i)
+  for (int i = 1; i < size - 1; ++i)
   {
     pos = strs.find(delim, i); // pos为分隔符第一次出现的位置，从i到pos之前的字符串是分隔出来的字符串
     if (pos < size)
     {                                     //如果查找到，如果没有查找到分隔符，pos为string::npos
-      string s = strs.substr(i, pos - i); //*****从i开始长度为pos-i的子字符串
+      string s = strs.substr(i, pos - i); // 从i开始长度为pos-i的子字符串
       if (s == "null")
       {
         nodes.push_back(NULL);
@@ -153,6 +133,6 @@ TreeNode *stringToTree(string treeStr)
     }
   }
 
-  TreeNode *root = createTree(nodes);
+  TreeNode *root = createTreeCycle(nodes);
   return root;
 }

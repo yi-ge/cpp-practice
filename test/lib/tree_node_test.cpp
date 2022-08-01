@@ -24,25 +24,25 @@ TEST(树lib, printTree)
   }
 }
 
-// TEST(树lib, createTree)
-// {
-//   TreeNode *left = new TreeNode(2);
-//   TreeNode *right = new TreeNode(3);
-//   TreeNode *root = new TreeNode(1, left, right);
+TEST(树lib, createTree)
+{
+  TreeNode *left = new TreeNode(2);
+  TreeNode *right = new TreeNode(3);
+  TreeNode *root = new TreeNode(1, left, right);
 
-//   vector<int> treeVec = {1, 2, 3};
+  vector<int> treeVec = {1, 2, 3};
 
-//   TreeNode *tree = createTree(treeVec);
+  TreeNode *tree = createTree(treeVec);
 
-//   printTree(tree);
-//   string treeStr = treeToString(tree);
-//   string rootStr = treeToString(root);
+  printTree(tree);
+  string treeStr = treeToString(tree);
+  string rootStr = treeToString(root);
 
-//   EXPECT_STREQ(treeStr.c_str(), rootStr.c_str());
+  EXPECT_STREQ(treeStr.c_str(), rootStr.c_str());
 
-//   delete tree;
-//   delete root;
-// }
+  delete tree;
+  delete root;
+}
 
 TEST(树lib, createTreeCycle)
 {
