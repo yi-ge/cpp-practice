@@ -16,4 +16,11 @@ TEST(最大层内元素和, maxLevelSum)
   vector<int> treeNodes2 = {989, NULL, 10250, 98693, -89388, NULL, NULL, NULL, -32127};
   TreeNode *root2 = createTree(treeNodes2);
   EXPECT_EQ(solution.maxLevelSum(root2), 2);
+
+  // 示例 3：
+  // 输入：root = [1]
+  // 输出：1
+  vector<int> treeNodes3 = {1};
+  TreeNode *root3 = createTree(treeNodes3);
+  EXPECT_EQ(solution.maxLevelSum(root3), 1);
 }

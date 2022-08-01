@@ -9,7 +9,7 @@ class Solution
 public:
   int maxLevelSum(TreeNode *root)
   {
-    int layer = 0, maxSum = root->val, level = 1;
+    int layer = 1, maxSum = root->val, level = 1;
     vector<TreeNode *> q = {root};
     while (!q.empty())
     {
