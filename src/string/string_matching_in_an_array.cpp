@@ -1,6 +1,8 @@
 // 数组中的字符串匹配
 // https://leetcode.cn/problems/string-matching-in-an-array
 // INLINE  ../images/string/string_matching_in_an_array.jpeg
+// 思路：字符串出现次数>1就说明有其他包含该字符串的字符串
+
 #include <headers.hpp>
 #include <utils.hpp>
 
