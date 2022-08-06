@@ -72,6 +72,8 @@ sudo update-alternatives --config c++
 
 ## 基础排序算法
 
+*待补充。*
+
 - [插入排序](src/sort/insertSort.cpp)
 - [冒泡排序](src/sort/bubbleSort.cpp)
 - [选择排序](src/sort/selectSort.cpp)
@@ -83,6 +85,10 @@ sudo update-alternatives --config c++
 ## 算法题
 
 ### 字符串
+
+- [数组中的字符串匹配](src/string/string_matching_in_an_array.cpp)  [字符串, 字符串匹配]
+
+  - LeetCode 1408. 数组中的字符串匹配 <https://leetcode.cn/problems/string-matching-in-an-array>
 
 ### 数组/队列/集合/映射
 
