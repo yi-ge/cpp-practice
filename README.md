@@ -62,6 +62,14 @@ sudo update-alternatives --config c++
 
 安装完成后执行`yarn`安装依赖。
 
+### Windows
+
+安装最新版cmake: <https://cmake.org/download/>
+
+安装 **Visual Studio 2022**，并在`Visual Studio Installer`勾选`使用C++的桌面开发`中的`适用于Windows的C++ Clang工具`（13.0.1+）。
+
+在`VSCode`的Cmake插件选择`Clang 13.0.1+(GUN CLI) for MSVC 17.x.32630.192+ (Visual Studio Professional 2022 Release - amd64)`。或者手动执行的时候使用对应版本的`llvm clang`。
+
 ## 基础排序算法
 
 - [插入排序](src/sort/insertSort.cpp)

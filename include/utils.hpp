@@ -9,12 +9,11 @@ using namespace std;
 class Utils
 {
 public:
-  static vector<string_view> split(const string &str, char ch)
+  static vector<string> split(const string &s, char ch)
   {
     int pos = 0;
     int start = 0;
-    string_view s(str);
-    vector<string_view> ret;
+    vector<string> ret;
     while (pos < s.size())
     {
       while (pos < s.size() && s[pos] == ch)
@@ -33,7 +32,8 @@ public:
     }
     return ret;
   }
-  static string join(vector<string_view> &words, char ch)
+
+  static string join(vector<string> &words, char ch)
   {
     string chStr;
     chStr = ch;

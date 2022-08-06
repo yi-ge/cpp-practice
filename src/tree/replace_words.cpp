@@ -9,14 +9,14 @@ class Solution
 public:
   string replaceWords(vector<string> &dictionary, string sentence)
   {
-    unordered_set<string_view> dictionarySet;
+    unordered_set<string> dictionarySet;
     for (auto &word : dictionary)
     {
       // dictionarySet.insert(word);
       dictionarySet.emplace(word);
     }
 
-    vector<string_view> words = Utils::split(sentence, ' ');
+    vector<string> words = Utils::split(sentence, ' ');
     for (auto &word : words)
     {
       for (int i = 0; i < word.size(); ++i)
