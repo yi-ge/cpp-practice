@@ -42,6 +42,9 @@ sudo apt-get install -y clang-14 lld-14 libc++-14-dev libc++abi-14-dev clang-too
 sudo node bin/ci.cjs
 sudo chmod +x /usr/bin/llvm-gcov.sh
 sudo update-alternatives --config c++
+wget https://github.com/Kitware/CMake/releases/download/v3.23.2/cmake-3.23.2-linux-x86_64.sh
+sudo chmod +x cmake-3.23.2-linux-x86_64.sh
+sudo ./cmake-3.23.2-linux-x86_64.sh --prefix=/usr
 ```
 
 以Kali Rolling(Debian)为例，安装LLVM 14：
@@ -91,6 +94,10 @@ sudo update-alternatives --config c++
   - LeetCode 1408. 数组中的字符串匹配 <https://leetcode.cn/problems/string-matching-in-an-array>
 
 ### 数组/队列/集合/映射
+
+- [逐步求和得到正数的最小值](src/array/minimum_value_to_get_positive_step_by_step_sum.cpp)  [数组, 前缀和]
+
+  - LeetCode 1413. 逐步求和得到正数的最小值 <https://leetcode.cn/problems/minimum-value-to-get-positive-step-by-step-sum>
 
 - [数组序号转换](src/array/rank_transform_of_an_array.cpp)  [数组, 哈希表, 排序]
 
