@@ -75,13 +75,11 @@ sudo update-alternatives --config c++
 
 ## 基础排序算法
 
-*待补充。*
-
-- [插入排序](src/sort/insertSort.cpp)
-- [冒泡排序](src/sort/bubbleSort.cpp)
-- [选择排序](src/sort/selectSort.cpp)
-- [快速排序](src/sort/quickSort.cpp)
-- [归并排序](src/sort/mergeSort.cpp)
+- [插入排序](src/sort/insert_sort.cpp)
+- [冒泡排序](src/sort/bubble_sort.cpp)
+- [选择排序](src/sort/select_sort.cpp)
+- [快速排序](src/sort/quick_sort.cpp)
+- [归并排序](src/sort/merge_sort.cpp)
 
 ## 基础数据结构
 
