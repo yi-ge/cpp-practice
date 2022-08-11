@@ -67,7 +67,7 @@ sudo update-alternatives --config c++
 
 ### Windows
 
-安装最新版cmake: <https://cmake.org/download/>
+安装最新版cmake: <https://cmake.org/download/>和[Node.js](https://nodejs.org)。
 
 安装 **Visual Studio 2022**，并在`Visual Studio Installer`勾选`使用C++的桌面开发`中的`适用于Windows的C++ Clang工具`（13.0.1+）。
 
