@@ -1,6 +1,6 @@
 // 两两交换链表中的节点
 // https://leetcode.cn/problems/swap-nodes-in-pairs/
-// INLINE  ../images/list/swap_nodes_in_pairs.jpeg
+// INLINE  ../../images/list/swap_nodes_in_pairs.jpeg
 #include <headers.hpp>
 
 /**

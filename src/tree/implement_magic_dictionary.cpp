@@ -1,6 +1,6 @@
 // 实现一个魔法字典
 // https://leetcode.cn/problems/implement-magic-dictionary
-// INLINE  ../images/tree/implement_magic_dictionary.jpeg
+// INLINE  ../../images/tree/implement_magic_dictionary.jpeg
 // 解题思路
 // 字典树DFS
 #include <headers.hpp>

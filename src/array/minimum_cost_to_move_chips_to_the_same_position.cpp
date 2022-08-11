@@ -1,6 +1,6 @@
 // 玩筹码
 // https://leetcode.cn/problems/minimum-cost-to-move-chips-to-the-same-position
-// INLINE  ../images/array/minimum_cost_to_move_chips_to_the_same_position.jpeg
+// INLINE  ../../images/array/minimum_cost_to_move_chips_to_the_same_position.jpeg
 // 解题思路
 // 这题的难点在于如何理解题目。
 // 数组元素代表对应位置有1个筹码，而不是对应位置筹码的个数。

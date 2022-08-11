@@ -289,7 +289,7 @@ const readmeTitle = classificationToReadmeTitleMap.get(classificationStr) || '�
 const reg = /[^/\\]+[/\\]*$/
 const fileName = reg.exec(url)?.shift()?.replace(/-/ig, '_')?.replace(/[\/$]+/g, '')
 const filePath = join(__dirname, '../src/', classificationStr, fileName + '.cpp')
-const imageFilePath = join(__dirname, `../images/${classificationStr}`, fileName + '.jpeg')
+const imageFilePath = join(__dirname, `../../images/${classificationStr}`, fileName + '.jpeg')
 const testFilePath = join(__dirname, '../test/', classificationStr, fileName + '_test.cpp')
 
 if (!fs.existsSync(dirname(filePath))) fs.mkdirSync(dirname(filePath))
@@ -359,7 +359,7 @@ if (functionName) { // 如果包含 function 推测函数声明
 if (!code.includes(`// ${url}`)) {
   code = `// ${title}
 // ${url}
-// INLINE  ../images/${classificationStr}/${fileName}.jpeg
+// INLINE  ../../images/${classificationStr}/${fileName}.jpeg
 #include <headers.hpp>
 
 ` + code

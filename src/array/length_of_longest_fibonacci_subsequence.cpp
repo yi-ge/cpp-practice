@@ -1,6 +1,6 @@
 // 最长的斐波那契子序列的长度
 // https://leetcode.cn/problems/length-of-longest-fibonacci-subsequence
-// INLINE  ../images/array/length_of_longest_fibonacci_subsequence.jpeg
+// INLINE  ../../images/array/length_of_longest_fibonacci_subsequence.jpeg
 // 解题思路：见代码，常规暴力法优化查找时间。
 #include <headers.hpp>
 

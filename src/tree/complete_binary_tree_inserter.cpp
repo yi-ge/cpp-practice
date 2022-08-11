@@ -1,6 +1,6 @@
 // 完全二叉树插入器
 // https://leetcode.cn/problems/complete-binary-tree-inserter
-// INLINE  ../images/tree/complete_binary_tree_inserter.jpeg
+// INLINE  ../../images/tree/complete_binary_tree_inserter.jpeg
 #include <headers.hpp>
 
 class CBTInserter

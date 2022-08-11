@@ -1,6 +1,6 @@
 // 数组序号转换
 // https://leetcode.cn/problems/rank-transform-of-an-array
-// INLINE  ../images/array/rank_transform_of_an_array.jpeg
+// INLINE  ../../images/array/rank_transform_of_an_array.jpeg
 #include <headers.hpp>
 
 class Solution
