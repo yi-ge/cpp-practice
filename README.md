@@ -138,3 +138,7 @@ sudo update-alternatives --config c++
 ### 排序
 
 ### 其它
+
+- [分数加减运算](src/math/fraction_addition_and_subtraction.cpp)  [数学, 字符串, 模拟]
+
+  - LeetCode 592. 分数加减运算 <https://leetcode.cn/problems/fraction-addition-and-subtraction>
