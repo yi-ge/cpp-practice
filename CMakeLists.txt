@@ -73,6 +73,11 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   include_directories(include)
   include_directories(src)
   include_directories(src/tree)
+
+  # find_package(GTest REQUIRED)
+  include_directories(${googletest_SOURCE_DIR}/googletest/include)
+  include_directories(${googletest_SOURCE_DIR}/googlemock/include)
+
   # aux_source_directory(./src DIR_SRC)
   # aux_source_directory("./src/string" DIR_SRC_STRING)
   # aux_source_directory(./src/array DIR_SRC_ARRAY)

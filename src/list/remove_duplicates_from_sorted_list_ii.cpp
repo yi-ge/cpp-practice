@@ -1,8 +1,7 @@
 // 删除排序链表中的重复元素 II
 // https://leetcode.cn/problems/remove-duplicates-from-sorted-list-ii/
-// INLINE  ../images/list/remove_duplicates_from_sorted_list_ii.jpeg
+// INLINE  ../../images/list/remove_duplicates_from_sorted_list_ii.jpeg
 #include <headers.hpp>
-#include <list_node.hpp>
 
 /**
  * Definition for singly-linked list.

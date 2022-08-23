@@ -1,8 +1,7 @@
 // 删除链表中的节点
 // https://leetcode.cn/problems/delete-node-in-a-linked-list/
-// INLINE  ../images/list/delete_node_in_a_linked_list.jpeg
+// INLINE  ../../images/list/delete_node_in_a_linked_list.jpeg
 #include <headers.hpp>
-#include <list_node.hpp>
 
 /**
  * Definition for singly-linked list.

@@ -64,7 +64,7 @@ puppeteer.use(StealthPlugin())
 const homeDir = os.homedir()
 
 const userDataDir = (() => {
-  switch(os.type()) {
+  switch (os.type()) {
     case 'Linux':
       return join(homeDir, '/.config/google-chromium')
     case 'Darwin':
@@ -289,7 +289,7 @@ const readmeTitle = classificationToReadmeTitleMap.get(classificationStr) || '�
 const reg = /[^/\\]+[/\\]*$/
 const fileName = reg.exec(url)?.shift()?.replace(/-/ig, '_')?.replace(/[\/$]+/g, '')
 const filePath = join(__dirname, '../src/', classificationStr, fileName + '.cpp')
-const imageFilePath = join(__dirname, `../images/${classificationStr}`, fileName + '.jpeg')
+const imageFilePath = join(__dirname, `../../images/${classificationStr}`, fileName + '.jpeg')
 const testFilePath = join(__dirname, '../test/', classificationStr, fileName + '_test.cpp')
 
 if (!fs.existsSync(dirname(filePath))) fs.mkdirSync(dirname(filePath))
@@ -359,7 +359,7 @@ if (functionName) { // 如果包含 function 推测函数声明
 if (!code.includes(`// ${url}`)) {
   code = `// ${title}
 // ${url}
-// INLINE  ../images/${classificationStr}/${fileName}.jpeg
+// INLINE  ../../images/${classificationStr}/${fileName}.jpeg
 #include <headers.hpp>
 
 ` + code
@@ -424,9 +424,25 @@ ${examples}
   }
 }
 
-execSync('code ' + testFilePath)
+function cmdExists (cmd: string) {
+  try {
+    execSync(
+      os.platform() === 'win32'
+        ? `cmd /c "(help ${cmd} > nul || exit 0) && where ${cmd} > nul 2> nul"`
+        : `command -v ${cmd}`,
+    )
+    return true
+  }
+  catch {
+    return false
+  }
+}
+
+const command = cmdExists('code-insiders') ? 'code-insiders' : 'code'
+
+execSync(command + ' ' + testFilePath)
 sleep(100)
-execSync('code ' + filePath)
+execSync(command + ' ' + filePath)
 
 try {
   // @ts-ignore

@@ -1,5 +1,4 @@
 #include <headers.hpp>
-#include <list_node.hpp>
 
 TEST(链表lib, createLinkedList)
 {

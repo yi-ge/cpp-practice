@@ -1,6 +1,6 @@
 // 数据流中的移动平均值
 // https://leetcode.cn/problems/moving-average-from-data-stream/
-// INLINE  ../images/array/moving_average_from_data_stream.jpeg
+// INLINE  ../../images/array/moving_average_from_data_stream.jpeg
 #include <headers.hpp>
 
 class MovingAverage

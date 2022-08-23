@@ -28,6 +28,8 @@ echo 'export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"' >> ~/.zshrc
 
 ```
 
+安装完成后执行`yarn`安装依赖。
+
 ### Linux
 
 参考<https://apt.llvm.org/>安装LLVM 14(clang-14)。
@@ -42,6 +44,9 @@ sudo apt-get install -y clang-14 lld-14 libc++-14-dev libc++abi-14-dev clang-too
 sudo node bin/ci.cjs
 sudo chmod +x /usr/bin/llvm-gcov.sh
 sudo update-alternatives --config c++
+wget https://github.com/Kitware/CMake/releases/download/v3.23.2/cmake-3.23.2-linux-x86_64.sh
+sudo chmod +x cmake-3.23.2-linux-x86_64.sh
+sudo ./cmake-3.23.2-linux-x86_64.sh --prefix=/usr
 ```
 
 以Kali Rolling(Debian)为例，安装LLVM 14：
@@ -62,13 +67,23 @@ sudo update-alternatives --config c++
 
 安装完成后执行`yarn`安装依赖。
 
+### Windows
+
+安装最新版cmake: <https://cmake.org/download/>和[Node.js](https://nodejs.org)。
+
+安装 **Visual Studio 2022**，并在`Visual Studio Installer`勾选`使用C++的桌面开发`中的`适用于Windows的C++ Clang工具`（13.0.1+）。
+
+在`VSCode`的Cmake插件选择`Clang 13.0.1+(GUN CLI) for MSVC 17.x.32630.192+ (Visual Studio Professional 2022 Release - amd64)`。或者手动执行的时候使用对应版本的`llvm clang`。
+
+安装完成后执行`yarn`安装依赖。
+
 ## 基础排序算法
 
-- [插入排序](src/sort/insertSort.cpp)
-- [冒泡排序](src/sort/bubbleSort.cpp)
-- [选择排序](src/sort/selectSort.cpp)
-- [快速排序](src/sort/quickSort.cpp)
-- [归并排序](src/sort/mergeSort.cpp)
+- [插入排序](src/sort/insert_sort.cpp)
+- [冒泡排序](src/sort/bubble_sort.cpp)
+- [选择排序](src/sort/select_sort.cpp)
+- [快速排序](src/sort/quick_sort.cpp)
+- [归并排序](src/sort/merge_sort.cpp)
 
 ## 基础数据结构
 
@@ -76,7 +91,19 @@ sudo update-alternatives --config c++
 
 ### 字符串
 
+- [数组中的字符串匹配](src/string/string_matching_in_an_array.cpp)  [字符串, 字符串匹配]
+
+  - LeetCode 1408. 数组中的字符串匹配 <https://leetcode.cn/problems/string-matching-in-an-array>
+
 ### 数组/队列/集合/映射
+
+- [逐步求和得到正数的最小值](src/array/minimum_value_to_get_positive_step_by_step_sum.cpp)  [数组, 前缀和]
+
+  - LeetCode 1413. 逐步求和得到正数的最小值 <https://leetcode.cn/problems/minimum-value-to-get-positive-step-by-step-sum>
+
+- [数组序号转换](src/array/rank_transform_of_an_array.cpp)  [数组, 哈希表, 排序]
+
+  - LeetCode 1331. 数组序号转换 <https://leetcode.cn/problems/rank-transform-of-an-array>
 
 - [数据流中的移动平均值](src/array/moving_average_from_data_stream.cpp)  [设计, 队列, 数组, 数据流]
 
@@ -98,6 +125,10 @@ sudo update-alternatives --config c++
 ### 栈
 
 ### 树
+
+- [最大层内元素和](src/tree/maximum_level_sum_of_a_binary_tree.cpp)  [树, 深度优先搜索, 广度优先搜索, 二叉树]
+
+  - LeetCode 1161. 最大层内元素和 <https://leetcode.cn/problems/maximum-level-sum-of-a-binary-tree>
 
 - [完全二叉树插入器](src/tree/complete_binary_tree_inserter.cpp)  [树, 广度优先搜索, 设计, 二叉树]
 

@@ -1,9 +1,7 @@
 // 删除排序链表中的重复元素
 // https://leetcode.cn/problems/remove-duplicates-from-sorted-list/
-// INLINE  ../images/list/remove_duplicates_from_sorted_list.jpeg
+// INLINE  ../../images/list/remove_duplicates_from_sorted_list.jpeg
 #include <headers.hpp>
-#include <list_node.hpp>
-
 /**
  * Definition for singly-linked list.
  * struct ListNode {

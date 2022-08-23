@@ -1,6 +1,6 @@
 // 摘樱桃
 // https://leetcode.cn/problems/cherry-pickup
-// INLINE  ../images/array/cherry_pickup.jpeg
+// INLINE  ../../images/array/cherry_pickup.jpeg
 //
 // 解题思路
 // 核心在于：把一个人来回走等价成两个人从起点走到终点。
