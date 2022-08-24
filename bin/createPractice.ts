@@ -289,7 +289,7 @@ const readmeTitle = classificationToReadmeTitleMap.get(classificationStr) || 'å…
 const reg = /[^/\\]+[/\\]*$/
 const fileName = reg.exec(url)?.shift()?.replace(/-/ig, '_')?.replace(/[\/$]+/g, '')
 const filePath = join(__dirname, '../src/', classificationStr, fileName + '.cpp')
-const imageFilePath = join(__dirname, `../../images/${classificationStr}`, fileName + '.jpeg')
+const imageFilePath = join(__dirname, `../images/${classificationStr}`, fileName + '.jpeg')
 const testFilePath = join(__dirname, '../test/', classificationStr, fileName + '_test.cpp')
 
 if (!fs.existsSync(dirname(filePath))) fs.mkdirSync(dirname(filePath))

@@ -97,6 +97,10 @@ sudo update-alternatives --config c++
 
 ### 数组/队列/集合/映射
 
+- [通过翻转子数组使两个数组相等](src/array/make_two_arrays_equal_by_reversing_sub_arrays.cpp)  [数组, 哈希表, 排序]
+
+  - LeetCode 1460. 通过翻转子数组使两个数组相等 <https://leetcode.cn/problems/make-two-arrays-equal-by-reversing-sub-arrays>
+
 - [逐步求和得到正数的最小值](src/array/minimum_value_to_get_positive_step_by_step_sum.cpp)  [数组, 前缀和]
 
   - LeetCode 1413. 逐步求和得到正数的最小值 <https://leetcode.cn/problems/minimum-value-to-get-positive-step-by-step-sum>
