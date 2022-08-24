@@ -177,3 +177,7 @@ sudo update-alternatives --config c++
 - [分数加减运算](src/math/fraction_addition_and_subtraction.cpp)  [数学, 字符串, 模拟]
 
   - LeetCode 592. 分数加减运算 <https://leetcode.cn/problems/fraction-addition-and-subtraction>
+
+- [最长有效括号](src/heap/longest_valid_parentheses.cpp)  [栈, 字符串, 动态规划]
+
+  - LeetCode 32. 最长有效括号 <https://leetcode.cn/problems/longest-valid-parentheses/>
