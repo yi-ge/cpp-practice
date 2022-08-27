@@ -132,6 +132,10 @@ sudo update-alternatives --config c++
 
 ### 树
 
+- [二叉树最大宽度](src/tree/maximum_width_of_binary_tree.cpp)  [树, 深度优先搜索, 广度优先搜索, 二叉树]
+
+  - LeetCode 662. 二叉树最大宽度 <https://leetcode.cn/problems/maximum-width-of-binary-tree>
+
 - [最大层内元素和](src/tree/maximum_level_sum_of_a_binary_tree.cpp)  [树, 深度优先搜索, 广度优先搜索, 二叉树]
 
   - LeetCode 1161. 最大层内元素和 <https://leetcode.cn/problems/maximum-level-sum-of-a-binary-tree>
