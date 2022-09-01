@@ -180,6 +180,10 @@ sudo update-alternatives --config c++
 
 ### 图
 
+- [找到小镇的法官](src/graphs/find_the_town_judge.cpp)  [图, 数组, 哈希表]
+
+  - LeetCode 997. 找到小镇的法官 <https://leetcode.cn/problems/find-the-town-judge>
+
 ### 排序
 
 ### 其它
