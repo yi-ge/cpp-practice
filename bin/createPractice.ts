@@ -342,9 +342,12 @@ if (!fileName) {
   exit(1)
 }
 
-const keyClassStr = code.match(/class(\s.*?\{)/ig)?.shift()
+const noCommentCode = code.replace(reg, function (word) { // 去除注释后的代码
+  return /^\/{2,}/.test(word) || /^\/\*/.test(word) ? "" : word
+})
+const keyClassStr = noCommentCode.match(/class(\s.*?\{)/ig)?.shift()
 const className = keyClassStr?.match(/(class)([ \t])([^(\(|\{)]+)/i)?.[3]?.trim()
-const keyFuncStr = code.match(/.*(\(([^)]*)\))\s?.*?\{/ig)?.shift()
+const keyFuncStr = noCommentCode.match(/.*(\(([^)]*)\))\s?.*?\{/ig)?.shift()
 const functionName = keyFuncStr?.match(/((\w+)?([\s\*]+)(\w+|\w+::\w+))\(/i)?.[4]
 let declaration = ''
 if (functionName) { // 如果包含 function 推测函数声明
