@@ -99,6 +99,10 @@ sudo update-alternatives --config c++
 
 ### 数组/队列/集合/映射
 
+- [最长数对链](src/array/maximum_length_of_pair_chain.cpp)  [贪心, 数组, 动态规划, 排序]
+
+  - LeetCode 646. 最长数对链 <https://leetcode.cn/problems/maximum-length-of-pair-chain>
+
 - [通过翻转子数组使两个数组相等](src/array/make_two_arrays_equal_by_reversing_sub_arrays.cpp)  [数组, 哈希表, 排序]
 
   - LeetCode 1460. 通过翻转子数组使两个数组相等 <https://leetcode.cn/problems/make-two-arrays-equal-by-reversing-sub-arrays>
