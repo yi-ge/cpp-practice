@@ -19,6 +19,15 @@ C++ 基础算法、数据结构练习，包含 LeetCode 或其它算法练习记
 
 ## 测试环境
 
+如果你使用VSCode进行开发，那么可以安装[C++ TestMate](https://marketplace.visualstudio.com/items?itemName=matepek.vscode-catch2-test-adapter)以获得更好的单元测试体验。
+
+同时推荐安装：
+
+- [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)
+- [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+
+以下是各个平台安装依赖的说明。
+
 ### MAC
 
 ```bash
