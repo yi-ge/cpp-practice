@@ -420,7 +420,8 @@ ${examples}
     fs.writeFileSync(testFilePath, testCode, 'utf-8')
 
     // 触发Cmake
-    console.log(execSync(`cmake --no-warn-unused-cli -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_BUILD_TYPE:STRING=Debug -S${join(__dirname, '../')} -B${join(__dirname, '../')}/build`)?.toString())
+    const cmakePath = os.type() === 'Darwin' ? '/opt/homebrew/bin/cmake' : 'cmake'
+    console.log(execSync(`${cmakePath} --no-warn-unused-cli -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_BUILD_TYPE:STRING=Debug -S${join(__dirname, '../')} -B${join(__dirname, '../')}/build`)?.toString())
   } else {
     console.log('该题目暂不支持自动生成测试代码模板，请手工编写测试用例。')
     fs.writeFileSync(testFilePath, `#include <gtest/gtest.h>`, 'utf-8')
