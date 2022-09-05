@@ -47,7 +47,7 @@ jobs:
           CC: clang-14
           CXX: clang++-14
       - name: Generate coverage
-        run: yarn coverage:ci
+        run: yarn coverage
         env:
           CI: true
           NODE_ENV: test

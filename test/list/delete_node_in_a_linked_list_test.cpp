@@ -31,7 +31,13 @@ TEST(删除链表中的节点, deleteNode)
   int arr4[] = {4, 5, 9};
   int n4 = sizeof(arr4) / sizeof(int);
   ListNode *head4 = createLinkedList(arr4, n4);
+  EXPECT_NO_THROW(solution.deleteNode(nullptr));
   EXPECT_STREQ(listNodeToString(head3).c_str(), listNodeToString(head4).c_str());
   deleteLinkedList(head3);
   deleteLinkedList(head4);
+
+  int arr5[] = {4};
+  int n5 = sizeof(arr5) / sizeof(int);
+  ListNode *head5 = createLinkedList(arr5, n5);
+  EXPECT_NO_THROW(solution.deleteNode(head5));
 }

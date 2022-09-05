@@ -151,31 +151,29 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   gtest_discover_tests(${PROJECT_NAME})
 
   ## coverage flags
-  set(CMAKE_CXX_FLAGS_COVERAGE "-g -O0 -fprofile-arcs -ftest-coverage" CACHE STRING "Flags used by the C++ compiler during coverage builds.")
-  set(CMAKE_C_FLAGS_COVERAGE "-g -O0 -fprofile-arcs -ftest-coverage" CACHE STRING "Flags used by the C compiler during coverage builds.")
-  set(CMAKE_EXE_LINKER_FLAGS_COVERAGE "-g -O0 -fprofile-arcs -ftest-coverage" CACHE STRING "Flags used for linking binaries during coverage builds.")
-  set(CMAKE_SHARED_LINKER_FLAGS_COVERAGE "-g -O0 -fprofile-arcs -ftest-coverage" CACHE STRING "Flags used by the shared libraries linker during coverage builds.")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
 
-  mark_as_advanced(
-    CMAKE_CXX_FLAGS_COVERAGE
-    CMAKE_C_FLAGS_COVERAGE
-    CMAKE_EXE_LINKER_FLAGS_COVERAGE
-    CMAKE_SHARED_LINKER_FLAGS_COVERAGE)
+  add_custom_target(
+    myCustomTarget
+    COMMAND find ${CMAKE_BINARY_DIR} -name \*.gcda -delete
+  )
+  add_dependencies(${PROJECT_NAME} myCustomTarget)
 
-  ## Update the documentation string of CMAKE_BUILD_TYPE for GUIs
-  set(CMAKE_BUILD_TYPE "${CMAKE_BUILD_TYPE}" CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel RelWithAssert Coverage." FORCE)
-
-  ## create our "make coverage" target
+  # # create our "make coverage" target
   # add_custom_target(coverage
-  #   COMMAND if test ! -d ../output \; then mkdir ../output\; fi
-  #   COMMAND find ${CMAKE_BINARY_DIR} -name \*.gcda -delete
-  #   COMMAND lcov -b CMakeFiles/ -d . -z
-  #   COMMAND lcov -b -d . -c -i -o test_base.info
-  #   COMMAND ./env-shell.sh ctest -j2 || true
-  #   COMMAND lcov -b CMakeFiles/ -d . -c -o test_run.info
-  #   COMMAND lcov -b CMakeFiles/ -d . -a test_base.info -a test_run.info -o test_total.info
-  #   COMMAND lcov -o reports.info -r test_total.info '/usr/include/*' '/usr/local/*' '/cvmfs/*' '*/numpy' '/usr/lib/gcc/*' ${p} '${CMAKE_BINARY_DIR}/CMakeFiles/' '${CMAKE_BINARY_DIR}/steamshovel/*'
-  #   COMMAND genhtml --ignore-errors source --legend -o ../output/`date +%Y-%m-%d` reports.info
+  #   COMMAND if test ! -d ../coverage \; then mkdir ../coverage\; fi
+  #   # COMMAND find ${CMAKE_BINARY_DIR} -name \*.gcda -delete
+  #   # COMMAND lcov -b CMakeFiles/ -d . -z
+  #   # COMMAND lcov -b -d . -c -i -o test_base.info
+  #   # COMMAND lcov --gcov-tool llvm-gcov.sh --rc lcov_branch_coverage=1 -c -d build -o ../coverage/lcov.info_tmp
+  #   COMMAND lcov --rc lcov_branch_coverage=1 -c -d . -o ../coverage/lcov.info_tmp
+  #   COMMAND lcov --remove ../coverage/lcov.info_tmp -o ../coverage/lcov.info_tmp "*/include/*"
+  #   COMMAND lcov --rc lcov_branch_coverage=1 -e ../coverage/lcov.info_tmp "*src*" -o ../coverage/lcov.info
+  #   # COMMAND ./env-shell.sh ctest -j2 || true
+  #   # COMMAND lcov -b CMakeFiles/ -d . -c -o test_run.info
+  #   # COMMAND lcov -b CMakeFiles/ -d . -a test_base.info -a test_run.info -o test_total.info
+  #   # COMMAND lcov -o reports.info -r test_total.info '/usr/include/*' '/usr/local/*' '/cvmfs/*' '*/numpy' '/usr/lib/gcc/*' ${p} '${CMAKE_BINARY_DIR}/CMakeFiles/' '${CMAKE_BINARY_DIR}/steamshovel/*'
+  #   # COMMAND genhtml --ignore-errors source --legend -o ../output/`date +%Y-%m-%d` reports.info
   # )
 else()
 
