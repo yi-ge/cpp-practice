@@ -76,6 +76,11 @@ TEST(树lib, treeToVec)
   EXPECT_THAT(tree, ::testing::ContainerEq(treeVec));
 
   delete root;
+
+  TreeNode *node = new TreeNode(NULL);
+  vector<int> res = {NULL};
+  EXPECT_THAT(treeToVec(node), ::testing::ContainerEq(res));
+  delete node;
 }
 
 TEST(树lib, treeToString)

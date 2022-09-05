@@ -6,6 +6,8 @@ REPORT_FOLDER=report
 rm -rf ${COVERAGE_FOLDER}
 mkdir ${COVERAGE_FOLDER}
 
+find build -name \*.gcda -delete
+
 uNames=`uname -s`
 osName=${uNames: 0: 4}
 if [ "$osName" == "Darw" ] # Darwin

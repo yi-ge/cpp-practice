@@ -18,6 +18,7 @@
     "build": "cmake --build build",
     "test": "npm run build && node ./bin/test.cjs",
     "coverage:ci": "./coverage.sh",
+    "coverage": "cmake -DCMAKE_BUILD_TYPE=Coverage ./coverage",
     "start": "node --no-warnings --experimental-vm-modules --experimental-specifier-resolution=node --loader ts-node/esm ./bin/createPractice.ts"
   },
   "dependencies": {
