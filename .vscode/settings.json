@@ -1,19 +1,7 @@
 {
-  "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-  "testExplorer.showExpandButton": 5,
-  "testExplorer.showOnRun": true,
-  // "testExplorer.errorDecoration": false,
   "testMate.cpp.debug.noThrow": true,
   "testMate.cpp.test.executables": "build/cpp-practice",
   "testMate.cpp.test.workingDirectory": "${workspaceFolder}",
-  // "testMate.cpp.test.advancedExecutables": [
-  //   {
-  //     "pattern": "${command:cmake.buildDirectory}/**/*-test",
-  //     "executionWrapper": {
-  //       "path": "${workspaceFolder}/scripts/build-run-test.sh"
-  //     }
-  //   }
-  // ],
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {

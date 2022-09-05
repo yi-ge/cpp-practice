@@ -150,9 +150,12 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
 
   gtest_discover_tests(${PROJECT_NAME})
 
-  if(DEFINED ENV{CI})
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -coverage -Wall -fprofile-arcs -ftest-coverage")
-  endif()
+  # if(DEFINED ENV{CI})
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -coverage -Wall -fprofile-arcs -ftest-coverage")
+  # else()
+  #   add_compile_options(--coverage)
+  #   add_link_options(--coverage)
+  # endif()
 else()
 
   message(STATUS "Only supports LLVM clang++.")
