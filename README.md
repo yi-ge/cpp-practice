@@ -149,6 +149,10 @@ sudo update-alternatives --config c++
 
 ### 树
 
+- [寻找重复的子树](src/tree/find_duplicate_subtrees.cpp)  [树, 深度优先搜索, 哈希表, 二叉树]
+
+  - LeetCode 652. 寻找重复的子树 <https://leetcode.cn/problems/find-duplicate-subtrees>
+
 - [二叉树最大宽度](src/tree/maximum_width_of_binary_tree.cpp)  [树, 深度优先搜索, 广度优先搜索, 二叉树]
 
   - LeetCode 662. 二叉树最大宽度 <https://leetcode.cn/problems/maximum-width-of-binary-tree>
