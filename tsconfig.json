@@ -29,6 +29,6 @@
     "noImplicitAny": true,
     "allowJs": true
   },
-  "include": ["./bin/**/*.ts", "./bin/**/*.json"],
+  "include": ["./scripts/**/*.ts", "./scripts/**/*.json"],
   "exclude": ["dist", "node_modules"]
 }

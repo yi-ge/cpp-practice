@@ -52,7 +52,7 @@ wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | sudo apt-key 
 sudo add-apt-repository 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-14 main' -y
 sudo apt-get update -q
 sudo apt-get install -y clang-14 lld-14 libc++-14-dev libc++abi-14-dev clang-tools-14 lcov
-sudo node bin/ci.cjs
+sudo node scripts/ci.cjs
 sudo chmod +x /usr/bin/llvm-gcov.sh
 sudo update-alternatives --config c++
 wget https://github.com/Kitware/CMake/releases/download/v3.23.2/cmake-3.23.2-linux-x86_64.sh
@@ -69,7 +69,7 @@ sudo ./cmake-3.23.2-linux-x86_64.sh --prefix=/usr
 # sudo bash -c "echo  'deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/llvm.gpg] http://apt.llvm.org/unstable/ llvm-toolchain-14 main' >> /etc/apt/sources.list"
 sudo apt-get update -y
 sudo apt-get install -y clang-14 lld-14 libc++-14-dev libc++abi-14-dev clang-tools-14 lcov
-sudo node bin/ci.cjs
+sudo node scripts/ci.cjs
 sudo chmod +x /usr/bin/llvm-gcov.sh
 sudo update-alternatives --config c++
 ```

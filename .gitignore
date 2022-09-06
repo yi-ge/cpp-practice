@@ -44,3 +44,6 @@ node_modules
 # coverage
 /coverage
 /coverage_report
+
+# clangd
+.cache

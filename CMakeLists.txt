@@ -1,6 +1,9 @@
 # Require CMake 3.23.0+ to allow C++23.
 cmake_minimum_required(VERSION 3.23.0 FATAL_ERROR)
-project(cpp-practice VERSION 0.1.0 LANGUAGES CXX)
+project(
+  cpp-practice
+  VERSION 0.1.0
+  LANGUAGES CXX)
 
 message(${CMAKE_SYSTEM_NAME}: ${CMAKE_CXX_COMPILER})
 
@@ -15,24 +18,24 @@ set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 set(USE_CUSTOM_LIBC OFF)
 # set STDLIB use libstdc++ or libc++
-if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
+if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
   set(STDLIB libc++)
 elseif(CMAKE_SYSTEM_NAME MATCHES "Linux")
   set(STDLIB libstdc++)
 endif()
 
-if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
+if(CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   set(PREBUILT_MODULE_PATH ${CMAKE_BINARY_DIR}/src/modules)
 
-  if (CMAKE_SYSTEM_NAME MATCHES "Linux")
+  if(CMAKE_SYSTEM_NAME MATCHES "Linux")
     add_link_options("-fuse-ld=lld-14")
   endif()
 
   add_compile_options(-std=c++20)
-  if (USE_CUSTOM_LIBC)
+  if(USE_CUSTOM_LIBC)
     add_compile_options(-nostdinc++)
     add_compile_options(-nostdlib++)
-    if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
+    if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
       set(LLVM_DIR /opt/homebrew/opt/llvm)
     elseif(CMAKE_SYSTEM_NAME MATCHES "Linux")
       set(LLVM_DIR /usr/lib/llvm-14)
@@ -42,12 +45,11 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
     add_compile_options(-Wl,-rpath,${LLVM_DIR}/lib)
     add_compile_options(-lc++)
   else()
-    if (STDLIB STREQUAL "libstdc++")
+    if(STDLIB STREQUAL "libstdc++")
       add_compile_options(-stdlib=libstdc++)
     else()
       add_compile_options(-stdlib=libc++)
-      # add_compile_options(-lc++)
-      # add_compile_options(-lc++abi)
+      # add_compile_options(-lc++) add_compile_options(-lc++abi)
     endif()
   endif()
   # 开启module支持
@@ -56,7 +58,9 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   add_compile_options(-fimplicit-module-maps)
   add_compile_options(-fprebuilt-module-path=${PREBUILT_MODULE_PATH})
 
-  set(CLANG_TIDY "" CACHE FILEPATH "The clang-tidy executable to use")
+  set(CLANG_TIDY
+      ""
+      CACHE FILEPATH "The clang-tidy executable to use")
   set(CMAKE_INCLUDE_CURRENT_DIR ON)
   set(THREADS_PREFER_PTHREAD_FLAG ON)
 
@@ -78,9 +82,8 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   include_directories(${googletest_SOURCE_DIR}/googletest/include)
   include_directories(${googletest_SOURCE_DIR}/googlemock/include)
 
-  # aux_source_directory(./src DIR_SRC)
-  # aux_source_directory("./src/string" DIR_SRC_STRING)
-  # aux_source_directory(./src/array DIR_SRC_ARRAY)
+  # aux_source_directory(./src DIR_SRC) aux_source_directory("./src/string"
+  # DIR_SRC_STRING) aux_source_directory(./src/array DIR_SRC_ARRAY)
   # aux_source_directory(./src/stack DIR_SRC_STACK)
   # aux_source_directory(./src/math DIR_SRC_MATH)
   # aux_source_directory(./src/heap DIR_SRC_HEAP)
@@ -135,8 +138,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
     ${DIR_TEST_LIB}
     # 开启module支持
     ${DIR_TEST_MODULES}
-    ${MODULES}
-  )
+    ${MODULES})
 
   target_link_libraries(${PROJECT_NAME} Threads::Threads)
   target_link_libraries(${PROJECT_NAME} GTest::gtest_main)
@@ -150,31 +152,13 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
 
   gtest_discover_tests(${PROJECT_NAME})
 
-  ## coverage flags
+  # coverage flags
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
 
-  add_custom_target(
-    myCustomTarget
-    COMMAND find ${CMAKE_BINARY_DIR} -name \*.gcda -delete
-  )
+  add_custom_target(myCustomTarget COMMAND find ${CMAKE_BINARY_DIR} -name
+                                           \*.gcda -delete)
   add_dependencies(${PROJECT_NAME} myCustomTarget)
 
-  # # create our "make coverage" target
-  # add_custom_target(coverage
-  #   COMMAND if test ! -d ../coverage \; then mkdir ../coverage\; fi
-  #   # COMMAND find ${CMAKE_BINARY_DIR} -name \*.gcda -delete
-  #   # COMMAND lcov -b CMakeFiles/ -d . -z
-  #   # COMMAND lcov -b -d . -c -i -o test_base.info
-  #   # COMMAND lcov --gcov-tool llvm-gcov.sh --rc lcov_branch_coverage=1 -c -d build -o ../coverage/lcov.info_tmp
-  #   COMMAND lcov --rc lcov_branch_coverage=1 -c -d . -o ../coverage/lcov.info_tmp
-  #   COMMAND lcov --remove ../coverage/lcov.info_tmp -o ../coverage/lcov.info_tmp "*/include/*"
-  #   COMMAND lcov --rc lcov_branch_coverage=1 -e ../coverage/lcov.info_tmp "*src*" -o ../coverage/lcov.info
-  #   # COMMAND ./env-shell.sh ctest -j2 || true
-  #   # COMMAND lcov -b CMakeFiles/ -d . -c -o test_run.info
-  #   # COMMAND lcov -b CMakeFiles/ -d . -a test_base.info -a test_run.info -o test_total.info
-  #   # COMMAND lcov -o reports.info -r test_total.info '/usr/include/*' '/usr/local/*' '/cvmfs/*' '*/numpy' '/usr/lib/gcc/*' ${p} '${CMAKE_BINARY_DIR}/CMakeFiles/' '${CMAKE_BINARY_DIR}/steamshovel/*'
-  #   # COMMAND genhtml --ignore-errors source --legend -o ../output/`date +%Y-%m-%d` reports.info
-  # )
 else()
 
   message(STATUS "Only supports LLVM clang++.")

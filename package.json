@@ -2,7 +2,7 @@
   "name": "cpp-practice",
   "version": "0.1.0",
   "description": "C++ Practice.",
-  "main": "bin/createPractices.ts",
+  "main": "scripts/createPractices.ts",
   "repository": "git@github.com:yi-ge/cpp-practice.git",
   "author": "yi-ge <a@wyr.me>",
   "license": "MIT",
@@ -14,11 +14,11 @@
     "c++"
   ],
   "scripts": {
-    "prebuild": "cmake -S . -B build",
-    "build": "cmake --build build",
-    "test": "npm run build && node ./bin/test.cjs",
-    "coverage": "./bin/coverage.sh",
-    "start": "node --no-warnings --experimental-vm-modules --experimental-specifier-resolution=node --loader ts-node/esm ./bin/createPractice.ts"
+    "prebuild": "cmake --no-warn-unused-cli -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_BUILD_TYPE:STRING=Debug -S . -B build -G Ninja",
+    "build": "cmake --build build --config Debug --target all --",
+    "test": "npm run build && node ./scripts/test.cjs",
+    "coverage": "./scripts/coverage.sh",
+    "start": "node --no-warnings --experimental-vm-modules --experimental-specifier-resolution=node --loader ts-node/esm ./scripts/createPractice.ts"
   },
   "dependencies": {
     "lcov-parse": "^1.0.0",
