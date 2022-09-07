@@ -4,13 +4,21 @@
     {
       "type": "npm",
       "script": "build",
-      "group": {
-        "kind": "test",
-        "isDefault": true
-      },
+      "group": "test",
       "problemMatcher": [],
       "label": "npm: build",
       "detail": "cmake --build build --config Debug --target all --"
+    },
+    {
+      "type": "npm",
+      "script": "coverage",
+      "problemMatcher": [],
+      "label": "npm: coverage",
+      "detail": "./scripts/coverage.sh",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
     }
   ]
 }
