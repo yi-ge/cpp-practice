@@ -52,8 +52,6 @@ wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | sudo apt-key 
 sudo add-apt-repository 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-15 main' -y
 sudo apt-get update -q
 sudo apt-get install -y clang-15 llvm-15 lld-15 libc++-15-dev libc++abi-15-dev clang-tools-15 lcov binutils ninja-build
-sudo node scripts/ci.cjs
-sudo chmod +x /usr/bin/llvm-gcov.sh
 sudo update-alternatives --config c++
 wget https://github.com/Kitware/CMake/releases/download/v3.23.2/cmake-3.23.2-linux-x86_64.sh
 sudo chmod +x cmake-3.23.2-linux-x86_64.sh
@@ -63,14 +61,12 @@ sudo ./cmake-3.23.2-linux-x86_64.sh --prefix=/usr
 以Kali Rolling(Debian)为例，安装LLVM 14：
 
 ```bash
-# 如果是2022版本，不需要加载源，默认可以安装LLVM 14
-# wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | sudo apt-key add -
-# sudo apt-key export AF4F7421|sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/llvm.gpg
-# sudo bash -c "echo  'deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/llvm.gpg] http://apt.llvm.org/unstable/ llvm-toolchain-14 main' >> /etc/apt/sources.list"
+# 如果是2022版本，不需要加载源，默认可以安装LLVM 15
+wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | sudo apt-key add -
+sudo apt-key export AF4F7421|sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/llvm.gpg
+sudo bash -c "echo  'deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/llvm.gpg] http://apt.llvm.org/unstable/ llvm-toolchain-15 main' >> /etc/apt/sources.list"
 sudo apt-get update -y
-sudo apt-get install -y clang-14 lld-14 libc++-14-dev libc++abi-14-dev clang-tools-14 lcov ninja-build
-sudo node scripts/ci.cjs
-sudo chmod +x /usr/bin/llvm-gcov.sh
+sudo apt-get install -y clang-15 llvm-15 lld-15 libc++-15-dev libc++abi-15-dev clang-tools-15 lcov binutils ninja-build
 sudo update-alternatives --config c++
 ```
 

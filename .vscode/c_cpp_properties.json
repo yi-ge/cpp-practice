@@ -37,7 +37,7 @@
         "${workspaceFolder}/build/_deps/googletest-src/googletest/include/**"
       ],
       "defines": [],
-      "compilerPath": "/usr/bin/clang++-14",
+      "compilerPath": "/usr/bin/clang++-15",
       "cStandard": "c17",
       "cppStandard": "c++23",
       "intelliSenseMode": "linux-clang-x64",
