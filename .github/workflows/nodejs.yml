@@ -24,8 +24,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
+
       - name: Install dependencies
         run: yarn --frozen-lockfile
+
       - name: Install LLVM 15 and lcov
         run: |
           rm -rf build
@@ -37,15 +39,9 @@ jobs:
           sudo chmod +x cmake-3.24.1-linux-x86_64.sh
           sudo ./cmake-3.24.1-linux-x86_64.sh --prefix=/usr --skip-license
         shell: bash
+
       - name: Gtest C++ Test
         run: yarn test
-        env:
-          CI: true
-          NODE_ENV: test
-          CC: clang-15
-          CXX: clang++-15
-      - name: Generate coverage
-        run: yarn coverage
         env:
           CI: true
           NODE_ENV: test
@@ -56,6 +52,14 @@ jobs:
         id: test-results
         run: node bin/test-results.cjs
         if: always()
+
+      - name: Generate coverage
+        run: yarn coverage
+        env:
+          CI: true
+          NODE_ENV: test
+          CC: clang-15
+          CXX: clang++-15
 
       - name: Set badge color
         shell: bash
