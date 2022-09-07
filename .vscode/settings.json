@@ -5,15 +5,12 @@
   "testMate.cpp.test.advancedExecutables": [
     {
       "pattern": "{build,Build,BUILD,out,Out,OUT}/cpp-practice",
-      // "pattern": "{build,Build,BUILD,out,Out,OUT}/**/*{test,Test,TEST}*",
       "cwd": "${workspaceFolder}",
       "env": {
         "TEST": "true"
       },
-      "executionWrapper": {
-        "path": "npm",
-        "args": ["run", "build"]
-        // "path": "${workspaceFolder}/scripts/build-run-test.sh"
+      "runTask": {
+        "before": ["npm: build"]
       }
     }
   ],
