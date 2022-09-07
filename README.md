@@ -78,6 +78,8 @@ sudo update-alternatives --config c++
 
 安装完成后执行`yarn`安装依赖。
 
+如果使用VSCode进行开发，需要安装`clangd`以及对应的插件。
+
 ### Windows
 
 安装最新版cmake: <https://cmake.org/download/>和[Node.js](https://nodejs.org)。

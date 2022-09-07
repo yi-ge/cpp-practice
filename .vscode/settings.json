@@ -2,20 +2,21 @@
   // "testMate.cpp.debug.noThrow": true,
   // "testMate.cpp.test.executables": "${workspaceFolder}/build/cpp-practice",
   // "testMate.cpp.test.workingDirectory": "${workspaceFolder}",
-  // "testMate.cpp.test.advancedExecutables": [
-  //   {
-  //     "pattern": "{build,Build,BUILD,out,Out,OUT}/**/*{test,Test,TEST}*",
-  //     "cwd": "${workspaceFolder}",
-  //     "env": {
-  //       "TEST": "true"
-  //     },
-  //     "executionWrapper": {
-  //       "path": "npm",
-  //       "args": ["run", "build"]
-  //       // "path": "${workspaceFolder}/scripts/build-run-test.sh"
-  //     }
-  //   }
-  // ],
+  "testMate.cpp.test.advancedExecutables": [
+    {
+      "pattern": "{build,Build,BUILD,out,Out,OUT}/cpp-practice",
+      // "pattern": "{build,Build,BUILD,out,Out,OUT}/**/*{test,Test,TEST}*",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "TEST": "true"
+      },
+      "executionWrapper": {
+        "path": "npm",
+        "args": ["run", "build"]
+        // "path": "${workspaceFolder}/scripts/build-run-test.sh"
+      }
+    }
+  ],
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {
@@ -125,6 +126,7 @@
     "binutils",
     "breakpad",
     "cadsfafs",
+    "clangd",
     "cmake",
     "coverallsapp",
     "CPPFLAGS",
