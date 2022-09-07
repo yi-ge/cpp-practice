@@ -13,35 +13,28 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-class Solution
-{
+class Solution {
 public:
-  ListNode *deleteDuplicates2(ListNode *head)
-  {
+  ListNode *deleteDuplicates2(ListNode *head) {
     ListNode *dummyHead = new ListNode();
     dummyHead->next = head;
     ListNode *pre = dummyHead;
     ListNode *cur = head;
     int deletedVal;
-    while (cur != nullptr && cur->next != nullptr)
-    {
-      if (cur->val == cur->next->val || cur->val == deletedVal)
-      {
+    while (cur != nullptr && cur->next != nullptr) {
+      if (cur->val == cur->next->val || cur->val == deletedVal) {
         deletedVal = cur->val;
         ListNode *deleteNode = cur;
         pre->next = cur->next;
         delete deleteNode;
         cur = pre->next;
-      }
-      else
-      {
+      } else {
         pre = cur;
         cur = cur->next;
       }
     }
 
-    if (cur != nullptr && cur->val == deletedVal)
-    {
+    if (cur != nullptr && cur->val == deletedVal) {
       ListNode *deleteNode = cur;
       pre->next = nullptr;
       delete deleteNode;
@@ -51,5 +44,5 @@ public:
     delete dummyHead;
 
     return retNode;
-  }
+  } // LCOV_EXCL_LINE
 };

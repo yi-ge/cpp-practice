@@ -1,7 +1,7 @@
+#include "tree_node.hpp"
 #include <tree/find_duplicate_subtrees.cpp>
 
-TEST(寻找重复的子树, TreeNode)
-{
+TEST(寻找重复的子树, TreeNode) {
   // 示例 1：
   // 输入：root = [1,2,3,4,null,2,4,null,null,4]
   // 输出：[[2,4],[4]]
@@ -15,9 +15,10 @@ TEST(寻找重复的子树, TreeNode)
       createTree(ans_vec_1),
   };
 
+  printTree(root);
+
   vector<TreeNode *> res = solution.findDuplicateSubtrees(root);
-  for (int i = 0; i < res.size(); ++i)
-  {
+  for (int i = 0; i < res.size(); ++i) {
     EXPECT_EQ(treeToString(res[i]), treeToString(ans[i]));
   }
 
@@ -30,8 +31,7 @@ TEST(寻找重复的子树, TreeNode)
   vector<int> ans2_vec = {1};
   vector<TreeNode *> ans2 = {createTree(ans2_vec)};
   vector<TreeNode *> res2 = solution2.findDuplicateSubtrees(root2);
-  for (int i = 0; i < res2.size(); ++i)
-  {
+  for (int i = 0; i < res2.size(); ++i) {
     EXPECT_EQ(treeToString(res2[i]), treeToString(ans2[i]));
   }
 
@@ -48,8 +48,7 @@ TEST(寻找重复的子树, TreeNode)
       createTree(ans3_vec_1),
   };
   vector<TreeNode *> res3 = solution3.findDuplicateSubtrees(root3);
-  for (int i = 0; i < res3.size(); ++i)
-  {
+  for (int i = 0; i < res3.size(); ++i) {
     EXPECT_EQ(treeToString(res3[i]), treeToString(ans3[i]));
   }
 }

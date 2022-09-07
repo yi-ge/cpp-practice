@@ -3,57 +3,44 @@
 // INLINE  ../../images/tree/complete_binary_tree_inserter.jpeg
 #include <headers.hpp>
 
-class CBTInserter
-{
+class CBTInserter {
 public:
-  CBTInserter(TreeNode *root)
-  {
+  CBTInserter(TreeNode *root) {
     this->root = root;
 
     queue<TreeNode *> q;
     q.push(root);
 
-    while (!q.empty())
-    {
+    while (!q.empty()) {
       TreeNode *node = q.front();
       q.pop();
-      if (node->left)
-      {
+      if (node->left) {
         q.push(node->left);
       }
-      if (node->right)
-      {
+      if (node->right) {
         q.push(node->right);
       }
-      if (!(node->left && node->right))
-      {
+      if (!(node->left && node->right)) {
         candidate.push(node);
       }
     }
   }
 
-  int insert(int val)
-  {
+  int insert(int val) {
     TreeNode *child = new TreeNode(val);
     TreeNode *node = candidate.front();
     int ret = node->val;
-    if (!node->left)
-    {
+    if (!node->left) {
       node->left = child;
-    }
-    else
-    {
+    } else {
       node->right = child;
       candidate.pop();
     }
     candidate.push(child);
     return ret;
-  }
+  } // LCOV_EXCL_LINE
 
-  TreeNode *get_root()
-  {
-    return root;
-  }
+  TreeNode *get_root() { return root; }
 
 private:
   queue<TreeNode *> candidate;

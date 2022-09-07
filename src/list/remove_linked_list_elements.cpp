@@ -3,24 +3,18 @@
 // INLINE  ../../images/list/remove_linked_list_elements.jpeg
 #include <headers.hpp>
 
-class Solution
-{
+class Solution {
 public:
-  ListNode *removeElements(ListNode *head, int val)
-  {
+  ListNode *removeElements(ListNode *head, int val) {
     ListNode *dummyHead = new ListNode(0);
     dummyHead->next = head;
     ListNode *cur = dummyHead;
-    while (cur->next != nullptr)
-    {
-      if (cur->next->val == val)
-      {
+    while (cur->next != nullptr) {
+      if (cur->next->val == val) {
         ListNode *deleteNode = cur->next;
         cur->next = cur->next->next;
         delete deleteNode;
-      }
-      else
-      {
+      } else {
         cur = cur->next;
       }
     }
@@ -29,5 +23,5 @@ public:
     delete dummyHead;
 
     return retNode;
-  }
+  } // LCOV_EXCL_LINE
 };

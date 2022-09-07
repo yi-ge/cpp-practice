@@ -12,22 +12,16 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-class Solution
-{
+class Solution {
 public:
-  ListNode *deleteDuplicates(ListNode *head)
-  {
+  ListNode *deleteDuplicates(ListNode *head) {
     ListNode *cur = head;
-    while (cur != nullptr && cur->next != nullptr)
-    {
-      if (cur->next->val == cur->val)
-      {
+    while (cur != nullptr && cur->next != nullptr) {
+      if (cur->next->val == cur->val) {
         ListNode *deleteNode = cur->next;
         cur->next = cur->next->next;
         delete deleteNode;
-      }
-      else
-      {
+      } else {
         cur = cur->next;
       }
     }

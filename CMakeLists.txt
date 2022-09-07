@@ -153,7 +153,8 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   gtest_discover_tests(${PROJECT_NAME})
 
   # coverage flags
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
+  set(CMAKE_CXX_FLAGS
+      "${CMAKE_CXX_FLAGS} -fno-inline -O0 -fprofile-arcs -ftest-coverage")
 
   add_custom_target(myCustomTarget COMMAND find ${CMAKE_BINARY_DIR} -name
                                            \*.gcda -delete)

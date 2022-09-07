@@ -1,7 +1,6 @@
 #include <array/make_two_arrays_equal_by_reversing_sub_arrays.cpp>
 
-TEST(通过翻转子数组使两个数组相等, canBeEqual)
-{
+TEST(通过翻转子数组使两个数组相等, canBeEqual) {
   // 示例 1：
   // 输入：target = [1,2,3,4], arr = [2,4,1,3]
   // 输出：true
@@ -30,4 +29,8 @@ TEST(通过翻转子数组使两个数组相等, canBeEqual)
   vector<int> target3 = {3, 7, 9};
   vector<int> arr3 = {3, 7, 11};
   EXPECT_EQ(solution.canBeEqual(target3, arr3), false);
+
+  vector<int> target4 = {3, 7, 11, 10};
+  vector<int> arr4 = {3, 7, 11};
+  EXPECT_EQ(solution.canBeEqual(target4, arr4), false);
 }
