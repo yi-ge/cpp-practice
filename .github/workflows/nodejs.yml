@@ -32,10 +32,10 @@ jobs:
           wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | sudo apt-key add -
           sudo add-apt-repository 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-15 main' -y
           sudo apt-get update -q
-          sudo apt-get install -y clang-15 llvm-15 lld-15 libc++-15-dev libc++abi-15-dev clang-tools-15 lcov binutils
-          wget https://github.com/Kitware/CMake/releases/download/v3.23.2/cmake-3.23.2-linux-x86_64.sh
-          sudo chmod +x cmake-3.23.2-linux-x86_64.sh
-          sudo ./cmake-3.23.2-linux-x86_64.sh --prefix=/usr --skip-license
+          sudo apt-get install -y clang-15 llvm-15 lld-15 libc++-15-dev libc++abi-15-dev clang-tools-15 lcov binutils ninja-build
+          wget https://github.com/Kitware/CMake/releases/download/v3.24.1/cmake-3.24.1-linux-x86_64.sh
+          sudo chmod +x cmake-3.24.1-linux-x86_64.sh
+          sudo ./cmake-3.24.1-linux-x86_64.sh --prefix=/usr --skip-license
         shell: bash
       - name: Gtest C++ Test
         run: yarn test

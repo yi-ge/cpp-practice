@@ -31,7 +31,7 @@ C++ 基础算法、数据结构练习，包含 LeetCode 或其它算法练习记
 ### MAC
 
 ```bash
-brew install cmake node yarn llvm
+brew install cmake node yarn llvm ninja
 
 echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc
 echo 'export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"' >> ~/.zshrc
@@ -51,7 +51,7 @@ echo 'export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"' >> ~/.zshrc
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | sudo apt-key add -
 sudo add-apt-repository 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-15 main' -y
 sudo apt-get update -q
-sudo apt-get install -y clang-15 llvm-15 lld-15 libc++-15-dev libc++abi-15-dev clang-tools-15 lcov binutils
+sudo apt-get install -y clang-15 llvm-15 lld-15 libc++-15-dev libc++abi-15-dev clang-tools-15 lcov binutils ninja-build
 sudo node scripts/ci.cjs
 sudo chmod +x /usr/bin/llvm-gcov.sh
 sudo update-alternatives --config c++
@@ -68,7 +68,7 @@ sudo ./cmake-3.23.2-linux-x86_64.sh --prefix=/usr
 # sudo apt-key export AF4F7421|sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/llvm.gpg
 # sudo bash -c "echo  'deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/llvm.gpg] http://apt.llvm.org/unstable/ llvm-toolchain-14 main' >> /etc/apt/sources.list"
 sudo apt-get update -y
-sudo apt-get install -y clang-14 lld-14 libc++-14-dev libc++abi-14-dev clang-tools-14 lcov
+sudo apt-get install -y clang-14 lld-14 libc++-14-dev libc++abi-14-dev clang-tools-14 lcov ninja-build
 sudo node scripts/ci.cjs
 sudo chmod +x /usr/bin/llvm-gcov.sh
 sudo update-alternatives --config c++
