@@ -100,6 +100,10 @@ sudo update-alternatives --config c++
 
 ### 字符串
 
+- [重新排列单词间的空格](src/string/rearrange_spaces_between_words.cpp)  [字符串]
+
+  - LeetCode 1592. 重新排列单词间的空格 <https://leetcode.cn/problems/rearrange-spaces-between-words>
+
 - [数组中的字符串匹配](src/string/string_matching_in_an_array.cpp)  [字符串, 字符串匹配]
 
   - LeetCode 1408. 数组中的字符串匹配 <https://leetcode.cn/problems/string-matching-in-an-array>
