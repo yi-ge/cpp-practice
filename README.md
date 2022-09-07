@@ -43,15 +43,15 @@ echo 'export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"' >> ~/.zshrc
 
 ### Linux
 
-参考<https://apt.llvm.org/>安装LLVM 14(clang-14)。
+参考<https://apt.llvm.org/>安装LLVM 15(clang-15)。
 
-以Ubuntu 20.04为例，安装LLVM 14：
+以Ubuntu 20.04为例，安装LLVM 15：
 
 ```bash
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | sudo apt-key add -
-sudo add-apt-repository 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-14 main' -y
+sudo add-apt-repository 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-15 main' -y
 sudo apt-get update -q
-sudo apt-get install -y clang-14 lld-14 libc++-14-dev libc++abi-14-dev clang-tools-14 lcov
+sudo apt-get install -y clang-15 llvm-15 lld-15 libc++-15-dev libc++abi-15-dev clang-tools-15 lcov binutils
 sudo node scripts/ci.cjs
 sudo chmod +x /usr/bin/llvm-gcov.sh
 sudo update-alternatives --config c++

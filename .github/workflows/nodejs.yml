@@ -26,13 +26,13 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies
         run: yarn --frozen-lockfile
-      - name: Install LLVM 14 and lcov
+      - name: Install LLVM 15 and lcov
         run: |
           rm -rf build
           wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | sudo apt-key add -
-          sudo add-apt-repository 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-14 main' -y
+          sudo add-apt-repository 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-15 main' -y
           sudo apt-get update -q
-          sudo apt-get install -y clang-14 lld-14 libc++-14-dev libc++abi-14-dev clang-tools-14 lcov binutils
+          sudo apt-get install -y clang-15 llvm-15 lld-15 libc++-15-dev libc++abi-15-dev clang-tools-15 lcov binutils
           sudo node bin/ci.cjs
           sudo chmod +x /usr/bin/llvm-gcov.sh
           wget https://github.com/Kitware/CMake/releases/download/v3.23.2/cmake-3.23.2-linux-x86_64.sh
@@ -44,15 +44,15 @@ jobs:
         env:
           CI: true
           NODE_ENV: test
-          CC: clang-14
-          CXX: clang++-14
+          CC: clang-15
+          CXX: clang++-15
       - name: Generate coverage
         run: yarn coverage
         env:
           CI: true
           NODE_ENV: test
-          CC: clang-14
-          CXX: clang++-14
+          CC: clang-15
+          CXX: clang++-15
 
       - name: Publish Test Results
         id: test-results

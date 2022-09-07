@@ -22,7 +22,6 @@ then
   lcov --gcov-tool llvm-gcov.sh --rc lcov_branch_coverage=1 -c -d build -o ${TMP_COVERAGE_FILE}
 fi
 
-# lcov --gcov-tool llvm-gcov.sh --rc lcov_branch_coverage=1 -c -d build -o ${TMP_COVERAGE_FILE}
 lcov --remove ${TMP_COVERAGE_FILE} -o ${TMP_COVERAGE_FILE} "*/include/*"
 lcov --rc lcov_branch_coverage=1 -e ${TMP_COVERAGE_FILE} "*src*" -o ${COVERAGE_FOLDER}/${COVERAGE_FILE}
 # genhtml --rc genhtml_branch_coverage=1 ${COVERAGE_FOLDER}/${COVERAGE_FILE} -o ${COVERAGE_FOLDER}/${REPORT_FOLDER}
