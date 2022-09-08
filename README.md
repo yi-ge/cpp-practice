@@ -110,6 +110,10 @@ sudo update-alternatives --config c++
 
 ### 数组/队列/集合/映射
 
+- [优美的排列 II](src/array/beautiful_arrangement_ii.cpp)  [数组, 数学]
+
+  - LeetCode 667. 优美的排列 II <https://leetcode.cn/problems/beautiful-arrangement-ii>
+
 - [最长数对链](src/array/maximum_length_of_pair_chain.cpp)  [贪心, 数组, 动态规划, 排序]
 
   - LeetCode 646. 最长数对链 <https://leetcode.cn/problems/maximum-length-of-pair-chain>
