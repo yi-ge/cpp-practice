@@ -149,6 +149,10 @@ sudo update-alternatives --config c++
 
 ### 栈
 
+- [文件夹操作日志搜集器](src/stack/crawler_log_folder.cpp)  [栈, 数组, 字符串]
+
+  - LeetCode 1598. 文件夹操作日志搜集器 <https://leetcode.cn/problems/crawler-log-folder>
+
 - [最长有效括号](src/stack/longest_valid_parentheses.cpp)  [栈, 字符串, 动态规划]
 
   - LeetCode 32. 最长有效括号 <https://leetcode.cn/problems/longest-valid-parentheses/>
