@@ -110,6 +110,10 @@ sudo update-alternatives --config c++
 
 ### 数组/队列/集合/映射
 
+- [特殊数组的特征值](src/array/special_array_with_x_elements_greater_than_or_equal_x.cpp)  [数组, 二分查找, 排序]
+
+  - LeetCode 1608. 特殊数组的特征值 <https://leetcode.cn/problems/special-array-with-x-elements-greater-than-or-equal-x>
+
 - [优美的排列 II](src/array/beautiful_arrangement_ii.cpp)  [数组, 数学]
 
   - LeetCode 667. 优美的排列 II <https://leetcode.cn/problems/beautiful-arrangement-ii>
