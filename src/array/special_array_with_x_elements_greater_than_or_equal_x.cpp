@@ -12,7 +12,7 @@ public:
     int n = nums.size();
     for (int i = 0; i < n; i++) {
       int res = n - i;
-      if (nums[i] >= res && nums[i - 1] < res) {
+      if (nums[i] >= res && (i - 1 < 0 || nums[i - 1] < res)) {
         return res;
       }
     }
