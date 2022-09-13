@@ -218,3 +218,7 @@ sudo update-alternatives --config c++
 - [分数加减运算](src/math/fraction_addition_and_subtraction.cpp)  [数学, 字符串, 模拟]
 
   - LeetCode 592. 分数加减运算 <https://leetcode.cn/problems/fraction-addition-and-subtraction>
+
+- [最大交换](src/math/maximum_swap.cpp)  [贪心, 数学]
+
+  - LeetCode 670. 最大交换 <https://leetcode.cn/problems/maximum-swap/>

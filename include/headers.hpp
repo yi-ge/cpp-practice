@@ -1,25 +1,25 @@
 #pragma once
 // C++ stl libraries
-#include <iostream>
-#include <string>
-#include <vector>
 #include <algorithm>
+#include <iostream>
 #include <map>
-#include <set>
-#include <unordered_set>
-#include <unordered_map>
-#include <stack>
 #include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 
 // C libraries
+#include <cctype>
+#include <climits>
 #include <cmath>
-// #include <cctype>
-// #include <climits>
-// #include <cstring>
+#include <cstring>
 
 // Test libraries
-#include <gtest/gtest.h>
 #include <gmock/gmock.h>
+#include <gtest/gtest.h>
 
 // Custom libraries
 #include <list_node.hpp>
