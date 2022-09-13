@@ -146,5 +146,6 @@
     "repost",
     "STREQ",
     "Subseq"
-  ]
+  ],
+  "clangd.checkUpdates": true
 }
