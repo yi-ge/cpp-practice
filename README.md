@@ -110,6 +110,10 @@ sudo update-alternatives --config c++
 
 ### 数组/队列/集合/映射
 
+- [删除某些元素后的数组均值](src/array/mean_of_array_after_removing_some_elements.cpp)  [数组, 排序]
+
+  - LeetCode 1619. 删除某些元素后的数组均值 <https://leetcode.cn/problems/mean-of-array-after-removing-some-elements/>
+
 - [特殊数组的特征值](src/array/special_array_with_x_elements_greater_than_or_equal_x.cpp)  [数组, 二分查找, 排序]
 
   - LeetCode 1608. 特殊数组的特征值 <https://leetcode.cn/problems/special-array-with-x-elements-greater-than-or-equal-x>
