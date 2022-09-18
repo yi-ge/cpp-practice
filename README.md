@@ -223,6 +223,10 @@ sudo update-alternatives --config c++
 
 ### 其它
 
+- [最大人工岛](src/search/making_a_large_island.cpp)  [深度优先搜索, 广度优先搜索, 并查集, 数组, 矩阵]
+
+  - LeetCode 827. 最大人工岛 <https://leetcode.cn/problems/making-a-large-island>
+
 - [分数加减运算](src/math/fraction_addition_and_subtraction.cpp)  [数学, 字符串, 模拟]
 
   - LeetCode 592. 分数加减运算 <https://leetcode.cn/problems/fraction-addition-and-subtraction>
