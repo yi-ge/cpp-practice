@@ -234,3 +234,7 @@ sudo update-alternatives --config c++
 - [最大交换](src/math/maximum_swap.cpp)  [贪心, 数学]
 
   - LeetCode 670. 最大交换 <https://leetcode.cn/problems/maximum-swap/>
+
+- [字符串相加](src/math/add_strings.cpp)  [数学, 字符串, 模拟]
+
+  - LeetCode 415. 字符串相加 <https://leetcode.cn/problems/add-strings/>
