@@ -18,10 +18,11 @@
     "build": "cmake --build build --config Debug --target all --",
     "test": "npm run build && node ./scripts/test.cjs",
     "coverage": "./scripts/coverage.sh",
-    "start": "node --no-warnings --experimental-vm-modules --experimental-specifier-resolution=node --loader ts-node/esm ./scripts/createPractice.ts"
+    "start": "lcp c++"
   },
   "dependencies": {
     "lcov-parse": "^1.0.0",
+    "leetcode-test-helper": "^0.3.8",
     "puppeteer": "^15.3.0",
     "puppeteer-extra": "^3.3.1",
     "puppeteer-extra-plugin-stealth": "^2.10.2",
