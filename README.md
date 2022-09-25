@@ -238,3 +238,7 @@ sudo update-alternatives --config c++
 - [字符串相加](src/math/add_strings.cpp)  [数学, 字符串, 模拟]
 
   - LeetCode 415. 字符串相加 <https://leetcode.cn/problems/add-strings/>
+
+- [旋转数字](src/math/rotated-digits.ts)  [数学, 动态规划]
+
+  - LeetCode 788. 旋转数字 <https://leetcode.cn/problems/rotated-digits>
