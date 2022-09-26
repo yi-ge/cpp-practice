@@ -239,6 +239,6 @@ sudo update-alternatives --config c++
 
   - LeetCode 415. 字符串相加 <https://leetcode.cn/problems/add-strings/>
 
-- [旋转数字](src/math/rotated-digits.ts)  [数学, 动态规划]
+- [旋转数字](src/math/rotated_digits.cpp)  [数学, 动态规划]
 
   - LeetCode 788. 旋转数字 <https://leetcode.cn/problems/rotated-digits>

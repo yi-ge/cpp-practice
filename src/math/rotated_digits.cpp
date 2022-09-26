@@ -1,6 +1,6 @@
 // 旋转数字
 // https://leetcode.cn/problems/rotated-digits
-// INLINE  ../../images/math/rotated-digits.jpeg
+// INLINE  ../../images/math/rotated_digits.jpeg
 #include <headers.hpp>
 
 class Solution {

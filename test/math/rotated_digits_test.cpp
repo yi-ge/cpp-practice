@@ -1,4 +1,5 @@
-#include <math/rotated-digits.cpp>
+#include <math/rotated_digits.cpp>
+
 TEST(旋转数字, rotatedDigits) {
   // 示例：
   // 输入: 10
