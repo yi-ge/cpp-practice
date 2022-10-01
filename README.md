@@ -96,6 +96,22 @@ sudo update-alternatives --config c++
 
 ## 基础数据结构
 
+### C++标准库中的数据结构（部分）
+
+C++标准库提供的数据结构实在是太多了，参考[C++标准库头文件](https://zh.cppreference.com/w/cpp/header)，以下仅列举常见的：
+
+- [数组类容器 array vector等](https://zh.cppreference.com/w/cpp/header/vector)
+- [集合 set unordered_set等](https://zh.cppreference.com/w/cpp/header/set)
+- [键 - 值对 map unordered_map等](https://zh.cppreference.com/w/cpp/header/map)
+- [列表 list](https://zh.cppreference.com/w/cpp/header/list)
+- [队列 queue deque等](https://zh.cppreference.com/w/cpp/header/deque)
+- [栈 stack](https://zh.cppreference.com/w/cpp/header/stack)
+
+### 通过C++实现的数据结构及其常见操作
+
+- [链表结点](include/list_node.hpp)
+- [树结点](include/tree_node.hpp)
+
 ## 算法题
 
 ### 字符串

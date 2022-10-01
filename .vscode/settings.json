@@ -127,6 +127,7 @@
     "CPPFLAGS",
     "DCMAKE",
     "dearmour",
+    "deque",
     "emibcn",
     "esac",
     "gcov",
