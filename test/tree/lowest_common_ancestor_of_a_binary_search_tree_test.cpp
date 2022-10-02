@@ -1,7 +1,7 @@
 #include "tree_node.hpp"
 #include <tree/lowest_common_ancestor_of_a_binary_search_tree.cpp>
 
-TEST(二叉搜索树的最近公共祖先, TreeNode) {
+TEST(二叉搜索树的最近公共祖先, lowestCommonAncestor) {
   // 示例 1:
   // 输入: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
   // 输出: 6

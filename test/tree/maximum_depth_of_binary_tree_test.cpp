@@ -1,7 +1,7 @@
 #include "tree_node.hpp"
 #include <tree/maximum_depth_of_binary_tree.cpp>
 
-TEST(二叉树的最大深度, TreeNode) {
+TEST(二叉树的最大深度, maxDepth) {
   // 示例：
   // 给定二叉树 [3,9,20,null,null,15,7]
   //     3

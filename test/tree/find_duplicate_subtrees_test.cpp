@@ -1,7 +1,7 @@
 #include "tree_node.hpp"
 #include <tree/find_duplicate_subtrees.cpp>
 
-TEST(寻找重复的子树, TreeNode) {
+TEST(寻找重复的子树, findDuplicateSubtrees) {
   // 示例 1：
   // 输入：root = [1,2,3,4,null,2,4,null,null,4]
   // 输出：[[2,4],[4]]

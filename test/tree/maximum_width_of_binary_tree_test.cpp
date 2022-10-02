@@ -1,7 +1,6 @@
 #include <tree/maximum_width_of_binary_tree.cpp>
 
-TEST(二叉树最大宽度, TreeNode)
-{
+TEST(二叉树最大宽度, widthOfBinaryTree) {
   // 示例 1：
   // 输入：root = [1,3,2,5,3,null,9]
   // 输出：4

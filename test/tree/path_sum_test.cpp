@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <tree/path_sum.cpp>
 
-TEST(路径总和, TreeNode) {
+TEST(路径总和, hasPathSum) {
   // 示例 1：
   // 输入：root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22
   // 输出：true

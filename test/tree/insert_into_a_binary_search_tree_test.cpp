@@ -1,7 +1,7 @@
 #include "tree_node.hpp"
 #include <tree/insert_into_a_binary_search_tree.cpp>
 
-TEST(二叉搜索树中的插入操作, TreeNode) {
+TEST(二叉搜索树中的插入操作, insertIntoBST) {
   // 示例 1：
   // 输入：root = [4,2,7,1,3], val = 5
   // 输出：[4,2,7,1,3,5]

@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <tree/invert_binary_tree.cpp>
 
-TEST(翻转二叉树, TreeNode) {
+TEST(翻转二叉树, invertTree) {
   // 示例 1：
   Solution solution;
   vector<int> treeNodes = {4, 2, 7, 1, 3, 6, 9};

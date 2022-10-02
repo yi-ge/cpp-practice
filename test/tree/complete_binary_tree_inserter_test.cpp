@@ -1,6 +1,6 @@
 #include <tree/complete_binary_tree_inserter.cpp>
 
-TEST(完全二叉树插入器, TreeNode) {
+TEST(完全二叉树插入器, CBTInserter) {
   TreeNode *left = new TreeNode(2);
   TreeNode *root = new TreeNode(1, left, nullptr);
   CBTInserter *obj = new CBTInserter(root);

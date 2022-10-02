@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <tree/validate_binary_search_tree.cpp>
 
-TEST(验证二叉搜索树, TreeNode) {
+TEST(验证二叉搜索树, isValidBST) {
   // 示例 1：
   // 输入：root = [2,1,3]
   // 输出：true

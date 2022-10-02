@@ -1,7 +1,7 @@
 #include "tree_node.hpp"
 #include <tree/search_in_a_binary_search_tree.cpp>
 
-TEST(二叉搜索树中的搜索, TreeNode) {
+TEST(二叉搜索树中的搜索, searchBST) {
   // 示例 1:
   // 输入：root = [4,2,7,1,3], val = 2
   // 输出：[2,1,3]
