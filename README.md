@@ -197,6 +197,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 栈
 
+- [用栈实现队列](src/stack/implement_queue_using_stacks.cpp)  [栈, 设计, 队列]
+
+  - LeetCode 232. 用栈实现队列 <https://leetcode.cn/problems/implement-queue-using-stacks/>
+
 - [文件夹操作日志搜集器](src/stack/crawler_log_folder.cpp)  [栈, 数组, 字符串]
 
   - LeetCode 1598. 文件夹操作日志搜集器 <https://leetcode.cn/problems/crawler-log-folder>
