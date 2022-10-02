@@ -130,6 +130,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [重塑矩阵](src/array/reshape_the_matrix.cpp)  [数组, 矩阵, 模拟]
+
+  - LeetCode 566. 重塑矩阵 <https://leetcode.cn/problems/reshape-the-matrix/>
+
 - [买卖股票的最佳时机](src/array/best_time_to_buy_and_sell_stock.cpp)  [数组, 动态规划]
 
   - LeetCode 121. 买卖股票的最佳时机 <https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/>
