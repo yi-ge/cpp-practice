@@ -263,6 +263,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 其它
 
+- [赎金信](src/map/ransom_note.cpp)  [哈希表, 字符串, 计数]
+
+  - LeetCode 383. 赎金信 <https://leetcode.cn/problems/ransom-note/>
+
 - [最大人工岛](src/search/making_a_large_island.cpp)  [深度优先搜索, 广度优先搜索, 并查集, 数组, 矩阵]
 
   - LeetCode 827. 最大人工岛 <https://leetcode.cn/problems/making-a-large-island>

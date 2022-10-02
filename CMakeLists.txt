@@ -101,6 +101,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   aux_source_directory(./test/heap DIR_TEST_HEAP)
   aux_source_directory(./test/tree DIR_TEST_TREE)
   aux_source_directory(./test/list DIR_TEST_LIST)
+  aux_source_directory(./test/map DIR_TEST_MAP)
   aux_source_directory(./test/graphs DIR_TEST_GRAPHS)
   aux_source_directory(./test/sort DIR_TEST_SORT)
   aux_source_directory(./test/other DIR_TEST_OTHER)
@@ -132,6 +133,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
     ${DIR_TEST_HEAP}
     ${DIR_TEST_TREE}
     ${DIR_TEST_LIST}
+    ${DIR_TEST_MAP}
     ${DIR_TEST_GRAPHS}
     ${DIR_TEST_SORT}
     ${DIR_TEST_OTHER}
