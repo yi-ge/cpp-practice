@@ -130,6 +130,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [字符串中的第一个唯一字符](src/array/first_unique_character_in_a_string.cpp)  [队列, 哈希表, 字符串, 计数]
+
+  - LeetCode 387. 字符串中的第一个唯一字符 <https://leetcode.cn/problems/first-unique-character-in-a-string/>
+
 - [矩阵置零](src/array/set_matrix_zeroes.cpp)  [数组, 哈希表, 矩阵]
 
   - LeetCode 73. 矩阵置零 <https://leetcode.cn/problems/set-matrix-zeroes>
