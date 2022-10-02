@@ -211,6 +211,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 树
 
+- [翻转二叉树](src/tree/invert_binary_tree.cpp)  [树, 深度优先搜索, 广度优先搜索, 二叉树]
+
+  - LeetCode 226. 翻转二叉树 <https://leetcode.cn/problems/invert-binary-tree/>
+
 - [二叉树的最大深度](src/tree/maximum_depth_of_binary_tree.cpp)  [树, 深度优先搜索, 广度优先搜索, 二叉树]
 
   - LeetCode 104. 二叉树的最大深度 <https://leetcode.cn/problems/maximum-depth-of-binary-tree/>
