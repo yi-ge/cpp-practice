@@ -13,7 +13,8 @@ TEST(两数之和_IV, findTarget) {
   // 示例 2：
   // 输入: root = [5,3,6,2,4,null,7], k = 28
   // 输出: false
+  Solution solution2;
   vector<int> treeNodes2 = {5, 3, 6, 2, 4, NULL, 7};
   TreeNode *root2 = createTree(treeNodes2);
-  EXPECT_FALSE(solution.findTarget(root2, 28));
+  EXPECT_FALSE(solution2.findTarget(root2, 28));
 }
