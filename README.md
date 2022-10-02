@@ -297,6 +297,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 排序
 
+- [合并两个有序链表](src/sort/merge_two_sorted_lists.cpp)  [递归, 链表]
+
+  - LeetCode 21. 合并两个有序链表 <https://leetcode.cn/problems/merge-two-sorted-lists/>
+
 ### 其它
 
 - [赎金信](src/map/ransom_note.cpp)  [哈希表, 字符串, 计数]
