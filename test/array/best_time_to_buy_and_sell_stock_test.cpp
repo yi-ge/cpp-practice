@@ -10,7 +10,7 @@ TEST(买卖股票的最佳时机, maxProfit) {
   //      因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。
   Solution solution;
   vector<int> prices = {7, 1, 5, 3, 6, 4};
-  EXPECT_EQ(solution.maxProfit(prices), 1);
+  EXPECT_EQ(solution.maxProfit(prices), 5);
 
   // 示例 2：
   // 输入：prices = [7,6,4,3,1]
