@@ -130,6 +130,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [矩阵置零](src/array/set_matrix_zeroes.cpp)  [数组, 哈希表, 矩阵]
+
+  - LeetCode 73. 矩阵置零 <https://leetcode.cn/problems/set-matrix-zeroes>
+
 - [杨辉三角](src/array/pascals_triangle.cpp)  [数组, 动态规划]
 
   - LeetCode 118. 杨辉三角 <https://leetcode.cn/problems/pascals-triangle>
