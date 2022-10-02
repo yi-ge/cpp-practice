@@ -211,6 +211,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 树
 
+- [两数之和 IV](src/tree/two_sum_iv_input_is_a_bst.cpp)  [树, 深度优先搜索, 广度优先搜索, 二叉搜索树, 哈希表, 双指针, 二叉树]
+
+  - LeetCode 653. 两数之和 IV <https://leetcode.cn/problems/two-sum-iv-input-is-a-bst/>
+
 - [验证二叉搜索树](src/tree/validate_binary_search_tree.cpp)  [树, 深度优先搜索, 二叉搜索树, 二叉树]
 
   - LeetCode 98. 验证二叉搜索树 <https://leetcode.cn/problems/validate-binary-search-tree/>
