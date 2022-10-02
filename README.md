@@ -130,6 +130,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [买卖股票的最佳时机](src/array/best_time_to_buy_and_sell_stock.cpp)  [数组, 动态规划]
+
+  - LeetCode 121. 买卖股票的最佳时机 <https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/>
+
 - [删除某些元素后的数组均值](src/array/mean_of_array_after_removing_some_elements.cpp)  [数组, 排序]
 
   - LeetCode 1619. 删除某些元素后的数组均值 <https://leetcode.cn/problems/mean-of-array-after-removing-some-elements/>
