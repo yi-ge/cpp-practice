@@ -211,6 +211,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 树
 
+- [二叉搜索树中的搜索](src/tree/search_in_a_binary_search_tree.cpp)  [树, 二叉搜索树, 二叉树]
+
+  - LeetCode 700. 二叉搜索树中的搜索 <https://leetcode.cn/problems/search-in-a-binary-search-tree/>
+
 - [路径总和](src/tree/path_sum.cpp)  [树, 深度优先搜索, 广度优先搜索, 二叉树]
 
   - LeetCode 112. 路径总和 <https://leetcode.cn/problems/path-sum/>
