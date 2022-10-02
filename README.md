@@ -116,6 +116,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 字符串
 
+- [在LR字符串中交换相邻字符](src/string/swap_adjacent_in_lr_string.cpp)  [双指针, 字符串]
+
+  - LeetCode 777. 在LR字符串中交换相邻字符 <https://leetcode.cn/problems/swap-adjacent-in-lr-string>
+
 - [重新排列单词间的空格](src/string/rearrange_spaces_between_words.cpp)  [字符串]
 
   - LeetCode 1592. 重新排列单词间的空格 <https://leetcode.cn/problems/rearrange-spaces-between-words>

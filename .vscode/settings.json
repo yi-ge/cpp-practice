@@ -145,8 +145,13 @@
     "networkidle",
     "osascript",
     "repost",
+    "RXXLRXRXL",
     "STREQ",
-    "Subseq"
+    "Subseq",
+    "XRLXRXRXL",
+    "XRLXXRRLX",
+    "XRLXXRRXL",
+    "XRXLRXRXL"
   ],
   "clangd.checkUpdates": true
 }
