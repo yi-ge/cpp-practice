@@ -116,6 +116,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 字符串
 
+- [检查二进制字符串字段](src/string/check_if_binary_string_has_at_most_one_segment_of_ones.cpp)  [字符串]
+
+  - LeetCode 1784. 检查二进制字符串字段 <https://leetcode.cn/problems/check-if-binary-string-has-at-most-one-segment-of-ones/>
+
 - [在LR字符串中交换相邻字符](src/string/swap_adjacent_in_lr_string.cpp)  [双指针, 字符串]
 
   - LeetCode 777. 在LR字符串中交换相邻字符 <https://leetcode.cn/problems/swap-adjacent-in-lr-string>
