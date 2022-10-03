@@ -10,7 +10,7 @@ void printTree(TreeNode *root) {
 
 TreeNode *createTree(vector<int> &nodes, const int index) {
   TreeNode *root = nullptr;
-
+  // printf("%d - %d\n", nodes.size(), index);
   if (index < nodes.size() && nodes[index] != NULL) {
     root = new TreeNode(nodes[index]);
     root->left = createTree(nodes, index * 2 + 1);
@@ -114,7 +114,7 @@ TreeNode *stringToTree(string treeStr) {
     pos = strs.find(
         delim,
         i); // pos为分隔符第一次出现的位置，从i到pos之前的字符串是分隔出来的字符串
-    if (pos < size) { //如果查找到，如果没有查找到分隔符，pos为string::npos
+    if (pos < size) { // 如果查找到，如果没有查找到分隔符，pos为string::npos
       string s = strs.substr(i, pos - i); // 从i开始长度为pos-i的子字符串
       // printf("%s-", s.c_str());
       if (s == "null]" || s == "null,") {

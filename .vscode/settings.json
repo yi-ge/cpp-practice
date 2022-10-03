@@ -134,6 +134,7 @@
     "gcov",
     "Gtest",
     "hhllo",
+    "inorder",
     "killall",
     "lcov",
     "LDFLAGS",
