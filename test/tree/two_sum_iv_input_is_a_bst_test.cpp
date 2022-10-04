@@ -18,4 +18,8 @@ TEST(两数之和_IV, findTarget) {
   Solution *solution2 = new Solution();
   EXPECT_FALSE(solution2->findTarget(root, 28));
   delete solution2;
+
+  Solution *solution3 = new Solution();
+  EXPECT_FALSE(solution3->findTarget(root, 1));
+  delete solution3;
 }
