@@ -307,6 +307,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 其它
 
+- [第一个出现两次的字母](src/map/first_letter_to_appear_twice.cpp)  [哈希表, 字符串, 计数]
+
+  - LeetCode 2351. 第一个出现两次的字母 <https://leetcode.cn/problems/first-letter-to-appear-twice>
+
 - [赎金信](src/map/ransom_note.cpp)  [哈希表, 字符串, 计数]
 
   - LeetCode 383. 赎金信 <https://leetcode.cn/problems/ransom-note/>
