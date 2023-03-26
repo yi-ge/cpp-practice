@@ -31,7 +31,7 @@ C++ 基础算法、数据结构练习，包含 LeetCode 或其它算法练习记
 ### MAC
 
 ```bash
-brew install cmake node yarn llvm ninja
+brew install cmake node yarn llvm ninja lcov
 
 echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc
 echo 'export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"' >> ~/.zshrc
@@ -133,6 +133,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
   - LeetCode 1408. 数组中的字符串匹配 <https://leetcode.cn/problems/string-matching-in-an-array>
 
 ### 数组/队列/集合/映射
+
+- [和相等的子数组](src/array/find_subarrays_with_equal_sum.cpp)  [数组, 哈希表]
+
+  - LeetCode 2395. 和相等的子数组 <https://leetcode.cn/problems/find-subarrays-with-equal-sum>
 
 - [字符串中的第一个唯一字符](src/array/first_unique_character_in_a_string.cpp)  [队列, 哈希表, 字符串, 计数]
 
