@@ -338,3 +338,7 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [旋转数字](src/math/rotated_digits.cpp)  [数学, 动态规划]
 
   - LeetCode 788. 旋转数字 <https://leetcode.cn/problems/rotated-digits>
+
+- [统计字典序元音字符串的数目](src/math/count_sorted_vowel_strings.cpp)  [数学, 动态规划, 组合数学]
+
+  - LeetCode 1641. 统计字典序元音字符串的数目 <https://leetcode.cn/problems/count-sorted-vowel-strings>
