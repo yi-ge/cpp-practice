@@ -116,6 +116,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 字符串
 
+- [隐藏个人信息](src/string/masking_personal_information.cpp)  [字符串]
+
+  - LeetCode 831. 隐藏个人信息 <https://leetcode.cn/problems/masking-personal-information>
+
 - [检查二进制字符串字段](src/string/check_if_binary_string_has_at_most_one_segment_of_ones.cpp)  [字符串]
 
   - LeetCode 1784. 检查二进制字符串字段 <https://leetcode.cn/problems/check-if-binary-string-has-at-most-one-segment-of-ones/>
