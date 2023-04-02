@@ -138,6 +138,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [多边形三角剖分的最低得分](src/array/minimum_score_triangulation_of_polygon.cpp)  [数组, 动态规划]
+
+  - LeetCode 1039. 多边形三角剖分的最低得分 <https://leetcode.cn/problems/minimum-score-triangulation-of-polygon>
+
 - [算术三元组的数目](src/array/number_of_arithmetic_triplets.cpp)  [数组, 哈希表, 双指针, 枚举]
 
   - LeetCode 2367. 算术三元组的数目 <https://leetcode.cn/problems/number-of-arithmetic-triplets>
