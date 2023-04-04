@@ -138,6 +138,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [合并石头的最低成本](src/array/minimum_cost_to_merge_stones.cpp)  [数组, 动态规划]
+
+  - LeetCode 1000. 合并石头的最低成本 <https://leetcode.cn/problems/minimum-cost-to-merge-stones>
+
 - [交换一次的先前排列](src/array/previous_permutation_with_one_swap.cpp)  [贪心, 数组]
 
   - LeetCode 1053. 交换一次的先前排列 <https://leetcode.cn/problems/previous-permutation-with-one-swap>
