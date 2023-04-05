@@ -370,3 +370,7 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [公因子的数目](src/math/number_of_common_factors.cpp)  [数学, 枚举, 数论]
 
   - LeetCode 2427. 公因子的数目 <https://leetcode.cn/problems/number-of-common-factors>
+
+- [负二进制转换](src/math/convert_to_base_2.cpp)  [数学]
+
+  - LeetCode 1017. 负二进制转换 <https://leetcode.cn/problems/convert-to-base-2>
