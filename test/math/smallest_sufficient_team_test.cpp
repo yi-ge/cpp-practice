@@ -7,7 +7,7 @@ TEST(最小的必要团队, smallestSufficientTeam) {
   vector<string> req_skills1 = {"java", "nodejs", "reactjs"};
   vector<vector<string>> people1 = {
       {"java"}, {"nodejs"}, {"nodejs", "reactjs"}};
-  vector<int> expected_output1 = {0, 2};
+  vector<int> expected_output1 = {2, 0};
   Solution solution;
   EXPECT_EQ(solution.smallestSufficientTeam(req_skills1, people1),
             expected_output1);
@@ -27,7 +27,7 @@ TEST(最小的必要团队, smallestSufficientTeam) {
       {"csharp", "math"},
       {"aws", "java"},
   };
-  vector<int> expected_output2 = {1, 2};
+  vector<int> expected_output2 = {2, 1};
   EXPECT_EQ(solution.smallestSufficientTeam(req_skills2, people2),
             expected_output2);
 }
