@@ -229,6 +229,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 栈
 
+- [链表中的下一个更大节点](src/stack/next_greater_node_in_linked_list.cpp)  [栈, 数组, 链表, 单调栈]
+
+  - LeetCode 1019. 链表中的下一个更大节点 <https://leetcode.cn/problems/next-greater-node-in-linked-list>
+
 - [用栈实现队列](src/stack/implement_queue_using_stacks.cpp)  [栈, 设计, 队列]
 
   - LeetCode 232. 用栈实现队列 <https://leetcode.cn/problems/implement-queue-using-stacks/>
