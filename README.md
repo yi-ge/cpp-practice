@@ -390,3 +390,7 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [最小的必要团队](src/math/smallest_sufficient_team.cpp)  [位运算, 数组, 动态规划, 状态压缩]
 
   - LeetCode 1125. 最小的必要团队 <https://leetcode.cn/problems/smallest-sufficient-team>
+
+- [困于环中的机器人](src/math/robot_bounded_in_circle.cpp)  [数学, 字符串, 模拟]
+
+  - LeetCode 1041. 困于环中的机器人 <https://leetcode.cn/problems/robot-bounded-in-circle>
