@@ -116,6 +116,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 字符串
 
+- [段式回文](src/string/longest_chunked_palindrome_decomposition.cpp)  [贪心, 双指针, 字符串, 动态规划, 哈希函数, 滚动哈希]
+
+  - LeetCode 1147. 段式回文 <https://leetcode.cn/problems/longest-chunked-palindrome-decomposition>
+
 - [隐藏个人信息](src/string/masking_personal_information.cpp)  [字符串]
 
   - LeetCode 831. 隐藏个人信息 <https://leetcode.cn/problems/masking-personal-information>
