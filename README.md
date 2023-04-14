@@ -255,6 +255,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 树
 
+- [驼峰式匹配](src/tree/camelcase_matching.cpp)  [字典树, 双指针, 字符串, 字符串匹配]
+
+  - LeetCode 1023. 驼峰式匹配 <https://leetcode.cn/problems/camelcase-matching>
+
 - [二叉搜索树的最近公共祖先](src/tree/lowest_common_ancestor_of_a_binary_search_tree.cpp)  [树, 深度优先搜索, 二叉搜索树, 二叉树]
 
   - LeetCode 235. 二叉搜索树的最近公共祖先 <https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/>
