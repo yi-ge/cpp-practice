@@ -339,6 +339,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 图
 
+- [不邻接植花](src/graphs/flower_planting_with_no_adjacent.cpp)  [深度优先搜索, 广度优先搜索, 图]
+
+  - LeetCode 1042. 不邻接植花 <https://leetcode.cn/problems/flower-planting-with-no-adjacent>
+
 - [找到小镇的法官](src/graphs/find_the_town_judge.cpp)  [图, 数组, 哈希表]
 
   - LeetCode 997. 找到小镇的法官 <https://leetcode.cn/problems/find-the-town-judge>
