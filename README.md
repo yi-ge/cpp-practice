@@ -142,6 +142,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [子数组中占绝大多数的元素](src/array/online_majority_element_in_subarray.cpp)  [设计, 树状数组, 线段树, 数组, 二分查找]
+
+  - LeetCode 1157. 子数组中占绝大多数的元素 <https://leetcode.cn/problems/online-majority-element-in-subarray>
+
 - [出现最频繁的偶数元素](src/array/most_frequent_even_element.cpp)  [数组, 哈希表, 计数]
 
   - LeetCode 2404. 出现最频繁的偶数元素 <https://leetcode.cn/problems/most-frequent-even-element>
