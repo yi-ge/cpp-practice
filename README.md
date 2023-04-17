@@ -414,3 +414,7 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [困于环中的机器人](src/math/robot_bounded_in_circle.cpp)  [数学, 字符串, 模拟]
 
   - LeetCode 1041. 困于环中的机器人 <https://leetcode.cn/problems/robot-bounded-in-circle>
+
+- [统计共同度过的日子数](src/math/count_days_spent_together.cpp)  [数学, 字符串]
+
+  - LeetCode 2409. 统计共同度过的日子数 <https://leetcode.cn/problems/count-days-spent-together>
