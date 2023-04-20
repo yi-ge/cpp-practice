@@ -361,6 +361,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 排序
 
+- [使数组严格递增](src/sort/make_array_strictly_increasing.cpp)  [数组, 二分查找, 动态规划, 排序]
+
+  - LeetCode 1187. 使数组严格递增 <https://leetcode.cn/problems/make-array-strictly-increasing>
+
 - [移动石子直到连续 II](src/sort/moving_stones_until_consecutive_ii.cpp)  [数组, 数学, 双指针, 排序]
 
   - LeetCode 1040. 移动石子直到连续 II <https://leetcode.cn/problems/moving-stones-until-consecutive-ii>
