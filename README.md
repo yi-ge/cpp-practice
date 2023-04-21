@@ -430,3 +430,7 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [统计共同度过的日子数](src/math/count_days_spent_together.cpp)  [数学, 字符串]
 
   - LeetCode 2409. 统计共同度过的日子数 <https://leetcode.cn/problems/count-days-spent-together>
+
+- [最小偶倍数](src/math/smallest_even_multiple.cpp)  [数学, 数论]
+
+  - LeetCode 2413. 最小偶倍数 <https://leetcode.cn/problems/smallest-even-multiple>
