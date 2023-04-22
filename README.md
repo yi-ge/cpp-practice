@@ -31,7 +31,7 @@ C++ 基础算法、数据结构练习，包含 LeetCode 或其它算法练习记
 ### MAC
 
 ```bash
-brew install cmake node yarn llvm ninja
+brew install cmake node yarn llvm ninja lcov
 
 echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc
 echo 'export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"' >> ~/.zshrc
@@ -116,6 +116,14 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 字符串
 
+- [段式回文](src/string/longest_chunked_palindrome_decomposition.cpp)  [贪心, 双指针, 字符串, 动态规划, 哈希函数, 滚动哈希]
+
+  - LeetCode 1147. 段式回文 <https://leetcode.cn/problems/longest-chunked-palindrome-decomposition>
+
+- [隐藏个人信息](src/string/masking_personal_information.cpp)  [字符串]
+
+  - LeetCode 831. 隐藏个人信息 <https://leetcode.cn/problems/masking-personal-information>
+
 - [检查二进制字符串字段](src/string/check_if_binary_string_has_at_most_one_segment_of_ones.cpp)  [字符串]
 
   - LeetCode 1784. 检查二进制字符串字段 <https://leetcode.cn/problems/check-if-binary-string-has-at-most-one-segment-of-ones/>
@@ -137,6 +145,42 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [最长等差数列](src/array/longest_arithmetic_subsequence.cpp)  [数组, 哈希表, 二分查找, 动态规划]
 
   - LeetCode 1027. 最长等差数列 <https://leetcode.cn/problems/longest-arithmetic-subsequence>
+  
+- [分隔数组以得到最大和](src/array/partition_array_for_maximum_sum.cpp)  [数组, 动态规划]
+
+  - LeetCode 1043. 分隔数组以得到最大和 <https://leetcode.cn/problems/partition-array-for-maximum-sum>
+
+- [子数组中占绝大多数的元素](src/array/online_majority_element_in_subarray.cpp)  [设计, 树状数组, 线段树, 数组, 二分查找]
+
+  - LeetCode 1157. 子数组中占绝大多数的元素 <https://leetcode.cn/problems/online-majority-element-in-subarray>
+
+- [出现最频繁的偶数元素](src/array/most_frequent_even_element.cpp)  [数组, 哈希表, 计数]
+
+  - LeetCode 2404. 出现最频繁的偶数元素 <https://leetcode.cn/problems/most-frequent-even-element>
+
+- [检查相同字母间的距离](src/array/check_distances_between_same_letters.cpp)  [数组, 哈希表, 字符串]
+
+  - LeetCode 2399. 检查相同字母间的距离 <https://leetcode.cn/problems/check-distances-between-same-letters>
+
+- [合并石头的最低成本](src/array/minimum_cost_to_merge_stones.cpp)  [数组, 动态规划]
+
+  - LeetCode 1000. 合并石头的最低成本 <https://leetcode.cn/problems/minimum-cost-to-merge-stones>
+
+- [交换一次的先前排列](src/array/previous_permutation_with_one_swap.cpp)  [贪心, 数组]
+
+  - LeetCode 1053. 交换一次的先前排列 <https://leetcode.cn/problems/previous-permutation-with-one-swap>
+
+- [多边形三角剖分的最低得分](src/array/minimum_score_triangulation_of_polygon.cpp)  [数组, 动态规划]
+
+  - LeetCode 1039. 多边形三角剖分的最低得分 <https://leetcode.cn/problems/minimum-score-triangulation-of-polygon>
+
+- [算术三元组的数目](src/array/number_of_arithmetic_triplets.cpp)  [数组, 哈希表, 双指针, 枚举]
+
+  - LeetCode 2367. 算术三元组的数目 <https://leetcode.cn/problems/number-of-arithmetic-triplets>
+
+- [和相等的子数组](src/array/find_subarrays_with_equal_sum.cpp)  [数组, 哈希表]
+
+  - LeetCode 2395. 和相等的子数组 <https://leetcode.cn/problems/find-subarrays-with-equal-sum>
 
 - [字符串中的第一个唯一字符](src/array/first_unique_character_in_a_string.cpp)  [队列, 哈希表, 字符串, 计数]
 
@@ -205,6 +249,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 栈
 
+- [链表中的下一个更大节点](src/stack/next_greater_node_in_linked_list.cpp)  [栈, 数组, 链表, 单调栈]
+
+  - LeetCode 1019. 链表中的下一个更大节点 <https://leetcode.cn/problems/next-greater-node-in-linked-list>
+
 - [用栈实现队列](src/stack/implement_queue_using_stacks.cpp)  [栈, 设计, 队列]
 
   - LeetCode 232. 用栈实现队列 <https://leetcode.cn/problems/implement-queue-using-stacks/>
@@ -218,6 +266,14 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
   - LeetCode 32. 最长有效括号 <https://leetcode.cn/problems/longest-valid-parentheses/>
 
 ### 树
+
+- [节点与其祖先之间的最大差值](src/tree/maximum_difference_between_node_and_ancestor.cpp)  [树, 深度优先搜索, 二叉树]
+
+  - LeetCode 1026. 节点与其祖先之间的最大差值 <https://leetcode.cn/problems/maximum-difference-between-node-and-ancestor>
+
+- [驼峰式匹配](src/tree/camelcase_matching.cpp)  [字典树, 双指针, 字符串, 字符串匹配]
+
+  - LeetCode 1023. 驼峰式匹配 <https://leetcode.cn/problems/camelcase-matching>
 
 - [二叉搜索树的最近公共祖先](src/tree/lowest_common_ancestor_of_a_binary_search_tree.cpp)  [树, 深度优先搜索, 二叉搜索树, 二叉树]
 
@@ -299,17 +355,37 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 图
 
+- [不邻接植花](src/graphs/flower_planting_with_no_adjacent.cpp)  [深度优先搜索, 广度优先搜索, 图]
+
+  - LeetCode 1042. 不邻接植花 <https://leetcode.cn/problems/flower-planting-with-no-adjacent>
+
 - [找到小镇的法官](src/graphs/find_the_town_judge.cpp)  [图, 数组, 哈希表]
 
   - LeetCode 997. 找到小镇的法官 <https://leetcode.cn/problems/find-the-town-judge>
 
 ### 排序
 
+- [使数组严格递增](src/sort/make_array_strictly_increasing.cpp)  [数组, 二分查找, 动态规划, 排序]
+
+  - LeetCode 1187. 使数组严格递增 <https://leetcode.cn/problems/make-array-strictly-increasing>
+
+- [移动石子直到连续 II](src/sort/moving_stones_until_consecutive_ii.cpp)  [数组, 数学, 双指针, 排序]
+
+  - LeetCode 1040. 移动石子直到连续 II <https://leetcode.cn/problems/moving-stones-until-consecutive-ii>
+
+- [两点之间不包含任何点的最宽垂直区域](src/sort/widest_vertical_area_between_two_points_containing_no_points.cpp)  [数组, 排序]
+
+  - LeetCode 1637. 两点之间不包含任何点的最宽垂直区域 <https://leetcode.cn/problems/widest-vertical-area-between-two-points-containing-no-points>
+
 - [合并两个有序链表](src/sort/merge_two_sorted_lists.cpp)  [递归, 链表]
 
   - LeetCode 21. 合并两个有序链表 <https://leetcode.cn/problems/merge-two-sorted-lists/>
 
 ### 其它
+
+- [第一个出现两次的字母](src/map/first_letter_to_appear_twice.cpp)  [哈希表, 字符串, 计数]
+
+  - LeetCode 2351. 第一个出现两次的字母 <https://leetcode.cn/problems/first-letter-to-appear-twice>
 
 - [赎金信](src/map/ransom_note.cpp)  [哈希表, 字符串, 计数]
 
@@ -334,3 +410,31 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [旋转数字](src/math/rotated_digits.cpp)  [数学, 动态规划]
 
   - LeetCode 788. 旋转数字 <https://leetcode.cn/problems/rotated-digits>
+
+- [统计字典序元音字符串的数目](src/math/count_sorted_vowel_strings.cpp)  [数学, 动态规划, 组合数学]
+
+  - LeetCode 1641. 统计字典序元音字符串的数目 <https://leetcode.cn/problems/count-sorted-vowel-strings>
+
+- [公因子的数目](src/math/number_of_common_factors.cpp)  [数学, 枚举, 数论]
+
+  - LeetCode 2427. 公因子的数目 <https://leetcode.cn/problems/number-of-common-factors>
+
+- [负二进制转换](src/math/convert_to_base_2.cpp)  [数学]
+
+  - LeetCode 1017. 负二进制转换 <https://leetcode.cn/problems/convert-to-base-2>
+
+- [最小的必要团队](src/math/smallest_sufficient_team.cpp)  [位运算, 数组, 动态规划, 状态压缩]
+
+  - LeetCode 1125. 最小的必要团队 <https://leetcode.cn/problems/smallest-sufficient-team>
+
+- [困于环中的机器人](src/math/robot_bounded_in_circle.cpp)  [数学, 字符串, 模拟]
+
+  - LeetCode 1041. 困于环中的机器人 <https://leetcode.cn/problems/robot-bounded-in-circle>
+
+- [统计共同度过的日子数](src/math/count_days_spent_together.cpp)  [数学, 字符串]
+
+  - LeetCode 2409. 统计共同度过的日子数 <https://leetcode.cn/problems/count-days-spent-together>
+
+- [最小偶倍数](src/math/smallest_even_multiple.cpp)  [数学, 数论]
+
+  - LeetCode 2413. 最小偶倍数 <https://leetcode.cn/problems/smallest-even-multiple>
