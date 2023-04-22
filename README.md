@@ -134,6 +134,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [最长等差数列](src/array/longest_arithmetic_subsequence.cpp)  [数组, 哈希表, 二分查找, 动态规划]
+
+  - LeetCode 1027. 最长等差数列 <https://leetcode.cn/problems/longest-arithmetic-subsequence>
+
 - [字符串中的第一个唯一字符](src/array/first_unique_character_in_a_string.cpp)  [队列, 哈希表, 字符串, 计数]
 
   - LeetCode 387. 字符串中的第一个唯一字符 <https://leetcode.cn/problems/first-unique-character-in-a-string/>
