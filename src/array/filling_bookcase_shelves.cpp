@@ -1,4 +1,3 @@
-
 // 填充书架
 // https://leetcode.cn/problems/filling-bookcase-shelves
 // INLINE  ../../images/array/filling_bookcase_shelves.jpeg
