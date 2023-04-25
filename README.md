@@ -373,6 +373,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 排序
 
+- [按身高排序](src/sort/sort_the_people.cpp)  [数组, 哈希表, 字符串, 排序]
+
+  - LeetCode 2418. 按身高排序 <https://leetcode.cn/problems/sort-the-people>
+
 - [使数组严格递增](src/sort/make_array_strictly_increasing.cpp)  [数组, 二分查找, 动态规划, 排序]
 
   - LeetCode 1187. 使数组严格递增 <https://leetcode.cn/problems/make-array-strictly-increasing>
