@@ -287,6 +287,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 树
 
+- [通知所有员工所需的时间](src/tree/time_needed_to_inform_all_employees.cpp)  [树, 深度优先搜索, 广度优先搜索]
+
+  - LeetCode 1376. 通知所有员工所需的时间 <https://leetcode.cn/problems/time-needed-to-inform-all-employees>
+
 - [节点与其祖先之间的最大差值](src/tree/maximum_difference_between_node_and_ancestor.cpp)  [树, 深度优先搜索, 二叉树]
 
   - LeetCode 1026. 节点与其祖先之间的最大差值 <https://leetcode.cn/problems/maximum-difference-between-node-and-ancestor>
