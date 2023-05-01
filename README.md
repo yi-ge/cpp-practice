@@ -78,15 +78,25 @@ sudo update-alternatives --config c++
 
 ### Windows
 
-安装最新版cmake: <https://cmake.org/download/>和[Node.js](https://nodejs.org)。
+执行`winget install CMake`安装最新版`cmake`。
 
-执行`winget install Ninja-build.Ninja`安装`ninja`。
+执行`winget install Node.js`安装最新版`node`。
+
+执行`winget install Ninja-build.Ninja`安装最新版`ninja`。
+
+安装`LLVM`，方法一：
+
+执行`winget install --id LLVM.LLVM`安装最新版`LLVM`，并将`C:\Program Files\LLVM\bin`路径添加到系统`Path`。
+
+安装`LLVM`，方法二：
 
 安装 **Visual Studio 2022**，并在`Visual Studio Installer`勾选`使用C++的桌面开发`中的`适用于Windows的C++ Clang工具`（15.0.1+）。
 
-在`VSCode`的Cmake插件选择`Clang 15.0.1 (GNU CLI) for MSVC 17.5.33530.505`。或者手动执行的时候使用对应版本的`llvm clang`。
+安装`LLVM`后，在`VSCode`的`Cmake Tools`插件选择`active kit`版本为`Clang`，例如：`Clang 16.0.1 x86_64-pc-windows-msvc`或`Clang 15.0.1 (GNU CLI) for MSVC 17.5.33530.505`。或者手动执行的时候使用对应版本的`llvm clang`。
 
-安装完成后执行`yarn`安装依赖。
+需要特别注意的是，在Windows平台，Microsoft Visual Studio的MSVC标准库和LLVM的Clang标准库之间可能会产生冲突。“_subborrow_u64”函数在两个库中都定义，编译器无法确定使用哪一个。
+
+上述安装完成后执行`yarn`安装依赖。
 
 ## 基础排序算法
 
