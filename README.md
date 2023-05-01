@@ -80,9 +80,11 @@ sudo update-alternatives --config c++
 
 安装最新版cmake: <https://cmake.org/download/>和[Node.js](https://nodejs.org)。
 
-安装 **Visual Studio 2022**，并在`Visual Studio Installer`勾选`使用C++的桌面开发`中的`适用于Windows的C++ Clang工具`（13.0.1+）。
+执行`winget install Ninja-build.Ninja`安装`ninja`。
 
-在`VSCode`的Cmake插件选择`Clang 13.0.1+(GUN CLI) for MSVC 17.x.32630.192+ (Visual Studio Professional 2022 Release - amd64)`。或者手动执行的时候使用对应版本的`llvm clang`。
+安装 **Visual Studio 2022**，并在`Visual Studio Installer`勾选`使用C++的桌面开发`中的`适用于Windows的C++ Clang工具`（15.0.1+）。
+
+在`VSCode`的Cmake插件选择`Clang 15.0.1 (GNU CLI) for MSVC 17.5.33530.505`。或者手动执行的时候使用对应版本的`llvm clang`。
 
 安装完成后执行`yarn`安装依赖。
 
@@ -406,6 +408,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
   - LeetCode 21. 合并两个有序链表 <https://leetcode.cn/problems/merge-two-sorted-lists/>
 
 ### 其它
+
+- [删除字符使频率相同](src/map/remove_letter_to_equalize_frequency.cpp)  [哈希表, 字符串, 计数]
+
+  - LeetCode 2423. 删除字符使频率相同 <https://leetcode.cn/problems/remove-letter-to-equalize-frequency>
 
 - [第一个出现两次的字母](src/map/first_letter_to_appear_twice.cpp)  [哈希表, 字符串, 计数]
 

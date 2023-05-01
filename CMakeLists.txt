@@ -158,8 +158,15 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   set(CMAKE_CXX_FLAGS
       "${CMAKE_CXX_FLAGS} -fno-inline -O0 -fprofile-arcs -ftest-coverage")
 
-  add_custom_target(myCustomTarget COMMAND find ${CMAKE_BINARY_DIR} -name
-                                           \*.gcda -delete)
+  # add_custom_target(myCustomTarget COMMAND find ${CMAKE_BINARY_DIR} -name
+  #                                          \*.gcda -delete)
+  if(WIN32)
+    add_custom_target(myCustomTarget COMMAND powershell -Command "Get-ChildItem -Path ${CMAKE_BINARY_DIR} -Recurse -Include *.gcda | Remove-Item -Force" || exit 0)
+  else()
+    add_custom_target(myCustomTarget COMMAND find ${CMAKE_BINARY_DIR} -name
+                                              \*.gcda -exec rm -f {} \; || true)
+  endif()
+
   add_dependencies(${PROJECT_NAME} myCustomTarget)
 
 else()
