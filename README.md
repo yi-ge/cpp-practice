@@ -423,6 +423,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 其它
 
+- [强整数](src/map/powerful_integers.cpp)  [哈希表, 数学]
+
+  - LeetCode 970. 强整数 <https://leetcode.cn/problems/powerful-integers>
+
 - [删除字符使频率相同](src/map/remove_letter_to_equalize_frequency.cpp)  [哈希表, 字符串, 计数]
 
   - LeetCode 2423. 删除字符使频率相同 <https://leetcode.cn/problems/remove-letter-to-equalize-frequency>
