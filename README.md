@@ -94,7 +94,7 @@ sudo update-alternatives --config c++
 
 安装`LLVM`后，在`VSCode`的`Cmake Tools`插件选择`active kit`版本为`Clang`，例如：`Clang 16.0.1 x86_64-pc-windows-msvc`或`Clang 15.0.1 (GNU CLI) for MSVC 17.5.33530.505`。或者手动执行的时候使用对应版本的`llvm clang`。
 
-需要特别注意的是，在Windows平台，Microsoft Visual Studio的MSVC标准库和LLVM的Clang标准库之间可能会产生冲突。“_subborrow_u64”函数在两个库中都定义，编译器无法确定使用哪一个。
+需要特别注意的是，在Windows平台，Microsoft Visual Studio的MSVC标准库和LLVM的Clang标准库之间可能会产生冲突，需要根据具体情况进行调整。
 
 上述安装完成后执行`yarn`安装依赖。
 
