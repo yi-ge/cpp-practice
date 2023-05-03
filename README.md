@@ -277,6 +277,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 栈
 
+- [检查替换后的词是否有效](src/stack/check_if_word_is_valid_after_substitutions.cpp)  [栈, 字符串]
+
+  - LeetCode 1003. 检查替换后的词是否有效 <https://leetcode.cn/problems/check-if-word-is-valid-after-substitutions>
+
 - [餐盘栈](src/stack/dinner_plate_stacks.cpp)  [栈, 设计, 哈希表, 堆（优先队列）]
 
   - LeetCode 1172. 餐盘栈 <https://leetcode.cn/problems/dinner-plate-stacks>
