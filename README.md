@@ -158,6 +158,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [处理用时最长的那个任务的员工](src/array/the_employee_that_worked_on_the_longest_task.cpp)  [数组]
+
+  - LeetCode 2432. 处理用时最长的那个任务的员工 <https://leetcode.cn/problems/the-employee-that-worked-on-the-longest-task>
+
 - [摘水果](src/array/maximum_fruits_harvested_after_at_most_k_steps.cpp)  [数组, 二分查找, 前缀和, 滑动窗口]
 
   - LeetCode 2106. 摘水果 <https://leetcode.cn/problems/maximum-fruits-harvested-after-at-most-k-steps>
