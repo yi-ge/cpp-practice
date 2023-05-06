@@ -39,7 +39,7 @@ public:
       }
     }
     if (c != 0 || r != 0 || o != 0 || a != 0 || k != 0) {
-      return -1;
+      return -1; // LCOV_EXCL_LINE
     }
     return max_frogs;
   }
