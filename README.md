@@ -128,6 +128,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 字符串
 
+- [数青蛙](src/string/minimum_number_of_frogs_croaking.cpp)  [字符串, 计数]
+
+  - LeetCode 1419. 数青蛙 <https://leetcode.cn/problems/minimum-number-of-frogs-croaking>
+
 - [按字典序排在最后的子串](src/string/last_substring_in_lexicographical_order.cpp)  [双指针, 字符串]
 
   - LeetCode 1163. 按字典序排在最后的子串 <https://leetcode.cn/problems/last-substring-in-lexicographical-order>
@@ -157,6 +161,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
   - LeetCode 1408. 数组中的字符串匹配 <https://leetcode.cn/problems/string-matching-in-an-array>
 
 ### 数组/队列/集合/映射
+
+- [总持续时间可被 60 整除的歌曲](src/array/pairs_of_songs_with_total_durations_divisible_by_60.cpp)  [数组, 哈希表, 计数]
+
+  - LeetCode 1010. 总持续时间可被 60 整除的歌曲 <https://leetcode.cn/problems/pairs-of-songs-with-total-durations-divisible-by-60>
 
 - [处理用时最长的那个任务的员工](src/array/the_employee_that_worked_on_the_longest_task.cpp)  [数组]
 
