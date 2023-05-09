@@ -1,4 +1,5 @@
 #include <string/number_of_valid_clock_times.cpp>
+
 TEST(有效时间的数目, countTime) {
   // 示例 1：
   // 输入：time = "?5:00"

@@ -16,15 +16,19 @@ TEST(强整数, powerfulIntegers) {
   int x = 2;
   int y = 3;
   int bound = 10;
-  vector<int> result = {10, 2, 4, 3, 5, 7, 9};
-  EXPECT_EQ(solution.powerfulIntegers(x, y, bound), result);
+  vector<int> result = {2, 3, 4, 5, 7, 9, 10};
+  auto res = solution.powerfulIntegers(x, y, bound);
+  sort(res.begin(), res.end());
+  EXPECT_EQ(result, res);
 
-  // 示例 2：
+  // 示例 2：
   // 输入：x = 3, y = 5, bound = 15
   // 输出：[2,4,6,8,10,14]
   x = 3;
   y = 5;
   bound = 15;
-  result = {10, 2, 14, 6, 4, 8};
-  EXPECT_EQ(solution.powerfulIntegers(x, y, bound), result);
+  result = {2, 4, 6, 8, 10, 14};
+  res = solution.powerfulIntegers(x, y, bound);
+  sort(res.begin(), res.end());
+  EXPECT_EQ(result, res);
 }
