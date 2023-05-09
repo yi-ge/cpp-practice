@@ -128,6 +128,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 字符串
 
+- [有效时间的数目](src/string/number_of_valid_clock_times.cpp)  [字符串, 枚举]
+
+  - LeetCode 2437. 有效时间的数目 <https://leetcode.cn/problems/number-of-valid-clock-times>
+
 - [数青蛙](src/string/minimum_number_of_frogs_croaking.cpp)  [字符串, 计数]
 
   - LeetCode 1419. 数青蛙 <https://leetcode.cn/problems/minimum-number-of-frogs-croaking>
