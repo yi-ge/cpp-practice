@@ -7,11 +7,13 @@
 class Solution {
 public:
   bool queryString(string s, int n) {
-    for (int i = n; i > n / 2; --i) {
-      if (s.find(bitset<32>(i).to_string().substr(32 - log2(i))) ==
-          string::npos) {
+    while (n > 0) {
+      std::string binary = std::bitset<32>(n).to_string();
+      size_t pos = binary.find('1');
+      if (s.find(binary.substr(pos)) == std::string::npos) {
         return false;
       }
+      n--;
     }
     return true;
   }
