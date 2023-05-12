@@ -128,6 +128,14 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 字符串
 
+- [子串能表示从 1 到 N 数字的二进制串](src/string/binary_string_with_substrings_representing_1_to_n.cpp)  [字符串]
+
+  - LeetCode 1016. 子串能表示从 1 到 N 数字的二进制串 <https://leetcode.cn/problems/binary-string-with-substrings-representing-1-to-n>
+
+- [有效时间的数目](src/string/number_of_valid_clock_times.cpp)  [字符串, 枚举]
+
+  - LeetCode 2437. 有效时间的数目 <https://leetcode.cn/problems/number-of-valid-clock-times>
+
 - [数青蛙](src/string/minimum_number_of_frogs_croaking.cpp)  [字符串, 计数]
 
   - LeetCode 1419. 数青蛙 <https://leetcode.cn/problems/minimum-number-of-frogs-croaking>
@@ -161,6 +169,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
   - LeetCode 1408. 数组中的字符串匹配 <https://leetcode.cn/problems/string-matching-in-an-array>
 
 ### 数组/队列/集合/映射
+
+- [翻转子数组得到最大的数组值](src/array/reverse_subarray_to_maximize_array_value.cpp)  [贪心, 数组, 数学]
+
+  - LeetCode 1330. 翻转子数组得到最大的数组值 <https://leetcode.cn/problems/reverse-subarray-to-maximize-array-value>
 
 - [总持续时间可被 60 整除的歌曲](src/array/pairs_of_songs_with_total_durations_divisible_by_60.cpp)  [数组, 哈希表, 计数]
 
@@ -446,6 +458,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
   - LeetCode 21. 合并两个有序链表 <https://leetcode.cn/problems/merge-two-sorted-lists/>
 
 ### 其它
+
+- [可被 K 整除的最小整数](src/map/smallest_integer_divisible_by_k.cpp)  [哈希表, 数学]
+
+  - LeetCode 1015. 可被 K 整除的最小整数 <https://leetcode.cn/problems/smallest-integer-divisible-by-k>
 
 - [推箱子](src/search/minimum_moves_to_move_a_box_to_their_target_location.cpp)  [广度优先搜索, 数组, 矩阵, 堆（优先队列）]
 
