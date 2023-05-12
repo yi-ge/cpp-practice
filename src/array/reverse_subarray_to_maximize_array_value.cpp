@@ -2,6 +2,7 @@
 // https://leetcode.cn/problems/reverse-subarray-to-maximize-array-value
 // INLINE  ../../images/array/reverse_subarray_to_maximize_array_value.jpeg
 // 题目理解有难度。
+// 推荐题解：https://leetcode.cn/problems/reverse-subarray-to-maximize-array-value/solution/bu-hui-hua-jian-qing-kan-zhe-pythonjavac-c2s6/
 #include <headers.hpp>
 
 class Solution {
