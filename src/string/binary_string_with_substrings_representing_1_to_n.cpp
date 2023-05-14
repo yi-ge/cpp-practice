@@ -2,6 +2,7 @@
 // https://leetcode.cn/problems/binary-string-with-substrings-representing-1-to-n
 // INLINE
 // ../../images/string/binary_string_with_substrings_representing_1_to_n.jpeg
+#include <bitset>
 #include <headers.hpp>
 
 class Solution {
