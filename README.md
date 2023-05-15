@@ -170,6 +170,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [按列翻转得到最大值等行数](src/array/flip_columns_for_maximum_number_of_equal_rows.cpp)  [数组, 哈希表, 矩阵]
+
+  - LeetCode 1072. 按列翻转得到最大值等行数 <https://leetcode.cn/problems/flip-columns-for-maximum-number-of-equal-rows>
+
 - [翻转子数组得到最大的数组值](src/array/reverse_subarray_to_maximize_array_value.cpp)  [贪心, 数组, 数学]
 
   - LeetCode 1330. 翻转子数组得到最大的数组值 <https://leetcode.cn/problems/reverse-subarray-to-maximize-array-value>
