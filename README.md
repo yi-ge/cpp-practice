@@ -170,6 +170,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [工作计划的最低难度](src/array/minimum_difficulty_of_a_job_schedule.cpp)  [数组, 动态规划]
+
+  - LeetCode 1335. 工作计划的最低难度 <https://leetcode.cn/problems/minimum-difficulty-of-a-job-schedule>
+
 - [按列翻转得到最大值等行数](src/array/flip_columns_for_maximum_number_of_equal_rows.cpp)  [数组, 哈希表, 矩阵]
 
   - LeetCode 1072. 按列翻转得到最大值等行数 <https://leetcode.cn/problems/flip-columns-for-maximum-number-of-equal-rows>
