@@ -170,6 +170,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [判断两个事件是否存在冲突](src/array/determine_if_two_events_have_conflict.cpp)  [数组, 字符串]
+
+  - LeetCode 2446. 判断两个事件是否存在冲突 <https://leetcode.cn/problems/determine-if-two-events-have-conflict>
+
 - [工作计划的最低难度](src/array/minimum_difficulty_of_a_job_schedule.cpp)  [数组, 动态规划]
 
   - LeetCode 1335. 工作计划的最低难度 <https://leetcode.cn/problems/minimum-difficulty-of-a-job-schedule>
