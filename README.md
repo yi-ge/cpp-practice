@@ -170,6 +170,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [负二进制数相加](src/array/adding_two_negabinary_numbers.cpp)  [数组, 数学]
+
+  - LeetCode 1073. 负二进制数相加 <https://leetcode.cn/problems/adding-two-negabinary-numbers>
+
 - [判断两个事件是否存在冲突](src/array/determine_if_two_events_have_conflict.cpp)  [数组, 字符串]
 
   - LeetCode 2446. 判断两个事件是否存在冲突 <https://leetcode.cn/problems/determine-if-two-events-have-conflict>
