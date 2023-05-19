@@ -479,6 +479,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 其它
 
+- [活字印刷](src/map/letter_tile_possibilities.cpp)  [哈希表, 字符串, 回溯, 计数]
+
+  - LeetCode 1079. 活字印刷 <https://leetcode.cn/problems/letter-tile-possibilities>
+
 - [可被 K 整除的最小整数](src/map/smallest_integer_divisible_by_k.cpp)  [哈希表, 数学]
 
   - LeetCode 1015. 可被 K 整除的最小整数 <https://leetcode.cn/problems/smallest-integer-divisible-by-k>
