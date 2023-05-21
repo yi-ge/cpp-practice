@@ -170,6 +170,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [蓄水](src/array/store_water.cpp)  [贪心, 数组, 堆（优先队列）]
+
+  - LeetCode LCP 33. 蓄水 <https://leetcode.cn/problems/o8SXZn>
+
 - [负二进制数相加](src/array/adding_two_negabinary_numbers.cpp)  [数组, 数学]
 
   - LeetCode 1073. 负二进制数相加 <https://leetcode.cn/problems/adding-two-negabinary-numbers>
