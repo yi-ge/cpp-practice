@@ -181,6 +181,8 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
 
   if(WIN32)
     add_custom_target(myCustomTarget COMMAND powershell -Command "Get-ChildItem -Path ${CMAKE_BINARY_DIR} -Recurse -Include *.gcda | Remove-Item -Force" || exit 0)
+    # add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
+    # add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
   else()
     add_custom_target(myCustomTarget COMMAND find ${CMAKE_BINARY_DIR} -name
                                            \*.gcda -delete)

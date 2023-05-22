@@ -194,5 +194,6 @@
     "XRLXXRRXL",
     "XRXLRXRXL"
   ],
-  "clangd.checkUpdates": true
+  "clangd.checkUpdates": true,
+  "cmake.outputLogEncoding": "utf8"
 }
