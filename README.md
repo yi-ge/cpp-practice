@@ -472,6 +472,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 排序
 
+- [受标签影响的最大值](src/sort/largest_values_from_labels.cpp)  [贪心, 数组, 哈希表, 计数, 排序]
+
+  - LeetCode 1090. 受标签影响的最大值 <https://leetcode.cn/problems/largest-values-from-labels>
+
 - [距离相等的条形码](src/sort/distant_barcodes.cpp)  [贪心, 数组, 哈希表, 计数, 排序, 堆（优先队列）]
 
   - LeetCode 1054. 距离相等的条形码 <https://leetcode.cn/problems/distant-barcodes>
