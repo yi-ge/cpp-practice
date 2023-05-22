@@ -20,7 +20,7 @@ struct TreeNode {
 void printTree(TreeNode *root);
 
 TreeNode *createTree(vector<int> &nodes);
-TreeNode *createTree(vector<int> &nodes, const int index);
+// TreeNode *createTree(vector<int> &nodes, const int index);
 
 TreeNode *createTreeCycle(vector<int> &nodes);
 
@@ -29,3 +29,5 @@ vector<int> treeToVec(TreeNode *root);
 string treeToString(TreeNode *node);
 
 TreeNode *stringToTree(string treeStr);
+
+bool isTreeEqual(TreeNode *t1, TreeNode *t2);

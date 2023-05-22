@@ -41,8 +41,13 @@ TEST(树lib, createTree) {
   vector<int> treeVec2 = {};
   EXPECT_EQ(createTree(treeVec2), nullptr);
 
-  vector<int> treeVec4 = {};
-  EXPECT_EQ(createTree(treeVec4, 1), nullptr);
+  vector<int> treeVec4 = {1, 2, 3, 4, NULL, NULL, 7, 8, 9, NULL, 14};
+  vector<int> treeVec5 = {1, 2,    3,    4,    NULL, NULL, 7, 8,
+                          9, NULL, NULL, NULL, NULL, NULL, 14};
+
+  treeStr = treeToString(createTree(treeVec4));
+  rootStr = treeToString(createTree(treeVec5));
+  EXPECT_STREQ(treeStr.c_str(), rootStr.c_str());
 
   delete tree;
   delete root;
@@ -143,4 +148,44 @@ TEST(树lib, stringToTree) {
   EXPECT_THAT(treeResVec3, ::testing::ContainerEq(treeVec3));
 
   delete tree3;
+}
+
+TEST(树lib, isTreeEqual) {
+  // Test Case 1: Two identical trees
+  vector<int> treeNodes1 = {1, 2,   3,   4,  -99, -99, 7, 8,
+                            9, -99, -99, 12, 13,  -99, 14};
+  TreeNode *tree1 = createTree(treeNodes1);
+  TreeNode *tree2 = createTree(treeNodes1);
+  EXPECT_TRUE(isTreeEqual(tree1, tree2));
+
+  // Test Case 2: Different root values
+  vector<int> treeNodes2 = {5, 2,   3,   4,  -99, -99, 7, 8,
+                            9, -99, -99, 12, 13,  -99, 14};
+  TreeNode *tree3 = createTree(treeNodes2);
+  EXPECT_FALSE(isTreeEqual(tree1, tree3));
+
+  // Test Case 3: Different subtrees
+  vector<int> treeNodes3 = {1,  2,   3,   4,  -99, -99, 7, 8,
+                            10, -99, -99, 12, 13,  -99, 14};
+  TreeNode *tree4 = createTree(treeNodes3);
+  EXPECT_FALSE(isTreeEqual(tree1, tree4));
+
+  // Test Case 4: One tree is nullptr
+  TreeNode *tree5 = nullptr;
+  EXPECT_FALSE(isTreeEqual(tree1, tree5));
+  EXPECT_FALSE(isTreeEqual(tree5, tree1));
+
+  // Test Case 5: Both trees are nullptr
+  TreeNode *tree6 = nullptr;
+  EXPECT_TRUE(isTreeEqual(tree5, tree6));
+
+  // Test Case 6: 存在省略情况的两棵树
+  vector<int> treeVec1 = {1, 2, 3, 4, NULL, NULL, 7, 8, 9, NULL, 14};
+  vector<int> treeVec2 = {1, 2,    3,    4,    NULL, NULL, 7, 8,
+                          9, NULL, NULL, NULL, NULL, NULL, 14};
+  TreeNode *tree7 = createTree(treeVec1);
+  TreeNode *tree8 = createTree(treeVec2);
+  printTree(tree7);
+  printTree(tree8);
+  EXPECT_FALSE(isTreeEqual(tree7, tree8));
 }

@@ -8,19 +8,98 @@ void printTree(TreeNode *root) {
   printer.print();
 }
 
-TreeNode *createTree(vector<int> &nodes, const int index) {
-  TreeNode *root = nullptr;
-  // printf("%d - %d\n", nodes.size(), index);
-  if (index < nodes.size() && nodes[index] != NULL) {
-    root = new TreeNode(nodes[index]);
-    root->left = createTree(nodes, index * 2 + 1);
-    root->right = createTree(nodes, index * 2 + 2);
+TreeNode *createTree(vector<int> &nodes) {
+  if (nodes.empty())
+    return nullptr;
+
+  TreeNode *root = new TreeNode(nodes[0]);
+  queue<TreeNode *>
+      q; // 使用一个额外的 vector 让 createTree 函数支持省略连续 NULL 节点的功能
+  q.push(root);
+
+  for (size_t i = 1; i < nodes.size();) {
+    TreeNode *node = q.front();
+    q.pop();
+
+    if (nodes[i] != NULL) {
+      node->left = new TreeNode(nodes[i]);
+      q.push(node->left);
+    }
+    ++i;
+
+    if (i < nodes.size() && nodes[i] != NULL) {
+      node->right = new TreeNode(nodes[i]);
+      q.push(node->right);
+    }
+    ++i;
   }
 
   return root;
 } // LCOV_EXCL_LINE
 
-TreeNode *createTree(vector<int> &nodes) { return createTree(nodes, 0); }
+// 不支持省略连续 NULL 节点
+// TreeNode *createTree(vector<int> &nodes, const int index) {
+//   TreeNode *root = nullptr;
+//   // printf("%d - %d\n", nodes.size(), index);
+//   if (index < nodes.size() && nodes[index] != NULL) {
+//     root = new TreeNode(nodes[index]);
+//     root->left = createTree(nodes, index * 2 + 1);
+//     root->right = createTree(nodes, index * 2 + 2);
+//   }
+
+//   return root;
+// } // LCOV_EXCL_LINE
+
+// TreeNode *createTree(vector<int> &nodes) { return createTree(nodes, 0); }
+
+// 错误写法：
+// TreeNode *createTreeRecursive(const vector<int> &nodes, int index) {
+//   if (index >= nodes.size() || nodes[index] == NULL) {
+//     return nullptr;
+//   }
+
+//   TreeNode *node = new TreeNode(nodes[index]);
+//   node->left = createTreeRecursive(nodes, 2 * index + 1);
+//   node->right = createTreeRecursive(nodes, 2 * index + 2);
+
+//   return node;
+// } // LCOV_EXCL_LINE
+
+// TreeNode *createTree(const vector<int> &nodes) {
+//   return createTreeRecursive(nodes, 0);
+// }
+
+// 非递归写法：
+// // Helper function to create a binary tree from a given vector<int>
+// TreeNode *createTree(vector<int> &nodes) {
+//   if (nodes.empty() || nodes[0] == NULL) {
+//     return nullptr;
+//   }
+
+//   TreeNode *root = new TreeNode(nodes[0]);
+//   std::queue<TreeNode *> q;
+//   q.push(root);
+
+//   size_t i = 1;
+//   while (!q.empty() && i < nodes.size()) {
+//     TreeNode *current = q.front();
+//     q.pop();
+
+//     if (nodes[i] != NULL) {
+//       current->left = new TreeNode(nodes[i]);
+//       q.push(current->left);
+//     }
+//     i++;
+
+//     if (i < nodes.size() && nodes[i] != NULL) {
+//       current->right = new TreeNode(nodes[i]);
+//       q.push(current->right);
+//     }
+//     i++;
+//   }
+
+//   return root;
+// }
 
 TreeNode *createTreeCycle(vector<int> &values) {
   if (values.empty()) {
@@ -128,4 +207,15 @@ TreeNode *stringToTree(string treeStr) {
 
   TreeNode *root = createTreeCycle(nodes);
   return root;
+}
+
+// Helper function isTreeEqual to check if two binary trees are equal.
+bool isTreeEqual(TreeNode *t1, TreeNode *t2) {
+  if (t1 == nullptr && t2 == nullptr)
+    return true;
+  if (t1 == nullptr || t2 == nullptr)
+    return false;
+
+  return (t1->val == t2->val) && isTreeEqual(t1->left, t2->left) &&
+         isTreeEqual(t1->right, t2->right);
 }
