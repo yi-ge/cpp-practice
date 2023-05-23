@@ -10,6 +10,20 @@
 namespace fs = std::filesystem;
 
 std::string exec_and_capture(const std::string &cmd) {
+  // 获取当前系统的环境变量 PATH
+  char *pathBuffer = nullptr;
+  size_t pathBufferSize = 0;
+  _dupenv_s(&pathBuffer, &pathBufferSize, "PATH");
+
+  if (pathBuffer == nullptr || pathBufferSize == 0) {
+    throw std::runtime_error("_dupenv_s() failed!");
+  }
+
+  std::string path(pathBuffer);
+
+  // 在 cmd 命令前加上 “SET PATH=<path> &&”
+  std::string modifiedCmd = "SET PATH=" + path + " && " + cmd;
+
   std::array<char, 128> buffer;
   std::string result;
   std::unique_ptr<FILE, decltype(&_pclose)> pipe(
@@ -25,6 +39,15 @@ std::string exec_and_capture(const std::string &cmd) {
 }
 
 int main(int argc, char *argv[]) {
+  // Get the absolute path of the binary file
+  fs::path binAbsolutePath = fs::absolute(argv[0]);
+
+  // Get the path to the binary's directory
+  fs::path binDirectoryPath = binAbsolutePath.parent_path();
+
+  // Set the working directory to the binary's directory
+  fs::current_path(binDirectoryPath);
+
   // Check for valid arguments count:
   if (argc < 2) {
     std::cerr << "Usage: " << argv[0] << " <command> [args...]" << std::endl;

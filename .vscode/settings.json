@@ -163,6 +163,7 @@
     "DCMAKE",
     "dearmour",
     "deque",
+    "dupenv",
     "emibcn",
     "esac",
     "gcov",
