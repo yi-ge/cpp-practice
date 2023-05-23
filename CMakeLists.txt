@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.23.0 FATAL_ERROR)
 project(
   cpp-practice
-  VERSION 0.1.0
+  VERSION 0.1.1
   LANGUAGES CXX)
 
 message(${CMAKE_SYSTEM_NAME}: ${CMAKE_CXX_COMPILER})
@@ -17,6 +17,7 @@ set(CMAKE_BUILD_TYPE Debug)
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 set(USE_CUSTOM_LIBC OFF)
+
 # set STDLIB use libstdc++ or libc++
 if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
   set(STDLIB libc++)
@@ -92,8 +93,8 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   include(ClangModule)
   include(ExternalProjects)
   include(GoogleTest)
-  include(CTest)
-  include(CPack)
+  # include(CTest)
+  # include(CPack)
 
   include_directories(include)
   include_directories(src)
@@ -179,16 +180,41 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   set(CMAKE_CXX_FLAGS
       "${CMAKE_CXX_FLAGS} -fno-inline -O0 -fprofile-arcs -ftest-coverage")
 
-  if(WIN32)
-    add_custom_target(myCustomTarget COMMAND powershell -Command "Get-ChildItem -Path ${CMAKE_BINARY_DIR} -Recurse -Include *.gcda | Remove-Item -Force" || exit 0)
-    # add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
-    # add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
-  else()
-    add_custom_target(myCustomTarget COMMAND find ${CMAKE_BINARY_DIR} -name
-                                           \*.gcda -delete)
-  endif()
+  # coverage target
+  # add_custom_target(test_with_script
+  #   COMMAND ${CMAKE_CTEST_COMMAND} --verbose
+  #   COMMAND_IF_ERROR ${CMAKE_CTEST_COMMAND} --verbose
+  #   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  # )
 
-  add_dependencies(${PROJECT_NAME} myCustomTarget)
+  # macro(COMMAND_IF_ERROR command)
+  #   if(${CMAKE_COMMANDS_PROCESSING})
+  #     execute_process(
+  #       COMMAND ${command}
+  #       RESULT_VARIABLE result
+  #       WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+  #     )
+  #     if(result EQUAL 0)
+  #       add_custom_command(TARGET test_with_script
+  #         POST_BUILD
+  #         COMMAND ${CMAKE_COMMAND} --build . --target run_post_test_script
+  #         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  #       )
+  #     endif()
+  #   endif()
+  # endmacro()
+
+  # COMMAND_IF_ERROR(${CMAKE_CTEST_COMMAND} --verbose)
+
+
+  # if(WIN32)
+  #   add_custom_target(myCustomTarget COMMAND powershell -Command "Get-ChildItem -Path ${CMAKE_BINARY_DIR} -Recurse -Include *.gcda | Remove-Item -Force" || exit 0)
+  # else()
+  #   add_custom_target(myCustomTarget COMMAND find ${CMAKE_BINARY_DIR} -name
+  #                                          \*.gcda -delete)
+  # endif()
+
+  # add_dependencies(${PROJECT_NAME} run_post_test_script myCustomTarget)
 
 else()
 

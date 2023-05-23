@@ -19,7 +19,7 @@ C++ 基础算法、数据结构练习，包含 LeetCode 或其它算法练习记
 
 ## 测试环境
 
-如果你使用VSCode进行开发，那么可以安装[CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)和[clangd](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd)以获得更好的单元测试体验。
+如果你使用VSCode进行开发，那么可以安装[CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)、[clangd](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd)和[C++ TestMate](https://marketplace.visualstudio.com/items?itemName=matepek.vscode-catch2-test-adapter)以获得更好的单元测试体验。
 
 注意，由于此项目使用LLVM，因此推荐使用与之对应的[clangd](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd)插件，所以您不应当再安装[C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)插件。
 
@@ -33,10 +33,11 @@ brew install cmake node yarn llvm ninja lcov
 echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc
 echo 'export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"' >> ~/.zshrc
 echo 'export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"' >> ~/.zshrc
-
 ```
 
 安装完成后执行`yarn`安装依赖。
+
+在`VSCode`的`Cmake Tools`插件选择`active kit`为`Clang`。
 
 ### Linux
 
@@ -55,7 +56,7 @@ sudo chmod +x cmake-3.23.2-linux-x86_64.sh
 sudo ./cmake-3.23.2-linux-x86_64.sh --prefix=/usr
 ```
 
-以Kali Rolling(Debian)为例，安装LLVM 14：
+以Kali Rolling(Debian)为例，安装LLVM 15：
 
 ```bash
 # 如果是2022版本，不需要加载源，默认可以安装LLVM 15
@@ -71,7 +72,7 @@ sudo update-alternatives --config c++
 
 安装完成后执行`yarn`安装依赖。
 
-如果使用VSCode进行开发，需要安装`clangd`以及对应的插件。
+在`VSCode`的`Cmake Tools`插件选择`active kit`为`Clang`。
 
 ### Windows
 

@@ -14,7 +14,7 @@ uNames=$(uname -s)
 osName=${uNames:0:4}
 
 # 删除与当前单元测试无关的.gcda文件
-find build -name "*.gcda" -not -path "*flip_columns_for_maximum_number_of_equal_rows*" -exec rm {} \;
+# find build -name "*.gcda" -not -path "*flip_columns_for_maximum_number_of_equal_rows*" -exec rm {} \;
 
 # 设置临时覆盖率文件路径
 TMP_COVERAGE_FILE=${COVERAGE_FOLDER}/${COVERAGE_FILE}_tmp

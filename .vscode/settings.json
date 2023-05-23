@@ -1,27 +1,37 @@
 {
   "testMate.cpp.test.advancedExecutables": [
     {
-      "pattern": "{build,Build,BUILD,out,Out,OUT}/cpp-practice",
+      "pattern": "{build,Build,BUILD}/cpp-practice{,.exe}",
       "cwd": "${workspaceFolder}",
       "env": {
-        "TEST": "true",
-        "ExampleENV1": "You can use variables here too, like ${absPath}",
-        "BASE_FILE_NAME": "${baseFilename}"
+        "TEST": "true"
       },
-      // "runTask": {
-      //   "before": ["npm: beforeTest"],
-      //   "after": ["npm: coverage"]
-      // }
+      "runTask": {
+        "before": ["npm: beforeTest"]
+      },
       "executionWrapper": {
-        "path": "python3",
+        "path": "${workspaceFolder}/scripts/unix-wrapper.sh",
         "args": [
-          "${workspaceFolder}/scripts/exe-wrapper.py",
           "-c",
-          "\"${cmd}\" ${argsStr} 2>&1"
+          "\"${cmd}\" ${argsStr} 2>&1 | tee ${workspaceFolder}/build/output.log"
         ]
+      },
+      "win32": {
+        "executionWrapper": {
+          "path": "powershell",
+          "args": [
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "${workspaceFolder}/scripts/windows-wrapper.ps1",
+            "-commandLine",
+            "\"${cmd}\" ${argsStr} 2>&1 | Tee-Object -FilePath ${workspaceFolder}/build/output.log"
+          ]
+        }
       }
     }
   ],
+  "testMate.cpp.log.logpanel": true,
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {
@@ -205,5 +215,10 @@
     "XRXLRXRXL"
   ],
   "clangd.checkUpdates": true,
-  "cmake.outputLogEncoding": "utf8"
+  "cmake.outputLogEncoding": "utf8",
+  "cmake.statusbar.advanced": {
+    "ctest": {
+      "visibility": "hidden"
+    }
+  }
 }

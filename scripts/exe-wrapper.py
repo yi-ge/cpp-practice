@@ -1,33 +1,23 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-
+import os
 import sys
 import subprocess
-import re
 
-def main():
-    print("ok")
-    # test_name = None
-    # for idx, arg in enumerate(sys.argv):
-    #     if arg == "--" and len(sys.argv) > idx + 1:
-    #         test_name = sys.argv[idx + 1]
-    #         break
+cmd = sys.argv[1]
+args = sys.argv[2:]
 
-    # cmd = ["cargo"] + sys.argv[1:]
-    # print("Executing command:", " ".join(cmd))
-    # result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
-    # print(result.stdout)
+# 执行命令
+process = subprocess.Popen([cmd, *args], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
-    # test_result_pattern = re.compile(r"test result: ok.*failed;")
+# 获取命令输出和错误信息
+stdout, stderr = process.communicate()
 
-    # if test_result_pattern.search(result.stdout):
-    #     coverage_cmd = ["cargo", "xtask", "coverage"]
-    #     if test_name:
-    #         coverage_cmd.extend(["name="+test_name])
-    #     print("Executing command:", " ".join(coverage_cmd))
-    #     coverage_result = subprocess.run(coverage_cmd)
-    # else:
-    #     print("Failed test cases found. Skipping cargo xtask coverage.")
+# 将输出写入文件
+with open("/Users/yige/Project/cpp-practice/output.log", "a") as log_file:
+    log_file.write(stdout)
+    log_file.write(stderr)
 
-if __name__ == "__main__":
-    main()
+# 在终端上显示输出
+sys.stdout.write(stdout)
+sys.stderr.write(stderr)

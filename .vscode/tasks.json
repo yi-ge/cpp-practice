@@ -15,7 +15,7 @@
       "group": "test",
       "problemMatcher": [],
       "label": "npm: beforeTest",
-      "detail": "npm run build && ./scripts/before-test.sh"
+      "detail": "build before test"
     },
     {
       "type": "npm",
