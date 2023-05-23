@@ -18,20 +18,12 @@
       },
       "win32": {
         "executionWrapper": {
-          "path": "powershell",
-          "args": [
-            "-ExecutionPolicy",
-            "Bypass",
-            "-File",
-            "${workspaceFolder}/scripts/windows-wrapper.ps1",
-            "-commandLine",
-            "\"${cmd}\" ${argsStr} 2>&1 | Tee-Object -FilePath ${workspaceFolder}/build/output.log"
-          ]
+          "path": "${workspaceFolder}/scripts/executionWrapper.exe",
+          "args": ["\"${cmd}\"", "${argsStr}"]
         }
       }
     }
   ],
-  "testMate.cpp.log.logpanel": true,
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {
