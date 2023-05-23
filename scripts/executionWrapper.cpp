@@ -63,6 +63,9 @@ int main(int argc, char *argv[]) {
     }
   }
 
+  // 在此处移除命令及其参数的外部引号（如有），注意，仅适用于没有空格的文件名和路径，否则仍然需要用双引号来处理带有空格的路径。
+  cmd.erase(remove(cmd.begin(), cmd.end(), '\"'), cmd.end());
+
   // Execute command and capture output:
   std::string output = exec_and_capture(cmd);
 
