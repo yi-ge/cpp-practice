@@ -16,6 +16,7 @@
   "scripts": {
     "prebuild": "cmake --no-warn-unused-cli -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_BUILD_TYPE:STRING=Debug -S . -B build -G Ninja",
     "build": "cmake --build build --config Debug --target all --",
+    "beforeTest": "npm run build && ./scripts/before-test.sh",
     "test": "npm run build && node ./scripts/test.cjs",
     "coverage": "./scripts/coverage.sh",
     "start": "lcp c++"

@@ -4,10 +4,12 @@
       "pattern": "{build,Build,BUILD,out,Out,OUT}/cpp-practice",
       "cwd": "${workspaceFolder}",
       "env": {
-        "TEST": "true"
+        "TEST": "true",
+        "ExampleENV1": "You can use variables here too, like ${absPath}",
+        "BASE_FILE_NAME": "${baseFilename}"
       },
       "runTask": {
-        "before": ["npm: build"],
+        "before": ["npm: beforeTest"],
         "after": ["npm: coverage"]
       }
     }

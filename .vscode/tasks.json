@@ -11,6 +11,14 @@
     },
     {
       "type": "npm",
+      "script": "beforeTest",
+      "group": "test",
+      "problemMatcher": [],
+      "label": "npm: beforeTest",
+      "detail": "npm run build && ./scripts/before-test.sh"
+    },
+    {
+      "type": "npm",
       "script": "coverage",
       "problemMatcher": [],
       "label": "npm: coverage",
