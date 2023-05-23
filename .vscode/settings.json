@@ -8,9 +8,17 @@
         "ExampleENV1": "You can use variables here too, like ${absPath}",
         "BASE_FILE_NAME": "${baseFilename}"
       },
-      "runTask": {
-        "before": ["npm: beforeTest"],
-        "after": ["npm: coverage"]
+      // "runTask": {
+      //   "before": ["npm: beforeTest"],
+      //   "after": ["npm: coverage"]
+      // }
+      "executionWrapper": {
+        "path": "python3",
+        "args": [
+          "${workspaceFolder}/scripts/exe-wrapper.py",
+          "-c",
+          "\"${cmd}\" ${argsStr} 2>&1"
+        ]
       }
     }
   ],
