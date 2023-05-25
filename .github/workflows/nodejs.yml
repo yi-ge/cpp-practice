@@ -58,7 +58,7 @@ jobs:
 
       - name: Publish Test Results
         id: test-results
-        run: node scripts/test-results.cjs
+        run: node scripts/ci-test-result-parse.cjs
         if: always()
 
       - name: Set badge color

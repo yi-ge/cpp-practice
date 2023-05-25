@@ -22,11 +22,19 @@
       "script": "coverage",
       "problemMatcher": [],
       "label": "npm: coverage",
-      "detail": "./scripts/coverage.sh",
+      "detail": "run coverage script",
       "group": {
         "kind": "test",
         "isDefault": true
       }
+    },
+    {
+      "type": "npm",
+      "script": "afterTest",
+      "group": "test",
+      "problemMatcher": [],
+      "label": "npm: afterTest",
+      "detail": "run after test script"
     }
   ]
 }

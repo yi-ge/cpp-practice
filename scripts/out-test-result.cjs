@@ -25,8 +25,8 @@ test.stdout.on('data', (data) => {
         failed
       }
     }
-    fs.writeFileSync(join(__dirname, '../build/testResult.json'), JSON.stringify(res), 'utf-8')
-    // fs.writeFileSync(join(__dirname, '../build/testResult.json'), JSON.stringify(res, null, 2), 'utf-8')
+    fs.writeFileSync(join(__dirname, '../build/test-result.json'), JSON.stringify(res), 'utf-8')
+    // fs.writeFileSync(join(__dirname, '../build/test-result.json'), JSON.stringify(res, null, 2), 'utf-8')
     console.log(`总计：${tests}个测试，${String(Number(tests) - Number(failed))}个通过，${failed}个失败。`)
     process.exit(0)
   }

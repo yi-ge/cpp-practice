@@ -7,7 +7,8 @@
         "TEST": "true"
       },
       "runTask": {
-        "before": ["npm: beforeTest"]
+        "before": ["npm: beforeTest"],
+        "after": ["npm: afterTest"]
       },
       "executionWrapper": {
         "path": "${workspaceFolder}/scripts/unix-wrapper.sh",
@@ -143,6 +144,7 @@
     "absbs",
     "andymckay",
     "antaprezatepzapreanta",
+    "armv",
     "backgrounding",
     "Barcodes",
     "bbab",
@@ -171,6 +173,7 @@
     "GGLLGGX",
     "ghiabcdefhelloadamhelloabcdefghi",
     "GLRGLRGLR",
+    "grcov",
     "GRGRGRGR",
     "Gtest",
     "hhllo",

@@ -1,4 +1,7 @@
-// 编译命令：clang++ -std=c++17 -o grcovDownloader.exe .\grcovDownloader.cpp
+// 编译命令（Windows）：
+// clang++ -std=c++17 -o grcovDownloader.exe .\grcovDownloader.cpp
+// 编译命令（*unix）：
+// clang++ -std=c++17 -o grcovDownloader .\grcovDownloader.cpp
 // 编写C++17标准的代码实现grcov的可执行文件下载。
 // 仅允许使用标准库，使用llvm编译，可以在 macOS、Linux 和 Windows
 // 平台上编译和运行。
@@ -119,7 +122,9 @@ std::string get_architecture() {
 
   if (arch.find("x86_64") != std::string::npos) {
     return "x86_64";
-  } else if (arch.find("aarch64") != std::string::npos) {
+  } else if (arch.find("aarch64") != std::string::npos ||
+             arch.find("arm64") != std::string::npos ||
+             arch.find("armv8") != std::string::npos) {
     return "aarch64";
   } else {
     throw std::runtime_error("Unsupported architecture");

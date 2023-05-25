@@ -11,25 +11,24 @@
   "keywords": [
     "practice",
     "arithmetic",
-    "c++"
+    "c++",
+    "clang",
+    "cpp"
   ],
   "scripts": {
     "prebuild": "cmake --no-warn-unused-cli -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_BUILD_TYPE:STRING=Debug -S . -B build -G Ninja",
     "build": "cmake --build build --config Debug --target all --",
     "beforeTest": "npm run build",
-    "test": "npm run build && node ./scripts/test.cjs",
-    "coverage": "./scripts/coverage.sh",
-    "start": "lcp c++"
+    "test": "npm run build && node ./scripts/out-test-result.cjs",
+    "afterTest": "node ./scripts/after-test.cjs",
+    "coverage": "node ./scripts/coverage.cjs",
+    "start": "lcp c++",
+    "postinstall": "node ./scripts/postinstall.cjs"
   },
   "dependencies": {
-    "lcov-parse": "^1.0.0",
     "leetcode-test-helper": "^0.4.4",
     "puppeteer": "^15.3.0",
     "puppeteer-extra": "^3.3.1",
-    "puppeteer-extra-plugin-stealth": "^2.10.2",
-    "ts-node": "^10.8.2"
-  },
-  "devDependencies": {
-    "typescript": "^4.7.4"
+    "puppeteer-extra-plugin-stealth": "^2.10.2"
   }
 }

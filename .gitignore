@@ -31,6 +31,8 @@
 *.out
 *.app
 grcov.exe
+grcov
+grcovDownloader
 
 # Build
 /Build
