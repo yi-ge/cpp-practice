@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [20.2.x]
 
     steps:
       - uses: actions/checkout@v3
@@ -28,13 +28,13 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
-      - name: Install LLVM 15 and lcov
+      - name: Install LLVM 16 and lcov
         run: |
           rm -rf build
           wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | sudo apt-key add -
-          sudo add-apt-repository 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-15 main' -y
+          sudo add-apt-repository 'deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-16 main' -y
           sudo apt-get update -q
-          sudo apt-get install -y clang-15 llvm-15 lld-15 libc++-15-dev libc++abi-15-dev clang-tools-15 lcov binutils ninja-build
+          sudo apt-get install -y clang-16 llvm-16 lld-16 libc++-16-dev libc++abi-16-dev clang-tools-16 clang-16-doc wasi-libc llvm-16-doc binutils ninja-build
           wget https://github.com/Kitware/CMake/releases/download/v3.24.1/cmake-3.24.1-linux-x86_64.sh
           sudo chmod +x cmake-3.24.1-linux-x86_64.sh
           sudo ./cmake-3.24.1-linux-x86_64.sh --prefix=/usr --skip-license
@@ -45,16 +45,16 @@ jobs:
         env:
           CI: true
           NODE_ENV: test
-          CC: clang-15
-          CXX: clang++-15
+          CC: clang-16
+          CXX: clang++-16
 
       - name: Generate coverage
         run: yarn coverage
         env:
           CI: true
           NODE_ENV: test
-          CC: clang-15
-          CXX: clang++-15
+          CC: clang-16
+          CXX: clang++-16
 
       - name: Publish Test Results
         id: test-results

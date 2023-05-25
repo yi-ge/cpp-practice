@@ -41,32 +41,35 @@ echo 'export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"' >> ~/.zshrc
 
 ### Linux
 
-参考<https://apt.llvm.org/>安装LLVM 15(clang-15)。
+参考<https://apt.llvm.org/>安装LLVM 16(clang-16)。
 
-以Ubuntu 20.04为例，安装LLVM 15：
+以Ubuntu Jammy (22.04) LTS为例，安装LLVM 16：
 
 ```bash
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | sudo apt-key add -
-sudo add-apt-repository 'deb http://apt.llvm.org/focal/ llvm-toolchain-focal-15 main' -y
+sudo add-apt-repository 'deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-16 main' -y
 sudo apt-get update -q
-sudo apt-get install -y clang-15 llvm-15 lld-15 libc++-15-dev libc++abi-15-dev clang-tools-15 lcov binutils ninja-build
+sudo apt-get install -y clang-16 llvm-16 lld-16 libc++-16-dev libc++abi-16-dev clang-tools-16 clang-16-doc wasi-libc llvm-16-doc binutils ninja-build
 sudo update-alternatives --config c++
 wget https://github.com/Kitware/CMake/releases/download/v3.23.2/cmake-3.23.2-linux-x86_64.sh
 sudo chmod +x cmake-3.23.2-linux-x86_64.sh
 sudo ./cmake-3.23.2-linux-x86_64.sh --prefix=/usr
 ```
 
-以Kali Rolling(Debian)为例，安装LLVM 15：
+以Kali Rolling(Debian)为例，安装LLVM 16：
 
 ```bash
-# 如果是2022版本，不需要加载源，默认可以安装LLVM 15
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key 2>/dev/null | sudo apt-key add -
 sudo apt-key export AF4F7421|sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/llvm.gpg
-sudo bash -c "echo  'deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/llvm.gpg] http://apt.llvm.org/unstable/ llvm-toolchain-15 main' >> /etc/apt/sources.list"
+sudo bash -c "echo  'deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/llvm.gpg] http://apt.llvm.org/unstable/ llvm-toolchain-16 main' >> /etc/apt/sources.list"
 sudo apt-get update -y
-sudo apt-get install -y clang-15 llvm-15 lld-15 libc++-15-dev libc++abi-15-dev clang-tools-15 lcov binutils ninja-build
+sudo apt-get install -y clang-16 llvm-16 lld-16 libc++-16-dev libc++abi-16-dev clang-tools-16 clang-16-doc wasi-libc llvm-16-doc binutils ninja-build
 sudo update-alternatives --config c++
 ```
+
+执行最后一行命令后，提示选择C++编译器，选择clang++。
+
+如果是Kali 2022之前的版本，需要加载对应版本的源，参考[https://apt.llvm.org/](https://apt.llvm.org/)进行配置。
 
 根据<https://nodejs.org/en/download/package-manager/>安装Node.js环境。根据安装时的提示安装`yarn`。
 

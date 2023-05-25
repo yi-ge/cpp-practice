@@ -16,6 +16,7 @@ if (process.argv.includes('lcov')) {
 } else {
   command = filePath + ' . -s . --binary-path ./build/ -t html --llvm --branch --guess-directory-when-missing --ignore include/* --ignore build/* --ignore test/* -o ./coverage/'
 }
+console.log(command)
 const execute = spawnSync(command, {
   cwd: path.join(process.cwd()), // 当前工作目录
   env: process.env,  // 附加当前操作系统的环境变量

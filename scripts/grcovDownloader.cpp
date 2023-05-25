@@ -142,7 +142,7 @@ void download_grcov_files(const std::string &url) {
   std::string cmd;
 
 #if defined(__linux__)
-  cmd = "curl -sL --progress-bar ";
+  cmd = "curl -L -O --progress-bar ";
 #elif defined(_WIN32) || defined(__APPLE__)
   cmd = "curl -sL -O --progress-bar ";
 #endif

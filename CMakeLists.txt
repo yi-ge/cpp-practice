@@ -29,7 +29,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   set(PREBUILT_MODULE_PATH ${CMAKE_BINARY_DIR}/src/modules)
 
   if(CMAKE_SYSTEM_NAME MATCHES "Linux")
-    add_link_options("-fuse-ld=lld-15")
+    add_link_options("-fuse-ld=lld-16")
   endif()
 
   # Use Clang's headers before MSVC's
@@ -59,7 +59,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
     if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
       set(LLVM_DIR /opt/homebrew/opt/llvm)
     elseif(CMAKE_SYSTEM_NAME MATCHES "Linux")
-      set(LLVM_DIR /usr/lib/llvm-15)
+      set(LLVM_DIR /usr/lib/llvm-16)
     endif()
     add_compile_options(-isystem ${LLVM_DIR}/include/c++/v1)
     add_compile_options(-L ${LLVM_DIR}/lib)

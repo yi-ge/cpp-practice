@@ -1,0 +1,40 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "build",
+      "group": "test",
+      "problemMatcher": [],
+      "label": "npm: build",
+      "detail": "cmake --build build --config Debug --target all --"
+    },
+    {
+      "type": "npm",
+      "script": "beforeTest",
+      "group": "test",
+      "problemMatcher": [],
+      "label": "npm: beforeTest",
+      "detail": "build before test"
+    },
+    {
+      "type": "npm",
+      "script": "coverage",
+      "problemMatcher": [],
+      "label": "npm: coverage",
+      "detail": "run coverage script",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "type": "npm",
+      "script": "afterTest",
+      "group": "test",
+      "problemMatcher": [],
+      "label": "npm: afterTest",
+      "detail": "run after test script"
+    }
+  ]
+}
