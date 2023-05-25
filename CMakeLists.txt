@@ -76,12 +76,12 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
     # endif()
   endif()
   # 开启module支持
-  add_compile_options(-fmodules)
-  add_compile_options(-fbuiltin-module-map)
-  add_compile_options(-fimplicit-module-maps)
-  add_compile_options(-fprebuilt-module-path=${PREBUILT_MODULE_PATH})
-  # add_compile_options(-fprofile-instr-generate)
-  # add_compile_options(-fcoverage-mapping)
+  # add_compile_options(-fmodules)
+  # add_compile_options(-fbuiltin-module-map)
+  # add_compile_options(-fimplicit-module-maps)
+  # add_compile_options(-fprebuilt-module-path=${PREBUILT_MODULE_PATH})
+  add_compile_options(-fprofile-instr-generate)
+  add_compile_options(-fcoverage-mapping)
 
   set(CLANG_TIDY
       ""
@@ -181,12 +181,14 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   gtest_discover_tests(${PROJECT_NAME})
 
   # 添加 -fprofile-instr-generate 和 -fcoverage-mapping 选项
-  # add_link_options(-fprofile-instr-generate)
-  # add_link_options(-fcoverage-mapping)
+  add_link_options(-fprofile-instr-generate)
+  add_link_options(-fcoverage-mapping)
+  set(CMAKE_CXX_FLAGS
+      "${CMAKE_CXX_FLAGS} -fno-inline -O0 -coverage")
 
   # coverage flags
-  set(CMAKE_CXX_FLAGS
-      "${CMAKE_CXX_FLAGS} -fno-inline -O0 -fprofile-arcs -ftest-coverage --coverage")
+  # set(CMAKE_CXX_FLAGS
+  #     "${CMAKE_CXX_FLAGS} -fno-inline -O0 -fprofile-arcs -ftest-coverage --coverage")
 
   # coverage target
   # add_custom_target(test_with_script
