@@ -12,11 +12,12 @@ const filePath = path.join(process.cwd(), 'scripts', output);
 // 执行覆盖率文件生成命令
 let command = '' // 如果参数中有lcov，则生成 lcov.info 文件，否则生成 html 文件
 if (process.argv.includes('lcov')) {
-  command = filePath + ' . -s . --binary-path ./build/ -t lcov --llvm --branch --guess-directory-when-missing --ignore include/* --ignore build/* --ignore test/* -o ./coverage/lcov.info'
+  command = filePath + ' . -s . --binary-path ./build/ -t lcov --llvm --branch --guess-directory-when-missing --ignore test/\* -o ./coverage/lcov.info'
 } else {
-  command = filePath + ' . -s . --binary-path ./build/ -t html --llvm --branch --guess-directory-when-missing --ignore include/* --ignore build/* --ignore test/* -o ./coverage/'
+  command = filePath + ' . -s . --binary-path ./build/ -t html --llvm --branch --guess-directory-when-missing --ignore test/\* -o ./coverage/'
 }
 console.log(command)
+
 const execute = spawnSync(command, {
   cwd: path.join(process.cwd()), // 当前工作目录
   env: process.env,  // 附加当前操作系统的环境变量
