@@ -45,6 +45,7 @@ node_modules
 # coverage
 /coverage
 /coverage_report
+default.profraw
 
 # clangd
 .cache
