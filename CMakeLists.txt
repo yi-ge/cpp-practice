@@ -67,18 +67,21 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
     add_compile_options(-lc++)
   else()
     # include_directories(${LLVM_DIR}/include/c++/v1 BEFORE)
-    if(STDLIB STREQUAL "libstdc++")
-      add_compile_options(-stdlib=libstdc++)
-    else()
-      add_compile_options(-stdlib=libc++)
-      # add_compile_options(-lc++) add_compile_options(-lc++abi)
-    endif()
+    # link_directories(${LLVM_DIR}/lib)
+    # if(STDLIB STREQUAL "libstdc++")
+    #   add_compile_options(-stdlib=libstdc++)
+    # else()
+    # add_compile_options(-stdlib=libcpp)
+    #   # add_compile_options(-lc++) add_compile_options(-lc++abi)
+    # endif()
   endif()
   # 开启module支持
   add_compile_options(-fmodules)
   add_compile_options(-fbuiltin-module-map)
   add_compile_options(-fimplicit-module-maps)
   add_compile_options(-fprebuilt-module-path=${PREBUILT_MODULE_PATH})
+  # add_compile_options(-fprofile-instr-generate)
+  # add_compile_options(-fcoverage-mapping)
 
   set(CLANG_TIDY
       ""
@@ -166,6 +169,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
 
   target_link_libraries(${PROJECT_NAME} Threads::Threads)
   target_link_libraries(${PROJECT_NAME} GTest::gtest_main)
+  # target_link_libraries(${PROJECT_NAME} c++ c++abi)
 
   # 开启module支持
   foreach(modfile ${MODULES})
@@ -176,9 +180,13 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
 
   gtest_discover_tests(${PROJECT_NAME})
 
+  # 添加 -fprofile-instr-generate 和 -fcoverage-mapping 选项
+  # add_link_options(-fprofile-instr-generate)
+  # add_link_options(-fcoverage-mapping)
+
   # coverage flags
   set(CMAKE_CXX_FLAGS
-      "${CMAKE_CXX_FLAGS} -fno-inline -O0 -fprofile-arcs -ftest-coverage")
+      "${CMAKE_CXX_FLAGS} -fno-inline -O0 -fprofile-arcs -ftest-coverage --coverage")
 
   # coverage target
   # add_custom_target(test_with_script

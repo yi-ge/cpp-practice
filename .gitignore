@@ -27,9 +27,10 @@
 *.lib
 
 # Executables
-*.exe
+# *.exe
 *.out
 *.app
+grcov.exe
 
 # Build
 /Build
