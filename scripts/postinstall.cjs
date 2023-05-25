@@ -38,12 +38,15 @@ if (!fs.existsSync(filePath)) {
 
   // 如果编译命令返回非零状态，则退出
   if (compile.status !== 0) {
+    console.log('报错了，请检查上面的错误信息。')
     process.exit(compile.status);
   }
+
+  console.log('自动下载grcov的C++脚本编译成功！')
 }
 
 // 执行编译好的二进制文件
-const execute = spawnSync(path.join('.', output), {
+const execute = spawnSync(filePath, {
   cwd: path.join(process.cwd(), 'scripts'),
   env: process.env,  // 附加当前操作系统的环境变量
   stdio: 'inherit',  // 混合标准输出和错误输出
@@ -51,5 +54,8 @@ const execute = spawnSync(path.join('.', output), {
 
 // 如果执行命令返回非零状态，则退出
 if (execute.status !== 0) {
+  console.log('报错了，请检查上面的错误信息。')
   process.exit(execute.status);
+} else {
+  console.log('如果没有错误信息，表明依赖安装顺利！')
 }
