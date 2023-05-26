@@ -7,14 +7,16 @@
         "TEST": "true"
       },
       "runTask": {
-        "before": ["npm: beforeTest"],
-        "after": ["npm: afterTest"]
+        "before": ["npm: beforeTest"]
+        // "after": ["npm: afterTest"]
       },
       "executionWrapper": {
         "path": "${workspaceFolder}/scripts/unix-wrapper.sh",
         "args": [
           "-c",
-          "\"${cmd}\" ${argsStr} 2>&1 | tee ${workspaceFolder}/build/output.log"
+          "\"${cmd}\" ${argsStr} 2>&1",
+          "-l",
+          "${workspaceFolder}/build"
         ]
       },
       "win32": {
