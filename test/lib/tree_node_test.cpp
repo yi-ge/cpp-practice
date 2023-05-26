@@ -15,7 +15,7 @@ TEST(树lib, printTree) {
     nodes[i] = node;
   }
 
-  printTree(nodes[0]);
+  // printTree(nodes[0]);
 
   for (int i = 0; i < n; ++i) {
     delete nodes[i];
@@ -32,7 +32,7 @@ TEST(树lib, createTree) {
 
   TreeNode *tree = createTree(treeVec);
 
-  printTree(tree);
+  // printTree(tree);
   string treeStr = treeToString(tree);
   string rootStr = treeToString(root);
 
@@ -62,7 +62,7 @@ TEST(树lib, createTreeCycle) {
 
   TreeNode *tree = createTreeCycle(treeVec);
 
-  printTree(tree);
+  // printTree(tree);
   string treeStr = treeToString(tree);
   string rootStr = treeToString(root);
 
@@ -185,7 +185,7 @@ TEST(树lib, isTreeEqual) {
                           9, NULL, NULL, NULL, NULL, NULL, 14};
   TreeNode *tree7 = createTree(treeVec1);
   TreeNode *tree8 = createTree(treeVec2);
-  printTree(tree7);
-  printTree(tree8);
+  // printTree(tree7);
+  // printTree(tree8);
   EXPECT_FALSE(isTreeEqual(tree7, tree8));
 }
