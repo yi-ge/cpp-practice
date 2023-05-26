@@ -3,34 +3,20 @@
 #include <array>
 #include <cstdio>
 #include <cstdlib>
+#include <ctime>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
+#include <regex>
 #include <string>
 
 namespace fs = std::filesystem;
 
-// 根据给定的命令执行并捕获输出，同时保留ANSI转义序列（颜色信息）
 std::string exec_and_capture(const std::string &cmd) {
-  // 获取当前系统的环境变量 PATH
-  char *pathBuffer = nullptr;
-  size_t pathBufferSize = 0;
-  _dupenv_s(&pathBuffer, &pathBufferSize, "PATH");
-
-  if (pathBuffer == nullptr || pathBufferSize == 0) {
-    throw std::runtime_error("_dupenv_s() failed!");
-  }
-
-  std::string path(pathBuffer);
-
-  // 在 cmd 命令前加上 “SET PATH=<path> &&”
-  std::string modifiedCmd = "SET PATH=" + path + " && " + cmd;
-
   std::array<char, 128> buffer;
   std::string result;
   std::unique_ptr<FILE, decltype(&_pclose)> pipe(
       _popen((cmd + " 2>&1").c_str(), "r"), _pclose);
-
   if (!pipe) {
     throw std::runtime_error("popen() failed!");
   }
@@ -41,50 +27,52 @@ std::string exec_and_capture(const std::string &cmd) {
 }
 
 int main(int argc, char *argv[]) {
-  // Get the absolute path of the binary file
-  fs::path binAbsolutePath = fs::absolute(argv[0]);
-
-  // Get the path to the binary's directory
-  fs::path binDirectoryPath = binAbsolutePath.parent_path();
-
-  // Set the working directory to the binary's directory
-  fs::current_path(binDirectoryPath);
-
-  // Check for valid arguments count:
-  if (argc < 2) {
-    std::cerr << "Usage: " << argv[0] << " <command> [args...]" << std::endl;
+  if (argc < 3) {
+    std::cerr << "Usage: " << argv[0] << " -c <command> -l <log path>"
+              << std::endl;
     return 1;
   }
 
-  // Combine command and its arguments:
-  std::string cmd;
-  for (int i = 1; i < argc; ++i) {
-    cmd += argv[i];
-    if (i < argc - 1) {
-      cmd += " ";
+  std::string command;
+  fs::path logDir;
+  std::string logFile;
+  for (int i = 1; i < argc; i++) {
+    if (std::string(argv[i]) == "-c" && i + 1 < argc) {
+      command = argv[++i];
+      // Replace -gtest_color=no with -gtest_color=yes
+      if (command.find("-gtest_color=no") != std::string::npos) {
+        command = std::regex_replace(command, std::regex("-gtest_color=no"),
+                                     "-gtest_color=yes");
+        logFile = "gtest.log";
+      } else {
+        logFile = "output.log";
+      }
+    } else if (std::string(argv[i]) == "-l" && i + 1 < argc) {
+      logDir = fs::path(argv[++i]);
     }
   }
 
-  // 在此处移除命令及其参数的外部引号（如有），注意，仅适用于没有空格的文件名和路径，否则仍然需要用双引号来处理带有空格的路径。
-  cmd.erase(remove(cmd.begin(), cmd.end(), '\"'), cmd.end());
-
-  // Execute command and capture output:
-  std::string output = exec_and_capture(cmd);
-
-  // Write the output to build/output.log file:
-  fs::path outputFile = fs::current_path() / ".." / "build" / "output.log";
-  fs::create_directories(outputFile.parent_path());
-  std::ofstream logFile(outputFile);
-  if (logFile.is_open()) {
-    logFile << output;
-    logFile.close();
-  } else {
-    std::cerr << "Error: Unable to open the output file." << std::endl;
+  if (command.empty() || logDir.empty()) {
+    std::cerr << "Both command and log directory are required." << std::endl;
     return 1;
   }
 
-  // Print the output to the console:
-  std::cout << output;
+  std::string output = exec_and_capture(command);
+  fs::path logPath = logDir / logFile;
+  fs::create_directories(logPath.parent_path());
+  std::ofstream outFile(logPath, std::ios_base::out | std::ios_base::app);
+  if (outFile.is_open()) {
+    outFile << output;
+    outFile.close();
+  } else {
+    std::cerr << "Unable to open the output file." << std::endl;
+    return 1;
+  }
+
+  // ANSI escape codes start with '\x1B'
+  std::regex ansi_regex("\x1B\\[[0-9;]*[mK]");
+  std::string stripped_output = std::regex_replace(output, ansi_regex, "");
+  std::cout << stripped_output;
 
   return 0;
 }

@@ -22,7 +22,12 @@
       "win32": {
         "executionWrapper": {
           "path": "${workspaceFolder}/scripts/executionWrapper.exe",
-          "args": ["\"${cmd}\"", "${argsStr}"]
+          "args": [
+            "-c",
+            "\"${cmd}\" ${argsStr} 2>&1",
+            "-l",
+            "${workspaceFolder}/build"
+          ]
         }
       }
     }
