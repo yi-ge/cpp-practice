@@ -18,7 +18,7 @@
   "scripts": {
     "prebuild": "cmake --no-warn-unused-cli -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_BUILD_TYPE:STRING=Debug -S . -B build -G Ninja",
     "build": "cmake --build build --config Debug --target all --",
-    "beforeTest": "npm run build",
+    "beforeTest": "node ./scripts/before-test.cjs && npm run build",
     "test": "npm run build && node ./scripts/out-test-result.cjs",
     "afterTest": "node ./scripts/after-test.cjs",
     "coverage": "node ./scripts/coverage.cjs",
