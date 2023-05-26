@@ -10,6 +10,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <windows.h>
 
 // Method to parse the command line arguments
 void parse_arguments(int argc, char **argv, std::string &command,
@@ -29,15 +30,61 @@ void parse_arguments(int argc, char **argv, std::string &command,
 
 // Function to execute a command and capture the output
 std::string exec_and_capture(const char *cmd) {
-  std::array<char, 128> buffer;
+  SECURITY_ATTRIBUTES sa;
+  sa.nLength = sizeof(sa);
+  sa.lpSecurityDescriptor = NULL;
+  sa.bInheritHandle = TRUE;
+
+  HANDLE hOutRead, hOutWrite;
+
+  if (!CreatePipe(&hOutRead, &hOutWrite, &sa, 0)) {
+    throw std::runtime_error("CreatePipe() failed");
+  }
+
+  PROCESS_INFORMATION pi;
+  STARTUPINFO si;
+
+  ZeroMemory(&pi, sizeof(PROCESS_INFORMATION));
+  ZeroMemory(&si, sizeof(STARTUPINFO));
+
+  si.cb = sizeof(STARTUPINFO);
+  si.dwFlags |= STARTF_USESTDHANDLES;
+  si.hStdOutput = hOutWrite;
+  si.hStdError = hOutWrite;
+
+  std::string commandLine = cmd;
+
+  if (!CreateProcess(NULL, commandLine.data(), NULL, NULL, TRUE,
+                     CREATE_NO_WINDOW, NULL, NULL, &si, &pi)) {
+    CloseHandle(hOutWrite);
+    CloseHandle(hOutRead);
+    throw std::runtime_error("CreateProcess() failed");
+  }
+
   std::string result;
-  std::unique_ptr<FILE, decltype(&_pclose)> pipe(_popen(cmd, "r"), _pclose);
-  if (!pipe) {
-    throw std::runtime_error("popen() failed!");
+  std::array<char, 128> buffer;
+  DWORD bytesRead;
+
+  CloseHandle(hOutWrite);
+
+  while (true) {
+    if (!ReadFile(hOutRead, buffer.data(), buffer.size(), &bytesRead, NULL) ||
+        bytesRead == 0) {
+      if (GetLastError() == ERROR_BROKEN_PIPE) {
+        break;
+      } else {
+        throw std::runtime_error("ReadFile() failed");
+      }
+    }
+    result.append(buffer.data(), bytesRead);
   }
-  while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
-    result += buffer.data();
-  }
+
+  CloseHandle(hOutRead);
+
+  WaitForSingleObject(pi.hProcess, INFINITE);
+  CloseHandle(pi.hProcess);
+  CloseHandle(pi.hThread);
+
   return result;
 }
 
@@ -72,8 +119,8 @@ int main(int argc, char **argv) {
                 command.end());
 
   // Construct powershell command
-  std::string powershellCmd =
-      "powershell.exe -Command \"& { " + command + " }\"";
+  std::string powershellCmd = command;
+  // "powershell.exe -Command \"& { " + command + " }\"";
 
   // Get the current date and time
   auto currentTime = std::chrono::system_clock::now();

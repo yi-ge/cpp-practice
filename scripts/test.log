@@ -1,0 +1,647 @@
+Running main() from D:/Project/cpp-practice/build/_deps/googletest-src/googletest/src/gtest_main.cc
+[==========] Running 127 tests from 117 test suites.
+[----------] Global test environment set-up.
+[----------] 1 test from 子串能表示从1到N数字的二进制串
+[ RUN      ] 子串能表示从1到N数字的二进制串.queryString
+[       OK ] 子串能表示从1到N数字的二进制串.queryString (0 ms)
+[----------] 1 test from 子串能表示从1到N数字的二进制串 (0 ms total)
+
+[----------] 1 test from 检查二进制字符串字段
+[ RUN      ] 检查二进制字符串字段.checkOnesSegment
+[       OK ] 检查二进制字符串字段.checkOnesSegment (0 ms)
+[----------] 1 test from 检查二进制字符串字段 (0 ms total)
+
+[----------] 1 test from 按字典序排在最后的子串
+[ RUN      ] 按字典序排在最后的子串.lastSubstring
+[       OK ] 按字典序排在最后的子串.lastSubstring (0 ms)
+[----------] 1 test from 按字典序排在最后的子串 (0 ms total)
+
+[----------] 1 test from 段式回文
+[ RUN      ] 段式回文.longestDecomposition
+[       OK ] 段式回文.longestDecomposition (0 ms)
+[----------] 1 test from 段式回文 (0 ms total)
+
+[----------] 1 test from 隐藏个人信息
+[ RUN      ] 隐藏个人信息.maskPII
+[       OK ] 隐藏个人信息.maskPII (0 ms)
+[----------] 1 test from 隐藏个人信息 (0 ms total)
+
+[----------] 1 test from 数青蛙
+[ RUN      ] 数青蛙.minNumberOfFrogs
+[       OK ] 数青蛙.minNumberOfFrogs (0 ms)
+[----------] 1 test from 数青蛙 (0 ms total)
+
+[----------] 1 test from 有效时间的数目
+[ RUN      ] 有效时间的数目.countTime
+[       OK ] 有效时间的数目.countTime (0 ms)
+[----------] 1 test from 有效时间的数目 (0 ms total)
+
+[----------] 1 test from 重新排列单词间的空格
+[ RUN      ] 重新排列单词间的空格.reorderSpaces
+[       OK ] 重新排列单词间的空格.reorderSpaces (0 ms)
+[----------] 1 test from 重新排列单词间的空格 (0 ms total)
+
+[----------] 1 test from 数组中的字符串匹配
+[ RUN      ] 数组中的字符串匹配.stringMatching
+[       OK ] 数组中的字符串匹配.stringMatching (0 ms)
+[----------] 1 test from 数组中的字符串匹配 (0 ms total)
+
+[----------] 1 test from 在LR字符串中交换相邻字符
+[ RUN      ] 在LR字符串中交换相邻字符.canTransform
+[       OK ] 在LR字符串中交换相邻字符.canTransform (0 ms)
+[----------] 1 test from 在LR字符串中交换相邻字符 (0 ms total)
+
+[----------] 1 test from 负二进制数相加
+[ RUN      ] 负二进制数相加.addNegabinary
+[       OK ] 负二进制数相加.addNegabinary (0 ms)
+[----------] 1 test from 负二进制数相加 (0 ms total)
+
+[----------] 1 test from 优美的排列II
+[ RUN      ] 优美的排列II.constructArray
+[       OK ] 优美的排列II.constructArray (0 ms)
+[----------] 1 test from 优美的排列II (0 ms total)
+
+[----------] 1 test from 买卖股票的最佳时机
+[ RUN      ] 买卖股票的最佳时机.maxProfit
+[       OK ] 买卖股票的最佳时机.maxProfit (0 ms)
+[----------] 1 test from 买卖股票的最佳时机 (0 ms total)
+
+[----------] 1 test from 检查相同字母间的距离
+[ RUN      ] 检查相同字母间的距离.checkDistances
+[       OK ] 检查相同字母间的距离.checkDistances (0 ms)
+[----------] 1 test from 检查相同字母间的距离 (0 ms total)
+
+[----------] 1 test from 摘樱桃
+[ RUN      ] 摘樱桃.cherryPickup
+[       OK ] 摘樱桃.cherryPickup (0 ms)
+[----------] 1 test from 摘樱桃 (0 ms total)
+
+[----------] 1 test from 判断两个事件是否存在冲突
+[ RUN      ] 判断两个事件是否存在冲突.haveConflict
+[       OK ] 判断两个事件是否存在冲突.haveConflict (0 ms)
+[----------] 1 test from 判断两个事件是否存在冲突 (0 ms total)
+
+[----------] 1 test from 填充书架
+[ RUN      ] 填充书架.minHeightShelves
+[       OK ] 填充书架.minHeightShelves (0 ms)
+[----------] 1 test from 填充书架 (0 ms total)
+
+[----------] 1 test from 和相等的子数组
+[ RUN      ] 和相等的子数组.findSubarrays
+[       OK ] 和相等的子数组.findSubarrays (0 ms)
+[----------] 1 test from 和相等的子数组 (0 ms total)
+
+[----------] 1 test from 字符串中的第一个唯一字符
+[ RUN      ] 字符串中的第一个唯一字符.firstUniqChar
+[       OK ] 字符串中的第一个唯一字符.firstUniqChar (0 ms)
+[----------] 1 test from 字符串中的第一个唯一字符 (0 ms total)
+
+[----------] 1 test from 按列翻转得到最大值等行数
+[ RUN      ] 按列翻转得到最大值等行数.maxEqualRowsAfterFlips
+[       OK ] 按列翻转得到最大值等行数.maxEqualRowsAfterFlips (0 ms)
+[----------] 1 test from 按列翻转得到最大值等行数 (0 ms total)
+
+[----------] 1 test from 最长的斐波那契子序列的长度
+[ RUN      ] 最长的斐波那契子序列的长度.lenLongestFibSubseq
+[       OK ] 最长的斐波那契子序列的长度.lenLongestFibSubseq (0 ms)
+[----------] 1 test from 最长的斐波那契子序列的长度 (0 ms total)
+
+[----------] 1 test from 最长等差数列
+[ RUN      ] 最长等差数列.longestArithSeqLength
+[       OK ] 最长等差数列.longestArithSeqLength (0 ms)
+[----------] 1 test from 最长等差数列 (0 ms total)
+
+[----------] 1 test from 最长字符串链
+[ RUN      ] 最长字符串链.longestStrChain
+[       OK ] 最长字符串链.longestStrChain (0 ms)
+[----------] 1 test from 最长字符串链 (0 ms total)
+
+[----------] 1 test from 通过翻转子数组使两个数组相等
+[ RUN      ] 通过翻转子数组使两个数组相等.canBeEqual
+[       OK ] 通过翻转子数组使两个数组相等.canBeEqual (0 ms)
+[----------] 1 test from 通过翻转子数组使两个数组相等 (0 ms total)
+
+[----------] 1 test from 摘水果
+[ RUN      ] 摘水果.maxTotalFruits
+[       OK ] 摘水果.maxTotalFruits (0 ms)
+[----------] 1 test from 摘水果 (0 ms total)
+
+[----------] 1 test from 最长数对链
+[ RUN      ] 最长数对链.findLongestChain
+[       OK ] 最长数对链.findLongestChain (0 ms)
+[----------] 1 test from 最长数对链 (0 ms total)
+
+[----------] 1 test from 两个非重叠子数组的最大和
+[ RUN      ] 两个非重叠子数组的最大和.maxSumTwoNoOverlap
+[       OK ] 两个非重叠子数组的最大和.maxSumTwoNoOverlap (0 ms)
+[----------] 1 test from 两个非重叠子数组的最大和 (0 ms total)
+
+[----------] 1 test from 删除某些元素后的数组均值
+[ RUN      ] 删除某些元素后的数组均值.trimMean
+[       OK ] 删除某些元素后的数组均值.trimMean (0 ms)
+[----------] 1 test from 删除某些元素后的数组均值 (0 ms total)
+
+[----------] 1 test from 合并石头的最低成本
+[ RUN      ] 合并石头的最低成本.mergeStones
+[       OK ] 合并石头的最低成本.mergeStones (0 ms)
+[----------] 1 test from 合并石头的最低成本 (0 ms total)
+
+[----------] 1 test from 玩筹码
+[ RUN      ] 玩筹码.minCostToMoveChips
+[       OK ] 玩筹码.minCostToMoveChips (0 ms)
+[----------] 1 test from 玩筹码 (0 ms total)
+
+[----------] 1 test from 工作计划的最低难度
+[ RUN      ] 工作计划的最低难度.minDifficulty
+[       OK ] 工作计划的最低难度.minDifficulty (0 ms)
+[----------] 1 test from 工作计划的最低难度 (0 ms total)
+
+[----------] 1 test from 多边形三角剖分的最低得分
+[ RUN      ] 多边形三角剖分的最低得分.minScoreTriangulation
+[       OK ] 多边形三角剖分的最低得分.minScoreTriangulation (0 ms)
+[----------] 1 test from 多边形三角剖分的最低得分 (0 ms total)
+
+[----------] 1 test from 逐步求和得到正数的最小值
+[ RUN      ] 逐步求和得到正数的最小值.minStartValue
+[       OK ] 逐步求和得到正数的最小值.minStartValue (0 ms)
+[----------] 1 test from 逐步求和得到正数的最小值 (0 ms total)
+
+[----------] 1 test from 出现最频繁的偶数元素
+[ RUN      ] 出现最频繁的偶数元素.mostFrequentEven
+[       OK ] 出现最频繁的偶数元素.mostFrequentEven (0 ms)
+[----------] 1 test from 出现最频繁的偶数元素 (0 ms total)
+
+[----------] 1 test from 数据流中的移动平均值
+[ RUN      ] 数据流中的移动平均值.MovingAverage
+[       OK ] 数据流中的移动平均值.MovingAverage (0 ms)
+[----------] 1 test from 数据流中的移动平均值 (0 ms total)
+
+[----------] 1 test from 算术三元组的数目
+[ RUN      ] 算术三元组的数目.arithmeticTriplets
+[       OK ] 算术三元组的数目.arithmeticTriplets (0 ms)
+[----------] 1 test from 算术三元组的数目 (0 ms total)
+
+[----------] 1 test from 子数组中占绝大多数的元素
+[ RUN      ] 子数组中占绝大多数的元素.MajorityChecker
+[       OK ] 子数组中占绝大多数的元素.MajorityChecker (2 ms)
+[----------] 1 test from 子数组中占绝大多数的元素 (2 ms total)
+
+[----------] 1 test from 总持续时间可被60整除的歌曲
+[ RUN      ] 总持续时间可被60整除的歌曲.numPairsDivisibleBy60
+[       OK ] 总持续时间可被60整除的歌曲.numPairsDivisibleBy60 (0 ms)
+[----------] 1 test from 总持续时间可被60整除的歌曲 (0 ms total)
+
+[----------] 1 test from 分隔数组以得到最大和
+[ RUN      ] 分隔数组以得到最大和.maxSumAfterPartitioning
+[       OK ] 分隔数组以得到最大和.maxSumAfterPartitioning (0 ms)
+[----------] 1 test from 分隔数组以得到最大和 (0 ms total)
+
+[----------] 1 test from 杨辉三角
+[ RUN      ] 杨辉三角.generate
+[       OK ] 杨辉三角.generate (0 ms)
+[----------] 1 test from 杨辉三角 (0 ms total)
+
+[----------] 1 test from 交换一次的先前排列
+[ RUN      ] 交换一次的先前排列.prevPermOpt1
+[       OK ] 交换一次的先前排列.prevPermOpt1 (0 ms)
+[----------] 1 test from 交换一次的先前排列 (0 ms total)
+
+[----------] 1 test from 数组序号转换
+[ RUN      ] 数组序号转换.arrayRankTransform
+[       OK ] 数组序号转换.arrayRankTransform (0 ms)
+[----------] 1 test from 数组序号转换 (0 ms total)
+
+[----------] 1 test from 重塑矩阵
+[ RUN      ] 重塑矩阵.matrixReshape
+[       OK ] 重塑矩阵.matrixReshape (0 ms)
+[----------] 1 test from 重塑矩阵 (0 ms total)
+
+[----------] 1 test from 翻转子数组得到最大的数组值
+[ RUN      ] 翻转子数组得到最大的数组值.maxValueAfterReverse
+[       OK ] 翻转子数组得到最大的数组值.maxValueAfterReverse (0 ms)
+[----------] 1 test from 翻转子数组得到最大的数组值 (0 ms total)
+
+[----------] 1 test from 矩阵置零
+[ RUN      ] 矩阵置零.setZeroes
+[       OK ] 矩阵置零.setZeroes (0 ms)
+[----------] 1 test from 矩阵置零 (0 ms total)
+
+[----------] 1 test from 特殊数组的特征值
+[ RUN      ] 特殊数组的特征值.specialArray
+[       OK ] 特殊数组的特征值.specialArray (0 ms)
+[----------] 1 test from 特殊数组的特征值 (0 ms total)
+
+[----------] 1 test from 蓄水
+[ RUN      ] 蓄水.storeWater
+[       OK ] 蓄水.storeWater (0 ms)
+[----------] 1 test from 蓄水 (0 ms total)
+
+[----------] 1 test from 处理用时最长的那个任务的员工
+[ RUN      ] 处理用时最长的那个任务的员工.hardestWorker
+[       OK ] 处理用时最长的那个任务的员工.hardestWorker (0 ms)
+[----------] 1 test from 处理用时最长的那个任务的员工 (0 ms total)
+
+[----------] 1 test from 检查替换后的词是否有效
+[ RUN      ] 检查替换后的词是否有效.isValid
+[       OK ] 检查替换后的词是否有效.isValid (0 ms)
+[----------] 1 test from 检查替换后的词是否有效 (0 ms total)
+
+[----------] 1 test from 文件夹操作日志搜集器
+[ RUN      ] 文件夹操作日志搜集器.minOperations
+[       OK ] 文件夹操作日志搜集器.minOperations (0 ms)
+[----------] 1 test from 文件夹操作日志搜集器 (0 ms total)
+
+[----------] 1 test from 餐盘栈
+[ RUN      ] 餐盘栈.DinnerPlates
+[       OK ] 餐盘栈.DinnerPlates (0 ms)
+[----------] 1 test from 餐盘栈 (0 ms total)
+
+[----------] 1 test from 用栈实现队列
+[ RUN      ] 用栈实现队列.MyQueue
+[       OK ] 用栈实现队列.MyQueue (0 ms)
+[----------] 1 test from 用栈实现队列 (0 ms total)
+
+[----------] 1 test from 最长有效括号
+[ RUN      ] 最长有效括号.longestValidParentheses
+[       OK ] 最长有效括号.longestValidParentheses (0 ms)
+[----------] 1 test from 最长有效括号 (0 ms total)
+
+[----------] 1 test from 链表中的下一个更大节点
+[ RUN      ] 链表中的下一个更大节点.ListNode
+[       OK ] 链表中的下一个更大节点.ListNode (0 ms)
+[----------] 1 test from 链表中的下一个更大节点 (0 ms total)
+
+[----------] 1 test from 字符串相加
+[ RUN      ] 字符串相加.addStrings
+[       OK ] 字符串相加.addStrings (0 ms)
+[----------] 1 test from 字符串相加 (0 ms total)
+
+[----------] 1 test from 负二进制转换
+[ RUN      ] 负二进制转换.baseNeg2
+[       OK ] 负二进制转换.baseNeg2 (0 ms)
+[----------] 1 test from 负二进制转换 (0 ms total)
+
+[----------] 1 test from 统计共同度过的日子数
+[ RUN      ] 统计共同度过的日子数.countDaysTogether
+[       OK ] 统计共同度过的日子数.countDaysTogether (0 ms)
+[----------] 1 test from 统计共同度过的日子数 (0 ms total)
+
+[----------] 1 test from 统计字典序元音字符串的数目
+[ RUN      ] 统计字典序元音字符串的数目.countVowelStrings
+[       OK ] 统计字典序元音字符串的数目.countVowelStrings (0 ms)
+[----------] 1 test from 统计字典序元音字符串的数目 (0 ms total)
+
+[----------] 1 test from 分数加减运算
+[ RUN      ] 分数加减运算.fractionAddition
+[       OK ] 分数加减运算.fractionAddition (0 ms)
+[----------] 1 test from 分数加减运算 (0 ms total)
+
+[----------] 1 test from 最大交换
+[ RUN      ] 最大交换.maximumSwap
+[       OK ] 最大交换.maximumSwap (0 ms)
+[----------] 1 test from 最大交换 (0 ms total)
+
+[----------] 1 test from 移动石子直到连续
+[ RUN      ] 移动石子直到连续.numMovesStones
+[       OK ] 移动石子直到连续.numMovesStones (0 ms)
+[----------] 1 test from 移动石子直到连续 (0 ms total)
+
+[----------] 1 test from 公因子的数目
+[ RUN      ] 公因子的数目.commonFactors
+[       OK ] 公因子的数目.commonFactors (0 ms)
+[----------] 1 test from 公因子的数目 (0 ms total)
+
+[----------] 1 test from 困于环中的机器人
+[ RUN      ] 困于环中的机器人.isRobotBounded
+[       OK ] 困于环中的机器人.isRobotBounded (0 ms)
+[----------] 1 test from 困于环中的机器人 (0 ms total)
+
+[----------] 1 test from 旋转数字
+[ RUN      ] 旋转数字.rotatedDigits
+[       OK ] 旋转数字.rotatedDigits (0 ms)
+[----------] 1 test from 旋转数字 (0 ms total)
+
+[----------] 1 test from 最小偶倍数
+[ RUN      ] 最小偶倍数.smallestEvenMultiple
+[       OK ] 最小偶倍数.smallestEvenMultiple (0 ms)
+[----------] 1 test from 最小偶倍数 (0 ms total)
+
+[----------] 1 test from 最小的必要团队
+[ RUN      ] 最小的必要团队.smallestSufficientTeam
+[       OK ] 最小的必要团队.smallestSufficientTeam (0 ms)
+[----------] 1 test from 最小的必要团队 (0 ms total)
+
+[----------] 1 test from 驼峰式匹配
+[ RUN      ] 驼峰式匹配.camelMatch
+[       OK ] 驼峰式匹配.camelMatch (0 ms)
+[----------] 1 test from 驼峰式匹配 (0 ms total)
+
+[----------] 1 test from 完全二叉树插入器
+[ RUN      ] 完全二叉树插入器.CBTInserter
+[       OK ] 完全二叉树插入器.CBTInserter (0 ms)
+[----------] 1 test from 完全二叉树插入器 (0 ms total)
+
+[----------] 1 test from 寻找重复的子树
+[ RUN      ] 寻找重复的子树.findDuplicateSubtrees
+          |          
+    /-----1-----\    
+    |           |    
+ /--2        /--3--\ 
+ |           |     | 
+ 4        /--2     4 
+          |          
+          4          
+[       OK ] 寻找重复的子树.findDuplicateSubtrees (0 ms)
+[----------] 1 test from 寻找重复的子树 (0 ms total)
+
+[----------] 1 test from 实现一个魔法字典
+[ RUN      ] 实现一个魔法字典.MagicDictionary
+[       OK ] 实现一个魔法字典.MagicDictionary (0 ms)
+[----------] 1 test from 实现一个魔法字典 (0 ms total)
+
+[----------] 1 test from 二叉搜索树中的插入操作
+[ RUN      ] 二叉搜索树中的插入操作.insertIntoBST
+[       OK ] 二叉搜索树中的插入操作.insertIntoBST (0 ms)
+[----------] 1 test from 二叉搜索树中的插入操作 (0 ms total)
+
+[----------] 1 test from 根到叶路径上的不足节点
+[ RUN      ] 根到叶路径上的不足节点.TreeNode
+                                     |                                     
+                 /-------------------1-------------------\                 
+                 |                                       |                 
+       /---------2---------\                   /---------3---------\       
+       |                   |                   |                   |       
+  /----4----\         /----99---\         /----99---\         /----7----\  
+  |         |         |         |         |         |         |         |  
+  8         9        -99       -99        12        13       -99        14 
+              |             
+          /---1---\         
+          |       |         
+      /---2       3---\     
+      |               |     
+  /---4---\           7---\ 
+  |       |               | 
+  8       9              14 
+              |         
+          /---1---\     
+          |       |     
+      /---2       3---\ 
+      |               | 
+  /---4---\           7 
+  |       |             
+  8       9---\         
+              |         
+             14         
+[       OK ] 根到叶路径上的不足节点.TreeNode (0 ms)
+[----------] 1 test from 根到叶路径上的不足节点 (0 ms total)
+
+[----------] 1 test from 翻转二叉树
+[ RUN      ] 翻转二叉树.invertTree
+[       OK ] 翻转二叉树.invertTree (0 ms)
+[----------] 1 test from 翻转二叉树 (0 ms total)
+
+[----------] 1 test from 二叉搜索树的最近公共祖先
+[ RUN      ] 二叉搜索树的最近公共祖先.lowestCommonAncestor
+[       OK ] 二叉搜索树的最近公共祖先.lowestCommonAncestor (0 ms)
+[----------] 1 test from 二叉搜索树的最近公共祖先 (0 ms total)
+
+[----------] 1 test from 二叉树的最大深度
+[ RUN      ] 二叉树的最大深度.maxDepth
+[       OK ] 二叉树的最大深度.maxDepth (0 ms)
+[----------] 1 test from 二叉树的最大深度 (0 ms total)
+
+[----------] 1 test from 节点与其祖先之间的最大差值
+[ RUN      ] 节点与其祖先之间的最大差值.TreeNode
+[       OK ] 节点与其祖先之间的最大差值.TreeNode (0 ms)
+[----------] 1 test from 节点与其祖先之间的最大差值 (0 ms total)
+
+[----------] 1 test from 最大层内元素和
+[ RUN      ] 最大层内元素和.maxLevelSum
+[       OK ] 最大层内元素和.maxLevelSum (0 ms)
+[----------] 1 test from 最大层内元素和 (0 ms total)
+
+[----------] 1 test from 二叉搜索子树的最大键值和
+[ RUN      ] 二叉搜索子树的最大键值和.TreeNode
+[       OK ] 二叉搜索子树的最大键值和.TreeNode (0 ms)
+[----------] 1 test from 二叉搜索子树的最大键值和 (0 ms total)
+
+[----------] 1 test from 二叉树最大宽度
+[ RUN      ] 二叉树最大宽度.widthOfBinaryTree
+[       OK ] 二叉树最大宽度.widthOfBinaryTree (0 ms)
+[----------] 1 test from 二叉树最大宽度 (0 ms total)
+
+[----------] 1 test from 路径总和
+[ RUN      ] 路径总和.hasPathSum
+[       OK ] 路径总和.hasPathSum (0 ms)
+[----------] 1 test from 路径总和 (0 ms total)
+
+[----------] 1 test from 单词替换
+[ RUN      ] 单词替换.replaceWords
+[       OK ] 单词替换.replaceWords (0 ms)
+[----------] 1 test from 单词替换 (0 ms total)
+
+[----------] 1 test from 二叉搜索树中的搜索
+[ RUN      ] 二叉搜索树中的搜索.searchBST
+[       OK ] 二叉搜索树中的搜索.searchBST (0 ms)
+[----------] 1 test from 二叉搜索树中的搜索 (0 ms total)
+
+[----------] 1 test from 通知所有员工所需的时间
+[ RUN      ] 通知所有员工所需的时间.numOfMinutes
+[       OK ] 通知所有员工所需的时间.numOfMinutes (0 ms)
+[----------] 1 test from 通知所有员工所需的时间 (0 ms total)
+
+[----------] 1 test from 两数之和_IV
+[ RUN      ] 两数之和_IV.findTarget
+[       OK ] 两数之和_IV.findTarget (0 ms)
+[----------] 1 test from 两数之和_IV (0 ms total)
+
+[----------] 1 test from 验证二叉搜索树
+[ RUN      ] 验证二叉搜索树.isValidBST
+[       OK ] 验证二叉搜索树.isValidBST (0 ms)
+[----------] 1 test from 验证二叉搜索树 (0 ms total)
+
+[----------] 1 test from 删除链表中的节点
+[ RUN      ] 删除链表中的节点.deleteNode
+[       OK ] 删除链表中的节点.deleteNode (0 ms)
+[----------] 1 test from 删除链表中的节点 (0 ms total)
+
+[----------] 1 test from 删除排序链表中的重复元素2
+[ RUN      ] 删除排序链表中的重复元素2.deleteDuplicates2
+[       OK ] 删除排序链表中的重复元素2.deleteDuplicates2 (0 ms)
+[----------] 1 test from 删除排序链表中的重复元素2 (0 ms total)
+
+[----------] 1 test from 删除排序链表中的重复元素
+[ RUN      ] 删除排序链表中的重复元素.deleteDuplicates
+[       OK ] 删除排序链表中的重复元素.deleteDuplicates (0 ms)
+[----------] 1 test from 删除排序链表中的重复元素 (0 ms total)
+
+[----------] 1 test from 移除链表元素
+[ RUN      ] 移除链表元素.removeElements
+[       OK ] 移除链表元素.removeElements (0 ms)
+[----------] 1 test from 移除链表元素 (0 ms total)
+
+[----------] 1 test from 两两交换链表中的节点
+[ RUN      ] 两两交换链表中的节点.swapPairs
+[       OK ] 两两交换链表中的节点.swapPairs (0 ms)
+[----------] 1 test from 两两交换链表中的节点 (0 ms total)
+
+[----------] 1 test from 第一个出现两次的字母
+[ RUN      ] 第一个出现两次的字母.repeatedCharacter
+[       OK ] 第一个出现两次的字母.repeatedCharacter (0 ms)
+[----------] 1 test from 第一个出现两次的字母 (0 ms total)
+
+[----------] 1 test from 活字印刷
+[ RUN      ] 活字印刷.numTilePossibilities
+[       OK ] 活字印刷.numTilePossibilities (0 ms)
+[----------] 1 test from 活字印刷 (0 ms total)
+
+[----------] 1 test from 强整数
+[ RUN      ] 强整数.powerfulIntegers
+[       OK ] 强整数.powerfulIntegers (0 ms)
+[----------] 1 test from 强整数 (0 ms total)
+
+[----------] 1 test from 赎金信
+[ RUN      ] 赎金信.canConstruct
+[       OK ] 赎金信.canConstruct (0 ms)
+[----------] 1 test from 赎金信 (0 ms total)
+
+[----------] 1 test from 删除字符使频率相同
+[ RUN      ] 删除字符使频率相同.equalFrequency
+[       OK ] 删除字符使频率相同.equalFrequency (0 ms)
+[----------] 1 test from 删除字符使频率相同 (0 ms total)
+
+[----------] 1 test from 可被K整除的最小整数
+[ RUN      ] 可被K整除的最小整数.smallestRepunitDivByK
+[       OK ] 可被K整除的最小整数.smallestRepunitDivByK (0 ms)
+[----------] 1 test from 可被K整除的最小整数 (0 ms total)
+
+[----------] 1 test from 找到小镇的法官
+[ RUN      ] 找到小镇的法官.findJudge
+[       OK ] 找到小镇的法官.findJudge (0 ms)
+[----------] 1 test from 找到小镇的法官 (0 ms total)
+
+[----------] 1 test from 不邻接植花
+[ RUN      ] 不邻接植花.gardenNoAdj
+[       OK ] 不邻接植花.gardenNoAdj (0 ms)
+[----------] 1 test from 不邻接植花 (0 ms total)
+
+[----------] 1 test from T秒后青蛙的位置
+[ RUN      ] T秒后青蛙的位置.frogPosition
+[       OK ] T秒后青蛙的位置.frogPosition (0 ms)
+[----------] 1 test from T秒后青蛙的位置 (0 ms total)
+
+[----------] 1 test from 冒泡排序
+[ RUN      ] 冒泡排序.bubbleSort
+[       OK ] 冒泡排序.bubbleSort (0 ms)
+[----------] 1 test from 冒泡排序 (0 ms total)
+
+[----------] 1 test from 距离相等的条形码
+[ RUN      ] 距离相等的条形码.rearrangeBarcodes
+[       OK ] 距离相等的条形码.rearrangeBarcodes (0 ms)
+[----------] 1 test from 距离相等的条形码 (0 ms total)
+
+[----------] 1 test from 插入排序
+[ RUN      ] 插入排序.insertSort
+[       OK ] 插入排序.insertSort (0 ms)
+[----------] 1 test from 插入排序 (0 ms total)
+
+[----------] 1 test from 与对应负数同时存在的最大正整数
+[ RUN      ] 与对应负数同时存在的最大正整数.findMaxK
+[       OK ] 与对应负数同时存在的最大正整数.findMaxK (0 ms)
+[----------] 1 test from 与对应负数同时存在的最大正整数 (0 ms total)
+
+[----------] 1 test from 受标签影响的最大值
+[ RUN      ] 受标签影响的最大值.largestValsFromLabels
+[       OK ] 受标签影响的最大值.largestValsFromLabels (0 ms)
+[----------] 1 test from 受标签影响的最大值 (0 ms total)
+
+[----------] 1 test from 使数组严格递增
+[ RUN      ] 使数组严格递增.makeArrayIncreasing
+[       OK ] 使数组严格递增.makeArrayIncreasing (0 ms)
+[----------] 1 test from 使数组严格递增 (0 ms total)
+
+[----------] 1 test from 归并排序
+[ RUN      ] 归并排序.mergeSort
+[       OK ] 归并排序.mergeSort (0 ms)
+[----------] 1 test from 归并排序 (0 ms total)
+
+[----------] 1 test from 合并两个有序链表
+[ RUN      ] 合并两个有序链表.ListNode
+[       OK ] 合并两个有序链表.ListNode (0 ms)
+[----------] 1 test from 合并两个有序链表 (0 ms total)
+
+[----------] 1 test from 移动石子直到连续2
+[ RUN      ] 移动石子直到连续2.numMovesStonesII
+[       OK ] 移动石子直到连续2.numMovesStonesII (0 ms)
+[----------] 1 test from 移动石子直到连续2 (0 ms total)
+
+[----------] 1 test from 快速排序
+[ RUN      ] 快速排序.quickSort
+[       OK ] 快速排序.quickSort (0 ms)
+[----------] 1 test from 快速排序 (0 ms total)
+
+[----------] 1 test from 选择排序
+[ RUN      ] 选择排序.selectSort
+[       OK ] 选择排序.selectSort (0 ms)
+[----------] 1 test from 选择排序 (0 ms total)
+
+[----------] 1 test from 按身高排序
+[ RUN      ] 按身高排序.sortPeople
+[       OK ] 按身高排序.sortPeople (0 ms)
+[----------] 1 test from 按身高排序 (0 ms total)
+
+[----------] 1 test from 两点之间不包含任何点的最宽垂直区域
+[ RUN      ] 两点之间不包含任何点的最宽垂直区域.maxWidthOfVerticalArea
+[       OK ] 两点之间不包含任何点的最宽垂直区域.maxWidthOfVerticalArea (0 ms)
+[----------] 1 test from 两点之间不包含任何点的最宽垂直区域 (0 ms total)
+
+[----------] 1 test from 默认测试
+[ RUN      ] 默认测试.add
+[       OK ] 默认测试.add (0 ms)
+[----------] 1 test from 默认测试 (0 ms total)
+
+[----------] 4 tests from 链表lib
+[ RUN      ] 链表lib.createLinkedList
+[       OK ] 链表lib.createLinkedList (0 ms)
+[ RUN      ] 链表lib.listNodeToString
+[       OK ] 链表lib.listNodeToString (0 ms)
+[ RUN      ] 链表lib.printLinkedList
+1 -> 2 -> 3 -> 4 -> NULL
+[       OK ] 链表lib.printLinkedList (0 ms)
+[ RUN      ] 链表lib.deleteLinkedList
+[       OK ] 链表lib.deleteLinkedList (0 ms)
+[----------] 4 tests from 链表lib (0 ms total)
+
+[----------] 7 tests from 树lib
+[ RUN      ] 树lib.printTree
+[       OK ] 树lib.printTree (0 ms)
+[ RUN      ] 树lib.createTree
+[       OK ] 树lib.createTree (0 ms)
+[ RUN      ] 树lib.createTreeCycle
+[       OK ] 树lib.createTreeCycle (0 ms)
+[ RUN      ] 树lib.treeToVec
+[       OK ] 树lib.treeToVec (0 ms)
+[ RUN      ] 树lib.treeToString
+[       OK ] 树lib.treeToString (0 ms)
+[ RUN      ] 树lib.stringToTree
+[       OK ] 树lib.stringToTree (0 ms)
+[ RUN      ] 树lib.isTreeEqual
+[       OK ] 树lib.isTreeEqual (0 ms)
+[----------] 7 tests from 树lib (0 ms total)
+
+[----------] 2 tests from Utils
+[ RUN      ] Utils.split
+[       OK ] Utils.split (0 ms)
+[ RUN      ] Utils.join
+[       OK ] Utils.join (0 ms)
+[----------] 2 tests from Utils (0 ms total)
+
+[----------] 1 test from Modules
+[ RUN      ] Modules.std
+Hello C++20.
+[       OK ] Modules.std (0 ms)
+[----------] 1 test from Modules (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 127 tests from 117 test suites ran. (17 ms total)
+[  PASSED  ] 127 tests.
