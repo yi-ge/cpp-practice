@@ -42,6 +42,14 @@ fi
 # 输出结果到日志并保留颜色
 echo "$output" >"$logPath"
 
+# Limit output.log to 5000 lines, remove the oldest lines if exceeded
+if [ "$logFile" == "output.log" ]; then
+  if [ $(wc -l <"$logPath") -gt 5000 ]; then
+    linesToRemove=$(($(wc -l <"$logPath") - 5000))
+    sed -i "1,${linesToRemove}d" "$logPath"
+  fi
+fi
+
 # 输出结果到屏幕并移除颜色
 if [ "$(uname)" == "Darwin" ]; then
   # MacOS
