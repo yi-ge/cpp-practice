@@ -118,10 +118,6 @@ int main(int argc, char **argv) {
   command.erase(std::remove(command.begin(), command.end(), '\"'),
                 command.end());
 
-  // Construct powershell command
-  std::string powershellCmd = command;
-  // "powershell.exe -Command \"& { " + command + " }\"";
-
   // Get the current date and time
   auto currentTime = std::chrono::system_clock::now();
   std::time_t currentTimeT = std::chrono::system_clock::to_time_t(currentTime);
@@ -143,7 +139,7 @@ int main(int argc, char **argv) {
   cmdFile.close();
 
   // Execute the command and capture the output with colors
-  std::string output = exec_and_capture(powershellCmd.c_str());
+  std::string output = exec_and_capture(command.c_str());
 
   // Write output to the appropriate log file
   std::string logPath = logDir + "/";

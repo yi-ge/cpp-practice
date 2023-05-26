@@ -1,73 +1,48 @@
+#include <array>
+#include <cstdio>
+#include <fstream>
 #include <iostream>
-#include <stdexcept>
-#ifdef _WIN32
-#include <windows.h>
-#endif
-
-#include <string>
-#include <vector>
 
 std::string exec(const char *cmd) {
-#ifdef _WIN32
-  DWORD dwMode;
-  HANDLE hOutput = GetStdHandle(STD_OUTPUT_HANDLE);
-  GetConsoleMode(hOutput, &dwMode);
-  dwMode |= ENABLE_PROCESSED_OUTPUT | ENABLE_VIRTUAL_TERMINAL_PROCESSING;
-  SetConsoleMode(hOutput, dwMode);
-#endif
+  std::array<char, 128> buffer;
+  std::string result;
+  FILE *pipe = _popen(cmd, "r");
 
-  SECURITY_ATTRIBUTES sa;
-  sa.nLength = sizeof(sa);
-  sa.lpSecurityDescriptor = NULL;
-  sa.bInheritHandle = TRUE;
-
-  HANDLE hRead, hWrite;
-
-  if (!CreatePipe(&hRead, &hWrite, &sa, 0)) {
-    throw std::runtime_error("CreatePipe failed");
+  if (!pipe) {
+    throw std::runtime_error("_popen() failed!");
   }
 
-  STARTUPINFO si;
-  ZeroMemory(&si, sizeof(si));
-  si.cb = sizeof(si);
-  si.dwFlags = STARTF_USESHOWWINDOW | STARTF_USESTDHANDLES;
-  si.hStdOutput = hWrite;
-  si.hStdError = hWrite;
-
-  PROCESS_INFORMATION pi;
-  ZeroMemory(&pi, sizeof(pi));
-
-  if (!CreateProcess(NULL, (LPSTR)cmd, NULL, NULL, TRUE, 0, NULL, NULL, &si,
-                     &pi)) {
-    CloseHandle(hWrite);
-    CloseHandle(hRead);
-    throw std::runtime_error("CreateProcess failed");
+  while (fgets(buffer.data(), buffer.size(), pipe) != nullptr) {
+    result += buffer.data();
   }
 
-  CloseHandle(hWrite);
-
-  std::vector<char> buffer(4096);
-  DWORD bytesRead;
-  std::string output;
-
-  while (true) {
-    if (!ReadFile(hRead, buffer.data(), buffer.size(), &bytesRead, NULL)) {
-      break;
-    }
-    output.append(buffer.cbegin(), buffer.cbegin() + bytesRead);
+  int exitStatus = _pclose(pipe);
+  if (exitStatus != 0) {
+    throw std::runtime_error("Command exited with non-zero status.");
   }
 
-  CloseHandle(hRead);
-  CloseHandle(pi.hProcess);
-  CloseHandle(pi.hThread);
-
-  return output;
+  return result;
 }
 
 int main() {
-  // Ensure your command generates ANSI color codes
-  std::string output = exec("d:\\Project\\cpp-practice\\build\\cpp-practice."
-                            "exe --gtest_color=yes 2>&1");
-  std::cout << output;
+  try {
+    // Replace "command" with your desired ANI's command
+    std::string aniCommand = "d:\\Project\\cpp-practice\\build\\cpp-practice."
+                             "exe --gtest_color=yes 2>&1";
+    std::string output = exec(aniCommand.c_str());
+
+    // Save output to file
+    std::ofstream outputFile("output.txt");
+    if (outputFile.is_open()) {
+      outputFile << output;
+      outputFile.close();
+      std::cout << "Output saved to file." << std::endl;
+    } else {
+      std::cout << "Error opening file." << std::endl;
+    }
+  } catch (const std::runtime_error &e) {
+    std::cerr << "Error: " << e.what() << std::endl;
+  }
+
   return 0;
 }
