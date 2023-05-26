@@ -1,5 +1,4 @@
-// 仅适用于Windows的脚本，用于执行命令并捕获输出，同时保留ANSI转义序列（颜色信息）。
-// clang++ -std=c++17 -o executionWrapper.exe executionWrapper.cpp
+#include <algorithm>
 #include <array>
 #include <cstdio>
 #include <cstdlib>
@@ -39,6 +38,9 @@ int main(int argc, char *argv[]) {
   for (int i = 1; i < argc; i++) {
     if (std::string(argv[i]) == "-c" && i + 1 < argc) {
       command = argv[++i];
+      // 在此处移除命令及其参数的外部引号（如有），注意，仅适用于没有空格的文件名和路径，否则仍然需要用双引号来处理带有空格的路径。
+      command.erase(std::remove(command.begin(), command.end(), '\"'),
+                    command.end());
       // Replace -gtest_color=no with -gtest_color=yes
       if (command.find("-gtest_color=no") != std::string::npos) {
         command = std::regex_replace(command, std::regex("-gtest_color=no"),
