@@ -87,6 +87,12 @@ int main(int argc, char **argv) {
           << std::endl;
   cmdFile.close();
 
+  if (command.find("-gtest_color=no") != std::string::npos) {
+    // Replace -gtest_color=no with -gtest_color=yes
+    std::size_t pos = command.find("-gtest_color=no");
+    command.replace(pos, 15, "-gtest_color=yes");
+  }
+
   // Execute the command and capture the output with colors
   std::string output = exec_and_capture(powershellCmd.c_str());
 
