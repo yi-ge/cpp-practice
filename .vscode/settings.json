@@ -7,8 +7,8 @@
         "TEST": "true"
       },
       "runTask": {
-        "before": ["npm: beforeTest"]
-        // "after": ["npm: afterTest"]
+        "before": ["npm: beforeTest"],
+        "after": ["npm: afterTest"]
       },
       "executionWrapper": {
         "path": "${workspaceFolder}/scripts/unix-wrapper.sh",
@@ -21,12 +21,12 @@
       },
       "win32": {
         "executionWrapper": {
-          "path": "${workspaceFolder}/scripts/executionWrapper.exe",
+          "path": "${workspaceFolder}\\scripts\\executionWrapper.exe",
           "args": [
             "-c",
             "\"${cmd}\" ${argsStr} 2>&1",
             "-l",
-            "${workspaceFolder}/build"
+            "${workspaceFolder}\\build"
           ]
         }
       }
