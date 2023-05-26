@@ -1,3 +1,4 @@
+// 仅适用于Windows的脚本，用于执行命令并捕获输出，同时保留ANSI转义序列（颜色信息）。
 // clang++ -std=c++17 -o executionWrapper.exe executionWrapper.cpp
 #include <array>
 #include <cstdio>
@@ -9,6 +10,7 @@
 
 namespace fs = std::filesystem;
 
+// 根据给定的命令执行并捕获输出，同时保留ANSI转义序列（颜色信息）
 std::string exec_and_capture(const std::string &cmd) {
   // 获取当前系统的环境变量 PATH
   char *pathBuffer = nullptr;

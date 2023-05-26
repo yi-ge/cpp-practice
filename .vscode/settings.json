@@ -25,6 +25,16 @@
       }
     }
   ],
+
+  "clangd.checkUpdates": true,
+  "cmake.outputLogEncoding": "utf8",
+  "cmake.statusbar.advanced": {
+    "ctest": {
+      "visibility": "hidden"
+    }
+  },
+  "coverage-gutters.coverageBaseDir": "**",
+  "coverage-gutters.coverageFileNames": ["lcov", "lcov.info"],
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {
@@ -209,14 +219,5 @@
     "XRLXXRRLX",
     "XRLXXRRXL",
     "XRXLRXRXL"
-  ],
-  "clangd.checkUpdates": true,
-  "cmake.outputLogEncoding": "utf8",
-  "cmake.statusbar.advanced": {
-    "ctest": {
-      "visibility": "hidden"
-    }
-  },
-  "coverage-gutters.coverageBaseDir": "**",
-  "coverage-gutters.coverageFileNames": ["lcov", "lcov.info"]
+  ]
 }

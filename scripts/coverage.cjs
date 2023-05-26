@@ -16,6 +16,15 @@ if (!fs.existsSync(dir)) {
   fs.mkdirSync(dir)
 }
 
+// 如果已经存在覆盖率文件夹，则删除
+if (process.argv.includes('lcov') && fs.existsSync(path.join(process.cwd(), 'coverage', 'lcov.info'))) {
+  fs.unlinkSync(path.join(process.cwd(), 'coverage', 'lcov.info'))
+}
+
+if (!process.argv.includes('lcov') && fs.existsSync(path.join(process.cwd(), 'coverage', 'html'))) {
+  fs.rmSync(path.join(process.cwd(), 'coverage', 'html'), { recursive: true })
+}
+
 // 执行覆盖率文件生成命令
 let command = filePath // 如果参数中有lcov，则生成 lcov.info 文件，否则生成 html 文件
 let args = ''
@@ -24,7 +33,7 @@ if (process.argv.includes('lcov')) {
 } else {
   args = ' . -s . --binary-path ./build/ -t html --llvm --branch --guess-directory-when-missing --ignore include/* --ignore build/* --ignore test/* -o ./coverage/'
 }
-console.log(command)
+
 const execute = spawnSync(command, args.split(' '), {
   cwd: path.join(process.cwd()), // 当前工作目录
   env: process.env,  // 附加当前操作系统的环境变量
@@ -36,5 +45,5 @@ if (execute.status !== 0) {
   console.log('报错了，请检查上面的错误信息。')
   process.exit(execute.status);
 } else {
-  console.log('如果没有错误信息，表明依赖安装顺利！')
+  console.log('已生成' + (process.argv.includes('lcov') ? 'lcov.info' : 'html') + '覆盖率文件。')
 }
