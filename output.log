@@ -1,0 +1,27 @@
+
+
+    目录: D:\Project\cpp-practice\scripts
+
+
+Mode                 LastWriteTime         Length Name            
+----                 -------------         ------ ----            
+-a----         2023/5/26     16:08            165 after-test.cjs  
+-a----         2023/5/25     17:58            189 ci-test-result-p
+                                                  arse.cjs        
+-a----         2023/5/26      9:52           2062 coverage.cjs    
+-a----         2023/5/26     11:10        5748712 default.profraw 
+-a----         2023/5/26     18:26           3618 executionWrapper
+                                                  .cpp            
+-a----         2023/5/26     18:26         385024 executionWrapper
+                                                  .exe            
+-a----         2023/4/12     18:14        8199680 grcov.exe       
+-a----         2023/5/26      9:15           8739 grcovDownloader.
+                                                  cpp             
+-a----         2023/5/25     18:06         310272 grcovDownloader.
+                                                  exe             
+-a----         2023/5/25     17:58           1417 out-test-result.
+                                                  cjs             
+-a----         2023/5/25     17:58           2032 postinstall.cjs 
+-a----         2023/5/26     16:09           1227 unix-wrapper.sh 
+
+
