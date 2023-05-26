@@ -1,4 +1,4 @@
-// 仅适用于Windows的脚本，用于执行命令并捕获输出，同时保留ANSI转义序列（颜色信息）。
+// 仅适用于Windows的脚本，用于执行命令并捕获输出(输出到日志时保留ANSI转义序列[颜色信息]，输出到终端移除颜色)。
 // clang++ -std=c++17 -o executionWrapper.exe executionWrapper.cpp
 #include <algorithm>
 #include <array>
@@ -81,24 +81,26 @@ int main(int argc, char **argv) {
   std::string currentTimeStr(std::ctime(&currentTimeT));
   currentTimeStr.erase(currentTimeStr.end() - 1); // Remove trailing newline
 
+  bool is_gtest = false;
+  if (command.find("-gtest_color=no") != std::string::npos) {
+    // Replace -gtest_color=no with -gtest_color=yes
+    std::size_t pos = command.find("-gtest_color=no");
+    command.replace(pos, 15, "-gtest_color=yes");
+    is_gtest = true;
+  }
+
   // Write current time and command to command.txt
   std::ofstream cmdFile(logDir + "/command.txt", std::ios_base::app);
   cmdFile << "Time: " << currentTimeStr << ", Command: " << command
           << std::endl;
   cmdFile.close();
 
-  if (command.find("-gtest_color=no") != std::string::npos) {
-    // Replace -gtest_color=no with -gtest_color=yes
-    std::size_t pos = command.find("-gtest_color=no");
-    command.replace(pos, 15, "-gtest_color=yes");
-  }
-
   // Execute the command and capture the output with colors
   std::string output = exec_and_capture(powershellCmd.c_str());
 
   // Write output to the appropriate log file
   std::string logPath = logDir + "/";
-  if (command.find("-gtest_color=no") != std::string::npos) {
+  if (is_gtest) {
     logPath += "gtest.log";
   } else {
     logPath += "output.log";
@@ -109,7 +111,7 @@ int main(int argc, char **argv) {
 
   // Limit the lines of the files
   limit_file_lines(logDir + "/command.txt", 2000);
-  if (command.find("-gtest_color=no") == std::string::npos) {
+  if (!is_gtest) {
     limit_file_lines(logPath, 5000);
   }
 
