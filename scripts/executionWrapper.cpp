@@ -1,3 +1,5 @@
+// 仅适用于Windows的脚本，用于执行命令并捕获输出，同时保留ANSI转义序列（颜色信息）。
+// clang++ -std=c++17 -o executionWrapper.exe executionWrapper.cpp
 #include <algorithm>
 #include <array>
 #include <cstdio>
