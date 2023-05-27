@@ -50,11 +50,16 @@ if [ "$logFile" == "output.log" ]; then
   fi
 fi
 
+if [ -z "$output" ]; then
+  echo "Error: output is empty or not set."
+  exit 1
+fi
+
 # 输出结果到屏幕并移除颜色
 if [ "$(uname)" == "Darwin" ]; then
   # MacOS
-  echo "$output" | sed -E "s/\x1B\[[0-9;]*[mK]//g"
+  echo "$output" | sed -E "s/\x1B\[[0-9;]*[mK]//g" | sed -E "s/\x0f//g"
 else
   # Linux
-  echo "$output" | sed -r "s/\x1B\[[0-9;]*[mK]//g"
+  echo "$output" | sed -r "s/\x1B\[[0-9;]*[mK]//g" | sed -E "s/\x0f//g"
 fi
