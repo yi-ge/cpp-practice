@@ -182,6 +182,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [差值数组不同的字符串](src/array/odd_string_difference.cpp)  [数组, 哈希表, 字符串]
+
+  - LeetCode 2451. 差值数组不同的字符串 <https://leetcode.cn/problems/odd-string-difference/>
+
 - [蓄水](src/array/store_water.cpp)  [贪心, 数组, 堆（优先队列）]
 
   - LeetCode LCP 33. 蓄水 <https://leetcode.cn/problems/o8SXZn>
