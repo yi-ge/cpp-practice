@@ -15,7 +15,7 @@ TEST(寻找重复的子树, findDuplicateSubtrees) {
       createTree(ans_vec_1),
   };
 
-  printTree(root);
+  // printTree(root);
 
   vector<TreeNode *> res = solution.findDuplicateSubtrees(root);
   for (int i = 0; i < res.size(); ++i) {

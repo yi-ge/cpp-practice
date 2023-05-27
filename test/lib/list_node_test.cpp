@@ -1,7 +1,6 @@
 #include <headers.hpp>
 
-TEST(链表lib, createLinkedList)
-{
+TEST(链表lib, createLinkedList) {
   int arr[] = {1, 2, 3, 4};
   int n = sizeof(arr) / sizeof(int);
   ListNode *head = createLinkedList(arr, n);
@@ -13,8 +12,7 @@ TEST(链表lib, createLinkedList)
   deleteLinkedList(head);
 }
 
-TEST(链表lib, listNodeToString)
-{
+TEST(链表lib, listNodeToString) {
   int arr[] = {1, 2, 3, 4};
   int n = sizeof(arr) / sizeof(int);
   ListNode *head = createLinkedList(arr, n);
@@ -22,18 +20,16 @@ TEST(链表lib, listNodeToString)
   deleteLinkedList(head);
 }
 
-TEST(链表lib, printLinkedList)
-{
+TEST(链表lib, printLinkedList) {
   int arr[] = {1, 2, 3, 4};
   int n = sizeof(arr) / sizeof(int);
   ListNode *head = createLinkedList(arr, n);
-  printLinkedList(head);
+  // printLinkedList(head);
   EXPECT_STREQ(listNodeToString(head).c_str(), "1 -> 2 -> 3 -> 4 -> NULL");
   deleteLinkedList(head);
 }
 
-TEST(链表lib, deleteLinkedList)
-{
+TEST(链表lib, deleteLinkedList) {
   int arr[] = {1, 2, 3, 4};
   int n = sizeof(arr) / sizeof(int);
   ListNode *head = createLinkedList(arr, n);

@@ -17,7 +17,7 @@ if (!fs.existsSync(dir)) {
 }
 
 // 如果已经存在覆盖率文件夹，则删除
-if (process.argv.includes('lcov') && fs.existsSync(path.join(process.cwd(), 'coverage', 'lcov.info'))) {
+if (fs.existsSync(path.join(process.cwd(), 'coverage', 'lcov.info'))) {
   fs.unlinkSync(path.join(process.cwd(), 'coverage', 'lcov.info'))
 }
 
@@ -25,15 +25,40 @@ if (!process.argv.includes('lcov') && fs.existsSync(path.join(process.cwd(), 'co
   fs.rmSync(path.join(process.cwd(), 'coverage', 'html'), { recursive: true })
 }
 
-// 执行覆盖率文件生成命令
-let command = filePath // 如果参数中有lcov，则生成 lcov.info 文件，否则生成 html 文件
-let args = ''
-if (process.argv.includes('lcov')) {
-  args = ' . -s . --binary-path ./build/ -t lcov --llvm --branch --guess-directory-when-missing --ignore include/* --ignore build/* --ignore test/* -o ./coverage/lcov.info'
+// 根据系统类型，设置llvmPath
+let llvmPath = '/usr/local/opt/llvm/bin/';
+if (process.platform === 'win32') {
+  llvmPath = 'C:\\Program Files\\LLVM\\bin\\';
+} else if (process.platform === 'darwin') {
+  llvmPath = '/opt/homebrew/opt/llvm/bin/';
 } else {
-  args = ' . -s . --binary-path ./build/ -t html --llvm --branch --guess-directory-when-missing --ignore include/* --ignore build/* --ignore test/* -o ./coverage/'
+  // 执行which llvm-profdata命令，获取llvmPath
+  const which = spawnSync('which', ['llvm-profdata'], {
+    cwd: path.join(process.cwd()), // 当前工作目录
+    env: process.env,  // 附加当前操作系统的环境变量
+    stdio: 'pipe',  // 混合标准输出和错误输出
+  });
+  if (which.status === 0) {
+    llvmPath = which.stdout.toString().replace('llvm-profdata', '');
+  }
 }
 
+// 文件路径
+let command = filePath
+let args = ''
+if (process.argv.includes('lcov')) { // 如果参数中有lcov，则生成 lcov.info 文件，否则生成 html 文件
+  args = ` . -s . --binary-path ./build/ --llvm-path ${llvmPath} -t lcov --llvm --branch --guess-directory-when-missing --ignore include/* --ignore build/* --ignore test/* -o ./coverage/lcov.info`
+} else {
+  args = ` . -s . --binary-path ./build/ --llvm-path ${llvmPath} -t html --llvm --branch --guess-directory-when-missing --ignore include/* --ignore build/* --ignore test/* -o ./coverage/`
+}
+
+// 删除已存在的多余的default.profraw文件
+// const profrawFilePath = path.join(process.cwd(), 'default.profraw')
+// if (fs.existsSync(profrawFilePath)) {
+//   fs.unlinkSync(profrawFilePath)
+// }
+
+// 执行覆盖率测试命令
 const execute = spawnSync(command, args.split(' '), {
   cwd: path.join(process.cwd()), // 当前工作目录
   env: process.env,  // 附加当前操作系统的环境变量

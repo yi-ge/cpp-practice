@@ -130,6 +130,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   aux_source_directory(./test/graphs DIR_TEST_GRAPHS)
   aux_source_directory(./test/sort DIR_TEST_SORT)
   aux_source_directory(./test/other DIR_TEST_OTHER)
+  aux_source_directory(./test/search DIR_TEST_SEARCH)
   aux_source_directory(./test/lib DIR_TEST_LIB)
   aux_source_directory(./test/modules DIR_TEST_MODULES)
 
@@ -162,6 +163,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
     ${DIR_TEST_GRAPHS}
     ${DIR_TEST_SORT}
     ${DIR_TEST_OTHER}
+    ${DIR_TEST_SEARCH}
     ${DIR_TEST_LIB}
     # 开启module支持
     ${DIR_TEST_MODULES}
@@ -184,7 +186,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   add_link_options(-fprofile-instr-generate)
   add_link_options(-fcoverage-mapping)
   set(CMAKE_CXX_FLAGS
-      "${CMAKE_CXX_FLAGS} -fno-inline -O0 -coverage")
+      "${CMAKE_CXX_FLAGS} -fno-inline -O0 --coverage")
 
   # coverage flags
   # set(CMAKE_CXX_FLAGS

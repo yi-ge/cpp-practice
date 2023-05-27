@@ -8,13 +8,13 @@ TEST(根到叶路径上的不足节点, TreeNode) {
   vector<int> treeNodes = {1, 2,   3,   4,  -99, -99, 7, 8,
                            9, -99, -99, 12, 13,  -99, 14};
   TreeNode *root = createTree(treeNodes);
-  printTree(root);
+  // printTree(root);
   TreeNode *result = solution.sufficientSubset(root, 1);
   vector<int> resultNodes = {1, 2,    3,    4,    NULL, NULL, 7, 8,
                              9, NULL, NULL, NULL, NULL, NULL, 14};
   TreeNode *expect = createTree(resultNodes);
-  printTree(result);
-  printTree(expect);
+  // printTree(result);
+  // printTree(expect);
   EXPECT_STREQ(treeToString(result).c_str(), treeToString(expect).c_str());
 
   // 示例 2：
