@@ -515,6 +515,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 其它
 
+- [二进制矩阵中的最短路径](src/search/shortest_path_in_binary_matrix.cpp)  [广度优先搜索, 数组, 矩阵]
+
+  - LeetCode 1091. 二进制矩阵中的最短路径 <https://leetcode.cn/problems/shortest-path-in-binary-matrix/>
+
 - [活字印刷](src/map/letter_tile_possibilities.cpp)  [哈希表, 字符串, 回溯, 计数]
 
   - LeetCode 1079. 活字印刷 <https://leetcode.cn/problems/letter-tile-possibilities>
