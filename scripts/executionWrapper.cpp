@@ -1,16 +1,48 @@
 // 仅适用于Windows的脚本，用于执行命令并捕获输出(输出到日志时保留ANSI转义序列[颜色信息]，输出到终端移除颜色)。
-// clang++ -std=c++17 -o executionWrapper.exe executionWrapper.cpp
+// clang++ -std=c++17 -lAdvapi32 -o .\executionWrapper.exe
+// .\executionWrapper.cpp
 #include <algorithm>
 #include <array>
 #include <chrono>
 #include <deque>
 #include <fstream>
 #include <iostream>
+#include <locale>
 #include <regex>
 #include <sstream>
 #include <string>
 #include <vector>
 #include <windows.h>
+
+// 检查Windows系统是否开启了“使用 Unicode UTF-8 提供全球语言支持”
+bool check_utf8_support() {
+  HKEY hKey;
+  constexpr auto registry_key =
+      TEXT("SYSTEM\\CurrentControlSet\\Control\\Nls\\CodePage");
+  constexpr auto value_name = TEXT("ACP");
+
+  if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, registry_key, 0, KEY_QUERY_VALUE,
+                   &hKey) == ERROR_SUCCESS) {
+    TCHAR acp_value[256];
+    DWORD buffer_size = sizeof(acp_value);
+    DWORD data_type;
+
+    if (RegQueryValueEx(hKey, value_name, nullptr, &data_type,
+                        (LPBYTE)&acp_value, &buffer_size) == ERROR_SUCCESS &&
+        data_type == REG_SZ) {
+      RegCloseKey(hKey);
+
+#ifdef UNICODE
+      return std::wstring(acp_value) == L"65001";
+#else
+      return std::string(acp_value) == "65001";
+#endif
+    }
+    RegCloseKey(hKey);
+  }
+
+  return false;
+}
 
 // Method to parse the command line arguments
 void parse_arguments(int argc, char **argv, std::string &command,
@@ -70,6 +102,22 @@ void limit_file_lines(const std::string &filePath, int maxLines) {
   fileOut.close();
 }
 
+// 将utf8字符串转换为gbk字符串
+std::string utf8_to_gbk(const std::string &utf8_str) {
+  int wide_len =
+      MultiByteToWideChar(CP_UTF8, 0, utf8_str.c_str(), -1, nullptr, 0);
+  std::wstring wide_str(wide_len, 0);
+  MultiByteToWideChar(CP_UTF8, 0, utf8_str.c_str(), -1, &wide_str[0], wide_len);
+
+  int gbk_len = WideCharToMultiByte(CP_ACP, 0, wide_str.c_str(), -1, nullptr, 0,
+                                    nullptr, nullptr);
+  std::string gbk_str(gbk_len, 0);
+  WideCharToMultiByte(CP_ACP, 0, wide_str.c_str(), -1, &gbk_str[0], gbk_len,
+                      nullptr, nullptr);
+
+  return gbk_str;
+}
+
 int main(int argc, char **argv) {
   std::string command;
   std::string logDir;
@@ -83,8 +131,11 @@ int main(int argc, char **argv) {
   // Get the current date and time
   auto currentTime = std::chrono::system_clock::now();
   std::time_t currentTimeT = std::chrono::system_clock::to_time_t(currentTime);
-  std::string currentTimeStr(std::ctime(&currentTimeT));
-  currentTimeStr.erase(currentTimeStr.end() - 1); // Remove trailing newline
+  char buffer[26];
+  ctime_s(buffer, sizeof(buffer), &currentTimeT);
+  std::string currentTimeStr(buffer);
+  currentTimeStr.erase(currentTimeStr.find_last_not_of("\n\r") +
+                       1); // Remove trailing newline
 
   bool is_gtest = false;
   if (command.find("-gtest_color=no") != std::string::npos) {
@@ -121,8 +172,14 @@ int main(int argc, char **argv) {
   }
 
   // Display the output to the screen without color
-  std::cout << std::regex_replace(output,
-                                  std::regex("\\x1B\\[[0-?]*[ -/]*[@-~]"), "");
+  std::string output_without_color =
+      std::regex_replace(output, std::regex("\\x1B\\[[0-?]*[ -/]*[@-~]"), "");
+
+  if (check_utf8_support()) {
+    std::cout << output_without_color;
+  } else {
+    std::cout << utf8_to_gbk(output_without_color);
+  }
 
   return 0;
 }

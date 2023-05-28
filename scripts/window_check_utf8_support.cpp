@@ -1,6 +1,6 @@
 // 检查Windows系统是否开启了“使用 Unicode UTF-8 提供全球语言支持”
 // clang++ -std=c++17 -o .\window_check_utf8_support.exe
-// .\window_check_utf8_support.cpp -lAdvapi3
+// .\window_check_utf8_support.cpp -lAdvapi32
 #include <iostream>
 #include <string>
 #include <windows.h>
