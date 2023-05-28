@@ -39,6 +39,11 @@ if [ $(wc -l <"$logDir/command.txt") -gt 2000 ]; then
   sed -i '1d' "$logDir/command.txt"
 fi
 
+if [ "$logFile" == "gtest.log" ]; then
+  # 移除前两行
+  output="$(echo "$output" | tail -n +3)"
+fi
+
 # 输出结果到日志并保留颜色
 echo "$output" >"$logPath"
 
@@ -48,6 +53,15 @@ if [ "$logFile" == "output.log" ]; then
     linesToRemove=$(($(wc -l <"$logPath") - 5000))
     sed -i "1,${linesToRemove}d" "$logPath"
   fi
+else
+  # 输出结果到屏幕并移除颜色
+  if [ "$(uname)" == "Darwin" ]; then
+    # MacOS
+    output="$(echo "$output" | sed -E "s/\x1B\[[0-9;]*[mK]//g")"
+  else
+    # Linux
+    output="$(echo "$output" | sed -r "s/\x1B\[[0-9;]*[mK]//g")"
+  fi
 fi
 
 if [ -z "$output" ]; then
@@ -55,11 +69,9 @@ if [ -z "$output" ]; then
   exit 1
 fi
 
-# 输出结果到屏幕并移除颜色
-if [ "$(uname)" == "Darwin" ]; then
-  # MacOS
-  echo "$output" | sed -E "s/\x1B\[[0-9;]*[mK]//g" | sed -E "s/\x0f//g"
-else
-  # Linux
-  echo "$output" | sed -r "s/\x1B\[[0-9;]*[mK]//g" | sed -E "s/\x0f//g"
-fi
+# 输出结果到屏幕
+echo "$output" | tee build/gtest_nocolor.log
+
+# echo "$output" | perl -pe 's/\e\[[0-9;]*m//g'
+# echo "$output" | perl -pe 's/\x1b\[[0-9;]*m//g'
+# echo "$output" | python3 -c "import re, sys; sys.stdout.write(re.sub(r'\x1b\[[0-9;]*[mK]', '', sys.stdin.read()))"

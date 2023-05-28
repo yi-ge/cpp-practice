@@ -13,7 +13,7 @@ TEST(检查相同字母间的距离, checkDistances) {
   std::string s1 = "abaccb";
   std::vector<int> distance1 = {1, 3, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-  EXPECT_EQ(solution.checkDistances(s1, distance1), true);
+  EXPECT_TRUE(solution.checkDistances(s1, distance1));
 
   // 示例 2：
   // 输入：s = "aa", distance =
@@ -23,5 +23,5 @@ TEST(检查相同字母间的距离, checkDistances) {
   std::string s2 = "aa";
   std::vector<int> distance2 = {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-  EXPECT_EQ(solution.checkDistances(s2, distance2), false);
+  EXPECT_FALSE(solution.checkDistances(s2, distance2));
 }

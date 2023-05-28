@@ -32,7 +32,8 @@
       }
     }
   ],
-
+  "testMate.cpp.discovery.testListCaching": false,
+  "testMate.cpp.discovery.loadOnStartup": true,
   "clangd.checkUpdates": true,
   "cmake.outputLogEncoding": "utf8",
   "cmake.statusbar.advanced": {
@@ -205,6 +206,7 @@
     "loveleetcode",
     "magicdictionary",
     "Makefiles",
+    "maxfreq",
     "maxn",
     "maxnum",
     "minnum",

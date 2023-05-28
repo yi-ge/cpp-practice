@@ -42,10 +42,19 @@ if (output.includes('PASSED')) {
 
   // 获取最新的一行
   const commandList = commandTxt.split('\n')
-  const commandLine = commandList[commandList.length - 2]
+  let lineIndex = commandList.length - 2
+  let commandLine = commandList[lineIndex]
   if (!commandLine) {
     console.log('测试用例执行命令为空。')
     process.exit(1)
+  }
+
+  while (!commandLine.includes('gtest_filter')) {
+    commandLine = commandList[--lineIndex]
+    if (!commandLine) {
+      console.log('测试用例执行命令未找到。')
+      process.exit(1)
+    }
   }
 
   // 内容示例：Time: 2023-05-27 18:35:25, Command: "/Users/yige/Project/cpp-practice/build/cpp-practice" "--gtest_color=yes" "--gtest_filter=子串能表示从1到N数字的二进制串.queryString:检查二进制字符串字段.checkOnesSegment:按字典序排在最后的子串.lastSubstring:段式回文.longestDecomposition" "--gtest_also_run_disabled_tests" 2>&1
