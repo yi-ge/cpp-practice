@@ -34,6 +34,7 @@ grcov.exe
 grcov
 grcovDownloader.exe
 grcovDownloader
+window_check_utf8_support.exe
 
 # Build
 /Build

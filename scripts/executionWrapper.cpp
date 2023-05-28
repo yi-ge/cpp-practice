@@ -118,6 +118,22 @@ std::string utf8_to_gbk(const std::string &utf8_str) {
   return gbk_str;
 }
 
+// 将gbk字符串转换为utf8字符串
+std::string gbk_to_utf8(const std::string &gbk_str) {
+  int wide_len =
+      MultiByteToWideChar(CP_ACP, 0, gbk_str.c_str(), -1, nullptr, 0);
+  std::wstring wide_str(wide_len, 0);
+  MultiByteToWideChar(CP_ACP, 0, gbk_str.c_str(), -1, &wide_str[0], wide_len);
+
+  int utf8_len = WideCharToMultiByte(CP_UTF8, 0, wide_str.c_str(), -1, nullptr,
+                                     0, nullptr, nullptr);
+  std::string utf8_str(utf8_len, 0);
+  WideCharToMultiByte(CP_UTF8, 0, wide_str.c_str(), -1, &utf8_str[0], utf8_len,
+                      nullptr, nullptr);
+
+  return utf8_str;
+}
+
 int main(int argc, char **argv) {
   std::string command;
   std::string logDir;
@@ -127,6 +143,10 @@ int main(int argc, char **argv) {
   // Remove command and its arguments external quotes, if any
   command.erase(std::remove(command.begin(), command.end(), '\"'),
                 command.end());
+
+  if (!check_utf8_support()) {
+    command = gbk_to_utf8(command);
+  }
 
   // Get the current date and time
   auto currentTime = std::chrono::system_clock::now();
