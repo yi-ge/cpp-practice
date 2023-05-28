@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.23.0 FATAL_ERROR)
 project(
   cpp-practice
-  VERSION 0.1.1
+  VERSION 0.1.2
   LANGUAGES CXX)
 
 message(${CMAKE_SYSTEM_NAME}: ${CMAKE_CXX_COMPILER})
@@ -33,24 +33,24 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
   endif()
 
   # Use Clang's headers before MSVC's
-  if(CMAKE_SYSTEM_NAME MATCHES "Windows")
-    set(CLANG_LIBCXX_INCLUDE_DIR "")
-    execute_process(
-        COMMAND ${CMAKE_CXX_COMPILER} -print-resource-dir
-        OUTPUT_VARIABLE CLANG_RESOURCE_DIR
-        OUTPUT_STRIP_TRAILING_WHITESPACE
-    )
-    if(EXISTS "${CLANG_RESOURCE_DIR}/include/c++/v1")
-        set(CLANG_LIBCXX_INCLUDE_DIR "${CLANG_RESOURCE_DIR}/include/c++/v1")
-    endif()
-    if(NOT CLANG_LIBCXX_INCLUDE_DIR STREQUAL "")
-        message(STATUS "Found Clang's libc++ headers: ${CLANG_LIBCXX_INCLUDE_DIR}")
-        include_directories(SYSTEM BEFORE "${CLANG_LIBCXX_INCLUDE_DIR}")
-    endif()
+  # if(CMAKE_SYSTEM_NAME MATCHES "Windows")
+  #   set(CLANG_LIBCXX_INCLUDE_DIR "")
+  #   execute_process(
+  #       COMMAND ${CMAKE_CXX_COMPILER} -print-resource-dir
+  #       OUTPUT_VARIABLE CLANG_RESOURCE_DIR
+  #       OUTPUT_STRIP_TRAILING_WHITESPACE
+  #   )
+  #   if(EXISTS "${CLANG_RESOURCE_DIR}/include/c++/v1")
+  #       set(CLANG_LIBCXX_INCLUDE_DIR "${CLANG_RESOURCE_DIR}/include/c++/v1")
+  #   endif()
+  #   if(NOT CLANG_LIBCXX_INCLUDE_DIR STREQUAL "")
+  #       message(STATUS "Found Clang's libc++ headers: ${CLANG_LIBCXX_INCLUDE_DIR}")
+  #       include_directories(SYSTEM BEFORE "${CLANG_LIBCXX_INCLUDE_DIR}")
+  #   endif()
 
-    # Disable Clang's adxintrin.h
-    add_definitions(-D__ADXINTRIN_H)
-  endif()
+  #   # Disable Clang's adxintrin.h
+  #   add_definitions(-D__ADXINTRIN_H)
+  # endif()
 
   add_compile_options(-std=c++20)
   if(USE_CUSTOM_LIBC)

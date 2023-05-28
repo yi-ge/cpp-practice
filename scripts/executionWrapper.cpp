@@ -30,60 +30,22 @@ void parse_arguments(int argc, char **argv, std::string &command,
 
 // Function to execute a command and capture the output
 std::string exec_and_capture(const char *cmd) {
-  SECURITY_ATTRIBUTES sa;
-  sa.nLength = sizeof(sa);
-  sa.lpSecurityDescriptor = NULL;
-  sa.bInheritHandle = TRUE;
-
-  HANDLE hOutRead, hOutWrite;
-
-  if (!CreatePipe(&hOutRead, &hOutWrite, &sa, 0)) {
-    throw std::runtime_error("CreatePipe() failed");
-  }
-
-  PROCESS_INFORMATION pi;
-  STARTUPINFO si;
-
-  ZeroMemory(&pi, sizeof(PROCESS_INFORMATION));
-  ZeroMemory(&si, sizeof(STARTUPINFO));
-
-  si.cb = sizeof(STARTUPINFO);
-  si.dwFlags |= STARTF_USESTDHANDLES;
-  si.hStdOutput = hOutWrite;
-  si.hStdError = hOutWrite;
-
-  std::string commandLine = cmd;
-
-  if (!CreateProcess(NULL, commandLine.data(), NULL, NULL, TRUE,
-                     CREATE_NO_WINDOW, NULL, NULL, &si, &pi)) {
-    CloseHandle(hOutWrite);
-    CloseHandle(hOutRead);
-    throw std::runtime_error("CreateProcess() failed");
-  }
-
-  std::string result;
   std::array<char, 128> buffer;
-  DWORD bytesRead;
+  std::string result;
+  FILE *pipe = _popen(cmd, "r");
 
-  CloseHandle(hOutWrite);
-
-  while (true) {
-    if (!ReadFile(hOutRead, buffer.data(), buffer.size(), &bytesRead, NULL) ||
-        bytesRead == 0) {
-      if (GetLastError() == ERROR_BROKEN_PIPE) {
-        break;
-      } else {
-        throw std::runtime_error("ReadFile() failed");
-      }
-    }
-    result.append(buffer.data(), bytesRead);
+  if (!pipe) {
+    throw std::runtime_error("_popen() failed!");
   }
 
-  CloseHandle(hOutRead);
+  while (fgets(buffer.data(), buffer.size(), pipe) != nullptr) {
+    result += buffer.data();
+  }
 
-  WaitForSingleObject(pi.hProcess, INFINITE);
-  CloseHandle(pi.hProcess);
-  CloseHandle(pi.hThread);
+  int exitStatus = _pclose(pipe);
+  if (exitStatus != 0) {
+    throw std::runtime_error("Command exited with non-zero status.");
+  }
 
   return result;
 }

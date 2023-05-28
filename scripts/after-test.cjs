@@ -66,7 +66,7 @@ if (output.includes('PASSED')) {
   }
 
   // 解析--gtest_filter=参数，得到所有测试用例的名称
-  const gtestFilterRegex = /--gtest_filter=(.*?)"\s/;
+  const gtestFilterRegex = /--gtest_filter=(.*?)["\s]/; // 兼容Windows
   const gtestFilterMatch = command.match(gtestFilterRegex);
 
   if (!gtestFilterMatch || gtestFilterMatch.length < 1) {
@@ -151,8 +151,19 @@ if (output.includes('PASSED')) {
     // 组合成为globs格式的路径，并添加 --keep-only 参数
     const keepOnlyArgs = keepOnlyPaths.map((path) => `--keep-only ${path}`).join(' ');
 
+    // 运行grcov命令
+    // let grcovCmd = `grcov . -s . --binary-path ./build/ -t html --llvm --guess-directory-when-missing --ignore test/* --branch ${keepOnlyArgs} -o ./coverage/`;
+    let grcovCmd = `grcov . -s . --binary-path ./build/ -t lcov --llvm --guess-directory-when-missing --ignore test/* --branch ${keepOnlyArgs} -o ./coverage/lcov.info`;
+
+    // 移除字符串前几个字符
+    grcovCmd = grcovCmd.substring(grcovCmd.indexOf('grcov') + 6);
+
+    // 转为数组
+    grcovCmd = grcovCmd.split(' ')
+
     // 根据系统类型，设置llvmPath
     let llvmPath = '/usr/local/opt/llvm/bin/';
+
     if (process.platform === 'win32') {
       llvmPath = 'C:\\Program Files\\LLVM\\bin\\';
     } else if (process.platform === 'darwin') {
@@ -169,11 +180,8 @@ if (output.includes('PASSED')) {
       }
     }
 
-    // 运行grcov命令
-    // let grcovCmd = `grcov . -s . --binary-path ./build/ --llvm-path ${llvmPath} -t html --llvm --guess-directory-when-missing --ignore test/* --branch ${keepOnlyArgs} -o ./coverage/`;
-    let grcovCmd = `grcov . -s . --binary-path ./build/ --llvm-path ${llvmPath} -t lcov --llvm --guess-directory-when-missing --ignore test/* --branch ${keepOnlyArgs} -o ./coverage/lcov.info`;
-
-    // console.log(grcovCmd)
+    grcovCmd.push('--llvm-path')
+    grcovCmd.push(llvmPath)
 
     // 在 Windows 上，二进制文件的扩展名是 .exe
     // 在其他系统上，扩展名是空字符串
@@ -194,10 +202,6 @@ if (output.includes('PASSED')) {
       fs.unlinkSync(path.join(process.cwd(), 'coverage', 'lcov.info'))
     }
 
-    // 移除字符串前几个字符
-    grcovCmd = grcovCmd.substring(grcovCmd.indexOf('grcov') + 6);
-    // console.log(grcovCmd)
-
     // 删除已存在的多余的default.profraw文件
     // const profrawFilePath = path.join(process.cwd(), 'default.profraw')
     // if (fs.existsSync(profrawFilePath)) {
@@ -205,10 +209,7 @@ if (output.includes('PASSED')) {
     // }
 
     // 执行覆盖率文件生成命令
-    // console.log(grcovFilePath)
-    // console.log(path.join(process.cwd()))
-    // console.log(grcovCmd.split(' '))
-    const execute = spawnSync(grcovFilePath, grcovCmd.split(' '), {
+    const execute = spawnSync(grcovFilePath, grcovCmd, {
       cwd: path.join(process.cwd()), // 当前工作目录
       env: process.env,  // 附加当前操作系统的环境变量
       stdio: 'inherit',  // 混合标准输出和错误输出
