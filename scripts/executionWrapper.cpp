@@ -5,6 +5,7 @@
 #include <array>
 #include <chrono>
 #include <deque>
+#include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <locale>
@@ -60,23 +61,97 @@ void parse_arguments(int argc, char **argv, std::string &command,
   }
 }
 
+std::string generate_unique_path() {
+  auto now = std::chrono::system_clock::now();
+  auto epoch_time = std::chrono::duration_cast<std::chrono::milliseconds>(
+                        now.time_since_epoch())
+                        .count();
+  std::ostringstream oss;
+  oss << "temp_output_" << epoch_time << ".txt";
+  return oss.str();
+}
+
 // Function to execute a command and capture the output
-std::string exec_and_capture(const char *cmd) {
-  std::array<char, 128> buffer;
+// std::string exec_and_capture(const char *cmd, const std::string &logDir) {
+//   std::array<char, 128> buffer;
+//   std::string result;
+
+//   std::ofstream errorLogFile(logDir + "/command_sys_exec.log",
+//                              std::ios_base::app);
+//   errorLogFile << "_popen之前" << std::endl;
+//   errorLogFile.close();
+
+//   FILE *pipe = _popen(cmd, "r");
+
+//   std::ofstream errorLogFile2(logDir + "/command_sys_exec2.log",
+//                               std::ios_base::app);
+//   errorLogFile2 << "_popen后" << std::endl;
+//   errorLogFile2.close();
+
+//   if (!pipe) {
+//     // throw std::runtime_error("_popen() failed!");
+//     std::ofstream errorLogFile(logDir + "/command_sys_error.log",
+//                                std::ios_base::app);
+//     errorLogFile << "_popen() failed!" << std::endl;
+//     errorLogFile.close();
+//   }
+
+//   while (fgets(buffer.data(), buffer.size(), pipe) != nullptr) {
+//     result += buffer.data();
+//   }
+
+//   int exitStatus = _pclose(pipe);
+
+//   // 将命令字符串和输出写入 command_output.log 文件
+//   std::ofstream outputLogFile(logDir + "/command_output.log",
+//                               std::ios_base::app);
+//   outputLogFile << "Command: " << cmd << std::endl;
+//   outputLogFile << "Output: " << result << std::endl;
+//   outputLogFile.close();
+
+//   // 如果命令执行不成功，将错误信息写入 command_error.log 文件
+//   if (exitStatus != 0) {
+//     std::ofstream errorLogFile(logDir + "/command_error.log",
+//                                std::ios_base::app);
+//     errorLogFile << "Command exited with non-zero status: " << exitStatus
+//                  << std::endl;
+//     errorLogFile.close();
+//   }
+
+//   return result;
+// }
+std::string exec_and_capture(const char *cmd, const std::string &logDir) {
+  constexpr size_t BUFFER_SIZE = 128;
+  std::array<char, BUFFER_SIZE> buffer{};
   std::string result;
-  FILE *pipe = _popen(cmd, "r");
 
-  if (!pipe) {
-    throw std::runtime_error("_popen() failed!");
-  }
+  // 创建临时文件名以存储命令输出
+  std::string temp_file = generate_unique_path();
 
-  while (fgets(buffer.data(), buffer.size(), pipe) != nullptr) {
+  // 将命令的输出重定向到临时文件
+  std::string modified_cmd = std::string(cmd) + " >" + temp_file + " 2>&1";
+
+  // 使用 std::system 执行命令
+  int exitStatus = std::system(modified_cmd.c_str());
+
+  // 读取临时文件的内容
+  std::ifstream inputFile(temp_file);
+  while (inputFile.getline(buffer.data(), BUFFER_SIZE)) {
     result += buffer.data();
+    result += '\n';
   }
+  inputFile.close();
 
-  int exitStatus = _pclose(pipe);
+  // 删除临时文件
+  std::filesystem::remove(temp_file);
+
+  // 如果命令执行不成功，将错误信息写入 command_error.log 文件
   if (exitStatus != 0) {
-    throw std::runtime_error("Command exited with non-zero status.");
+    std::ofstream errorLogFile(logDir + "/command_error.log",
+                               std::ios_base::app);
+    errorLogFile << "Command exited with non-zero status: " << exitStatus
+                 << std::endl;
+    errorLogFile.close();
   }
 
   return result;
@@ -135,7 +210,46 @@ std::string gbk_to_utf8(const std::string &gbk_str) {
   return utf8_str;
 }
 
+// 将字符串中的CRLF（\r\n）转换为LF（\n）
+std::string convert_crlf_to_lf(const std::string &input) {
+  std::string output;
+  output.reserve(input.size());
+
+  for (size_t i = 0; i < input.size();) {
+    if (input[i] == '\r' && i + 1 < input.size() && input[i + 1] == '\n') {
+      output.push_back('\n');
+      i += 2; // Skip both '\r' and '\n'
+    } else {
+      output.push_back(input[i]);
+      ++i;
+    }
+  }
+
+  return output;
+}
+
+void convert_argv_to_utf8(int argc, char **&argv) {
+  for (int i = 0; i < argc; ++i) {
+    std::string gbk_arg(argv[i]);
+    std::string utf8_arg = gbk_to_utf8(gbk_arg);
+    argv[i] = new char[utf8_arg.size() + 1];
+    memcpy(argv[i], utf8_arg.c_str(), utf8_arg.size() + 1);
+  }
+}
+
+void free_converted_argv(int argc, char **argv) {
+  for (int i = 0; i < argc; ++i) {
+    delete[] argv[i];
+  }
+}
+
 int main(int argc, char **argv) {
+  if (!check_utf8_support()) {
+    // Add this line at the beginning of main to convert arguments from GBK to
+    // UTF-8
+    convert_argv_to_utf8(argc, argv);
+  }
+
   std::string command;
   std::string logDir;
 
@@ -144,10 +258,6 @@ int main(int argc, char **argv) {
   // Remove command and its arguments external quotes, if any
   command.erase(std::remove(command.begin(), command.end(), '\"'),
                 command.end());
-
-  if (!check_utf8_support()) {
-    command = gbk_to_utf8(command);
-  }
 
   // Get the current date and time
   auto currentTime = std::chrono::system_clock::now();
@@ -173,7 +283,7 @@ int main(int argc, char **argv) {
   cmdFile.close();
 
   // Execute the command and capture the output with colors
-  std::string output = exec_and_capture(command.c_str());
+  std::string output = exec_and_capture(command.c_str(), logDir);
 
   // Write output to the appropriate log file
   std::string logPath = logDir + "/";
@@ -183,6 +293,10 @@ int main(int argc, char **argv) {
     logPath += "output.log";
   }
   std::ofstream logFile(logPath, std::ios_base::trunc);
+  // output = convert_crlf_to_lf(output);
+  // Convert output from UTF-8 to GBK before writing to log file
+  // std::string output_gbk = utf8_to_gbk(output);
+  // logFile << output_gbk;
   logFile << output;
   logFile.close();
 
@@ -195,11 +309,14 @@ int main(int argc, char **argv) {
     output = std::regex_replace(output, std::regex("\\x1B\\[[0-9;]*[mK]"), "");
   }
 
-  if (check_utf8_support()) {
-    std::cout << output;
-  } else {
-    std::cout << utf8_to_gbk(output);
-  }
+  // if (check_utf8_support()) {
+  std::cout << output;
+  // } else {
+  // std::cout << utf8_to_gbk(output);
+  // }
+
+  // Free memory allocated for converted arguments
+  free_converted_argv(argc, argv);
 
   return 0;
 }
