@@ -192,8 +192,7 @@ int main(int argc, char **argv) {
     limit_file_lines(logPath, 5000);
   } else {
     // Display the output to the screen without color
-    output =
-        std::regex_replace(output, std::regex("\\x1B\\[[0-?]*[ -/]*[@-~]"), "");
+    output = std::regex_replace(output, std::regex("\\x1B\\[[0-9;]*[mK]"), "");
   }
 
   if (check_utf8_support()) {
