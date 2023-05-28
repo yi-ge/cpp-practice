@@ -122,12 +122,13 @@ std::string utf8_to_gbk(const std::string &utf8_str) {
 std::string gbk_to_utf8(const std::string &gbk_str) {
   int wide_len =
       MultiByteToWideChar(CP_ACP, 0, gbk_str.c_str(), -1, nullptr, 0);
-  std::wstring wide_str(wide_len, 0);
+  std::wstring wide_str(wide_len - 1,
+                        0); // Subtract 1 to exclude null character
   MultiByteToWideChar(CP_ACP, 0, gbk_str.c_str(), -1, &wide_str[0], wide_len);
 
   int utf8_len = WideCharToMultiByte(CP_UTF8, 0, wide_str.c_str(), -1, nullptr,
                                      0, nullptr, nullptr);
-  std::string utf8_str(utf8_len, 0);
+  std::string utf8_str(utf8_len - 1, 0); // Subtract 1 to exclude null character
   WideCharToMultiByte(CP_UTF8, 0, wide_str.c_str(), -1, &utf8_str[0], utf8_len,
                       nullptr, nullptr);
 
@@ -189,16 +190,16 @@ int main(int argc, char **argv) {
   limit_file_lines(logDir + "/command.txt", 2000);
   if (!is_gtest) {
     limit_file_lines(logPath, 5000);
+  } else {
+    // Display the output to the screen without color
+    output =
+        std::regex_replace(output, std::regex("\\x1B\\[[0-?]*[ -/]*[@-~]"), "");
   }
 
-  // Display the output to the screen without color
-  std::string output_without_color =
-      std::regex_replace(output, std::regex("\\x1B\\[[0-?]*[ -/]*[@-~]"), "");
-
   if (check_utf8_support()) {
-    std::cout << output_without_color;
+    std::cout << output;
   } else {
-    std::cout << utf8_to_gbk(output_without_color);
+    std::cout << utf8_to_gbk(output);
   }
 
   return 0;

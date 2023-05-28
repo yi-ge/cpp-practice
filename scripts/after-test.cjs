@@ -3,7 +3,14 @@ const path = require('path')
 const { spawnSync } = require('child_process');
 const xml2js = require('xml2js');
 
-const output = fs.readFileSync(path.join(process.cwd(), 'build/gtest.log'), 'utf-8')
+const gtestLogFilePath = path.join(process.cwd(), 'build/gtest.log')
+if (!fs.existsSync(gtestLogFilePath)) {
+  console.log('执行单元测试失败！')
+  process.exit(1)
+}
+
+// 打印测试结果
+const output = fs.readFileSync(gtestLogFilePath, 'utf-8')
 console.log(output)
 
 // 判断是否存在"PASSED"字符串，如果有，说明测试通过，进行测试覆盖率统计
