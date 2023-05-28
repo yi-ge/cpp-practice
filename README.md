@@ -182,6 +182,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [有序矩阵中的第 k 个最小数组和](src/array/find_the_kth_smallest_sum_of_a_matrix_with_sorted_rows.cpp)  [数组, 二分查找, 矩阵, 堆（优先队列）]
+
+  - LeetCode 1439. 有序矩阵中的第 k 个最小数组和 <https://leetcode.cn/problems/find-the-kth-smallest-sum-of-a-matrix-with-sorted-rows>
+
 - [大样本统计](src/array/statistics_from_a_large_sample.cpp)  [数组, 数学, 概率与统计]
 
   - LeetCode 1093. 大样本统计 <https://leetcode.cn/problems/statistics-from-a-large-sample>
