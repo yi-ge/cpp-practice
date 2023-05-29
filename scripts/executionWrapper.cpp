@@ -72,78 +72,42 @@ std::string generate_unique_path() {
 }
 
 // Function to execute a command and capture the output
-// std::string exec_and_capture(const char *cmd, const std::string &logDir) {
-//   std::array<char, 128> buffer;
-//   std::string result;
-
-//   std::ofstream errorLogFile(logDir + "/command_sys_exec.log",
-//                              std::ios_base::app);
-//   errorLogFile << "_popen之前" << std::endl;
-//   errorLogFile.close();
-
-//   FILE *pipe = _popen(cmd, "r");
-
-//   std::ofstream errorLogFile2(logDir + "/command_sys_exec2.log",
-//                               std::ios_base::app);
-//   errorLogFile2 << "_popen后" << std::endl;
-//   errorLogFile2.close();
-
-//   if (!pipe) {
-//     // throw std::runtime_error("_popen() failed!");
-//     std::ofstream errorLogFile(logDir + "/command_sys_error.log",
-//                                std::ios_base::app);
-//     errorLogFile << "_popen() failed!" << std::endl;
-//     errorLogFile.close();
-//   }
-
-//   while (fgets(buffer.data(), buffer.size(), pipe) != nullptr) {
-//     result += buffer.data();
-//   }
-
-//   int exitStatus = _pclose(pipe);
-
-//   // 将命令字符串和输出写入 command_output.log 文件
-//   std::ofstream outputLogFile(logDir + "/command_output.log",
-//                               std::ios_base::app);
-//   outputLogFile << "Command: " << cmd << std::endl;
-//   outputLogFile << "Output: " << result << std::endl;
-//   outputLogFile.close();
-
-//   // 如果命令执行不成功，将错误信息写入 command_error.log 文件
-//   if (exitStatus != 0) {
-//     std::ofstream errorLogFile(logDir + "/command_error.log",
-//                                std::ios_base::app);
-//     errorLogFile << "Command exited with non-zero status: " << exitStatus
-//                  << std::endl;
-//     errorLogFile.close();
-//   }
-
-//   return result;
-// }
 std::string exec_and_capture(const char *cmd, const std::string &logDir) {
-  constexpr size_t BUFFER_SIZE = 128;
-  std::array<char, BUFFER_SIZE> buffer{};
+  std::array<char, 128> buffer;
   std::string result;
 
-  // 创建临时文件名以存储命令输出
-  std::string temp_file = generate_unique_path();
+  std::ofstream errorLogFile(logDir + "/command_sys_exec.log",
+                             std::ios_base::app);
+  errorLogFile << "_popen之前" << std::endl;
+  errorLogFile.close();
 
-  // 将命令的输出重定向到临时文件
-  std::string modified_cmd = std::string(cmd) + " >" + temp_file + " 2>&1";
+  FILE *pipe = _popen(cmd, "r");
 
-  // 使用 std::system 执行命令
-  int exitStatus = std::system(modified_cmd.c_str());
+  std::ofstream errorLogFile2(logDir + "/command_sys_exec2.log",
+                              std::ios_base::app);
+  errorLogFile2 << "_popen后" << std::endl;
+  errorLogFile2.close();
 
-  // 读取临时文件的内容
-  std::ifstream inputFile(temp_file);
-  while (inputFile.getline(buffer.data(), BUFFER_SIZE)) {
-    result += buffer.data();
-    result += '\n';
+  if (!pipe) {
+    // throw std::runtime_error("_popen() failed!");
+    std::ofstream errorLogFile(logDir + "/command_sys_error.log",
+                               std::ios_base::app);
+    errorLogFile << "_popen() failed!" << std::endl;
+    errorLogFile.close();
   }
-  inputFile.close();
 
-  // 删除临时文件
-  std::filesystem::remove(temp_file);
+  while (fgets(buffer.data(), buffer.size(), pipe) != nullptr) {
+    result += buffer.data();
+  }
+
+  int exitStatus = _pclose(pipe);
+
+  // 将命令字符串和输出写入 command_output.log 文件
+  std::ofstream outputLogFile(logDir + "/command_output.log",
+                              std::ios_base::app);
+  outputLogFile << "Command: " << cmd << std::endl;
+  outputLogFile << "Output: " << result << std::endl;
+  outputLogFile.close();
 
   // 如果命令执行不成功，将错误信息写入 command_error.log 文件
   if (exitStatus != 0) {
@@ -156,6 +120,42 @@ std::string exec_and_capture(const char *cmd, const std::string &logDir) {
 
   return result;
 }
+// std::string exec_and_capture(const char *cmd, const std::string &logDir) {
+//   constexpr size_t BUFFER_SIZE = 128;
+//   std::array<char, BUFFER_SIZE> buffer{};
+//   std::string result;
+
+//   // 创建临时文件名以存储命令输出
+//   std::string temp_file = generate_unique_path();
+
+//   // 将命令的输出重定向到临时文件
+//   std::string modified_cmd = std::string(cmd) + " >" + temp_file + " 2>&1";
+
+//   // 使用 std::system 执行命令
+//   int exitStatus = std::system(modified_cmd.c_str());
+
+//   // 读取临时文件的内容
+//   std::ifstream inputFile(temp_file);
+//   while (inputFile.getline(buffer.data(), BUFFER_SIZE)) {
+//     result += buffer.data();
+//     result += '\n';
+//   }
+//   inputFile.close();
+
+//   // 删除临时文件
+//   std::filesystem::remove(temp_file);
+
+//   // 如果命令执行不成功，将错误信息写入 command_error.log 文件
+//   if (exitStatus != 0) {
+//     std::ofstream errorLogFile(logDir + "/command_error.log",
+//                                std::ios_base::app);
+//     errorLogFile << "Command exited with non-zero status: " << exitStatus
+//                  << std::endl;
+//     errorLogFile.close();
+//   }
+
+//   return result;
+// }
 
 // Limit the lines of a file
 void limit_file_lines(const std::string &filePath, int maxLines) {
@@ -244,11 +244,12 @@ void free_converted_argv(int argc, char **argv) {
 }
 
 int main(int argc, char **argv) {
-  if (!check_utf8_support()) {
-    // Add this line at the beginning of main to convert arguments from GBK to
-    // UTF-8
-    convert_argv_to_utf8(argc, argv);
-  }
+  // if (!check_utf8_support()) {
+  //   // Add this line at the beginning of main to convert arguments from GBK
+  //   to
+  //   // UTF-8
+  //   convert_argv_to_utf8(argc, argv);
+  // }
 
   std::string command;
   std::string logDir;
@@ -258,6 +259,11 @@ int main(int argc, char **argv) {
   // Remove command and its arguments external quotes, if any
   command.erase(std::remove(command.begin(), command.end(), '\"'),
                 command.end());
+
+  if (!check_utf8_support()) {
+    // Convert command from GBK to UTF8
+    command = gbk_to_utf8(command);
+  }
 
   // Get the current date and time
   auto currentTime = std::chrono::system_clock::now();
@@ -306,7 +312,8 @@ int main(int argc, char **argv) {
     limit_file_lines(logPath, 5000);
   } else {
     // Display the output to the screen without color
-    output = std::regex_replace(output, std::regex("\\x1B\\[[0-9;]*[mK]"), "");
+    output =
+        std::regex_replace(output, std::regex("\\x1B\\[[0-?]*[ -/]*[@-~]"), "");
   }
 
   // if (check_utf8_support()) {
@@ -316,7 +323,7 @@ int main(int argc, char **argv) {
   // }
 
   // Free memory allocated for converted arguments
-  free_converted_argv(argc, argv);
+  // free_converted_argv(argc, argv);
 
   return 0;
 }

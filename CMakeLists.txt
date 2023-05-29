@@ -228,20 +228,20 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "(Apple)?[Cc]lang")
 
   # add_dependencies(${PROJECT_NAME} run_post_test_script myCustomTarget)
 
-  # # 定义一个自定义命令，该命令在每次编译前运行一个脚本来修改文件
-  # add_custom_command(
-  #   OUTPUT ${PROJECT_SOURCE_DIR}/test/lib/lib_test.cpp
-  #   COMMAND ${CMAKE_COMMAND} -P ${PROJECT_SOURCE_DIR}/cmake/UpdateTestFile.cmake
-  #   COMMENT "Updating lib_test.cpp file..."
-  #   BYPRODUCTS some_file_that_gets_modified
-  #   VERBATIM
-  # )
+  # 定义一个自定义命令，该命令在每次编译前运行一个脚本来修改文件
+  add_custom_command(
+    OUTPUT ${PROJECT_SOURCE_DIR}/test/lib/lib_test.cpp
+    COMMAND ${CMAKE_COMMAND} -P ${PROJECT_SOURCE_DIR}/cmake/UpdateTestFile.cmake
+    COMMENT "Updating lib_test.cpp file..."
+    BYPRODUCTS some_file_that_gets_modified
+    VERBATIM
+  )
 
-  # # 添加一个自定义目标，该目标依赖上面的自定义命令
-  # add_custom_target(update_file ALL DEPENDS ${PROJECT_SOURCE_DIR}/test/lib/lib_test.cpp)
+  # 添加一个自定义目标，该目标依赖上面的自定义命令
+  add_custom_target(update_file ALL DEPENDS ${PROJECT_SOURCE_DIR}/test/lib/lib_test.cpp)
 
-  # # 让你的测试目标依赖上面的自定义目标，这样在每次构建测试目标时，都会先运行自定义命令
-  # add_dependencies(${PROJECT_NAME} update_file)
+  # 让你的测试目标依赖上面的自定义目标，这样在每次构建测试目标时，都会先运行自定义命令
+  add_dependencies(${PROJECT_NAME} update_file)
 else()
 
   message(STATUS "Only supports LLVM clang++.")
