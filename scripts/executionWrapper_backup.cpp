@@ -4,7 +4,6 @@
 #include <algorithm>
 #include <array>
 #include <chrono>
-#include <codecvt>
 #include <deque>
 #include <filesystem>
 #include <fstream>
@@ -15,7 +14,6 @@
 #include <string>
 #include <vector>
 #include <windows.h>
-// #include <iconv.h>
 
 // 检查Windows系统是否开启了“使用 Unicode UTF-8 提供全球语言支持”
 bool check_utf8_support() {
@@ -47,6 +45,25 @@ bool check_utf8_support() {
   return false;
 }
 
+// 对utf8字符串进行编码转换
+std::wstring utf8_to_wstring(const std::string &utf8_str) {
+  int wide_len =
+      MultiByteToWideChar(CP_UTF8, 0, utf8_str.c_str(), -1, nullptr, 0);
+  std::wstring wide_str(wide_len, 0);
+  MultiByteToWideChar(CP_UTF8, 0, utf8_str.c_str(), -1, &wide_str[0], wide_len);
+  return wide_str;
+}
+
+// 对宽字符串进行编码转换
+std::string wstring_to_utf8(const std::wstring &wide_str) {
+  int utf8_len = WideCharToMultiByte(CP_UTF8, 0, wide_str.c_str(), -1, nullptr,
+                                     0, nullptr, nullptr);
+  std::string utf8_str(utf8_len, 0);
+  WideCharToMultiByte(CP_UTF8, 0, wide_str.c_str(), -1, &utf8_str[0], utf8_len,
+                      nullptr, nullptr);
+  return utf8_str;
+}
+
 // Method to parse the command line arguments
 void parse_arguments(int argc, char **argv, std::string &command,
                      std::string &logDir) {
@@ -73,49 +90,23 @@ std::string generate_unique_path() {
   return oss.str();
 }
 
-std::wstring Utf8ToUtf16(const std::string &utf8) {
-  int requiredSize =
-      MultiByteToWideChar(CP_UTF8, 0, utf8.c_str(), -1, nullptr, 0);
-  std::wstring utf16(requiredSize, L'\0');
-  MultiByteToWideChar(CP_UTF8, 0, utf8.c_str(), -1, &utf16[0], requiredSize);
-  return utf16;
-}
-
-std::string generate_temp_filename() {
-  // 获取系统临时文件夹的路径
-  char temp_path[MAX_PATH];
-  GetTempPath(MAX_PATH, temp_path);
-
-  // 在临时文件夹中生成带时间戳的文件名
-  std::time_t t = std::time(nullptr);
-  char buffer[100];
-  std::strftime(buffer, sizeof(buffer), "temp_%Y%m%d%H%M%S.txt",
-                std::localtime(&t));
-
-  // 返回完整的绝对路径
-  return std::string(temp_path) + buffer;
-}
-
 // Function to execute a command and capture the output
-std::string exec_powershell(const std::string &cmd) {
-  std::string utf8_encoding = "$OutputEncoding = [Console]::OutputEncoding ="
-                              "[System.Text.Encoding]::UTF8\n";
-  std::string command = "powershell.exe -NoLogo -NonInteractive -Command \"" +
-                        utf8_encoding + cmd + "\"";
-  // std::string command =
-  //     "powershell.exe -NoLogo -NonInteractive -Command \"chcp 65001 > NUL &&
-  //     " + cmd + "\"";
+std::wstring exec_powershell(const std::wstring &cmd) {
+  std::wstring utf8_encoding =
+      L"chcp 65001; $OutputEncoding = [System.Text.Encoding]::UTF8;";
+  std::wstring command =
+      L"powershell.exe -Command \"" + utf8_encoding + cmd + L"\"";
   // std::string command = "powershell.exe -Command \"" + cmd + "\"";
 
-  STARTUPINFO si;
+  STARTUPINFOW si;
   PROCESS_INFORMATION pi;
   SECURITY_ATTRIBUTES sa;
   HANDLE g_hChildStd_OUT_Rd = NULL;
   HANDLE g_hChildStd_OUT_Wr = NULL;
 
   ZeroMemory(&pi, sizeof(PROCESS_INFORMATION));
-  ZeroMemory(&si, sizeof(STARTUPINFO));
-  si.cb = sizeof(STARTUPINFO);
+  ZeroMemory(&si, sizeof(STARTUPINFOW));
+  si.cb = sizeof(STARTUPINFOW);
   si.dwFlags |= STARTF_USESTDHANDLES;
 
   sa.nLength = sizeof(SECURITY_ATTRIBUTES);
@@ -128,22 +119,24 @@ std::string exec_powershell(const std::string &cmd) {
 
   si.hStdOutput = g_hChildStd_OUT_Wr;
 
-  if (!CreateProcess(nullptr, const_cast<char *>(command.c_str()), nullptr,
-                     nullptr, TRUE, CREATE_NO_WINDOW, nullptr, nullptr, &si,
-                     &pi)) {
+  std::vector<wchar_t> commandBuffer(command.begin(), command.end());
+  commandBuffer.push_back('\0');
+
+  if (!CreateProcessW(nullptr, commandBuffer.data(), nullptr, nullptr, TRUE,
+                      CREATE_NO_WINDOW, nullptr, nullptr, &si, &pi)) {
     exit(EXIT_FAILURE);
   }
 
   CloseHandle(g_hChildStd_OUT_Wr);
 
   DWORD dwRead;
-  CHAR chBuf[4096];
-  std::string result;
+  WCHAR chBuf[4096];
+  std::wstring result;
   bool success = false;
   do {
     success = ReadFile(g_hChildStd_OUT_Rd, chBuf, 4096, &dwRead, nullptr);
     if (success && dwRead > 0) {
-      result.append(chBuf, dwRead);
+      result.append(chBuf, dwRead / sizeof(WCHAR));
     }
   } while (success && dwRead > 0);
 
@@ -154,58 +147,6 @@ std::string exec_powershell(const std::string &cmd) {
 
   return result;
 }
-// std::string exec_powershell(const std::string &cmd) {
-//   std::wstring command =
-//       L"powershell.exe -Command \"" + Utf8ToUtf16(cmd) + L"\"";
-
-//   STARTUPINFOW si;
-//   PROCESS_INFORMATION pi;
-//   SECURITY_ATTRIBUTES sa;
-//   HANDLE g_hChildStd_OUT_Rd = NULL;
-//   HANDLE g_hChildStd_OUT_Wr = NULL;
-
-//   ZeroMemory(&pi, sizeof(PROCESS_INFORMATION));
-//   ZeroMemory(&si, sizeof(STARTUPINFOW));
-//   si.cb = sizeof(STARTUPINFOW);
-//   si.dwFlags |= STARTF_USESTDHANDLES;
-
-//   sa.nLength = sizeof(SECURITY_ATTRIBUTES);
-//   sa.bInheritHandle = TRUE;
-//   sa.lpSecurityDescriptor = NULL;
-
-//   if (!CreatePipe(&g_hChildStd_OUT_Rd, &g_hChildStd_OUT_Wr, &sa, 0)) {
-//     exit(EXIT_FAILURE);
-//   }
-
-//   si.hStdOutput = g_hChildStd_OUT_Wr;
-
-//   if (!CreateProcessW(nullptr, const_cast<wchar_t *>(command.c_str()),
-//   nullptr,
-//                       nullptr, TRUE, CREATE_NO_WINDOW, nullptr, nullptr, &si,
-//                       &pi)) {
-//     exit(EXIT_FAILURE);
-//   }
-
-//   CloseHandle(g_hChildStd_OUT_Wr);
-
-//   DWORD dwRead;
-//   CHAR chBuf[4096];
-//   std::string result;
-//   bool success = false;
-//   do {
-//     success = ReadFile(g_hChildStd_OUT_Rd, chBuf, 4096, &dwRead, nullptr);
-//     if (success && dwRead > 0) {
-//       result.append(chBuf, dwRead);
-//     }
-//   } while (success && dwRead > 0);
-
-//   WaitForSingleObject(pi.hProcess, INFINITE);
-//   CloseHandle(pi.hProcess);
-//   CloseHandle(pi.hThread);
-//   CloseHandle(g_hChildStd_OUT_Rd);
-
-//   return result;
-// }
 
 // Function to execute a command and capture the output
 std::string exec_and_capture(const char *cmd, const std::string &logDir) {
@@ -329,45 +270,6 @@ std::string utf8_to_gbk(const std::string &utf8_str) {
   return gbk_str;
 }
 
-std::string exec_powershell_with_file(const std::string &cmd) {
-  // 提取 --gtest_filter 参数的内容
-  std::size_t filter_start = cmd.find("--gtest_filter=");
-  if (filter_start == std::string::npos) {
-    return ""; // 若找不到 --gtest_filter 参数，返回空字符串
-  }
-  filter_start += 15; // 跳过 --gtest_filter= 部分
-  std::size_t filter_end = cmd.find(" ", filter_start);
-  std::string filter_content =
-      cmd.substr(filter_start, filter_end - filter_start);
-
-  // 将参数内容写入临时文件
-  std::string temp_filename = generate_temp_filename();
-  std::ofstream temp_file(temp_filename);
-  temp_file << filter_content;
-  temp_file.close();
-
-  // 构造新命令，从文件中读取参数内容
-  std::string new_cmd =
-      cmd.substr(0, filter_start) + "$(Get-Content " + temp_filename + ") ";
-  if (filter_end != std::string::npos) {
-    new_cmd += cmd.substr(filter_end);
-  }
-
-  std::ofstream errorLogFile(
-      "D:\\Project\\cpp-practice\\build\\command_sys_exec.log",
-      std::ios_base::app);
-  errorLogFile << "命令:" << new_cmd << std::endl;
-  errorLogFile.close();
-
-  // 调用 exec_powershell 函数执行新命令
-  std::string result = exec_powershell(new_cmd);
-
-  // 删除临时文件
-  // std::remove(temp_filename.c_str());
-
-  return result;
-}
-
 // 将gbk字符串转换为utf8字符串
 std::string gbk_to_utf8(const std::string &gbk_str) {
   if (gbk_str.empty()) {
@@ -421,35 +323,6 @@ std::string gbk_to_utf8(const std::string &gbk_str) {
 //   return outUtf8;
 // }
 
-// std::string convert_gbk_to_utf8(const std::string &gbk_str) {
-//   iconv_t cd = iconv_open("UTF-8", "GBK");
-//   if (cd == (iconv_t)-1) {
-//     perror("iconv_open");
-//     return "";
-//   }
-
-//   std::string utf8_str;
-//   size_t in_left = gbk_str.size();
-//   char *in_buf = const_cast<char *>(gbk_str.data());
-
-//   // Allocate a buffer for the converted string
-//   size_t out_left = in_left * 4; // Assuming the worst case, each character
-//   takes up to 4 bytes in UTF-8 std::vector<char> out_buf(out_left); char
-//   *out_ptr = out_buf.data();
-
-//   size_t result = iconv(cd, &in_buf, &in_left, &out_ptr, &out_left);
-//   if (result == (size_t)-1) {
-//     perror("iconv");
-//     iconv_close(cd);
-//     return "";
-//   }
-
-//   utf8_str.assign(out_buf.data(), out_buf.size() - out_left);
-
-//   iconv_close(cd);
-//   return utf8_str;
-// }
-
 // 将字符串中的CRLF（\r\n）转换为LF（\n）
 std::string convert_crlf_to_lf(const std::string &input) {
   std::string output;
@@ -468,6 +341,54 @@ std::string convert_crlf_to_lf(const std::string &input) {
   return output;
 }
 
+// 将gbk字符串转换为utf8字符串，并输出为wstring
+std::wstring gbk_to_utf8_wstring(const std::string &gbk_str) {
+  if (gbk_str.empty()) {
+    return std::wstring();
+  }
+
+  // 转换GBK到UTF-16 (宽字符)
+  int wide_len =
+      MultiByteToWideChar(CP_ACP, MB_ERR_INVALID_CHARS, gbk_str.c_str(),
+                          static_cast<int>(gbk_str.size()), nullptr, 0);
+
+  if (wide_len == 0 && GetLastError() != ERROR_NO_UNICODE_TRANSLATION) {
+    // Error handling
+    return std::wstring();
+  } else if (wide_len == 0) {
+    wide_len =
+        MultiByteToWideChar(CP_ACP, 0, gbk_str.c_str(),
+                            static_cast<int>(gbk_str.size()), nullptr, 0);
+  }
+
+  std::vector<wchar_t> wide_str(wide_len);
+  MultiByteToWideChar(CP_ACP, 0, gbk_str.c_str(),
+                      static_cast<int>(gbk_str.size()), &wide_str[0], wide_len);
+
+  // 转换UTF-16到UTF-8
+  int utf8_len = WideCharToMultiByte(CP_UTF8, 0, wide_str.data(), wide_len,
+                                     nullptr, 0, nullptr, nullptr);
+
+  if (utf8_len == 0) {
+    // Error handling
+    return std::wstring();
+  }
+
+  std::vector<char> utf8_str(utf8_len);
+  WideCharToMultiByte(CP_UTF8, 0, wide_str.data(), wide_len, utf8_str.data(),
+                      utf8_len, nullptr, nullptr);
+
+  // 转换UTF-8到UTF-16
+  int utf16_len =
+      MultiByteToWideChar(CP_UTF8, 0, utf8_str.data(), utf8_len, nullptr, 0);
+
+  std::vector<wchar_t> utf16_str(utf16_len);
+  MultiByteToWideChar(CP_UTF8, 0, utf8_str.data(), utf8_len, utf16_str.data(),
+                      utf16_len);
+
+  return std::wstring(utf16_str.begin(), utf16_str.end());
+}
+
 int main(int argc, char **argv) {
   std::string command;
   std::string logDir;
@@ -478,11 +399,6 @@ int main(int argc, char **argv) {
   // Remove command and its arguments external quotes, if any
   command.erase(std::remove(command.begin(), command.end(), '\"'),
                 command.end());
-
-  if (!support_utf8) {
-    // Convert command from GBK to UTF8
-    command = gbk_to_utf8(command);
-  }
 
   // Get the current date and time
   auto currentTime = std::chrono::system_clock::now();
@@ -502,7 +418,7 @@ int main(int argc, char **argv) {
   }
 
   // Write current time and command to command.txt
-  std::string code = support_utf8 ? "UTF-8" : "GBK to UTF-8";
+  std::string code = support_utf8 ? "UTF-8" : "GBK";
   std::ofstream cmdFile(logDir + "/command.txt", std::ios_base::app);
   cmdFile << "Time: " << currentTimeStr << ", Code: " << code
           << ", Command: " << command << std::endl;
@@ -513,11 +429,10 @@ int main(int argc, char **argv) {
   if (support_utf8) {
     output = exec_and_capture(command.c_str(), logDir);
   } else {
-    if (is_gtest) {
-      output = exec_powershell_with_file(command.c_str());
-    } else {
-      output = exec_powershell(command.c_str());
-    }
+    // Convert command from GBK to UTF8
+    std::wstring wcommand = gbk_to_utf8_wstring(command);
+    std::wstring woutput = exec_powershell(wcommand);
+    output = wstring_to_utf8(woutput);
   }
 
   // Write output to the appropriate log file
