@@ -329,6 +329,58 @@ std::string utf8_to_gbk(const std::string &utf8_str) {
   return gbk_str;
 }
 
+// 计算UTF-8字符的字节数
+int countUtf8CharBytes(unsigned char ch) {
+  if (ch < 0x80) {
+    return 1;
+  } else if ((ch & 0xE0) == 0xC0) {
+    return 2;
+  } else if ((ch & 0xF0) == 0xE0) {
+    return 3;
+  } else if ((ch & 0xF8) == 0xF0) {
+    return 4;
+  }
+  // invalid UTF-8 character
+  return 0;
+}
+
+std::string replaceLastChineseCharBeforeDot(const std::string &s) {
+  std::string result = s;
+  std::vector<int> positionsToReplace;
+
+  // Find all '.' positions and check if the previous character is a Chinese
+  // character
+  for (int i = 0; i < s.size();) {
+    int charBytes = countUtf8CharBytes((unsigned char)s[i]);
+    if (charBytes == 0) {
+      // Invalid UTF-8 character, skip it
+      ++i;
+      continue;
+    }
+    if (i + charBytes < s.size() && s[i + charBytes] == '.') {
+      if (charBytes == 3) { // Check if it is a 3-byte UTF-8 character, which
+                            // are Chinese characters in UTF-8
+        positionsToReplace.push_back(i);
+      }
+    }
+    i += charBytes;
+  }
+
+  // Replace the Chinese characters
+  for (const auto &pos : positionsToReplace) {
+    result.replace(pos, 3, "***");
+  }
+
+  // // Replace "***" with "*"
+  // size_t pos = result.find("***");
+  // while (pos != std::string::npos) {
+  //   result.replace(pos, 3, "*");
+  //   pos = result.find("***", pos + 1);
+  // }
+
+  return result;
+}
+
 std::string exec_powershell_with_file(const std::string &cmd) {
   // 提取 --gtest_filter 参数的内容
   std::size_t filter_start = cmd.find("--gtest_filter=");
@@ -339,6 +391,8 @@ std::string exec_powershell_with_file(const std::string &cmd) {
   std::size_t filter_end = cmd.find(" ", filter_start);
   std::string filter_content =
       cmd.substr(filter_start, filter_end - filter_start);
+
+  filter_content = replaceLastChineseCharBeforeDot(filter_content);
 
   // 将参数内容写入临时文件
   std::string temp_filename = generate_temp_filename();
@@ -353,17 +407,17 @@ std::string exec_powershell_with_file(const std::string &cmd) {
     new_cmd += cmd.substr(filter_end);
   }
 
-  std::ofstream errorLogFile(
-      "D:\\Project\\cpp-practice\\build\\command_sys_exec.log",
-      std::ios_base::app);
-  errorLogFile << "命令:" << new_cmd << std::endl;
-  errorLogFile.close();
+  // std::ofstream errorLogFile(
+  //     "D:\\Project\\cpp-practice\\build\\command_sys_exec.log",
+  //     std::ios_base::app);
+  // errorLogFile << "命令:" << new_cmd << std::endl;
+  // errorLogFile.close();
 
   // 调用 exec_powershell 函数执行新命令
   std::string result = exec_powershell(new_cmd);
 
   // 删除临时文件
-  // std::remove(temp_filename.c_str());
+  std::remove(temp_filename.c_str());
 
   return result;
 }
@@ -405,6 +459,7 @@ std::string gbk_to_utf8(const std::string &gbk_str) {
 
   return std::string(utf8_str.begin(), utf8_str.end());
 }
+
 // std::string gbk_to_utf8(std::string gbkStr) {
 //   std::string outUtf8 = "";
 //   int n = MultiByteToWideChar(CP_ACP, 0, gbkStr.c_str(), -1, NULL, 0);

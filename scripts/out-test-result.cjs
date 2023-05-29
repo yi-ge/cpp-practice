@@ -9,26 +9,28 @@ test.stdout.on('data', (data) => {
   result += data;
   console.log(`${data}`);
   if (data.includes('Global test environment tear-down')) {
-    let conclusion = 'neutral'
-    if (result.includes('FAILED')) {
-      conclusion = 'failure'
-    } else if (result.includes('PASSED')) {
-      conclusion = 'success'
-    }
-    const tests = result.match(/(?<=(=\]\s*))(\d+)(?=\stests)/ig)?.[0] || 0
-    const failed = result?.split('tear-down')?.pop()?.match(/(?<=(FAILED\s*\]\s*))(\d+)(?=\stest)/ig)?.[0] || 0
-    const res = {
-      conclusion,
-      stats: {
-        tests,
-        runs: String(Number(tests) - Number(failed)),
-        failed
+    setTimeout(() => {
+      let conclusion = 'neutral'
+      if (result.includes('FAILED')) {
+        conclusion = 'failure'
+      } else if (result.includes('PASSED')) {
+        conclusion = 'success'
       }
-    }
-    fs.writeFileSync(join(__dirname, '../build/test-result.json'), JSON.stringify(res), 'utf-8')
-    // fs.writeFileSync(join(__dirname, '../build/test-result.json'), JSON.stringify(res, null, 2), 'utf-8')
-    console.log(`总计：${tests}个测试，${String(Number(tests) - Number(failed))}个通过，${failed}个失败。`)
-    process.exit(0)
+      const tests = result.match(/(?<=(=\]\s*))(\d+)(?=\stests)/ig)?.[0] || 0
+      const failed = result?.split('tear-down')?.pop()?.match(/(?<=(FAILED\s*\]\s*))(\d+)(?=\stest)/ig)?.[0] || 0
+      const res = {
+        conclusion,
+        stats: {
+          tests,
+          runs: String(Number(tests) - Number(failed)),
+          failed
+        }
+      }
+      fs.writeFileSync(join(__dirname, '../build/test-result.json'), JSON.stringify(res), 'utf-8')
+      // fs.writeFileSync(join(__dirname, '../build/test-result.json'), JSON.stringify(res, null, 2), 'utf-8')
+      console.log(`总计：${tests}个测试，${String(Number(tests) - Number(failed))}个通过，${failed}个失败。`)
+      process.exit(0)
+    }, 1000)
   }
 });
 
