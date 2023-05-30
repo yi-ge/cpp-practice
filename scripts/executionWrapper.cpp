@@ -381,6 +381,93 @@ std::string replaceLastChineseCharBeforeDot(const std::string &s) {
   return result;
 }
 
+bool isChinese(const std::string &str, size_t i) {
+  // Check for GBK encoding
+  if (str[i] & 0x80) {
+    unsigned char c1 = str[i];
+    unsigned char c2 = str[i + 1];
+    unsigned char c3 = str[i + 2];
+    if ((c1 >= 0xE4 && c1 <= 0xE9) && (c2 >= 0x80 && c2 <= 0xBF) &&
+        (c3 >= 0x80 && c3 <= 0xBF)) {
+      return true;
+    }
+  }
+  // Check for UTF-8 encoding
+  if ((str[i] & 0xE0) == 0xC0 && (str[i + 1] & 0xC0) == 0x80 &&
+      (str[i + 2] & 0xC0) == 0x80) {
+    return true;
+  }
+  return false;
+}
+
+std::string replaceNonChinese(const std::string &str) {
+  std::string result;
+  bool inChinese = false;
+
+  for (size_t i = 0; i < str.size(); ++i) {
+    if (i + 2 < str.size() && isChinese(str, i)) {
+      // 检测中文字符
+      inChinese = true;
+      result.push_back(str[i]);
+      result.push_back(str[i + 1]);
+      result.push_back(str[i + 2]);
+      i += 2;
+    } else if (isdigit(str[i])) {
+      // 检测阿拉伯数字
+      result.push_back('*');
+    } else {
+      // 其他字符
+      if (!inChinese) {
+        result.push_back(str[i]);
+      } else {
+        while (i < str.size() && !isChinese(str, i)) {
+          result.push_back('*');
+          result.push_back('*');
+          i++;
+        }
+        inChinese = false;
+        i--;
+      }
+    }
+  }
+
+  return result;
+}
+
+std::vector<std::string> split(const std::string &str, char delimiter) {
+  std::vector<std::string> tokens;
+  std::string token;
+  std::istringstream tokenStream(str);
+  while (std::getline(tokenStream, token, delimiter)) {
+    tokens.push_back(token);
+  }
+  return tokens;
+}
+
+std::string processString(const std::string &input) {
+  std::vector<std::string> sentences = split(input, ':');
+  std::string result;
+  for (size_t i = 0; i < sentences.size(); ++i) {
+    std::vector<std::string> parts = split(sentences[i], '.');
+    for (size_t j = 0; j < parts.size(); ++j) {
+      if (!parts[j].empty()) {
+        if (j < parts.size() - 1 && isChinese(parts[j], 0)) {
+          result += replaceNonChinese(parts[j]);
+        } else {
+          result += parts[j];
+        }
+      }
+      if (j < parts.size() - 1) {
+        result += '.'; // 内部拼接用.
+      }
+    }
+    if (i < sentences.size() - 1) {
+      result += ':'; // 句子之间拼接用:
+    }
+  }
+  return result;
+}
+
 std::string exec_powershell_with_file(const std::string &cmd) {
   // 提取 --gtest_filter 参数的内容
   std::size_t filter_start = cmd.find("--gtest_filter=");
@@ -392,6 +479,10 @@ std::string exec_powershell_with_file(const std::string &cmd) {
   std::string filter_content =
       cmd.substr(filter_start, filter_end - filter_start);
 
+  // 替换中文中的非中文字符
+  filter_content = processString(filter_content);
+
+  // “.”前的最后一个中文字符替换为*
   filter_content = replaceLastChineseCharBeforeDot(filter_content);
 
   // 将参数内容写入临时文件
@@ -523,6 +614,22 @@ std::string convert_crlf_to_lf(const std::string &input) {
   return output;
 }
 
+// 只删除字符串s的前两行 CRLF和LF
+void removeFirstTwoLines(std::string &s) {
+  std::smatch results;
+  std::regex crlf_re("\r\n|\n");
+
+  // 找到第一个换行
+  std::regex_search(s, results, crlf_re);
+  // 删除第一个换行之前的所有字符
+  s.erase(0, results.position() + results.length());
+
+  // 找到第二个换行
+  std::regex_search(s, results, crlf_re);
+  // 删除第二个换行之前的所有字符
+  s.erase(0, results.position() + results.length());
+}
+
 int main(int argc, char **argv) {
   std::string command;
   std::string logDir;
@@ -579,6 +686,8 @@ int main(int argc, char **argv) {
   std::string logPath = logDir + "/";
   if (is_gtest) {
     logPath += "gtest.log";
+    // Remove the first two lines
+    removeFirstTwoLines(output);
   } else {
     logPath += "output.log";
   }

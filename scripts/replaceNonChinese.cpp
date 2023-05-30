@@ -16,43 +16,59 @@
 
 // clang++ -std=c++17 -lAdvapi32 -o .\replaceNonChinese.exe
 // .\replaceNonChinese.cpp
+
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
 
 bool isChinese(const std::string &str, size_t i) {
+  // Check for GBK encoding
   if (str[i] & 0x80) {
-    unsigned char c1 = static_cast<unsigned char>(str[i]);
-    unsigned char c2 = static_cast<unsigned char>(str[i + 1]);
-    unsigned char c3 = static_cast<unsigned char>(str[i + 2]);
-    return (c1 >= 0xE4 && c1 <= 0xE9) && (c2 >= 0x80 && c2 <= 0xBF) &&
-           (c3 >= 0x80 && c3 <= 0xBF);
+    unsigned char c1 = str[i];
+    unsigned char c2 = str[i + 1];
+    unsigned char c3 = str[i + 2];
+    if ((c1 >= 0xE4 && c1 <= 0xE9) && (c2 >= 0x80 && c2 <= 0xBF) &&
+        (c3 >= 0x80 && c3 <= 0xBF)) {
+      return true;
+    }
+  }
+  // Check for UTF-8 encoding
+  if ((str[i] & 0xE0) == 0xC0 && (str[i + 1] & 0xC0) == 0x80 &&
+      (str[i + 2] & 0xC0) == 0x80) {
+    return true;
   }
   return false;
 }
 
 std::string replaceNonChinese(const std::string &str) {
   std::string result;
-  bool nonChineseFound = false;
+  bool inChinese = false;
 
   for (size_t i = 0; i < str.size(); ++i) {
     if (i + 2 < str.size() && isChinese(str, i)) {
-      if (nonChineseFound) {
-        result.push_back('*');
-        nonChineseFound = false;
-      }
+      // 检测中文字符
+      inChinese = true;
       result.push_back(str[i]);
       result.push_back(str[i + 1]);
       result.push_back(str[i + 2]);
       i += 2;
+    } else if (isdigit(str[i])) {
+      // 检测阿拉伯数字
+      result.push_back('*');
     } else {
-      nonChineseFound = true;
+      // 其他字符
+      if (!inChinese) {
+        result.push_back(str[i]);
+      } else {
+        while (i < str.size() && !isChinese(str, i)) {
+          result.push_back('*');
+          i++;
+        }
+        inChinese = false;
+        i--;
+      }
     }
-  }
-
-  if (nonChineseFound) {
-    result.push_back('*');
   }
 
   return result;
@@ -69,17 +85,25 @@ std::vector<std::string> split(const std::string &str, char delimiter) {
 }
 
 std::string processString(const std::string &input) {
-  std::vector<std::string> sentences = split(input, '.');
+  std::vector<std::string> sentences = split(input, ':');
   std::string result;
-  for (const std::string &sentence : sentences) {
-    if (!sentence.empty()) {
-      if (isChinese(sentence, 0)) {
-        result += replaceNonChinese(sentence);
-      } else {
-        result += sentence;
+  for (size_t i = 0; i < sentences.size(); ++i) {
+    std::vector<std::string> parts = split(sentences[i], '.');
+    for (size_t j = 0; j < parts.size(); ++j) {
+      if (!parts[j].empty()) {
+        if (j < parts.size() - 1 && isChinese(parts[j], 0)) {
+          result += replaceNonChinese(parts[j]);
+        } else {
+          result += parts[j];
+        }
+      }
+      if (j < parts.size() - 1) {
+        result += '.'; // 内部拼接用.
       }
     }
-    result += '.';
+    if (i < sentences.size() - 1) {
+      result += ':'; // 句子之间拼接用:
+    }
   }
   return result;
 }

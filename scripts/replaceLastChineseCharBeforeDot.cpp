@@ -1,6 +1,6 @@
 // 在每个中文段之间的非中文字符之前替换一个中文字符为 *
-// clang++ -std=c++17 -o .\replace_last_chinese_character.exe
-// .\replace_last_chinese_character.cpp
+// clang++ -std=c++17 -o .\replaceLastChineseCharBeforeDot.exe
+// .\replaceLastChineseCharBeforeDot.cpp
 #include <iostream>
 #include <string>
 #include <vector>

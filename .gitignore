@@ -34,9 +34,10 @@ grcov.exe
 grcov
 grcovDownloader.exe
 grcovDownloader
-window_check_utf8_support.exe
-replace_last_chinese_character.exe
+windowCheckUtf8Support.exe
+replaceLastChineseCharBeforeDot.exe
 replaceNonChinese.exe
+removeFirstTwoLines.exe
 
 # Build
 /Build
