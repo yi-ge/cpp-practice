@@ -32,22 +32,27 @@ bool isChinese(const std::string &str, size_t i) {
   return false;
 }
 
-std::string replaceNonChinese(const std::string &str, bool replace) {
+std::string replaceNonChinese(const std::string &str) {
   std::string result;
+  bool nonChineseFound = false;
 
   for (size_t i = 0; i < str.size(); ++i) {
     if (i + 2 < str.size() && isChinese(str, i)) {
+      if (nonChineseFound) {
+        result.push_back('*');
+        nonChineseFound = false;
+      }
       result.push_back(str[i]);
       result.push_back(str[i + 1]);
       result.push_back(str[i + 2]);
       i += 2;
     } else {
-      if (replace) {
-        result.push_back('*');
-      } else {
-        result.push_back(str[i]);
-      }
+      nonChineseFound = true;
     }
+  }
+
+  if (nonChineseFound) {
+    result.push_back('*');
   }
 
   return result;
@@ -69,9 +74,9 @@ std::string processString(const std::string &input) {
   for (const std::string &sentence : sentences) {
     if (!sentence.empty()) {
       if (isChinese(sentence, 0)) {
-        result += replaceNonChinese(sentence, true);
+        result += replaceNonChinese(sentence);
       } else {
-        result += replaceNonChinese(sentence, false);
+        result += sentence;
       }
     }
     result += '.';
@@ -81,7 +86,7 @@ std::string processString(const std::string &input) {
 
 int main() {
   std::string input =
-      "子串能表示从1到N数字的二进制串.queryString:检查二进制字符串字段."
+      "子串能表示从1到N数字的二制串.queryString:检查二进制字符串字段."
       "checkOnesSegment:按字典序排在最后的子串.lastSubstring:"
       "总持续时间可被60整除的歌曲.numPairsDivisibleBy60";
   std::string output = processString(input);
