@@ -381,6 +381,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 树
 
+- [删点成林](src/tree/delete_nodes_and_return_forest.cpp)  [树, 深度优先搜索, 数组, 哈希表, 二叉树]
+
+  - LeetCode 1110. 删点成林 <https://leetcode.cn/problems/delete-nodes-and-return-forest>
+
 - [根到叶路径上的不足节点](src/tree/insufficient_nodes_in_root_to_leaf_paths.cpp)  [树, 深度优先搜索, 二叉树]
 
   - LeetCode 1080. 根到叶路径上的不足节点 <https://leetcode.cn/problems/insufficient-nodes-in-root-to-leaf-paths>
