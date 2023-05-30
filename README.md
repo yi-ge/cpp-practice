@@ -184,6 +184,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [可被三整除的偶数的平均值](src/array/average_value_of_even_numbers_that_are_divisible_by_three.cpp)  [数组, 数学]
+
+  - LeetCode 2455. 可被三整除的偶数的平均值 <https://leetcode.cn/problems/average-value-of-even-numbers-that-are-divisible-by-three>
+
 - [有序矩阵中的第 k 个最小数组和](src/array/find_the_kth_smallest_sum_of_a_matrix_with_sorted_rows.cpp)  [数组, 二分查找, 矩阵, 堆（优先队列）]
 
   - LeetCode 1439. 有序矩阵中的第 k 个最小数组和 <https://leetcode.cn/problems/find-the-kth-smallest-sum-of-a-matrix-with-sorted-rows>
