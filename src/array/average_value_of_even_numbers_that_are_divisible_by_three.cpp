@@ -10,11 +10,13 @@ public:
     int sum = 0;
     int count = 0;
     for (auto num : nums) {
+      // 只有两个条件都满足才加入
       if (num % 2 == 0 && num % 3 == 0) {
         sum += num;
         count++;
       }
     }
+    // 如果没有找到任何满足条件的数，返回 0
     return count == 0 ? 0 : sum / count;
   }
 };
