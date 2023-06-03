@@ -5,12 +5,14 @@
 
 class CBTInserter {
 public:
+  // 构造函数，初始化根节点和候选节点队列
   CBTInserter(TreeNode *root) {
     this->root = root;
 
     queue<TreeNode *> q;
     q.push(root);
 
+    // 遍历树，将没有左右子节点的节点加入候选节点队列
     while (!q.empty()) {
       TreeNode *node = q.front();
       q.pop();
@@ -26,6 +28,7 @@ public:
     }
   }
 
+  // 插入新节点，返回被替换的节点的值
   int insert(int val) {
     TreeNode *child = new TreeNode(val);
     TreeNode *node = candidate.front();
@@ -40,11 +43,12 @@ public:
     return ret;
   } // LCOV_EXCL_LINE
 
+  // 返回根节点
   TreeNode *get_root() { return root; }
 
 private:
-  queue<TreeNode *> candidate;
-  TreeNode *root;
+  queue<TreeNode *> candidate; // 候选节点队列
+  TreeNode *root; // 根节点
 };
 
 /**

@@ -53,18 +53,23 @@ public:
     int ans = 0;
     const int inf = 1 << 30;
 
+    // dfs函数用于遍历二叉树
     function<vector<int>(TreeNode *)> dfs = [&](TreeNode *root) {
       if (!root) {
+        // 如果节点为空，返回一个全为0的vector
         return vector<int>{1, inf, -inf, 0};
       }
+      // 递归遍历左右子树
       auto l = dfs(root->left);
       auto r = dfs(root->right);
       int v = root->val;
       if (l[0] && r[0] && l[2] < v && v < r[1]) {
+        // 如果当前节点满足二叉搜索树的条件，更新答案并返回一个包含当前节点信息的vector
         int s = l[3] + r[3] + v;
         ans = max(ans, s);
         return vector<int>{1, min(l[1], v), max(r[2], v), s};
       }
+      // 如果当前节点不满足二叉搜索树的条件，直接返回一个全为0的vector
       return vector<int>(4);
     };
     dfs(root);
