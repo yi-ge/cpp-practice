@@ -8,7 +8,7 @@
 class Solution {
 public:
   vector<int> constructArray(int n, int k) {
-    int interval = k; // 相邻元素的差值
+    int interval = k; // interval 为相邻元素的差值
     vector<int> ans;
     ans.push_back(1); // 初始化第一个元素为 1
     for (int i = 1; i <= k; i++) {

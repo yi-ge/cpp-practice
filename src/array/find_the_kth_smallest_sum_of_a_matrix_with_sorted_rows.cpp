@@ -1,5 +1,5 @@
 // 有序矩阵中的第 k 个最小数组和
-// https://leetcode-cn.com/problems/find-the-kth-smallest-sum-of-a-matrix-with-sorted-rows
+// https://leetcode.cn/problems/find-the-kth-smallest-sum-of-a-matrix-with-sorted-rows
 // INLINE
 // ../../images/array/find_the_kth_smallest_sum_of_a_matrix_with_sorted_rows.jpeg
 #include <headers.hpp>

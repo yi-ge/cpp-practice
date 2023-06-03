@@ -1,5 +1,5 @@
 // 字符串中的第一个唯一字符
-// https://leetcode-cn.com/problems/first-unique-character-in-a-string/
+// https://leetcode.cn/problems/first-unique-character-in-a-string/
 // INLINE  ../../images/array/first_unique_character_in_a_string.jpeg
 #include <headers.hpp>
 

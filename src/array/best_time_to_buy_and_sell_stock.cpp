@@ -1,5 +1,5 @@
 // 买卖股票的最佳时机
-// https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/
+// https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/
 // INLINE  ../../images/array/best_time_to_buy_and_sell_stock.jpeg
 #include <headers.hpp>
 
