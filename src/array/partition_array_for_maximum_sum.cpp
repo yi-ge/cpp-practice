@@ -9,27 +9,24 @@ public:
 
   int maxSumAfterPartitioning(vector<int> &arr, int k) {
     int n = arr.size();
-    vector<int> dp(n + 1); // Dynamic programming table to store the maximum sum
+    vector<int> dp(n + 1); // 动态规划表，用于存储最大和
 
-    // Iterate through the array
+    // 遍历数组
     for (int i = 1; i <= n; i++) {
-      int maxValInPartition =
-          arr[i - 1]; // Initialize max value in the current partition
+      int maxValInPartition = arr[i - 1]; // 初始化当前分区的最大值为当前值
 
-      // Iterate in reverse from current position (i) up to k elements back
+      // 从当前位置(i)向前遍历k个元素
       for (int j = i - 1; j >= 0 && j >= i - k; j--) {
-        // Update the maximum sum by comparing the current value to the sum of
-        // the previous partition
+        // 通过比较当前值和之前分区的和来更新最大和
         dp[i] = max(dp[i], dp[j] + maxValInPartition * (i - j));
 
-        // Update maxValInPartition if there is still an element in the
-        // partition
+        // 如果分区中仍有元素，则更新最大值
         if (j > 0) {
           maxValInPartition = max(maxValInPartition, arr[j - 1]);
         }
       }
     }
 
-    return dp[n]; // Return the maximum sum after partitioning
+    return dp[n]; // 返回分隔后的最大和
   }
 };

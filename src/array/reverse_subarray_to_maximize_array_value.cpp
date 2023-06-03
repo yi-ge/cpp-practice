@@ -11,12 +11,12 @@ public:
     int base = 0, d = 0, mx = INT_MIN, mn = INT_MAX, n = nums.size();
     for (int i = 1; i < n; i++) {
       int a = nums[i - 1], b = nums[i];
-      base += abs(a - b);
-      mx = max(mx, min(a, b));
-      mn = min(mn, max(a, b));
-      d = max(d, max(abs(nums[0] - b) - abs(a - b),       // i=0
-                     abs(nums[n - 1] - a) - abs(a - b))); // j=n-1
+      base += abs(a - b); // 计算初始距离之和
+      mx = max(mx, min(a, b)); // 计算最小值
+      mn = min(mn, max(a, b)); // 计算最大值
+      d = max(d, max(abs(nums[0] - b) - abs(a - b),       // i=0，计算翻转后距离之差的最大值
+                     abs(nums[n - 1] - a) - abs(a - b))); // j=n-1，计算翻转后距离之差的最大值
     }
-    return base + max(d, 2 * (mx - mn));
+    return base + max(d, 2 * (mx - mn)); // 返回最终结果
   }
 };

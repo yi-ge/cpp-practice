@@ -18,15 +18,19 @@ class Solution
 public:
   ListNode *swapPairs(ListNode *head)
   {
+    // 如果链表为空或者只有一个节点，直接返回head
     if (!head || !head->next)
       return head;
 
+    // 定义pre指向head的下一个节点，next指向pre的下一个节点
     ListNode *pre = head->next;
     ListNode *next = pre->next;
 
+    // pre指向head，并递归处理下一个节点
     pre->next = head;
     head->next = swapPairs(next);
 
+    // 返回pre
     return pre;
   }
 };

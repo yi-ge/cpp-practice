@@ -6,12 +6,12 @@
 class Solution {
 public:
   char repeatedCharacter(string s) {
-    unordered_set<char> seen;
-    for (char ch : s) {
-      if (seen.count(ch)) {
-        return ch;
+    unordered_set<char> seen; // 创建一个无序集合，用于存储已经出现过的字符
+    for (char ch : s) {     // 遍历字符串
+      if (seen.count(ch)) { // 如果该字符已经出现过
+        return ch;          // 直接返回该字符
       }
-      seen.insert(ch);
+      seen.insert(ch); // 将该字符加入集合中
     }
 
     return ' '; // 按照题意不会出现该值

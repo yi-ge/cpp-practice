@@ -6,12 +6,12 @@
 class Solution {
 public:
   int commonFactors(int a, int b) {
-    int ans = 0;
-    for (int i = 1; i <= min(a, b); i++) {
-      if (a % i == 0 && b % i == 0) {
-        ans++;
+    int ans = 0;                           // 初始化公因子数为0
+    for (int i = 1; i <= min(a, b); i++) { // 从1到a和b中的最小值开始遍历
+      if (a % i == 0 && b % i == 0) {      // 如果i是a和b的公因子
+        ans++;                             // 公因子数加1
       }
     }
-    return ans;
+    return ans; // 返回公因子数
   }
 };

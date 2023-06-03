@@ -5,5 +5,15 @@
 
 class Solution {
 public:
-  int smallestEvenMultiple(int n) { return n % 2 == 0 ? n : 2 * n; }
+  // 计算最小偶倍数
+  int smallestEvenMultiple(int n) {
+    // 若n为偶数，则n为最小偶倍数
+    if (n % 2 == 0) {
+      return n;
+    }
+    // 若n为奇数，则2n为最小偶倍数
+    else {
+      return 2 * n;
+    }
+  }
 };

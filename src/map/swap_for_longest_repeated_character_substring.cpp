@@ -12,18 +12,13 @@ public:
       while (r < n && text[r] == text[l])
         r++; // 找到第一个和text[l]不同的位置
       if (r == n)
-        return max(ans, r - l +
-                            (text.substr(0, l).find(text[l]) !=
-                             string::npos)); // 处理在字符串末尾
+        return max(ans, r - l + (text.substr(0, l).find(text[l]) != string::npos)); // 处理在字符串末尾
       int l_ = r;
       r++;
       while (r < n && text[r] == text[l])
         r++; // 找到第二个和text[l]不同的位置
       if (r - l > ans)
-        ans = max(ans, r - l -
-                           ((text.substr(0, l).find(text[l]) == string::npos) &&
-                            (text.substr(r, n - r).find(text[l]) ==
-                             string::npos))); // 处理
+        ans = max(ans, r - l - ((text.substr(0, l).find(text[l]) == string::npos) && (text.substr(r, n - r).find(text[l]) == string::npos))); // 处理
       l = l_;
     }
     return ans;
