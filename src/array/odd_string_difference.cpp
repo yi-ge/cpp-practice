@@ -6,6 +6,7 @@
 
 class Solution {
 public:
+  // 获取字符串中相邻字符的差值数组
   vector<int> get(string &word) {
     vector<int> diff(word.size() - 1);
     for (int i = 0; i + 1 < word.size(); i++) {
@@ -14,6 +15,7 @@ public:
     return diff;
   }
 
+  // 找到差值数组不同的字符串
   string oddString(vector<string> &words) {
     auto diff0 = get(words[0]);
     auto diff1 = get(words[1]);

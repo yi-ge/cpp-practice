@@ -29,6 +29,7 @@ public:
     return left;
   }
 
+  // 检查是否可以以tastiness的美味度购买至少k件商品
   bool check(const vector<int> &price, int k, int tastiness) {
     // 初始化前一件商品的价格为最小整数
     int prev = INT_MIN >> 1;
