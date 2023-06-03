@@ -51,6 +51,7 @@
 
 class Solution {
 public:
+  // 中序遍历二叉树，将节点的值存入vector中
   void inorder(TreeNode *root, vector<int> &nums) {
     if (root == nullptr)
       return;
@@ -58,6 +59,8 @@ public:
     nums.push_back(root->val);
     inorder(root->right, nums);
   }
+
+  // 在 vector 中查找两个数使其和等于 k
   bool findTarget(TreeNode *root, int k) {
     vector<int> nums;
     inorder(root, nums);
