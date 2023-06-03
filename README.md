@@ -545,6 +545,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 其它
 
+- [单字符重复子串的最大长度](src/map/swap_for_longest_repeated_character_substring.cpp)  [哈希表, 字符串, 滑动窗口]
+
+  - LeetCode 1156. 单字符重复子串的最大长度 <https://leetcode.cn/problems/swap-for-longest-repeated-character-substring>
+
 - [二进制矩阵中的最短路径](src/search/shortest_path_in_binary_matrix.cpp)  [广度优先搜索, 数组, 矩阵]
 
   - LeetCode 1091. 二进制矩阵中的最短路径 <https://leetcode.cn/problems/shortest-path-in-binary-matrix/>
