@@ -17,11 +17,13 @@
  */
 class Solution {
 public:
+  // 计算二叉树的最大深度
   int maxDepth(TreeNode *root) {
     if (root == nullptr) {
       return 0;
     }
 
+    // 递归计算左子树和右子树的最大深度，取较大值加一即为整个二叉树的最大深度
     return max(maxDepth(root->left), maxDepth(root->right)) + 1;
   }
 };
