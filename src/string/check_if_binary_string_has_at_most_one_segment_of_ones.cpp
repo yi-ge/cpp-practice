@@ -6,5 +6,6 @@
 
 class Solution {
 public:
+  // 判断二进制字符串s中是否包含"01"子串，如果不包含则说明只有一个1字段
   bool checkOnesSegment(string s) { return s.find("01") == string::npos; }
 };

@@ -3,11 +3,13 @@
 #include <tree_node.hpp>
 #include <tree_printer.hpp>
 
+// 打印二叉树
 void printTree(TreeNode *root) {
   tp::TreePrinter<TreeNode> printer(root);
   printer.print();
 }
 
+// 根据vector创建二叉树
 TreeNode *createTree(vector<int> &nodes) {
   if (nodes.empty())
     return nullptr;
@@ -17,16 +19,19 @@ TreeNode *createTree(vector<int> &nodes) {
       q; // 使用一个额外的 vector 让 createTree 函数支持省略连续 NULL 节点的功能
   q.push(root);
 
+  // 遍历vector，逐层创建二叉树
   for (size_t i = 1; i < nodes.size();) {
     TreeNode *node = q.front();
     q.pop();
 
+    // 如果节点不为空，则创建左子节点
     if (nodes[i] != NULL) {
       node->left = new TreeNode(nodes[i]);
       q.push(node->left);
     }
     ++i;
 
+    // 如果节点不为空，则创建右子节点
     if (i < nodes.size() && nodes[i] != NULL) {
       node->right = new TreeNode(nodes[i]);
       q.push(node->right);
@@ -118,11 +123,12 @@ TreeNode *createTreeCycle(vector<int> &values) {
     node = new TreeNode(values[i]);
     nodes.push(node);
 
+    // 如果是奇数，则该节点为左子节点
     if (i % 2 == 1) {
       current = nodes.front();
       nodes.pop();
       current->left = node;
-    } else {
+    } else { // 否则为右子节点
       current->right = node;
     }
   }
@@ -130,6 +136,7 @@ TreeNode *createTreeCycle(vector<int> &values) {
   return root;
 }
 
+// 将二叉树转化为vector
 vector<int> treeToVec(TreeNode *root) {
   vector<int> res;
   queue<TreeNode *> que;
@@ -154,6 +161,7 @@ vector<int> treeToVec(TreeNode *root) {
   return res;
 }
 
+// 将二叉树转化为字符串
 string treeToString(TreeNode *root) {
   string res = "[";
   queue<TreeNode *> que;
@@ -182,6 +190,7 @@ string treeToString(TreeNode *root) {
   return res;
 }
 
+// 将字符串转化为二叉树
 TreeNode *stringToTree(string treeStr) {
   vector<int> nodes;
   string delim = ",";
@@ -195,8 +204,7 @@ TreeNode *stringToTree(string treeStr) {
         i); // pos为分隔符第一次出现的位置，从i到pos之前的字符串是分隔出来的字符串
     if (pos < size) { // 如果查找到，如果没有查找到分隔符，pos为string::npos
       string s = strs.substr(i, pos - i); // 从i开始长度为pos-i的子字符串
-      // printf("%s-", s.c_str());
-      if (s == "null]" || s == "null,") {
+      if (s == "null]" || s == "null,") { // 如果字符串为"null"，则节点为空
         nodes.push_back(NULL);
       } else {
         nodes.push_back(atoi(s.c_str()));
@@ -209,7 +217,7 @@ TreeNode *stringToTree(string treeStr) {
   return root;
 }
 
-// Helper function isTreeEqual to check if two binary trees are equal.
+// 判断两个二叉树是否相等
 bool isTreeEqual(TreeNode *t1, TreeNode *t2) {
   if (t1 == nullptr && t2 == nullptr)
     return true;

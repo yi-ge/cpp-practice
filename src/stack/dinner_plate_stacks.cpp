@@ -9,14 +9,15 @@ class DinnerPlates {
 public:
   DinnerPlates(int capacity) { this->capacity = capacity; }
 
+  // 将元素压入栈中
   void push(int val) {
-    if (poppedPos.empty()) {
+    if (poppedPos.empty()) { // 如果没有弹出的位置
       int pos = stk.size();
-      stk.emplace_back(val);
-      if (pos % capacity == 0) {
-        top.emplace_back(0);
+      stk.emplace_back(val);     // 将元素压入栈中
+      if (pos % capacity == 0) { // 如果栈已经达到容量上限
+        top.emplace_back(0);     // 新开一个栈
       } else {
-        top.back()++;
+        top.back()++; // 将元素压入当前栈
       }
     } else {
       int pos = *poppedPos.begin();
@@ -27,7 +28,9 @@ public:
     }
   }
 
+  // 从最右边的栈中弹出一个元素
   int pop() {
+    // 将右边的弹出位置全部弹出
     while (!stk.empty() && poppedPos.count(stk.size() - 1)) {
       stk.pop_back();
       int pos = *poppedPos.rbegin();
@@ -51,6 +54,7 @@ public:
     }
   }
 
+  // 从指定的栈中弹出一个元素
   int popAtStack(int index) {
     if (index >= top.size()) {
       return -1; // LCOV_EXCL_LINE
@@ -67,9 +71,9 @@ public:
 
 private:
   int capacity;
-  vector<int> stk;
-  vector<int> top;
-  set<int> poppedPos;
+  vector<int> stk;    // 栈
+  vector<int> top;    // 每个栈的栈顶元素的下标
+  set<int> poppedPos; // 弹出的位置
 };
 
 // class DinnerPlates {

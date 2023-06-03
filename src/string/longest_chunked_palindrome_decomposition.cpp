@@ -6,6 +6,7 @@
 
 class Solution {
 public:
+  // 判断两个位置之间的len长度的子串是否相等
   bool judge(const string &text, int l1, int l2, int len) {
     while (len--) {
       if (text[l1] != text[l2]) {
@@ -23,12 +24,14 @@ public:
     while (l <= r) {
       int len = 1;
       while (l + len - 1 < r - len + 1) {
+        // 判断左右两边的子串是否相等
         if (judge(text, l, r - len + 1, len)) {
           res += 2;
           break;
         }
         ++len;
       }
+      // 左右两边的子串无法再拼接，只能单独成为一个段
       if (l + len - 1 >= r - len + 1) {
         ++res;
       }

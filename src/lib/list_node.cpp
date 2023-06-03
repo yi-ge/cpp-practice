@@ -1,5 +1,6 @@
 #include <list_node.hpp>
 
+// 创建链表，输入数组和数组长度，返回链表头指针
 ListNode *createLinkedList(int arr[], int n)
 {
   if (n == 0)
@@ -16,6 +17,7 @@ ListNode *createLinkedList(int arr[], int n)
   return head;
 }
 
+// 将链表转换为字符串输出
 string listNodeToString(ListNode *head)
 {
   string str = "";
@@ -30,6 +32,7 @@ string listNodeToString(ListNode *head)
   return str;
 }
 
+// 输出链表
 void printLinkedList(ListNode *head)
 {
   ListNode *curNode = head;
@@ -41,6 +44,7 @@ void printLinkedList(ListNode *head)
   cout << "NULL" << endl;
 }
 
+// 删除链表
 void deleteLinkedList(ListNode *head)
 {
   ListNode *curNode = head;
