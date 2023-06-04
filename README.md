@@ -507,6 +507,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 排序
 
+- [不同的平均值数目](src/sort/number_of_distinct_averages.cpp)  [数组, 哈希表, 双指针, 排序]
+
+  - LeetCode 2465. 不同的平均值数目 <https://leetcode.cn/problems/number-of-distinct-averages>
+
 - [礼盒的最大甜蜜度](src/sort/maximum_tastiness_of_candy_basket.cpp)  [数组, 二分查找, 排序]
 
   - LeetCode 2517. 礼盒的最大甜蜜度 <https://leetcode.cn/problems/maximum-tastiness-of-candy-basket>
