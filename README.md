@@ -515,6 +515,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 排序
 
+- [老鼠和奶酪](src/sort/mice_and_cheese.cpp)  [贪心, 数组, 排序, 堆（优先队列）]
+
+  - LeetCode 2611. 老鼠和奶酪 <https://leetcode.cn/problems/mice-and-cheese>
+
 - [不同的平均值数目](src/sort/number_of_distinct_averages.cpp)  [数组, 哈希表, 双指针, 排序]
 
   - LeetCode 2465. 不同的平均值数目 <https://leetcode.cn/problems/number-of-distinct-averages>
