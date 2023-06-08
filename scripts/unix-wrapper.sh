@@ -39,10 +39,10 @@ if [ $(wc -l <"$logDir/command.txt") -gt 2000 ]; then
   sed -i '1d' "$logDir/command.txt"
 fi
 
-if [ "$logFile" == "gtest.log" ]; then
-  # 移除前两行
-  output="$(echo "$output" | tail -n +3)"
-fi
+# if [ "$logFile" == "gtest.log" ]; then
+#   # 移除前两行
+#   output="$(echo "$output" | tail -n +3)"
+# fi
 
 # 输出结果到日志并保留颜色
 echo "$output" >"$logPath"
