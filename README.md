@@ -515,6 +515,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 排序
 
+- [比较字符串最小字母出现频次](src/sort/compare_strings_by_frequency_of_the_smallest_character.cpp)  [数组, 哈希表, 字符串, 二分查找, 排序]
+
+  - LeetCode 1170. 比较字符串最小字母出现频次 <https://leetcode.cn/problems/compare-strings-by-frequency-of-the-smallest-character>
+
 - [老鼠和奶酪](src/sort/mice_and_cheese.cpp)  [贪心, 数组, 排序, 堆（优先队列）]
 
   - LeetCode 2611. 老鼠和奶酪 <https://leetcode.cn/problems/mice-and-cheese>
