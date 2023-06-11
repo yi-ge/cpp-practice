@@ -479,6 +479,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 链表
 
+- [从链表中删去总和值为零的连续节点](src/list/remove_zero_sum_consecutive_nodes_from_linked_list.cpp)  [哈希表, 链表]
+
+  - LeetCode 1171. 从链表中删去总和值为零的连续节点 <https://leetcode.cn/problems/remove-zero-sum-consecutive-nodes-from-linked-list>
+
 - [删除链表中的节点](src/list/delete_node_in_a_linked_list.cpp)  [链表]
 
   - LeetCode 237. 删除链表中的节点 <https://leetcode.cn/problems/delete-node-in-a-linked-list/>
