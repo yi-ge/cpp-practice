@@ -7,13 +7,16 @@
 class TreeAncestor {
 public:
   constexpr static int Log = 16;
+  // 记录每个节点的2^j级祖先
   vector<vector<int>> ancestors;
 
   TreeAncestor(int n, vector<int> &parent) {
+    // 初始化每个节点的2^0级祖先
     ancestors = vector<vector<int>>(n, vector<int>(Log, -1));
     for (int i = 0; i < n; i++) {
       ancestors[i][0] = parent[i];
     }
+    // 根据2^(j-1)级祖先计算出2^j级祖先
     for (int j = 1; j < Log; j++) {
       for (int i = 0; i < n; i++) {
         if (ancestors[i][j - 1] != -1) {
