@@ -184,6 +184,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [数组中不等三元组的数目](src/array/number_of_unequal_triplets_in_array.cpp)  [数组, 哈希表]
+
+  - LeetCode 2475. 数组中不等三元组的数目 <https://leetcode.cn/problems/number-of-unequal-triplets-in-array>
+
 - [相等行列对](src/array/equal_row_and_column_pairs.cpp)  [数组, 哈希表, 矩阵, 模拟]
 
   - LeetCode 2352. 相等行列对 <https://leetcode.cn/problems/equal-row-and-column-pairs>
