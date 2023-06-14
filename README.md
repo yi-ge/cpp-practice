@@ -184,6 +184,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [二进制字符串前缀一致的次数](src/array/number_of_times_binary_string_is_prefix_aligned.cpp)  [数组]
+
+  - LeetCode 1375. 二进制字符串前缀一致的次数 <https://leetcode.cn/problems/number-of-times-binary-string-is-prefix-aligned>
+
 - [数组中不等三元组的数目](src/array/number_of_unequal_triplets_in_array.cpp)  [数组, 哈希表]
 
   - LeetCode 2475. 数组中不等三元组的数目 <https://leetcode.cn/problems/number-of-unequal-triplets-in-array>
