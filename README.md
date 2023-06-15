@@ -668,3 +668,7 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [最小偶倍数](src/math/smallest_even_multiple.cpp)  [数学, 数论]
 
   - LeetCode 2413. 最小偶倍数 <https://leetcode.cn/problems/smallest-even-multiple>
+
+- [构建回文串检测](src/math/can_make_palindrome_from_substring.cpp)  [位运算, 数组, 哈希表, 字符串, 前缀和]
+
+  - LeetCode 1177. 构建回文串检测 <https://leetcode.cn/problems/can-make-palindrome-from-substring>
