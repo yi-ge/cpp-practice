@@ -656,3 +656,7 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [最小偶倍数](src/math/smallest_even_multiple.cpp)  [数学, 数论]
 
   - LeetCode 2413. 最小偶倍数 <https://leetcode.cn/problems/smallest-even-multiple>
+
+- [分割圆的最少切割次数](src/math/minimum_cuts_to_divide_a_circle.cpp)  [几何, 数学]
+
+  - LeetCode 2481. 分割圆的最少切割次数 <https://leetcode.cn/problems/minimum-cuts-to-divide-a-circle>
