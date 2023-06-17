@@ -184,6 +184,14 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [二进制字符串前缀一致的次数](src/array/number_of_times_binary_string_is_prefix_aligned.cpp)  [数组]
+
+  - LeetCode 1375. 二进制字符串前缀一致的次数 <https://leetcode.cn/problems/number-of-times-binary-string-is-prefix-aligned>
+
+- [数组中不等三元组的数目](src/array/number_of_unequal_triplets_in_array.cpp)  [数组, 哈希表]
+
+  - LeetCode 2475. 数组中不等三元组的数目 <https://leetcode.cn/problems/number-of-unequal-triplets-in-array>
+
 - [相等行列对](src/array/equal_row_and_column_pairs.cpp)  [数组, 哈希表, 矩阵, 模拟]
 
   - LeetCode 2352. 相等行列对 <https://leetcode.cn/problems/equal-row-and-column-pairs>
@@ -396,6 +404,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
   - LeetCode 32. 最长有效括号 <https://leetcode.cn/problems/longest-valid-parentheses/>
 
 ### 树
+
+- [树节点的第 K 个祖先](src/tree/kth_ancestor_of_a_tree_node.cpp)  [树, 深度优先搜索, 广度优先搜索, 设计, 二分查找, 动态规划]
+
+  - LeetCode 1483. 树节点的第 K 个祖先 <https://leetcode.cn/problems/kth-ancestor-of-a-tree-node>
 
 - [删点成林](src/tree/delete_nodes_and_return_forest.cpp)  [树, 深度优先搜索, 数组, 哈希表, 二叉树]
 
@@ -660,3 +672,7 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [分割圆的最少切割次数](src/math/minimum_cuts_to_divide_a_circle.cpp)  [几何, 数学]
 
   - LeetCode 2481. 分割圆的最少切割次数 <https://leetcode.cn/problems/minimum-cuts-to-divide-a-circle>
+
+- [构建回文串检测](src/math/can_make_palindrome_from_substring.cpp)  [位运算, 数组, 哈希表, 字符串, 前缀和]
+
+  - LeetCode 1177. 构建回文串检测 <https://leetcode.cn/problems/can-make-palindrome-from-substring>
