@@ -581,6 +581,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 其它
 
+- [统计封闭岛屿的数目](src/search/number_of_closed_islands.cpp)  [深度优先搜索, 广度优先搜索, 并查集, 数组, 矩阵]
+
+  - LeetCode 1254. 统计封闭岛屿的数目 <https://leetcode.cn/problems/number-of-closed-islands>
+
 - [铺瓷砖](src/other/tiling_a_rectangle_with_the_fewest_squares.cpp)  [动态规划, 回溯]
 
   - LeetCode 1240. 铺瓷砖 <https://leetcode.cn/problems/tiling-a-rectangle-with-the-fewest-squares>
