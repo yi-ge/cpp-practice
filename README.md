@@ -531,6 +531,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 排序
 
+- [可被三整除的最大和](src/sort/greatest_sum_divisible_by_three.cpp)  [贪心, 数组, 动态规划, 排序]
+
+  - LeetCode 1262. 可被三整除的最大和 <https://leetcode.cn/problems/greatest-sum-divisible-by-three>
+
 - [比较字符串最小字母出现频次](src/sort/compare_strings_by_frequency_of_the_smallest_character.cpp)  [数组, 哈希表, 字符串, 二分查找, 排序]
 
   - LeetCode 1170. 比较字符串最小字母出现频次 <https://leetcode.cn/problems/compare-strings-by-frequency-of-the-smallest-character>
