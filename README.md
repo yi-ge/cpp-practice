@@ -680,3 +680,7 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [构建回文串检测](src/math/can_make_palindrome_from_substring.cpp)  [位运算, 数组, 哈希表, 字符串, 前缀和]
 
   - LeetCode 1177. 构建回文串检测 <https://leetcode.cn/problems/can-make-palindrome-from-substring>
+
+- [连通两组点的最小成本](src/math/minimum_cost_to_connect_two_groups_of_points.cpp)  [位运算, 数组, 动态规划, 状态压缩, 矩阵]
+
+  - LeetCode 1595. 连通两组点的最小成本 <https://leetcode.cn/problems/minimum-cost-to-connect-two-groups-of-points>
