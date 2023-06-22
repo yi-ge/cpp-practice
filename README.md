@@ -531,6 +531,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 排序
 
+- [可被三整除的最大和](src/sort/greatest_sum_divisible_by_three.cpp)  [贪心, 数组, 动态规划, 排序]
+
+  - LeetCode 1262. 可被三整除的最大和 <https://leetcode.cn/problems/greatest-sum-divisible-by-three>
+
 - [比较字符串最小字母出现频次](src/sort/compare_strings_by_frequency_of_the_smallest_character.cpp)  [数组, 哈希表, 字符串, 二分查找, 排序]
 
   - LeetCode 1170. 比较字符串最小字母出现频次 <https://leetcode.cn/problems/compare-strings-by-frequency-of-the-smallest-character>
@@ -584,6 +588,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [水域大小](src/search/pond_sizes_lcci.cpp)  [深度优先搜索, 广度优先搜索, 并查集, 数组, 矩阵]
 
   - LeetCode 面试题 16.19. 水域大小 <https://leetcode.cn/problems/pond-sizes-lcci>
+
+- [黑白翻转棋](src/search/flip_chess.cpp)  [广度优先搜索, 数组, 矩阵]
+
+  - LeetCode LCP 41. 黑白翻转棋 <https://leetcode.cn/problems/fHi6rV>
 
 - [统计封闭岛屿的数目](src/search/number_of_closed_islands.cpp)  [深度优先搜索, 广度优先搜索, 并查集, 数组, 矩阵]
 
@@ -684,3 +692,7 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [构建回文串检测](src/math/can_make_palindrome_from_substring.cpp)  [位运算, 数组, 哈希表, 字符串, 前缀和]
 
   - LeetCode 1177. 构建回文串检测 <https://leetcode.cn/problems/can-make-palindrome-from-substring>
+
+- [连通两组点的最小成本](src/math/minimum_cost_to_connect_two_groups_of_points.cpp)  [位运算, 数组, 动态规划, 状态压缩, 矩阵]
+
+  - LeetCode 1595. 连通两组点的最小成本 <https://leetcode.cn/problems/minimum-cost-to-connect-two-groups-of-points>
