@@ -696,3 +696,7 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [连通两组点的最小成本](src/math/minimum_cost_to_connect_two_groups_of_points.cpp)  [位运算, 数组, 动态规划, 状态压缩, 矩阵]
 
   - LeetCode 1595. 连通两组点的最小成本 <https://leetcode.cn/problems/minimum-cost-to-connect-two-groups-of-points>
+
+- [最大化网格幸福感](src/math/maximize_grid_happiness.cpp)  [位运算, 记忆化搜索, 动态规划, 状态压缩]
+
+  - LeetCode 1659. 最大化网格幸福感 <https://leetcode.cn/problems/maximize-grid-happiness>
