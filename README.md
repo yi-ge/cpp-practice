@@ -700,3 +700,7 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [最大化网格幸福感](src/math/maximize_grid_happiness.cpp)  [位运算, 记忆化搜索, 动态规划, 状态压缩]
 
   - LeetCode 1659. 最大化网格幸福感 <https://leetcode.cn/problems/maximize-grid-happiness>
+
+- [圆和矩形是否有重叠](src/math/circle_and_rectangle_overlapping.cpp)  [几何, 数学]
+
+  - LeetCode 1401. 圆和矩形是否有重叠 <https://leetcode.cn/problems/circle-and-rectangle-overlapping>
