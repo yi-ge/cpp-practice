@@ -704,3 +704,7 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [圆和矩形是否有重叠](src/math/circle_and_rectangle_overlapping.cpp)  [几何, 数学]
 
   - LeetCode 1401. 圆和矩形是否有重叠 <https://leetcode.cn/problems/circle-and-rectangle-overlapping>
+
+- [找出中枢整数](src/math/find_the_pivot_integer.cpp)  [数学, 前缀和]
+
+  - LeetCode 2485. 找出中枢整数 <https://leetcode.cn/problems/find-the-pivot-integer>
