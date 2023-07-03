@@ -375,6 +375,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 栈
 
+- [两数相加 II](src/stack/add_two_numbers_ii.cpp)  [栈, 链表, 数学]
+
+  - LeetCode 445. 两数相加 II <https://leetcode.cn/problems/add-two-numbers-ii>
+
 - [叶值的最小代价生成树](src/stack/minimum_cost_tree_from_leaf_values.cpp)  [栈, 贪心, 数组, 动态规划, 单调栈]
 
   - LeetCode 1130. 叶值的最小代价生成树 <https://leetcode.cn/problems/minimum-cost-tree-from-leaf-values>
