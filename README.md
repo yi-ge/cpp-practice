@@ -119,6 +119,7 @@ sudo update-alternatives --config c++
 - [选择排序](src/sort/select_sort.cpp)
 - [快速排序](src/sort/quick_sort.cpp)
 - [归并排序](src/sort/merge_sort.cpp)
+- [堆排序](src/sort/heap_sort.cpp)
 
 ## 基础数据结构
 
