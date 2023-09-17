@@ -17,6 +17,11 @@ TEST(最大堆, maxHeap) {
   cout << maxHeap.size() << endl;
 
   maxHeap.testPrint();
-
   EXPECT_EQ(maxHeap.size(), 15);
+
+  while (!maxHeap.isEmpty()) {
+    cout << maxHeap.extractMax() << " ";
+  }
+
+  EXPECT_EQ(maxHeap.size(), 0);
 }

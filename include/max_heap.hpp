@@ -4,37 +4,94 @@
 
 using namespace std;
 
+/**
+ * @brief 最大堆
+ *
+ * @tparam Item
+ */
 template <typename Item> class MaxHeap {
 private:
-  Item *data;
-  int count;
-  int capacity;
+  Item *data;   // 存放元素的数组
+  int count;    // 元素个数
+  int capacity; // 容量
 
+  /**
+   * @brief 上浮
+   *
+   * @param k 要上浮的元素的索引
+   */
   void shiftUp(int k) {
-    while (k > 1 && data[k / 2] < data[k]) {
-      swap(data[k / 2], data[k]);
-      k /= 2;
+    while (k > 1 && data[k / 2] < data[k]) { // k > 1 有父节点
+      swap(data[k / 2], data[k]);            // 交换父节点和子节点
+      k /= 2;                                // k指向父节点
+    }
+  }
+
+  /**
+   * @brief 下沉
+   *
+   * @param k 要下沉的元素的索引
+   */
+  void shiftDown(int k) {
+    while (2 * k <= count) { // 有左孩子就有孩子
+      int j = 2 * k;         // 在此轮循环中,data[k]和data[j]交换位置
+      if (j + 1 <= count && data[j + 1] > data[j]) // 有右孩子且右孩子大于左孩子
+        j += 1; // data[j]是data[2*k]和data[2*k+1]中的最大值
+      if (data[k] >= data[j]) // 如果data[k]大于等于data[j],就不用交换了
+        break;
+      swap(data[k], data[j]); // 否则交换
+      k = j;                  // k指向交换后的位置
     }
   }
 
 public:
   MaxHeap(int capacity) {
-    this->capacity = capacity;
-    data = new Item[capacity + 1];
+    this->capacity = capacity;     // 容量
+    data = new Item[capacity + 1]; // 索引从1开始
     count = 0;
   }
 
   ~MaxHeap() { delete[] data; }
 
+  /**
+   * @brief 获取堆中元素个数
+   *
+   * @return int
+   */
   int size() { return count; }
 
+  /**
+   * @brief 判断堆是否为空
+   *
+   * @return true
+   * @return false
+   */
   bool isEmpty() { return count == 0; }
 
+  /**
+   * @brief 插入元素
+   *
+   * @param item
+   */
   void insert(Item item) {
     assert(count + 1 <= this->capacity);
     data[count + 1] = item;
     count++;
     shiftUp(count);
+  }
+
+  /**
+   * @brief 取出最大元素
+   *
+   * @return Item
+   */
+  Item extractMax() {
+    assert(count > 0);
+    Item ret = data[1];
+    swap(data[1], data[count]);
+    count--;
+    shiftDown(1);
+    return ret;
   }
 
 public:
