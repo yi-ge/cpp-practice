@@ -194,6 +194,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [找出叠涂元素](src/array/first_completely_painted_row_or_column.cpp)  [数组, 哈希表, 矩阵]
+
+  - LeetCode 2661. 找出叠涂元素 <https://leetcode.cn/problems/first-completely-painted-row-or-column>
+
 - [打家劫舍](src/array/house_robber.cpp)  [数组, 动态规划]
 
   - LeetCode 198. 打家劫舍 <https://leetcode.cn/problems/house-robber>
