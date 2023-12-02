@@ -553,6 +553,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 排序
 
+- [拼车](src/sort/car_pooling.cpp)  [数组, 前缀和, 排序, 模拟, 堆（优先队列）]
+
+  - LeetCode 1094. 拼车 <https://leetcode.cn/problems/car-pooling>
+
 - [可被三整除的最大和](src/sort/greatest_sum_divisible_by_three.cpp)  [贪心, 数组, 动态规划, 排序]
 
   - LeetCode 1262. 可被三整除的最大和 <https://leetcode.cn/problems/greatest-sum-divisible-by-three>
