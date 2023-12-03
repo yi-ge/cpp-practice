@@ -194,6 +194,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [可获得的最大点数](src/array/maximum_points_you_can_obtain_from_cards.cpp)  [数组, 前缀和, 滑动窗口]
+
+  - LeetCode 1423. 可获得的最大点数 <https://leetcode.cn/problems/maximum-points-you-can-obtain-from-cards>
+
 - [找出叠涂元素](src/array/first_completely_painted_row_or_column.cpp)  [数组, 哈希表, 矩阵]
 
   - LeetCode 2661. 找出叠涂元素 <https://leetcode.cn/problems/first-completely-painted-row-or-column>
