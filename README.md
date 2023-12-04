@@ -431,6 +431,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 树
 
+- [从二叉搜索树到更大和树](src/tree/binary_search_tree_to_greater_sum_tree.cpp)  [树, 深度优先搜索, 二叉搜索树, 二叉树]
+
+  - LeetCode 1038. 从二叉搜索树到更大和树 <https://leetcode.cn/problems/binary-search-tree-to-greater-sum-tree>
+
 - [树节点的第 K 个祖先](src/tree/kth_ancestor_of_a_tree_node.cpp)  [树, 深度优先搜索, 广度优先搜索, 设计, 二分查找, 动态规划]
 
   - LeetCode 1483. 树节点的第 K 个祖先 <https://leetcode.cn/problems/kth-ancestor-of-a-tree-node>
