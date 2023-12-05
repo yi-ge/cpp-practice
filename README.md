@@ -547,6 +547,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 图
 
+- [到达首都的最少油耗](src/graphs/minimum_fuel_cost_to_report_to_the_capital.cpp)  [树, 深度优先搜索, 广度优先搜索, 图]
+
+  - LeetCode 2477. 到达首都的最少油耗 <https://leetcode.cn/problems/minimum-fuel-cost-to-report-to-the-capital>
+
 - [T 秒后青蛙的位置](src/graphs/frog_position_after_t_seconds.cpp)  [树, 深度优先搜索, 广度优先搜索, 图]
 
   - LeetCode 1377. T 秒后青蛙的位置 <https://leetcode.cn/problems/frog-position-after-t-seconds/>
