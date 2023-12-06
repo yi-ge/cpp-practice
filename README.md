@@ -547,6 +547,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 图
 
+- [最小化旅行的价格总和](src/graphs/minimize_the_total_price_of_the_trips.cpp)  [树, 深度优先搜索, 图, 数组, 动态规划]
+
+  - LeetCode 2646. 最小化旅行的价格总和 <https://leetcode.cn/problems/minimize-the-total-price-of-the-trips>
+
 - [到达首都的最少油耗](src/graphs/minimum_fuel_cost_to_report_to_the_capital.cpp)  [树, 深度优先搜索, 广度优先搜索, 图]
 
   - LeetCode 2477. 到达首都的最少油耗 <https://leetcode.cn/problems/minimum-fuel-cost-to-report-to-the-capital>
