@@ -422,10 +422,10 @@ lazy-cache@^1.0.3:
   resolved "https://registry.yarnpkg.com/lazy-cache/-/lazy-cache-1.0.4.tgz#a1d78fc3a50474cb80845d3b3b6e1da49a446e8e"
   integrity sha512-RE2g0b5VGZsOCFOCgP7omTRYFqydmZkBwl5oNnQ1lDYC57uyO9KqNnNVxT7COSHTxrRCWVcAVOcbjk+tvh/rgQ==
 
-leetcode-test-helper@^0.4.7:
-  version "0.4.7"
-  resolved "https://registry.yarnpkg.com/leetcode-test-helper/-/leetcode-test-helper-0.4.7.tgz#7798cdf1c322f1ed452b8b26d56b769a5c732aed"
-  integrity sha512-ULRnWlvIMhduzAvUdxAh1moyrraOLsm5CmA0chYXZYo7OSfpnp176B6JDca+lFGvrPvRLicDzB+3rmi1uHz0xg==
+leetcode-test-helper@^0.4.8:
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/leetcode-test-helper/-/leetcode-test-helper-0.4.8.tgz#150213bc6ec96cf84117d5256272b0c61dcd3dae"
+  integrity sha512-AQp5cNKW9QQ0SqroUQ/zAeajIEiIIEMlebTfLK2n1pusb65GLse8IkqPDuzvwerQPZgVgn/hHndrVhjZ34xNvw==
   dependencies:
     playwright "^1.38.0"
     playwright-extra "^4.3.6"

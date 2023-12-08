@@ -573,6 +573,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 排序
 
+- [出租车的最大盈利](src/sort/maximum_earnings_from_taxi.cpp)  [数组, 二分查找, 动态规划, 排序]
+
+  - LeetCode 2008. 出租车的最大盈利 <https://leetcode.cn/problems/maximum-earnings-from-taxi>
+
 - [拼车](src/sort/car_pooling.cpp)  [数组, 前缀和, 排序, 模拟, 堆（优先队列）]
 
   - LeetCode 1094. 拼车 <https://leetcode.cn/problems/car-pooling>

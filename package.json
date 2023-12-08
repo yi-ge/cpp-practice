@@ -26,7 +26,7 @@
     "postinstall": "node ./scripts/postinstall.cjs"
   },
   "dependencies": {
-    "leetcode-test-helper": "^0.4.7",
+    "leetcode-test-helper": "^0.4.8",
     "puppeteer": "^15.3.0",
     "puppeteer-extra": "^3.3.1",
     "puppeteer-extra-plugin-stealth": "^2.10.2",
