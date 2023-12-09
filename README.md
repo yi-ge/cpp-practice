@@ -758,3 +758,7 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [找出中枢整数](src/math/find_the_pivot_integer.cpp)  [数学, 前缀和]
 
   - LeetCode 2485. 找出中枢整数 <https://leetcode.cn/problems/find-the-pivot-integer>
+
+- [下一个更大的数值平衡数](src/math/next_greater_numerically_balanced_number.cpp)  [数学, 回溯, 枚举]
+
+  - LeetCode 2048. 下一个更大的数值平衡数 <https://leetcode.cn/problems/next-greater-numerically-balanced-number>
