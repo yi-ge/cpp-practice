@@ -635,6 +635,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 其它
 
+- [爬楼梯](src/search/climbing_stairs.cpp)  [记忆化搜索, 数学, 动态规划]
+
+  - LeetCode 70. 爬楼梯 <https://leetcode.cn/problems/climbing-stairs>
+
 - [水域大小](src/search/pond_sizes_lcci.cpp)  [深度优先搜索, 广度优先搜索, 并查集, 数组, 矩阵]
 
   - LeetCode 面试题 16.19. 水域大小 <https://leetcode.cn/problems/pond-sizes-lcci>
