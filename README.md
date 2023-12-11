@@ -635,6 +635,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 其它
 
+- [最小体力消耗路径](src/search/path_with_minimum_effort.cpp)  [深度优先搜索, 广度优先搜索, 并查集, 数组, 二分查找, 矩阵, 堆（优先队列）]
+
+  - LeetCode 1631. 最小体力消耗路径 <https://leetcode.cn/problems/path-with-minimum-effort>
+
 - [爬楼梯](src/search/climbing_stairs.cpp)  [记忆化搜索, 数学, 动态规划]
 
   - LeetCode 70. 爬楼梯 <https://leetcode.cn/problems/climbing-stairs>
