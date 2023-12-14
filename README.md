@@ -198,6 +198,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [用邮票贴满网格图](src/array/stamping_the_grid.cpp)  [贪心, 数组, 矩阵, 前缀和]
+
+  - LeetCode 2132. 用邮票贴满网格图 <https://leetcode.cn/problems/stamping-the-grid>
+
 - [可获得的最大点数](src/array/maximum_points_you_can_obtain_from_cards.cpp)  [数组, 前缀和, 滑动窗口]
 
   - LeetCode 1423. 可获得的最大点数 <https://leetcode.cn/problems/maximum-points-you-can-obtain-from-cards>
