@@ -786,3 +786,7 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [下一个更大的数值平衡数](src/math/next_greater_numerically_balanced_number.cpp)  [数学, 回溯, 枚举]
 
   - LeetCode 2048. 下一个更大的数值平衡数 <https://leetcode.cn/problems/next-greater-numerically-balanced-number>
+
+- [不浪费原料的汉堡制作方案](src/math/number_of_burgers_with_no_waste_of_ingredients.cpp)  [数学]
+
+  - LeetCode 1276. 不浪费原料的汉堡制作方案 <https://leetcode.cn/problems/number-of-burgers-with-no-waste-of-ingredients>
