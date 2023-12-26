@@ -790,3 +790,7 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [不浪费原料的汉堡制作方案](src/math/number_of_burgers_with_no_waste_of_ingredients.cpp)  [数学]
 
   - LeetCode 1276. 不浪费原料的汉堡制作方案 <https://leetcode.cn/problems/number-of-burgers-with-no-waste-of-ingredients>
+
+- [参加考试的最大学生数](src/math/maximum_students_taking_exam.cpp)  [位运算, 数组, 动态规划, 状态压缩, 矩阵]
+
+  - LeetCode 1349. 参加考试的最大学生数 <https://leetcode.cn/problems/maximum-students-taking-exam>
