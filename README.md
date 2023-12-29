@@ -585,6 +585,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 排序
 
+- [购买两块巧克力](src/sort/buy_two_chocolates.cpp)  [数组, 排序]
+
+  - LeetCode 2706. 购买两块巧克力 <https://leetcode.cn/problems/buy-two-chocolates>
+
 - [下一个更大元素 IV](src/sort/next_greater_element_iv.cpp)  [栈, 数组, 二分查找, 排序, 单调栈, 堆（优先队列）]
 
   - LeetCode 2454. 下一个更大元素 IV <https://leetcode.cn/problems/next-greater-element-iv>
