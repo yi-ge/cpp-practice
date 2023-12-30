@@ -16,7 +16,7 @@ public:
       days += monthDays[i];
     }
     if (((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) && month > 2) {
-      days += day + 1;
+      days += 1;
     }
     days += day;
     return week[(days + 3) % 7];
