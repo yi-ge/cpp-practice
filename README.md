@@ -798,3 +798,7 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [参加考试的最大学生数](src/math/maximum_students_taking_exam.cpp)  [位运算, 数组, 动态规划, 状态压缩, 矩阵]
 
   - LeetCode 1349. 参加考试的最大学生数 <https://leetcode.cn/problems/maximum-students-taking-exam>
+
+- [一周中的第几天](src/math/day_of_the_week.cpp)  [数学]
+
+  - LeetCode 1185. 一周中的第几天 <https://leetcode.cn/problems/day-of-the-week>
