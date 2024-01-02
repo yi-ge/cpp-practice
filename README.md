@@ -152,6 +152,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 字符串
 
+- [统计重复个数](src/string/count_the_repetitions.cpp)  [字符串, 动态规划]
+
+  - LeetCode 466. 统计重复个数 <https://leetcode.cn/problems/count-the-repetitions>
+
 - [字典序最小回文串](src/string/lexicographically_smallest_palindrome.cpp)  [贪心, 双指针, 字符串]
 
   - LeetCode 2697. 字典序最小回文串 <https://leetcode.cn/problems/lexicographically-smallest-palindrome>
