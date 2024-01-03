@@ -417,6 +417,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 栈
 
+- [从链表中移除节点](src/stack/remove_nodes_from_linked_list.cpp)  [栈, 递归, 链表, 单调栈]
+
+  - LeetCode 2487. 从链表中移除节点 <https://leetcode.cn/problems/remove-nodes-from-linked-list>
+
 - [两数相加 II](src/stack/add_two_numbers_ii.cpp)  [栈, 链表, 数学]
 
   - LeetCode 445. 两数相加 II <https://leetcode.cn/problems/add-two-numbers-ii>
