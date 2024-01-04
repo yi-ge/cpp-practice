@@ -814,3 +814,7 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 - [一周中的第几天](src/math/day_of_the_week.cpp)  [数学]
 
   - LeetCode 1185. 一周中的第几天 <https://leetcode.cn/problems/day-of-the-week>
+
+- [被列覆盖的最多行数](src/math/maximum_rows_covered_by_columns.cpp)  [位运算, 数组, 回溯, 枚举, 矩阵]
+
+  - LeetCode 2397. 被列覆盖的最多行数 <https://leetcode.cn/problems/maximum-rows-covered-by-columns>
