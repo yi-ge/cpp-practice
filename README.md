@@ -417,6 +417,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 栈
 
+- [队列中可以看到的人数](src/stack/number_of_visible_people_in_a_queue.cpp)  [栈, 数组, 单调栈]
+
+  - LeetCode 1944. 队列中可以看到的人数 <https://leetcode.cn/problems/number-of-visible-people-in-a-queue>
+
 - [从链表中移除节点](src/stack/remove_nodes_from_linked_list.cpp)  [栈, 递归, 链表, 单调栈]
 
   - LeetCode 2487. 从链表中移除节点 <https://leetcode.cn/problems/remove-nodes-from-linked-list>
