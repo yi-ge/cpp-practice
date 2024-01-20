@@ -206,6 +206,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [按分隔符拆分字符串](src/array/split_strings_by_separator.cpp)  [数组, 字符串]
+
+  - LeetCode 2788. 按分隔符拆分字符串 <https://leetcode.cn/problems/split-strings-by-separator>
+
 - [最大字符串配对数目](src/array/find_maximum_number_of_string_pairs.cpp)  [数组, 哈希表, 字符串, 模拟]
 
   - LeetCode 2744. 最大字符串配对数目 <https://leetcode.cn/problems/find-maximum-number-of-string-pairs>
