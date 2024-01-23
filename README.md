@@ -206,6 +206,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [最长交替子数组](src/array/longest_alternating_subarray.cpp)  [数组, 枚举]
+
+  - LeetCode 2765. 最长交替子数组 <https://leetcode.cn/problems/longest-alternating-subarray>
+
 - [分割数组的最大值](src/array/split_array_largest_sum.cpp)  [贪心, 数组, 二分查找, 动态规划, 前缀和]
 
   - LeetCode 410. 分割数组的最大值 <https://leetcode.cn/problems/split-array-largest-sum>
