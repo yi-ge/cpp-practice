@@ -715,6 +715,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 其它
 
+- [自由之路](src/search/freedom_trail.cpp)  [深度优先搜索, 广度优先搜索, 字符串, 动态规划]
+
+  - LeetCode 514. 自由之路 <https://leetcode.cn/problems/freedom-trail>
+
 - [构造有效字符串的最少插入数](src/other/minimum_additions_to_make_valid_string.cpp)  [Stack, Greedy, String, Dynamic Programming]
 
   - LeetCode 2645. 构造有效字符串的最少插入数 <https://leetcode.cn/problems/minimum-additions-to-make-valid-string>
