@@ -206,6 +206,10 @@ C++标准库提供的数据结构实在是太多了，参考[C++标准库头文�
 
 ### 数组/队列/集合/映射
 
+- [使循环数组所有元素相等的最少秒数](src/array/minimum_seconds_to_equalize_a_circular_array.cpp)  [数组, 哈希表]
+
+  - LeetCode 2808. 使循环数组所有元素相等的最少秒数 <https://leetcode.cn/problems/minimum-seconds-to-equalize-a-circular-array>
+
 - [最长交替子数组](src/array/longest_alternating_subarray.cpp)  [数组, 枚举]
 
   - LeetCode 2765. 最长交替子数组 <https://leetcode.cn/problems/longest-alternating-subarray>
